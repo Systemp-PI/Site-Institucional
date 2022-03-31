@@ -1,61 +1,78 @@
-body {
+body{
     padding: 0%;
     margin: 0%;
-    background: linear-gradient(to left, #0f2027, #203a43, #2c5364); 
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
     color: white;
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    width: 100vw;
-    height: 100vh;
 }
+
+header {
+    background-color: black;
+    display: flex;
+    width: 100%;
+    height: 10%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 55%;
+    margin-left: 20%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 h1 {
     color: rgb(255, 255, 255);
-    margin-left: 39.5%;
+    margin-left: 3%;
     font-size: 40px;
-    width: 50%;
+    display: flex;
+    justify-content:center ;
 }
 
-.caixa {
+.caixa{
     width: 100%;
     height: 80%;
-    display: block;
+    display: flex;
     justify-content: center;
     padding: 0;
-    margin-left: 22%;
-    margin-top: 3%;
+    margin: 0;
 }
 
-.box_form {
+.box_form{
     font-size: 25px;
     color: aliceblue;
     border: solid white 2px;
     border-radius: 25px;
-    margin-left: 15vw;
 
-    width: 520px;
-    height: 360px;
+    width: 65%;
+    height: 100%;
+
 }
 
-#formulario {
+#formulario{
     width: 60%;
     height: 20%;
-   
     border-radius: 25px;
-    display: block;
+    display: flex;
     align-items: center;
     justify-content: space-around;
+    
 }
 
-.input_submit {
+.input_submit{
     width: 150px;
     margin-left: 10%;
     margin-bottom: 3%;
     background-color: #fcf9f9b6;
     color: #272525; 
     border-radius: 15px;
+    cursor: pointer;
 }
-
 .input_submit:hover {
     transition: 1s;
     background-color: #f8eaea57;
@@ -83,46 +100,57 @@ input {
 #mensagem {
     margin-top: 3%;
     margin-left: 25%;
+    margin-bottom: 5%;
     font-size: 30px;
 }
-
-#logo {
+#logo{
+    margin-top: 2%;
     position: relative;
     left: 2%;
-    margin-bottom: 3%;
     border-radius: 15%;
 }
+.header{
+    width: 70%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    margin-right: 15%;
+    margin-bottom: 2.5%;
+}
 
-.img {
-    width: 100%;
+.img{
+    width: 45%;
     float: left;
 }
 
-.div_label {
+.img img{
+    width: 40%;
+}
+
+.div_label{
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     float: left;
     margin-top: 2%;
-    margin-left: 0px;
 }
 
-.div_inputs {
+.div_inputs{
     width: 50%;
     height: 100%;
     float: left;
-    margin-top: 4px;
-    display: grid;
-    justify-content: space-around;
+    margin-top: 25px;
+    display:grid;
+    justify-content:space-around ;
 }
 
 span {
     color: rgba(129, 11, 11, 0);
     font-size: 12px;
+    
 }
-
-.label_form {
+.label_form{
     font-size: 25px;
-    margin-left: 3%;
 }

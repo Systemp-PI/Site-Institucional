@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    box-sizing: border-box;
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    overflow-x: hidden;
+}
+
+header {
+    background-color: black;
+    display: flex;
+    width: 100%;
+    height: 10%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 55%;
+    margin-left: 20%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.container_inicio{
+    background-image: url(https://blog.za9.com.br/wp-content/uploads/2017/06/4-dicas-para-escolher-a-solucao-digital-ideal-para-seu-negocio-maior_2.png);
+    background-size: cover;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    margin: 0;
+    border-bottom: black solid 2px;
+}
+
+.container_inicio h2 {
+    display: flex;
+    z-index: 2;
+    color: white;
+    margin-top: 30%;
+    margin-left: 15%;   
+    width: 300px;
+}
+
+.img_mensagem {
+    width: 70%;
+    height: 550px;
+
+}
+
+#container_produto{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display:flex;
+    justify-content: center;
+}
+.painel{
+    background-color:#DEEDB5;
+    height: 200px;
+    border-radius: 40px;
+    margin:0 auto;
+}
+span{
+    font-size: 15px;
+}
+.painel h1{
+    font-size:32px;
+    margin: 0 auto;
+}

@@ -121,3 +121,59 @@ input::placeholder{
     color: white;
     font-weight: 900;
 }
+
+footer {
+    position: relative;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    height: 230px;
+    width: 100%;
+}
+
+#footer_title {
+    padding-top: 1px;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+.container_footer {
+    display: flex;
+    flex-direction: inline;
+    justify-content: center;
+}
+
+.contatos {
+    margin: 10px 7px 0 35px;
+}
+
+#email {
+    width: 46px;
+    height: 31px;
+}
+
+#whatsapp {
+    width: 34px;
+    height: 34px;
+}
+
+#linkedin {
+    width: 30px;
+    height: 30px;
+}
+
+#container_copyright {
+    display: flex;
+    justify-content: center;
+}
+
+.copyright {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid white;
+    margin-top: 35px;
+}

@@ -1,42 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="tela_de_login.css">
-    <title>Protótipo</title>
+    <link rel="stylesheet" href="sobre_nos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title>Systemp - Sobre nós</title>
 </head>
-
 <body>
     <header>
-        <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
+        <img src="./imgs/SYSTEMP.png" alt="systemp_logo">
         <nav>
             <a href="index.html">Home</a>
             <a href="simulador.html">Simulador</a>
-            <a href="sobre_nos.html">Sobre nós</a>
+            <a href="sobre_nos.html"><u>Sobre nós</u></a>
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html">Cadastro</a>
-            <a href="tela_login.html"><u>Login</u></a>
+            <a href="tela_login.html">Login</a>
         </nav>
     </header>
 
-
     <div id="container">
-        <div id="box_login">
-
-
-            <span id="titulo"> Login </span>
-
-        <input type="email" name="" placeholder="Exemplo@gmail.com" id="input_email"> 
-            <input type="password" name="" placeholder="Digite sua senha" id="input_senha">
-            <button onclick="entrar()" id="but_entrar">Acessar</button>
-            <span id="cadastro"> Não tem cadastro? Cadastre-se <a href="cadastro.html" id="link_cadastro"> <b> aqui </b> </a> </span>
-
+        <h1>Sobre nós</h1>
+        <p> A SysTemp é uma empresa que desenvolve soluções em monitoramento de temperatura
+            de óleo integrado com a web voltado para industria. <br>
+            Vimos a necessidade de um instrumento de leitura de temperatura informatizado, devido
+            a inexistência de um produto desse segmento que não seja analógico ou digital.
+            Nossa visão é seguir a tendência da indústria 4.0 que utiliza tecnologias
+            para automação e troca de dados.
+        </p>
+        <div class="imagem">
+            <img src="pngegg.png" alt="img">
         </div>
     </div>
-
     <footer>
         <div id="footer_title">
             <h2 id="title">Fale conosco</h2>
@@ -55,7 +52,5 @@
             </div>
         </div>
     </footer>
-
 </body>
-
 </html>

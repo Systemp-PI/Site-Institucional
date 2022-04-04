@@ -4,7 +4,7 @@
 body {
     margin: 0%;
     padding: 0%;
-    background: linear-gradient(to right, #f46b45, #eea849);
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -68,13 +68,11 @@ input{
     height: 7%;
     width: 15vw;
     color: rgb(0, 0, 0);
-    font-weight: bold;
     
 }
 
 input::placeholder{
     color: rgb(0, 0, 0);
-    font-weight: bold;
 }
 
 
@@ -88,6 +86,7 @@ input::placeholder{
     border: none;
     margin-top: 5%;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 #but_entrar:hover {
@@ -124,7 +123,7 @@ input::placeholder{
 
 footer {
     position: relative;
-    bottom: 0;
+    top: 205px;
     background-color: black;
     color: white;
     height: 230px;
@@ -147,20 +146,20 @@ footer {
 }
 
 .contatos {
-    margin: 10px 7px 0 35px;
+    margin: 0px 7px 0 35px;
 }
 
-#email {
+#logo_email {
     width: 46px;
     height: 31px;
 }
 
-#whatsapp {
+#logo_whatsapp {
     width: 34px;
     height: 34px;
 }
 
-#linkedin {
+#logo_linkedin {
     width: 30px;
     height: 30px;
 }

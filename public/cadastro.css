@@ -24,8 +24,14 @@ nav {
 a {
     color: white;
     text-decoration: none;
+    transition: 0.5s;
 }
 
+a:hover{
+    font-size: 22px;
+    transition: 0.5s;
+    color: #ff5f6d;
+}
 
 .container_cadastro{
     width: 100%;

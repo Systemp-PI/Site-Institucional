@@ -3,7 +3,7 @@ body{
     margin: 0%;
     background: linear-gradient(to right, #ff5f6d, #ffc371);
     color: white;
-    overflow-y: hidden;
+    
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
 }
@@ -26,6 +26,13 @@ nav {
 a {
     color: white;
     text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover{
+    font-size: 22px;
+    transition: 0.5s;
+    color: #ff5f6d;
 }
 
 #container {

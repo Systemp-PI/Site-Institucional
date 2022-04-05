@@ -57,10 +57,14 @@ a {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    margin-left: 900px;
-    margin-top: -300px;
-    width: 500px;
-    height: 500px;
+    margin-left: 102%;
+    margin-top: -37%;
+    width: 100%;
+    height: 100%;
+}
+
+.imagem img{
+    width: 70%;
 }
 
 footer {

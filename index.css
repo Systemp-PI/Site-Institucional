@@ -2,11 +2,10 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    width: 100vw;
+ 
     box-sizing: border-box;
     background: linear-gradient(to right, #ff5f6d, #ffc371);
-    overflow-x: hidden;
+
 }
 
 header {
@@ -33,7 +32,7 @@ a {
     background-image: url(https://blog.za9.com.br/wp-content/uploads/2017/06/4-dicas-para-escolher-a-solucao-digital-ideal-para-seu-negocio-maior_2.png);
     background-size: cover;
     width: 100%;
-    height: 90%;
+    height: 100%;
     display: flex;
     margin: 0;
     border-bottom: black solid 2px;
@@ -43,10 +42,9 @@ a {
     display: flex;
     z-index: 2;
     color: white;
-    margin-top: 600px;
+    margin-top: 32%;
     margin-left: 15%;   
-    width: 300px;
-    position: sticky;
+    width: 20%;
 }
 
 .img_mensagem {
@@ -56,20 +54,65 @@ a {
 
 #container_produto{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     margin: auto;
     display:flex;
-    justify-content: center;
+    justify-content:space-evenly;
+    align-items: center;
 }
 .painel{
     background-color:#DEEDB5;
-    height: 200px;
+    height: 85%;
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
     border-radius: 40px;
-    margin:0 auto;
 }
-span{
-    font-size: 15px;
+
+#desc_sensor{
+    display: flex;
+    justify-content: space-around;
+    padding:1.5%;
+    flex-direction: column;
+    align-items: center;
 }
+
+#desc_sensor span{
+    font-weight: 800;
+    font-size: 16px;
+    width: 80%;
+    margin-bottom: 25%;
+}
+#desc_contato{
+    display: flex;
+    justify-content: space-around;
+    padding:1.5%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#desc_contato span{
+    font-weight: 800;
+    font-size: 16px;
+    width: 80%;
+    margin-bottom: 25%;
+}
+#desc_monitoramento{
+    display: flex;
+    justify-content: space-around;
+    padding:1.5%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#desc_monitoramento span{
+    font-weight: 800;
+    font-size: 16px;
+    width: 80%;
+    margin-bottom: 10%;
+}
+
+
 
 .painel h1{
     font-size:32px;

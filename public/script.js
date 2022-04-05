@@ -51,3 +51,12 @@ function calcula_perda() {
     }
 
 }
+
+window.onscroll = function(){
+    if(window.scrollY < inicio.offsetHeight){
+        header.style = "background-color: black;"
+    }
+    if(window.scrollY >= inicio.offsetHeight){
+        header.style = "background-color: white;"
+    }
+}

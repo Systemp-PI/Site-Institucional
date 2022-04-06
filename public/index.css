@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
@@ -32,13 +32,13 @@ a {
     transition: 0.5s;
 }
 
-a:hover{
+a:hover {
     font-size: 22px;
     transition: 0.5s;
     color: #ff5f6d;
 }
 
-.container_inicio{
+.container_inicio {
     background-image: url("imgs/banner_oleolubrificante6.jpg");
     background-size: cover;
     width: 100%;
@@ -49,8 +49,8 @@ a:hover{
     margin: 0;
 }
 
-.titulo_inicio{
-   
+.titulo_inicio {
+
     color: white;
     width: 40%;
     height: 60%;
@@ -66,22 +66,23 @@ a:hover{
     height: 550px;
 }
 
-#container_produto{
+#container_produto {
     width: 100%;
     height: 100vh;
     margin: auto;
-    display:flex;
-    justify-content:space-evenly;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-  
+
 }
-.painel{
+
+.painel {
     background: #ececec;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
     -webkit-backdrop-filter: blur(3.4px);
-    border: 1px solid rgba(0, 0, 0, 0.64); 
+    border: 1px solid rgba(0, 0, 0, 0.64);
     height: 85%;
     width: 25%;
     display: flex;
@@ -89,36 +90,38 @@ a:hover{
     border-radius: 40px;
 }
 
-.img_cor{
+.img_cor {
     width: 100%;
     height: 40%;
     /* From https://css.glass */
-background: rgba(255, 196, 113, 0.685);
-border-radius: 18px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 196, 113, 0.685);
+    border-radius: 18px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
     display: flex;
     justify-content: center;
 }
-.img_cor img{
+
+.img_cor img {
     width: 1000px;
 }
 
-#desc_sensor{
+#desc_sensor {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
 }
 
-#desc_sensor span{
+#desc_sensor span {
     font-weight: 800;
     font-size: 16px;
     width: 80%;
     margin-bottom: 25%;
 }
-#desc_contato{
+
+#desc_contato {
     display: flex;
     justify-content: space-around;
 
@@ -126,20 +129,21 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     align-items: center;
 }
 
-#desc_contato span{
+#desc_contato span {
     font-weight: 800;
     font-size: 16px;
     width: 80%;
     margin-bottom: 25%;
 }
-#desc_monitoramento{
+
+#desc_monitoramento {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
 }
 
-#desc_monitoramento span{
+#desc_monitoramento span {
     font-weight: 800;
     font-size: 16px;
     width: 80%;
@@ -148,8 +152,8 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 
 
-.painel h1{
-    font-size:32px;
+.painel h1 {
+    font-size: 32px;
     margin: 0 auto;
 }
 
@@ -213,14 +217,14 @@ footer {
 /*sobre nós*/
 
 
-.container_sobre_nos{
+.container_sobre_nos {
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items:center ;
+    align-items: center;
     flex-direction: row;
     justify-content: space-evenly;
-  
+
 }
 
 #container {
@@ -230,13 +234,13 @@ footer {
     border-radius: 15px;
     width: 50%;
     height: 60%;
-   /* From https://css.glass */
+    /* From https://css.glass */
     background: rgba(0, 0, 0, 0.46);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
     -webkit-backdrop-filter: blur(3.4px);
-    border: 1px solid rgba(0, 0, 0, 0.64); 
+    border: 1px solid rgba(0, 0, 0, 0.64);
     color: white;
     font-weight: 600;
     font-size: 16px;
@@ -261,9 +265,45 @@ footer {
     flex-direction: row;
     width: 40%;
     height: 50%;
-    align-items: center;    
+    align-items: center;
 }
 
-.imagem img{
+.imagem img {
     width: 54%;
 }
+
+/*Parte Colaboradores*/
+.container_colaboradores {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.fotos1{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.fotos1 img{
+    width: 10%;
+    border-radius: 50%;
+}
+
+.fotos2{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.fotos2 img{
+    width: 10%;
+    border-radius: 50%;
+}
+

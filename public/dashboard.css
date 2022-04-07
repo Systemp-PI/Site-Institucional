@@ -39,14 +39,13 @@ a:hover{
 }
 
 #grafico {
-    padding: 150px;
+    padding: 200px 200px 100px;
     width: 70%;
     height: 70%;
 }
 
 #myChart {
     background-color: white;
-    font-size: 40px;
 }
 
 footer {

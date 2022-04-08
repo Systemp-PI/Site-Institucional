@@ -281,29 +281,44 @@ footer {
     justify-content: space-evenly;
 }
 
-.fotos1{
+.imagem1{
     height: 50%;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
 }
 
-.fotos1 img{
-    width: 10%;
-    border-radius: 50%;
+.foto {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.fotos2{
+.foto img{
+    border-radius: 45%;
+    width: 100px;
+}
+
+.imagem2{
     height: 50%;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
 }
 
-.fotos2 img{
-    width: 10%;
-    border-radius: 50%;
+.quadro{
+    width: 60px;
 }
+
+.imagem1 p{
+    text-align: center;
+}
+
+.imagem2 p{
+    text-align: center;
+}
+
 

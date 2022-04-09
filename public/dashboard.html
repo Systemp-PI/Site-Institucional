@@ -48,11 +48,17 @@
 
 <script>
 const ctx = document.getElementById('myChart');
+ctx.style.backgroundColor = 'transparent';
+Chart.defaults.color = "black";
+Chart.defaults.borderColor='black'
+Chart.defaults.font.size =20;
+
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
             label: 'Temperatura do sensor', 
+               backgroundColor:'red',
             data: [{
                 x: '23:39:30',
                 y: 36.2
@@ -70,26 +76,32 @@ const myChart = new Chart(ctx, {
             {
                 x: '23:39:42',
                 y: 37,
-            }],
-
-            backgroundColor:'red',
-            borderColor:'red',
-            borderWidth:3,
+                
+            }
+        ],
+            borderColor:'darkred',
+            borderWidth:6,
             
         }],
     },
     options: {
        
         scales: {
+            y: {
+                suggestedMin: 20,
+                suggestedMax: 50,
+            },
             xAxes: [{
                 type: 'time',
                 time: {
                     unit: 'second'
                 }
-            }]
-        }
+            }
+        ]}
     }
-})
+}
+)
+
 ;
 
 </script>

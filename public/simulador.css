@@ -89,12 +89,12 @@ h1 {
     color: #272525; 
     border-radius: 15px;
     cursor: pointer;
+    transition: 0.5s;
 }
+
 .input_submit:hover {
-    transition: 1s;
-    background-color: #f8eaea57;
-    width: 170px;
-    height: 30px;
+    transition: 0.5s;
+    background-color: rgb(155, 155, 155);
 }
 
 .input_form {
@@ -104,14 +104,14 @@ h1 {
 input {
     width: 200px;
     height: 28px;
-    background-color: #7575757e;
+    background-color: #e7e7e77e;
     border-radius: 4px;
     border-style: none;
     margin-bottom: -0.2%;
 }
 
 ::placeholder{
-    color: #eeeeee;
+    color: #0f0f0f;
 }
 
 #mensagem {

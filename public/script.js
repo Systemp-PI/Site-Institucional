@@ -15,21 +15,21 @@ function calcula_perda() {
         
     }
     if (document.getElementById("input_lucro_medio_maquina").value == '') {
-        document.getElementById("error_lucro_medio").style.color = 'darkred'
+        document.getElementById("error_lucro_medio").style.color = 'white'
         document.getElementById("input_lucro_medio_maquina").focus()
     }
     else {
         document.getElementById("error_lucro_medio").style.color = 'rgba(129, 11, 11, 0)'
     }
     if (document.getElementById("input_total_maquinas").value == '') {
-        document.getElementById("error_total_maq").style.color = 'darkred'
+        document.getElementById("error_total_maq").style.color = 'white'
         document.getElementById("input_total_maquinas").focus()
     }
     else {
         document.getElementById("error_total_maq").style.color = 'rgba(129, 11, 11, 0)'
     }
     if (document.getElementById("input_maquinas_off").value == '') {
-        document.getElementById("error_maq_off").style.color = 'darkred'
+        document.getElementById("error_maq_off").style.color = 'white'
         document.getElementById("input_maquinas_off").focus()
     }
     else {
@@ -37,15 +37,17 @@ function calcula_perda() {
     }
 
     if (document.getElementById("input_horas_off").value == '') {
-        document.getElementById("error_hr_off").style.color = 'darkred'
+        document.getElementById("error_hr_off").style.color = 'white'
         document.getElementById("input_horas_off").focus()
     }
     else {
         document.getElementById("error_hr_off").style.color = 'rgba(129, 11, 11, 0)'
     }
 
-    if (lucro_medio_maquina != '' && total_maquinas != '' && maquinas_off != '' && maquinas_off <= total_maquinas && horas_off != '') {
-        mensagem.innerHTML = `O valor perdido será de ${perda_total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })},
+    if (lucro_medio_maquina != '' && total_maquinas != '' && maquinas_off != '' 
+    && maquinas_off <= total_maquinas && horas_off != '') {
+        mensagem.innerHTML = `O valor perdido será de 
+        ${perda_total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })},
      equivalente a ${porcentagem_perda.toFixed(1)}
      % <br>da renda da indústria durante as horas em manutenção.`
     }

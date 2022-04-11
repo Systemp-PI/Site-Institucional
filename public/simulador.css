@@ -1,17 +1,19 @@
 body{
     padding: 0%;
     margin: 0%;
-    background: linear-gradient(to right, #ff512f, #f09819);
+    background-color: #222831;
     
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
 
 header {
-    background-color: black;
+    background-color: #393e46;
     display: flex;
     width: 100%;
-    height: 10%;
+    height: 15%;
+    position: fixed;
+    z-index: 999;
 }
 
 nav {
@@ -23,15 +25,16 @@ nav {
 }
 
 a {
-    color: white;
+    font-size: 18px;
+    color: #eeeeee;
     text-decoration: none;
     transition: 0.5s;
 }
 
-a:hover{
+a:hover {
     font-size: 22px;
-    transition: 0.5s;
-    color: #ff5f6d;
+    transition: 0.8s;
+    color: #ff5622;
 }
 
 h1 {
@@ -56,7 +59,12 @@ h1 {
     color: aliceblue;
     border: solid white 2px;
     border-radius: 25px;
-
+    background: #ff5622e7;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.4px);
+    -webkit-backdrop-filter: blur(3.4px);
+    border: 2px solid rgb(0, 0, 0);
     width: 65%;
     height: 100%;
 
@@ -69,6 +77,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    
     
 }
 
@@ -102,7 +111,7 @@ input {
 }
 
 ::placeholder{
-    color: rgba(255, 255, 255, 0.555);
+    color: #eeeeee;
 }
 
 #mensagem {
@@ -161,6 +170,7 @@ span {
 }
 .label_form{
     font-size: 25px;
+    margin-left: 2%;
 }
 
 footer {

@@ -1,16 +1,18 @@
 body {
     margin: 0;
 
-    background: linear-gradient(to right, #ff512f, #f09819);
+    background-color: #222831;
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
 
 header {
-    background-color: #252525;
+    background-color: #393e46;
     display: flex;
     width: 100%;
-    height: 10%;
+    height: 15%;
+    position: fixed;
+    z-index: 999;
 }
 
 nav {
@@ -22,15 +24,16 @@ nav {
 }
 
 a {
-    color: white;
+    font-size: 18px;
+    color: #eeeeee;
     text-decoration: none;
     transition: 0.5s;
 }
 
-a:hover{
+a:hover {
     font-size: 22px;
-    transition: 0.5s;
-    color: #ff5f6d;
+    transition: 0.8s;
+    color: #ff5622;
 }
 
 .container_cadastro{
@@ -53,7 +56,12 @@ h1 {
     border-radius: 15px;
     width: 28%;
     height: 70%;
-    background-color: #0000004b;
+    background: #ff5622e7;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.4px);
+    -webkit-backdrop-filter: blur(3.4px);
+    border: 1px solid rgba(0, 0, 0, 0.64);
     align-items: center;
     justify-content: center;
     flex-direction: column;

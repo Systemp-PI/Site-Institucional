@@ -5,12 +5,12 @@ body{
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
-    background: linear-gradient(to right, #ff512f, #f09819);
+    background-color: #222831;
 
 }
 
 header {
-    background-color: #252525;
+    background-color: #393e46;
     display: flex;
     width: 100%;
     height: 15%;
@@ -27,15 +27,16 @@ nav {
 }
 
 a {
-    color: white;
+    font-size: 18px;
+    color: #eeeeee;
     text-decoration: none;
     transition: 0.5s;
 }
 
-a:hover{
+a:hover {
     font-size: 22px;
-    transition: 0.5s;
-    color: #ff5f6d;
+    transition: 0.8s;
+    color: #ff5622;
 }
 
 #grafico {

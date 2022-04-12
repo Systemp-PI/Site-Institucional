@@ -66,9 +66,13 @@ a:hover {
     margin-top: 10%;
 }
 
+label {
+    margin-top: 1%;
+    color: white;
+    font-size: 25px;
+}
 
 input{
-    margin-top: 1%;
     border: solid white 2px;
     border-radius: 10px;
     height: 7%;

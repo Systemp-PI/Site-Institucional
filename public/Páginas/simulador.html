@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SysTemp - Simulador Financeiro</title>
+    <link rel="stylesheet" href="/Estilo/simulador.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="simulador.html"><u>Simulador</u></a>
+             <!--<a href="#sobre_nos">Sobre nós</a>-->
+            <a href="#logo_email">Contato</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="tela_login.html">Login</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <div class="header">
+        <h1>Calculadora Financeira</h1>
+    </div>
+    <!-- <p> Este programa tem a finalidade de informar o usuário sobre a perda de lucro em casos de falhas
+        nas máquinas somado à quantia gasta com reparos. Os dados solicitados são o lucro por hora de
+        trabalho da máquina, a quantidade de máquinas presentes na indústria, quantas delas estão sem
+        funcionar e por quanto tempo ficaram paradas. Os cálculos realizados utilizam como base um
+        sistema de produção de 24 horas por dia.</p>-->
+
+
+    <!-- 
+            A class label_form é padrao nas labels para a manipulação css
+
+            A class input_from é padrao nos inputs do form para a manipulação css
+        -->
+    <div class="caixa">
+        <div id="formulario">
+            <form class="box_form"> 
+                <div class="div_label">
+                    <label for="input_lucro_medio_maquina" class="label_form">Lucro médio por máquina (p/ hora):</label><br> 
+                    <label for="input_total_maquinas" class="label_form">Total de máquinas:</label><br>
+                    <label for="input_maquinas_off" class="label_form">Máquinas em manutenção:</label><br>
+                    <label for="input_horas_off" class="label_form">Horas totais em manutenção:</label><br>
+                </div>
+                <div class="div_inputs">
+                    <span id="error_lucro_medio">*Campo vazio </span>
+                    <input  class="input_form" id="input_lucro_medio_maquina" required type="number" placeholder="Exemplo: 5000">
+                    <br> 
+                    <span id="error_total_maq">*Campo vazio </span>
+                    <input  class="input_form" id="input_total_maquinas" required type="number" placeholder="Exemplo: 20">
+                    <br>
+                    <span id="error_maq_off">*Campo vazio </span>
+                    <input  class="input_form" id="input_maquinas_off" required type="number" placeholder="Exemplo: 2">
+                    <br>
+                    <span id="error_hr_off">*Campo vazio </span>
+                    <input  class="input_form" id="input_horas_off" required type="number" placeholder="Exemplo: 16">
+                    <br>
+                    <input  class="input_submit" type="button" onclick="calcula_perda()" value="Calcular Valor"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div id="mensagem"></div>
+
+    <footer>
+        <div id="footer_title">
+            <h2 id="title">Fale conosco</h2>
+        </div>
+        <div class="container_footer">
+            <img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png">
+            <a class="enderecos" href="mailto:systemp@systemp.com.br">systemp@systemp.com.br</a>
+            <img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">
+            <a class="enderecos" href="tel:+5511999999999">+55 (11) 99999-9999 </a>
+            <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">
+            <a class="enderecos" href="https://linkedin.com/systemp">linkedin.com/systemp</a>
+        </div>
+        <div id="container_copyright">
+            <div class="copyright">
+                <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script src="script.js"></script>
+
+</html>

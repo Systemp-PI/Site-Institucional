@@ -1,0 +1,230 @@
+body{
+    padding: 0%;
+    margin: 0%;
+    background-color: #222831;
+    
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    background-color: #393e46;
+    display: flex;
+    width: 100%;
+    height: 15%;
+    position: fixed;
+    z-index: 999;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 55%;
+    margin-left: 20%;
+}
+
+a {
+    font-size: 18px;
+    color: #eeeeee;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover {
+    font-size: 22px;
+    transition: 0.8s;
+    color: #ff5622;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    margin-left: 3%;
+    font-size: 40px;
+    display: flex;
+    justify-content:center ;
+}
+
+.caixa{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.box_form{
+    font-size: 25px;
+    color: aliceblue;
+    border: solid white 2px;
+    border-radius: 25px;
+    background: #ff5622e7;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.4px);
+    -webkit-backdrop-filter: blur(3.4px);
+    border: 2px solid rgb(0, 0, 0);
+    width: 65%;
+    height: 100%;
+
+}
+
+#formulario{
+    width: 60%;
+    height: 20%;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    
+}
+
+.input_submit{
+    width: 150px;
+    margin-left: 10%;
+    margin-bottom: 3%;
+    background-color: #fcf9f9b6;
+    color: #272525; 
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.input_submit:hover {
+    transition: 0.5s;
+    background-color: rgb(155, 155, 155);
+}
+
+.input_form {
+    margin-left: 10%;
+}
+
+input {
+    width: 200px;
+    height: 28px;
+    background-color: #e7e7e77e;
+    border-radius: 4px;
+    border-style: none;
+    margin-bottom: -0.2%;
+}
+
+::placeholder{
+    color: #0f0f0f;
+}
+
+#mensagem {
+    margin-top: 3%;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    font-size: 30px;
+}
+#logo{
+    margin-top: 2%;
+    position: relative;
+    left: 2%;
+    border-radius: 15%;
+}
+.header{
+    width: 70%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    margin-right: 15%;
+    margin-bottom: 2.5%;
+}
+
+.img{
+    width: 45%;
+    float: left;
+}
+
+.img img{
+    width: 40%;
+}
+
+.div_label{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    float: left;
+    margin-top: 2%;
+}
+
+.div_inputs{
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin-top: 25px;
+    display:grid;
+    justify-content:space-around ;
+}
+
+span {
+    color: rgba(129, 11, 11, 0);
+    font-size: 12px;
+    
+}
+.label_form{
+    font-size: 25px;
+    margin-left: 2%;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    height: 230px;
+    width: 100%;
+}
+
+#footer_title {
+    padding-top: 1px;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+.container_footer {
+    display: flex;
+    flex-direction: inline;
+    justify-content: center;
+}
+
+.contatos {
+    margin: 0px 7px 0 35px;
+}
+
+#logo_email {
+    width: 46px;
+    height: 31px;
+}
+
+#logo_whatsapp {
+    width: 34px;
+    height: 34px;
+}
+
+#logo_linkedin {
+    width: 30px;
+    height: 30px;
+}
+
+#container_copyright {
+    display: flex;
+    justify-content: center;
+}
+
+.copyright {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid white;
+    margin-top: 35px;
+}

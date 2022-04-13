@@ -23,6 +23,9 @@
     <div id="grafico">
         <canvas id="myChart"></canvas>
     </div>
+    <div id="grafico2">
+        <canvas id="myChart2"></canvas>
+    </div>
 <footer>
     <div id="footer_title">
         <h2 id="title">Fale conosco</h2>
@@ -49,8 +52,14 @@
 <script>
 const ctx = document.getElementById('myChart');
 ctx.style.backgroundColor = 'transparent';
-Chart.defaults.color = "black";
-Chart.defaults.borderColor='black'
+Chart.defaults.color = "white";
+Chart.defaults.borderColor='black';
+Chart.defaults.font.size =20;
+
+const ctx2 = document.getElementById('myChart2');
+ctx2.style.backgroundColor = 'transparent';
+Chart.defaults.color = "white";
+Chart.defaults.borderColor='black';
 Chart.defaults.font.size =20;
 
 const myChart = new Chart(ctx, {
@@ -95,6 +104,60 @@ const myChart = new Chart(ctx, {
                 type: 'time',
                 time: {
                     unit: 'second'
+                }
+            }
+        ]}
+    }
+}
+)
+
+;
+
+const myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Média diária', 
+               backgroundColor:'red',
+            data: [{
+                x: '12/04',
+                y: 38.1
+            }, {
+                x: '13/04',
+                y: 35.7
+            }, {
+                x: '14/04',
+                y: 36.8
+            }, {
+                x: '15/04',
+                y: 37.6
+            }, {
+                x: '16/04',
+                y: 36.4    
+            }, {
+                x: '17/04',
+                y: 35.9
+            }, {
+                x: '18/04',
+                y: 37.4    
+            }
+        ],
+            borderColor:'darkred',
+            borderWidth:4,
+            
+        }],
+    },
+    options: {
+       
+        scales: {
+            y: {
+                min: 20,
+                suggestedMax: 50,
+            },
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'day'
                 }
             }
         ]}

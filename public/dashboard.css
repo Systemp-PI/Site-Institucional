@@ -45,8 +45,10 @@ a:hover {
     height: 70%;
 }
 
-#myChart {
-    background-color: white;
+#grafico2 {
+    padding: 200px 200px 100px;
+    width: 70%;
+    height: 70%;
 }
 
 footer {

@@ -44,5 +44,6 @@ function enviar() {
     }
     else {
         span_erro_conf_senha.innerHTML = "✓"
+        alert('Seu cadastro foi feito com sucesso!')
     }
 }

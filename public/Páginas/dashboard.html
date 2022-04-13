@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/Estilo/dashboard.css">
+    <link rel="stylesheet" href="../Estilo/dashboard.css">
 </head>
 <body>
     <header>
@@ -20,12 +20,16 @@
             <a href="dashboard.html"><u>Dashboard</u></a>
         </nav>
     </header>
-    <div id="grafico">
-        <canvas id="myChart"></canvas>
+<div class="container_graficos">
+
+    <div id="grafico" style="position: relative; height:40%; width:50%">
+        <canvas id="myChart" ></canvas>
     </div>
-    <div id="grafico2">
+    <div id="grafico2" style="position: relative; height:40%; width:50%">
         <canvas id="myChart2"></canvas>
     </div>
+
+</div>
 <footer>
     <div id="footer_title">
         <h2 id="title">Fale conosco</h2>
@@ -51,14 +55,13 @@
 
 <script>
 const ctx = document.getElementById('myChart');
-ctx.style.backgroundColor = 'transparent';
+ctx.style.backgroundColor = '#2E4053';
 Chart.defaults.color = "white";
 Chart.defaults.borderColor='black';
 Chart.defaults.font.size =20;
 
 const ctx2 = document.getElementById('myChart2');
-ctx2.style.backgroundColor = 'transparent';
-Chart.defaults.color = "white";
+ctx2.style.backgroundColor = '#2E4053';
 Chart.defaults.borderColor='black';
 Chart.defaults.font.size =20;
 
@@ -67,13 +70,13 @@ const myChart = new Chart(ctx, {
     data: {
         datasets: [{
             label: 'Temperatura do sensor', 
-               backgroundColor:'red',
+               backgroundColor:'firebrick',
             data: [{
                 x: '23:39:30',
-                y: 36.2
+                y: 35.2
             }, {
                 x: '23:39:33',
-                y: 36.3
+                y: 36
             }, {
                 x: '23:39:36',
                 y: 36.6
@@ -84,14 +87,42 @@ const myChart = new Chart(ctx, {
             },
             {
                 x: '23:39:42',
-                y: 37,
+                y: 37
                 
             }
         ],
-            borderColor:'darkred',
-            borderWidth:6,
+            borderColor:'tomato',
+            borderWidth:4,
             
-        }],
+        },
+        {
+            label: 'Temperatura do sensor 2', 
+               backgroundColor:'darkmagenta',
+            data: [{
+                x: '23:39:30',
+                y: 39.2
+            }, {
+                x: '23:39:33',
+                y: 38.5
+            }, {
+                x: '23:39:36',
+                y: 39
+            },
+            {
+                x: '23:39:39',
+                y: 38
+            },
+            {
+                x: '23:39:42',
+                y: 37.6
+                
+            }
+        ],
+            borderColor:'violet',
+            borderWidth:4,
+            
+        }]
+        ,
     },
     options: {
        
@@ -117,8 +148,8 @@ const myChart2 = new Chart(ctx2, {
     type: 'bar',
     data: {
         datasets: [{
-            label: 'Média diária', 
-               backgroundColor:'red',
+            label: 'Média diária sensor 1', 
+               backgroundColor:'tomato',
             data: [{
                 x: '12/04',
                 y: 38.1
@@ -142,10 +173,42 @@ const myChart2 = new Chart(ctx2, {
                 y: 37.4    
             }
         ],
-            borderColor:'darkred',
+            borderColor:'firebrick',
             borderWidth:4,
             
-        }],
+        },
+        {
+            label: 'Média diária sensor 2', 
+               backgroundColor:'violet',
+            data: [{
+                x: '12/04',
+                y: 38.9
+            }, {
+                x: '13/04',
+                y: 37.2
+            }, {
+                x: '14/04',
+                y: 34.6
+            }, {
+                x: '15/04',
+                y: 36.8
+            }, {
+                x: '16/04',
+                y: 37.5    
+            }, {
+                x: '17/04',
+                y: 35.4
+            }, {
+                x: '18/04',
+                y: 37.3  
+            }
+        ],
+            borderColor:'darkmagenta',
+            borderWidth:4,
+            
+        }
+    
+    ],
     },
     options: {
        

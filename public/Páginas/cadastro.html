@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Estilo/cadastro.css">
+    <link rel="stylesheet" href="cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Cadastro - SysTemp</title>
 </head>
@@ -26,22 +26,27 @@
     <h1>Cadastre-se aqui:</h1>
     <div id="form">
         <form action="" method="post">
-            <label for="nome_usuario">Nome de usuário:</label><br>
-            <input type="text" placeholder="Digite o nome de usuário" id="nome_usuario" required>
+            <label for="input_nome_usuario">Nome de usuário:</label><br>
+            <input type="text" placeholder="Digite o nome de usuário" id="input_nome_usuario" required>
+            <span id="span_erro_nome_usuario"></span>
             <br>
-            <label for="cpf_cnpj">CNPJ: </label><br>
-            <input type="number" placeholder="Digite CPF ou CNPJ" id="cpf_cnpj" title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required>
+            <label for="input_cnpj">CNPJ: </label><br>
+            <input type="number" placeholder="Digite o CNPJ" id="input_cnpj" title="Somente números" required>
+            <span id="span_erro_cnpj" style="color: white;"></span>
             <br>
-            <label for="email">E-mail: </label><br>
-            <input type="email" placeholder="Digite um e-mail" id="email" title="Somente e-mail será aceito" pattern=".+@+." required>
+            <label for="input_email">E-mail: </label><br>
+            <input type="email" placeholder="Digite um e-mail" id="input_email" title="Somente e-mail será aceito" required>
+            <span id="span_erro_email"></span>
             <br>
-            <label for="senha">Senha: </label><br>
-            <input type="password" placeholder="Digite uma senha" id="senha" required>
+            <label for="input_senha">Senha: </label><br>
+            <input type="password" placeholder="Digite uma senha" id="input_senha" required>
+            <span id="span_erro_senha"></span>
             <br>
-            <label for="conf_senha">Confirmar senha: </label><br>
-            <input type="password" placeholder="Digite novamente a senha" id="conf_senha" required>
+            <label for="input_conf_senha">Confirmar senha: </label><br>
+            <input type="password" placeholder="Digite novamente a senha" id="input_conf_senha" required>
+            <span id="span_erro_conf_senha"></span>
             <br>
-            <button>Enviar</button>
+            <button onclick="enviar()" type="submit">Enviar</button>
         </form>
     </div>
 </div>
@@ -65,3 +70,5 @@
     </footer>
 </body>
 </html>
+
+<script src="cadastro.js"></script>

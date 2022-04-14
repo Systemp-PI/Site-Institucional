@@ -31,7 +31,7 @@ function enviar() {
 
     //Validação senha
     var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){2})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
-    if (senha.length < 8 && senha !== regex){
+    if (senha.length < 8 || senha.length == 0 || senha !== regex){
         span_erro_senha.innerHTML = '*Insira uma letra maiúscula, minúscula, número <br> e um caractere especial'
     }
     else {
@@ -39,7 +39,7 @@ function enviar() {
     }
 
     //Validação confirmação de senha
-    if (senha !== confirma_senha) {
+    if (senha !== confirma_senha || confirma_senha.length == 0) {
         span_erro_conf_senha.innerHTML = '*Senha diferente'
     }
     else {

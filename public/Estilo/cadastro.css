@@ -47,8 +47,8 @@ a:hover {
 
 h1 {
     width: 28%; 
-    margin-left: 8%;
     margin-top: 5.5%;
+    margin-left: 10%;
 }
 
 #form {
@@ -64,44 +64,58 @@ h1 {
     -webkit-backdrop-filter: blur(3.4px);
     border: 1px solid rgba(0, 0, 0, 0.64);
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    padding: 0;
+}
+
+form {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     padding: 0;
 }
 
 
 input {
-    margin-top: 2%;
-    margin-bottom: 6%;
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 7%;
-    width: 95%;
+    height: 32px;
+    width: 250px;
+    margin: 0;
+    margin-bottom: 5%;
 }
 
 label {
     font-size: 18px;
+    margin: 0;
+    margin-bottom: 2%;
+    padding: 0;
+    align-self: flex-start;
+    margin-left: 20%;
 }
 
 button {
-    width: 60%;
+    width: 30%;
     height: 8%;
-    margin-left: 20%;
     margin-bottom: 10%;
     background-color: #fcf9f9b6;
     color: #272525; 
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    transition: 1s;
+    transition: 0.5s;
+    align-self: center;
 }
 
 button:hover {
-    transition: 1s;
+    transition: 0.5s;
     background-color: #f8eaea57;
-    width: 60%;
-    height: 30px;
+    width: 35%;
+    height: 8.5%;
 }
 
 footer {

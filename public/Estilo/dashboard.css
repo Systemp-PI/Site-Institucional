@@ -14,8 +14,9 @@ header {
     display: flex;
     width: 100%;
     height: 15%;
-    position: fixed;
-    z-index: 999;
+    position: relative;
+    z-index: 0;
+    
 }
 
 nav {
@@ -39,6 +40,46 @@ a:hover {
     color: #ff5622;
 }
 
+#selecao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select {
+    width: 100px;
+}
+
+#ocultar {
+    display:none;
+}
+
+#formulario_maquina_nova {
+    display: flex;
+    justify-content: center;
+}
+
+
+#add_icon{
+    width: 100px;
+    height: 100px;
+    
+}
+#add_icon:hover{
+cursor: pointer;
+}
+input{
+    font-size: 20px;
+}
+#formulario_maquina_nova label {
+    color: white;
+    font-size: 20px;
+}
+.span_maquinas{
+    color: white;
+    font-size: 20px;
+}
+
 .container_graficos{
 width: 100%;
 height: 150vh;
@@ -52,13 +93,13 @@ align-items: center;
     margin-top: 5%;
     width: 70%;
     height: 60%;
-    margin-right: 5% ;
+    margin-right: 5%;
 }
 
 #grafico2 {
     width: 70%;
     height: 60%;
-    margin-right: 5% ;
+    margin-right: 5%;
 }
 
 footer {
@@ -86,7 +127,7 @@ footer {
 }
 
 .contatos {
-    margin: 0px 7px 0 35px;
+    margin: 0 7px 0 35px;
 }
 
 #logo_email {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="../Estilo/dashboard.css">
 </head>
+
 <body>
     <header>
         <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
@@ -20,215 +22,264 @@
             <a href="dashboard.html"><u>Dashboard</u></a>
         </nav>
     </header>
-<div class="container_graficos">
+    <!-- Seleção de máquina e sensor para visualizar no dashboard -->
+    <div id="selecao">
+        <span class="span_maquinas">Selecionar máquina</span><br>
+        <select id="select_maquina">
+            <option value="maq_01">maq_01</option>
+            <option value="maq_02">maq_02</option>
+            <option value="maq_03">maq_03</option>
 
-    <div id="grafico" style="position: relative; height:40%; width:50%">
-        <canvas id="myChart" ></canvas>
+        </select><br><br>
+        <span class="span_maquinas">Selecionar sensor</span><br>
+        <select id="select_sensor">
+            <option value="1000">1000</option>
+            <option value="1001">1001</option>
+            
+        </select><br>
+        <span class="span_maquinas">Adicionar uma nova máquina:</span>
+        <img id="add_icon" src="/public/imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
     </div>
-    <div id="grafico2" style="position: relative; height:40%; width:50%">
-        <canvas id="myChart2"></canvas>
-    </div>
+    
+  
+    
 
-</div>
-<footer>
-    <div id="footer_title">
-        <h2 id="title">Fale conosco</h2>
-    </div>
-    <div class="container_footer">
-        <img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png">
-        <a class="enderecos" href="mailto:systemp@systemp.com.br">systemp@systemp.com.br</a>
-        <img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">
-        <a class="enderecos" href="tel:+5511999999999">+55 (11) 99999-9999 </a>
-        <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">
-        <a class="enderecos" href="https://linkedin.com/systemp">linkedin.com/systemp</a>
-    </div>
-    <div id="container_copyright">
-        <div class="copyright">
-            <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
+    <div id="formulario_maquina_nova">
+        <div id="ocultar">
+            <form action="">
+                <label for="input_nome_maquina">Nome da máquina:</label> <br><br>
+                <input type="text" id="input_nome_maquina"><br>
+                <label for="input_temperatura_max">Temperatura máxima(°C):</label><br><br>
+                <input type="text" id="input_temperatura_max"><br>
+                <label for="input_temperatura_min">Temperatura mínima(°C):</label> <br><br>
+                <input type="text" id="input_temperatura_min"><br><br>
+                <span class="span_maquinas">Quantidade de sensores:</span><br><br>
+
+                <select id="qtd_sensores">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select><br><br>
+                <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
+            </form>
         </div>
+
+
     </div>
-</footer>
+
+
+    <div class="container_graficos">
+
+        <div id="grafico" style="position: relative; height:40%; width:50%">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div id="grafico2" style="position: relative; height:40%; width:50%">
+            <canvas id="myChart2"></canvas>
+        </div>
+
+    </div>
+    <footer>
+        <div id="footer_title">
+            <h2 id="title">Fale conosco</h2>
+        </div>
+        <div class="container_footer">
+            <img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png">
+            <a class="enderecos" href="mailto:systemp@systemp.com.br">systemp@systemp.com.br</a>
+            <img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">
+            <a class="enderecos" href="tel:+5511999999999">+55 (11) 99999-9999 </a>
+            <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">
+            <a class="enderecos" href="https://linkedin.com/systemp">linkedin.com/systemp</a>
+        </div>
+        <div id="container_copyright">
+            <div class="copyright">
+                <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
 
 <script>
-const ctx = document.getElementById('myChart');
-ctx.style.backgroundColor = '#2E4053';
-Chart.defaults.color = "white";
-Chart.defaults.borderColor='black';
-Chart.defaults.font.size =20;
+    const ctx = document.getElementById('myChart');
+    ctx.style.backgroundColor = '#2E4053';
+    Chart.defaults.color = "white";
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
 
-const ctx2 = document.getElementById('myChart2');
-ctx2.style.backgroundColor = '#2E4053';
-Chart.defaults.borderColor='black';
-Chart.defaults.font.size =20;
+    const ctx2 = document.getElementById('myChart2');
+    ctx2.style.backgroundColor = '#2E4053';
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
 
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-            label: 'Temperatura do sensor', 
-               backgroundColor:'firebrick',
-            data: [{
-                x: '23:39:30',
-                y: 35.2
-            }, {
-                x: '23:39:33',
-                y: 36
-            }, {
-                x: '23:39:36',
-                y: 36.6
-            },
-            {
-                x: '23:39:39',
-                y: 36.8
-            },
-            {
-                x: '23:39:42',
-                y: 37
-                
-            }
-        ],
-            borderColor:'tomato',
-            borderWidth:4,
-            
-        },
-        {
-            label: 'Temperatura do sensor 2', 
-               backgroundColor:'darkmagenta',
-            data: [{
-                x: '23:39:30',
-                y: 39.2
-            }, {
-                x: '23:39:33',
-                y: 38.5
-            }, {
-                x: '23:39:36',
-                y: 39
-            },
-            {
-                x: '23:39:39',
-                y: 38
-            },
-            {
-                x: '23:39:42',
-                y: 37.6
-                
-            }
-        ],
-            borderColor:'violet',
-            borderWidth:4,
-            
-        }]
-        ,
-    },
-    options: {
-       
-        scales: {
-            y: {
-                suggestedMin: 20,
-                suggestedMax: 50,
-            },
-            xAxes: [{
-                type: 'time',
-                time: {
-                    unit: 'second'
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Temperatura do sensor',
+                backgroundColor: 'firebrick',
+                data: [{
+                    x: '23:39:30',
+                    y: 35.2
+                }, {
+                    x: '23:39:33',
+                    y: 36
+                }, {
+                    x: '23:39:36',
+                    y: 36.6
+                },
+                {
+                    x: '23:39:39',
+                    y: 36.8
+                },
+                {
+                    x: '23:39:42',
+                    y: 37
+
                 }
-            }
-        ]}
-    }
-}
-)
+                ],
+                borderColor: 'tomato',
+                borderWidth: 4,
 
-;
+            },
+            {
+                label: 'Temperatura do sensor 2',
+                backgroundColor: 'darkmagenta',
+                data: [{
+                    x: '23:39:30',
+                    y: 39.2
+                }, {
+                    x: '23:39:33',
+                    y: 38.5
+                }, {
+                    x: '23:39:36',
+                    y: 39
+                },
+                {
+                    x: '23:39:39',
+                    y: 38
+                },
+                {
+                    x: '23:39:42',
+                    y: 37.6
 
-const myChart2 = new Chart(ctx2, {
-    type: 'bar',
-    data: {
-        datasets: [{
-            label: 'Média diária sensor 1', 
-               backgroundColor:'tomato',
-            data: [{
-                x: '12/04',
-                y: 38.1
-            }, {
-                x: '13/04',
-                y: 35.7
-            }, {
-                x: '14/04',
-                y: 36.8
-            }, {
-                x: '15/04',
-                y: 37.6
-            }, {
-                x: '16/04',
-                y: 36.4    
-            }, {
-                x: '17/04',
-                y: 35.9
-            }, {
-                x: '18/04',
-                y: 37.4    
-            }
-        ],
-            borderColor:'firebrick',
-            borderWidth:4,
-            
+                }
+                ],
+                borderColor: 'violet',
+                borderWidth: 4,
+
+            }]
+            ,
         },
-        {
-            label: 'Média diária sensor 2', 
-               backgroundColor:'violet',
-            data: [{
-                x: '12/04',
-                y: 38.9
-            }, {
-                x: '13/04',
-                y: 37.2
-            }, {
-                x: '14/04',
-                y: 34.6
-            }, {
-                x: '15/04',
-                y: 36.8
-            }, {
-                x: '16/04',
-                y: 37.5    
-            }, {
-                x: '17/04',
-                y: 35.4
-            }, {
-                x: '18/04',
-                y: 37.3  
+        options: {
+
+            scales: {
+                y: {
+                    suggestedMin: 20,
+                    suggestedMax: 50,
+                },
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'second'
+                    }
+                }
+                ]
             }
-        ],
-            borderColor:'darkmagenta',
-            borderWidth:4,
-            
         }
-    
-    ],
-    },
-    options: {
-       
-        scales: {
-            y: {
-                min: 20,
-                suggestedMax: 50,
-            },
-            xAxes: [{
-                type: 'time',
-                time: {
-                    unit: 'day'
-                }
-            }
-        ]}
     }
-}
-)
+    )
 
-;
+        ;
+
+    const myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Média diária sensor 1',
+                backgroundColor: 'tomato',
+                data: [{
+                    x: '12/04',
+                    y: 38.1
+                }, {
+                    x: '13/04',
+                    y: 35.7
+                }, {
+                    x: '14/04',
+                    y: 36.8
+                }, {
+                    x: '15/04',
+                    y: 37.6
+                }, {
+                    x: '16/04',
+                    y: 36.4
+                }, {
+                    x: '17/04',
+                    y: 35.9
+                }, {
+                    x: '18/04',
+                    y: 37.4
+                }
+                ],
+                borderColor: 'firebrick',
+                borderWidth: 4,
+
+            },
+            {
+                label: 'Média diária sensor 2',
+                backgroundColor: 'violet',
+                data: [{
+                    x: '12/04',
+                    y: 38.9
+                }, {
+                    x: '13/04',
+                    y: 37.2
+                }, {
+                    x: '14/04',
+                    y: 34.6
+                }, {
+                    x: '15/04',
+                    y: 36.8
+                }, {
+                    x: '16/04',
+                    y: 37.5
+                }, {
+                    x: '17/04',
+                    y: 35.4
+                }, {
+                    x: '18/04',
+                    y: 37.3
+                }
+                ],
+                borderColor: 'darkmagenta',
+                borderWidth: 4,
+
+            }
+
+            ],
+        },
+        options: {
+
+            scales: {
+                y: {
+                    min: 20,
+                    suggestedMax: 50,
+                },
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    }
+                }
+                ]
+            }
+        }
+    }
+    )
+
+        ;
 
 </script>
+<script src="/public/Script/script_dashboard.js"></script>
+
 </html>

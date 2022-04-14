@@ -32,10 +32,10 @@ function enviar() {
     //Validação senha
     var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
     if (senha.length < 8 || senha.length == 0){
-        span_erro_senha.innerHTML = '*Insira 8 caracteres, um número, letra maiúscula, minúscula e um caractere especial'
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
     }
     else if (!regex.exec(senha)){
-        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e um caractere especial'
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
         return false
     }
     else {
@@ -43,7 +43,10 @@ function enviar() {
     }
 
     //Validação confirmação de senha
-    if (senha !== confirma_senha || confirma_senha.length == 0) {
+    if (confirma_senha == ''){
+        span_erro_conf_senha.innerHTML = '*Digite uma senha'
+    }
+    else if (confirma_senha !== senha || confirma_senha.length == 0) {
         span_erro_conf_senha.innerHTML = '*Senha diferente'
     }
     else {

@@ -30,9 +30,13 @@ function enviar() {
     }
 
     //Validação senha
-    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){2})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
-    if (senha.length < 8 || senha.length == 0 || senha !== regex){
-        span_erro_senha.innerHTML = '*Insira uma letra maiúscula, minúscula, número <br> e um caractere especial'
+    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
+    if (senha.length < 8 || senha.length == 0){
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, um número, letra maiúscula, minúscula e um caractere especial'
+    }
+    else if (!regex.exec(senha)){
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e um caractere especial'
+        return false
     }
     else {
         span_erro_senha.innerHTML = "✓"

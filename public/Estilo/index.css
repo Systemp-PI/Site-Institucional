@@ -6,7 +6,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     background-color: #222831;
-   /* background: radial-gradient(  #ff6f3c, #ff9a3c); */
+    /* background: radial-gradient(  #ff6f3c, #ff9a3c); */
 }
 
 header {
@@ -48,7 +48,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     margin: 0;
-   
+
 }
 
 
@@ -81,7 +81,7 @@ a:hover {
     align-items: center;
 }
 
-#container_produto h1{
+#container_produto h1 {
     color: #eeeeee;
     font-size: 38px;
     font-weight: 800;
@@ -247,8 +247,8 @@ footer {
 
 }
 
-.container_sobre_nos h1{  
-     color: white;
+.container_sobre_nos h1 {
+    color: white;
     font-size: 38px;
     font-weight: 800;
     border-bottom: 2px solid white;
@@ -301,6 +301,20 @@ footer {
 }
 
 /*------------------------------------------------------------Parte Colaboradores--------------------------------------------------------*/
+.titulo_colaboradores {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.titulo_colaboradores h1 {
+    color: white;
+    font-size: 38px;
+    font-weight: 800;
+    border-bottom: 2px solid white;
+}
+
 .container_colaboradores {
     width: 100%;
     height: 100vh;
@@ -311,7 +325,7 @@ footer {
 
 }
 
-.imagem1{
+.imagem1 {
     height: 50%;
     width: 100%;
     display: flex;
@@ -329,17 +343,17 @@ footer {
     border-radius: 50%;
 }
 
-.foto img{
+.foto img {
     border-radius: 50%;
-   
+
 }
 
-.quadro{
+.quadro {
     width: 120px;
     height: auto;
 }
 
-.imagem2{
+.imagem2 {
     height: 50%;
     width: 100%;
     display: flex;
@@ -347,15 +361,16 @@ footer {
     align-items: center;
 }
 
-.imagem1 p{
+.imagem1 p {
     text-align: center;
     color: white;
 }
 
-.imagem2 p{
+.imagem2 p {
     text-align: center;
     color: white;
 }
+
 /*-----------------------------------------------Comentarios--------------------------------------------*/
 
 .container_comentarios {
@@ -363,17 +378,32 @@ footer {
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
 
-.box_coment{
+.titulo_comentario{
+    display: flex;
+    align-self: flex-start;
+    margin-top: 5%;
+    color: #eeeeee;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo_comentario img{
+    width: 54%;
+}
+
+.box_coment {
     width: 50%;
     height: 80%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+
 }
-.box_coment textarea{
+
+.box_coment textarea {
     width: 80%;
     height: 80%;
     max-width: 80%;
@@ -394,11 +424,11 @@ footer {
     border: 1px solid rgba(0, 0, 0, 0.64);
 }
 
-.box_coment textarea::placeholder{
+.box_coment textarea::placeholder {
     color: #eeeeee;
 }
 
-.box_coment button{
+.box_coment button {
     background-color: #dbd6c9;
     color: black;
     font-size: 16px;
@@ -412,11 +442,11 @@ footer {
 
 }
 
-.box_coment button:hover{
-    background-color:  #f8eaea57;
+.box_coment button:hover {
+    background-color: #f8eaea57;
     color: black;
     transition: 0.3s;
     -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
 }

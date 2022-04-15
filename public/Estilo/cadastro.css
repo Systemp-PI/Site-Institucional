@@ -33,7 +33,7 @@ a {
 a:hover {
     font-size: 22px;
     transition: 0.8s;
-    color: #ff5622;
+    color: #ff8c00;
 }
 
 .container_cadastro{
@@ -76,7 +76,7 @@ h1 {
     font-size: 13px;
     padding-top: 5px;
     padding-left: 5px;
-    margin-left: 12%;
+    margin-left: 30%;
 }
 
 input {

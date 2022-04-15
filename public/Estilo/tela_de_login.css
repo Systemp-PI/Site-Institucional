@@ -6,7 +6,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     background-color: #222831;
-   /* background: radial-gradient(  #ff6f3c, #ff9a3c); */
+   /* background: radial-gradient(  #ff8c00, #ff9a3c); */
 }
 
 header {
@@ -35,7 +35,7 @@ a {
 a:hover {
     font-size: 22px;
     transition: 0.8s;
-    color: #ff5622;
+    color: #ff8c00;
 }
 
 #container {
@@ -48,7 +48,7 @@ a:hover {
 }
 
 #box_login {
-    background: #ff5622e7;
+    background: #ff8c00;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);

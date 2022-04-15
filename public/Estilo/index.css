@@ -422,6 +422,8 @@ footer {
     backdrop-filter: blur(3.4px);
     -webkit-backdrop-filter: blur(3.4px);
     border: 1px solid rgba(0, 0, 0, 0.64);
+    padding-left: 1%;
+    padding-top: 1%;
 }
 
 .box_coment textarea::placeholder {

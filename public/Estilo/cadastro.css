@@ -47,7 +47,7 @@ a:hover {
 }
 
 h1 {
-    margin-top: 100px;
+    margin-top: 8%;
     width: 28%; 
     margin-left: 8%;
 }
@@ -58,16 +58,16 @@ h1 {
     border-radius: 15px;
     width: 25%;
     height: 70%;
-    background: #ff5622e7;
+    background: #ff8c00;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
     -webkit-backdrop-filter: blur(3.4px);
     border: 1px solid rgba(0, 0, 0, 0.64);
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     padding: 0;
+    padding-top: 2%;
 }
 
 #form form span {
@@ -85,7 +85,7 @@ input {
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 7%;
+    height: 8%;
     width: 95%;
 }
 
@@ -95,22 +95,24 @@ label {
 
 button {
     width: 60%;
-    height: 8%;
+    height: 10%;
     margin-left: 20%;
-    margin-bottom: 10%;
     background-color: #fcf9f9b6;
     color: #272525; 
     border: none;
     border-radius: 15px;
     cursor: pointer;
     transition: 1s;
+    margin-top: 3%;
 }
 
 button:hover {
     transition: 1s;
-    background-color: #f8eaea57;
-    width: 60%;
-    height: 30px;
+    background-color: #ffc80b;
+    -webkit-transform: scale(1.06);
+    -ms-transform: scale(1.06);
+    transform: scale(1.06);
+    border: 1px solid black;
 }
 
 footer {

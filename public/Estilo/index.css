@@ -416,7 +416,7 @@ footer {
     margin-top: 5%;
     border-radius: 2%;
     color: #eeeeee;
-    background: #ff5622e7;
+    background: #eeeeee;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
@@ -425,7 +425,7 @@ footer {
 }
 
 .box_coment textarea::placeholder {
-    color: #eeeeee;
+    color: #000;
 }
 
 .box_coment button {

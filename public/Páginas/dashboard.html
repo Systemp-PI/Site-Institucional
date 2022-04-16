@@ -22,7 +22,8 @@
             <a href="dashboard.html"><u>Dashboard</u></a>
         </nav>
     </header>
-    <!-- Seleção de máquina e sensor para visualizar no dashboard -->
+    <div id="container_selecao">
+    <!-- Seleção de máquina e sensor para visualizar no dashboard --> 
     <div id="selecao">
         <span class="span_maquinas">Selecionar máquina</span><br>
         <select id="select_maquina">
@@ -33,11 +34,11 @@
         </select><br><br>
             
         </select><br>
-        <span class="span_maquinas">Adicionar uma nova máquina:</span>
-        <img id="add_icon" src="../imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
     </div>
-    
-  
+    <div id="adicionar_maq_nova">
+    <span class="span_maquinas">Adicionar uma nova máquina:</span>
+    <img id="add_icon" src="../imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
+</div>
     
 
     <div id="formulario_maquina_nova">
@@ -55,12 +56,13 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select><br><br>
-                <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
+                <button id="btn_enviar_cadastro" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
             </form>
         </div>
 
 
     </div>
+</div>
 
 
     <div class="container_graficos">

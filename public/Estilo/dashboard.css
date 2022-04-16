@@ -95,15 +95,17 @@ select {
     
 }
 
-
 #add_icon:hover{
 cursor: pointer;
 }
+
 input{
     font-size: 20px;
 }
+
 #formulario_maquina_nova label {
     color: white;
+
     font-size: 20px;
     
 }
@@ -145,7 +147,9 @@ input{
 }
 .alertas.m_alta{
     background-color: red;
+    font-size: 20px;  
 }
+
 .span_maquinas{
     color: white;
     font-size: 20px;

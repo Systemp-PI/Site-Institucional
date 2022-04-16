@@ -36,7 +36,7 @@ a {
 a:hover {
     font-size: 22px;
     transition: 0.8s;
-    color: #ff5622;
+    color: #ff8c00;
 }
 
 .container_inicio {
@@ -89,7 +89,7 @@ a:hover {
 }
 
 .painel {
-    background: #ff5622e7;
+    background: #ff8c00e7;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
@@ -138,7 +138,7 @@ a:hover {
 #desc_contato {
     display: flex;
     justify-content: space-around;
-
+    margin-bottom: 4%;
     flex-direction: column;
     align-items: center;
 }
@@ -263,7 +263,7 @@ footer {
     width: 50%;
     height: 60%;
     /* From https://css.glass */
-    background: #ff5622e7;
+    background: #ff8c00e7;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
@@ -321,7 +321,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background: radial-gradient(circle at -8.9% 51.2%, #ff5622 0%, #ff5622 15.9%, #ff5622 15.9%, #ff5622 24.4%, #222831 24.5%, #222831 66%);
+    background: radial-gradient(circle at -8.9% 51.2%, #ff8c00 0%, #ff8c00 15.9%, #ff8c00 15.9%, #ff8c00 24.4%, #222831 24.5%, #222831 66%);
 
 }
 
@@ -406,16 +406,14 @@ footer {
 .box_coment textarea {
     width: 80%;
     height: 80%;
-    max-width: 80%;
-    max-height: 80%;
-    min-height: 80%;
-    min-width: 80%;
     font-size: 22px;
     font-weight: 500;
     margin-left: 5%;
     margin-top: 5%;
     border-radius: 2%;
-    color: #eeeeee;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #222831;
     background: #eeeeee;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

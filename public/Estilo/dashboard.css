@@ -79,20 +79,32 @@ select {
     
 }
 
-
 #add_icon:hover{
 cursor: pointer;
 }
+
 input{
     font-size: 20px;
 }
+
 #formulario_maquina_nova label {
     color: white;
-    font-size: 20px;
-    
+    font-size: 20px;  
 }
-#formulario_maquina_nova:after{
-    transition-delay: 250ms;
+#formulario_maquina_nova:before{
+    content: '';
+    display: block;
+    width: 320px; /* image width */
+    height: 220px; /* image height */
+    position: absolute;
+    top: 13px;
+    right: 2px;
+    opacity: 0;
+    -webkit-transition: opacity 1.2s ease;
+    -moz-transition: opacity 1.2s ease;
+    -ms-transition: opacity 1.2s ease;
+    -o-transition: opacity 1.2s ease;
+    transition:  opacity 1.2s ease-out;
 }
 .span_maquinas{
     color: white;

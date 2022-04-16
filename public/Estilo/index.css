@@ -138,7 +138,7 @@ a:hover {
 #desc_contato {
     display: flex;
     justify-content: space-around;
-
+    margin-bottom: 4%;
     flex-direction: column;
     align-items: center;
 }

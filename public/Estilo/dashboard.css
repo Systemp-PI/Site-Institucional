@@ -129,12 +129,13 @@ input{
     color: white;
     width: 250px;
     height: 100px;
-    font-weight: bold;
     margin-right: 50px;
     text-align: center;
+    font-weight: bold;
 }
 .alertas.m_baixa{
     background-color: rgb(39, 9, 191);
+
 }
 .alertas.baixa{
     background-color: rgb(17, 157, 185);
@@ -147,7 +148,7 @@ input{
 }
 .alertas.m_alta{
     background-color: red;
-    font-size: 20px;  
+ 
 }
 
 .span_maquinas{

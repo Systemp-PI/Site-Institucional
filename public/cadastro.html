@@ -25,7 +25,7 @@
     <div class="container_cadastro">
     <h1>Cadastre-se aqui:</h1>
     <div id="form">
-        <form action="" method="post">
+        <form >
             <label for="nome_usuario">Nome de usuário:</label>
             <input type="text" placeholder="Digite o nome de usuário" id="nome_usuario" required>
             
@@ -41,7 +41,7 @@
             <label for="conf_senha">Confirmar senha: </label>
             <input type="password" placeholder="Digite novamente a senha" id="conf_senha" required>
             
-            <button onclick="cadastrar()">Enviar</button>
+            <button type="button" onclick="cadastrar()">Enviar</button>
         </form>
     </div>
 </div>
@@ -81,13 +81,11 @@
        
 
         if (nomeVar == "" || emailVar == "" ||  cnpjVar == ""  || senhaVar == "" || confirmarVar == "") {
-       
             return false;
         }
       
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-          
             return false;
         }
        else{
@@ -104,21 +102,21 @@
                 cnpjServer : cnpjVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar
-                
+
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.location = "tela_login.html";
-               
+             window.location = "tela_login.html"
+                
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-        
+
         });
 
         return false;

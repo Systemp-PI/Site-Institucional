@@ -4,14 +4,6 @@ function cadastrarMaquina(){
  formulario.style.visibility='visible'
  formulario.style.transition='opacity 0.5s linear';
  formulario.style.opacity='1';
- 
-
-function cadastrarMaquina() {
-    var formulario = document.getElementById("ocultar")
-    formulario.style.visibility = 'visible'
-    formulario.style.transition = 'opacity 1s linear';
-    formulario.style.opacity = '1';
-
 }
 
 //Cadastro de máquina nova (ainda não funcional)
@@ -61,4 +53,4 @@ function alterar_temperatura() {
     span_ideal.innerHTML = ((temperatura_max + temperatura_min) / 2) + "°C";
     span_alta.innerHTML = (temperatura_max - 3) + "°C";
     span_m_alta.innerHTML = temperatura_max + "°C";
-}}
+}

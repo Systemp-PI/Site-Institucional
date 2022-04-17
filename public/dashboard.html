@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
+        <img src="../imgs/SYSTEMP.png" alt="systemp_logo">
         <nav>
             <a href="index.html">Home</a>
             <a href="simulador.html">Simulador</a>
@@ -22,13 +22,16 @@
            <!--  <a href="dashboard.html"><u>Dashboard</u></a> -->
         </nav>
     </header>
-    <!-- Seleção de máquina e sensor para visualizar no dashboard -->
-    <div id="selecao">
-        <span class="span_maquinas">Selecionar máquina</span><br>
-        <select id="select_maquina">
-            <option value="maq_01">maq_01</option>
-            <option value="maq_02">maq_02</option>
-            <option value="maq_03">maq_03</option>
+    <div id="container_selecao">
+        <!-- Seleção de máquina e sensor para visualizar no dashboard -->
+        <div id="selecao">
+            <span class="span_maquinas">Selecionar máquina</span><br>
+            <select id="select_maquina" onchange="apresentar_dados()">
+                <option value="" id=""></option>
+                <option value="maq_01">maq_01</option>
+                <option value="maq_02">maq_02</option>
+                <option value="maq_03">maq_03</option>
+            </select><br><br>
 
         </select><br><br>
         <span class="span_maquinas">Selecionar sensor</span><br>
@@ -61,12 +64,43 @@
                 </select><br><br>
                 <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
             </form>
+            </select><br>
+        </div>
+        <div id="adicionar_maq_nova">
+            <span class="span_maquinas">Adicionar uma nova máquina:</span>
+            <img id="add_icon" src="../imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
         </div>
 
 
+        <div id="formulario_maquina_nova">
+            <div id="ocultar">
+                <form action="">
+                    <label for="input_nome_maquina">Nome da máquina:</label> <br><br>
+                    <input type="text" id="input_nome_maquina"><br>
+                    <label for="input_temperatura_max">Temperatura máxima(°C):</label><br><br>
+                    <input type="text" id="input_temperatura_max"><br>
+                    <label for="input_temperatura_min">Temperatura mínima(°C):</label> <br><br>
+                    <input type="text" id="input_temperatura_min"><br><br>
+                    <span class="span_maquinas">Quantidade de sensores:</span><br><br>
+
+                    <select id="qtd_sensores">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select><br><br>
+                    <button id="btn_enviar_cadastro" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
+                </form>
+            </div>
+
+
+        </div>
     </div>
-
-
+    <div id="niveis_alerta">
+        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span></div>
+        <div class="alertas baixa">Nível alerta:<br>Temperatura abaixo do ideal<br> <span id="span_baixa"></span></div>
+        <div class="alertas ideal">Nível estável:<br> Temperatura ideal<br> <span id="span_ideal"></span></div>
+        <div class="alertas alta">Nível alerta:<br> Temperatura acima do ideal<br> <span id="span_alta"></span></div>
+        <div class="alertas m_alta">Nível crítico:<br> Temperatura muito acima<br> <span id="span_m_alta"></span></div>
+    </div>
     <div class="container_graficos">
 
         <div id="grafico" style="position: relative; height:40%; width:50%">
@@ -280,6 +314,6 @@
         ;
 
 </script>
-<script src="/public/Script/script_dashboard.js"></script>
+<script src="../Script/script_dashboard.js"></script>
 
 </html>

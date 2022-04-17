@@ -34,7 +34,7 @@ a {
 a:hover {
     font-size: 22px;
     transition: 0.8s;
-    color: #ff5622;
+    color: #ff8c00;
 }
 
 h1 {
@@ -59,7 +59,7 @@ h1 {
     color: aliceblue;
     border: solid white 2px;
     border-radius: 25px;
-    background: #ff5622e7;
+    background: #ff8c00;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);

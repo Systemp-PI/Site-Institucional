@@ -26,11 +26,11 @@
         <!-- Seleção de máquina e sensor para visualizar no dashboard -->
         <div id="selecao">
             <span class="span_maquinas">Selecionar máquina</span><br>
-            <select id="select_maquina">
+            <select id="select_maquina" onchange="apresentar_dados()">
+                <option value="" id=""></option>
                 <option value="maq_01">maq_01</option>
                 <option value="maq_02">maq_02</option>
                 <option value="maq_03">maq_03</option>
-
             </select><br><br>
 
             </select><br>
@@ -64,11 +64,11 @@
         </div>
     </div>
     <div id="niveis_alerta">
-        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa</div>
-        <div class="alertas baixa">Nível alerta:<br>Temperatura abaixo do ideal</div>
-        <div class="alertas ideal">Nível estável:<br> Temperatura ideal</div>
-        <div class="alertas alta">Nível alerta:<br> Temperatura acima do ideal</div>
-        <div class="alertas m_alta">Nível crítico:<br> Temperatura muito acima</div>
+        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span></div>
+        <div class="alertas baixa">Nível alerta:<br>Temperatura abaixo do ideal<br> <span id="span_baixa"></span></div>
+        <div class="alertas ideal">Nível estável:<br> Temperatura ideal<br> <span id="span_ideal"></span></div>
+        <div class="alertas alta">Nível alerta:<br> Temperatura acima do ideal<br> <span id="span_alta"></span></div>
+        <div class="alertas m_alta">Nível crítico:<br> Temperatura muito acima<br> <span id="span_m_alta"></span></div>
     </div>
     <div class="container_graficos">
 

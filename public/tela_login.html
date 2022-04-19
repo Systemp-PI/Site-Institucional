@@ -29,6 +29,7 @@
             <span id="titulo"> Login </span>
             <label for="input_email">Email:</label>
             <input type="email" name="" placeholder="Exemplo@gmail.com" id="input_email"> 
+            <span id="span_erro_email"></span>
             <label for="input_senha">Senha:</label>
             <input type="password" name="" placeholder="Digite sua senha" id="input_senha">
             <button onclick="entrar()" id="but_entrar">Acessar</button>
@@ -59,13 +60,20 @@
 </body>
 
 </html>
-
 <script>
 
 function entrar(){
 
     var emailVar = input_email.value;
     var senhaVar =  input_senha.value;
+
+     //Validação e-mail
+     if (emailVar.indexOf('@') < 3 || emailVar.endsWith('.com.br', '.com', '.ind.br', '.ind')){
+        span_erro_email.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+    }
+    else {
+        span_erro_email.innerHTML = "✓"
+    }
 
 fetch("/usuarios/autenticar", {
             method: "POST",

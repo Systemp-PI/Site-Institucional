@@ -130,9 +130,9 @@ a:hover {
 
 #desc_sensor span {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     width: 80%;
-    margin-bottom: 25%;
+    margin-bottom: 23%;
 }
 
 #desc_contato {
@@ -145,7 +145,7 @@ a:hover {
 
 #desc_contato span {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     width: 80%;
     margin-bottom: 25%;
 }
@@ -159,7 +159,7 @@ a:hover {
 
 #desc_monitoramento span {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     width: 80%;
     margin-bottom: 10%;
 }

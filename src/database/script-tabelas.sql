@@ -3,58 +3,107 @@
 -- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
 
 /* para workbench - local - desenvolvimento */
-CREATE DATABASE acquatec;
+create database systemp; 
+use systemp;
 
-USE acquatec;
+create table empresa (
+	idcliente int primary key auto_increment,
+	razao_social varchar(50) not null,
+	cnpj char(14) unique,
+	inscricao_estadual char(9),
+	contato_nome varchar(30),
+	contato2_nome varchar(30),
+	contato_email varchar(40),
+	contato_tel varchar(15),
+	estado char(2),
+	cidade varchar (30)
+	);
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
-);
+create table usuario (
+	idcadastro int primary key auto_increment,
+	Nome_usuario varchar(40),
+	CNPJ char(14),
+	email varchar(50),
+	senha varchar(30),
+	fk_cliente int,
+	foreign key (fk_cliente) references empresa (idcliente)
+	);
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-); 
+create table sensor (
+	idsensor int primary key auto_increment,
+	local_maquina varchar(30),
+	temp_min char(4),
+	temp_max char(4),
+	fk_empresa int,
+	foreign key (fk_empresa) references empresa (idcliente)
+	)auto_increment = 1000;
 
-CREATE TABLE medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
-);
+create table log_temperatura (
+	idregistro int primary key auto_increment,
+	registro_temp char(4),
+	data_hora_registro datetime default current_timestamp,
+	fk_sensor int,
+	foreign key (fk_sensor) references sensor (idsensor)
+	);
 
-
-
+create table colaboradores (
+	idcolaborador int primary key auto_increment,
+	nome_colaborador varchar(50),
+	cpf char(14),
+	cargo varchar (45),
+	chefe varchar(45),
+	fk_chefe int,
+	foreign key (fk_chefe) references colaboradores (idcolaborador)
+	);
 
 /* para sql server - remoto - produção */
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-);
+create table empresa (
+	idcliente int primary key auto_increment,
+	razao_social varchar(50) not null,
+	cnpj char(14) unique,
+	inscricao_estadual char(9),
+	contato_nome varchar(30),
+	contato2_nome varchar(30),
+	contato_email varchar(40),
+	contato_tel varchar(15),
+	estado char(2),
+	cidade varchar (30)
+	);
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-); 
+create table usuario (
+	idcadastro int primary key auto_increment,
+	Nome_usuario varchar(40),
+	CNPJ char(14),
+	email varchar(50),
+	senha varchar(30),
+	fk_cliente int,
+	foreign key (fk_cliente) references empresa (idcliente)
+	);
 
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
-);
+create table sensor (
+	idsensor int primary key auto_increment,
+	local_maquina varchar(30),
+	temp_min char(4),
+	temp_max char(4),
+	fk_empresa int,
+	foreign key (fk_empresa) references empresa (idcliente)
+	)auto_increment = 1000;
 
+create table log_temperatura (
+	idregistro int primary key auto_increment,
+	registro_temp char(4),
+	data_hora_registro datetime default current_timestamp,
+	fk_sensor int,
+	foreign key (fk_sensor) references sensor (idsensor)
+	);
 
+create table colaboradores (
+	idcolaborador int primary key auto_increment,
+	nome_colaborador varchar(50),
+	cpf char(14),
+	cargo varchar (45),
+	chefe varchar(45),
+	fk_chefe int,
+	foreign key (fk_chefe) references colaboradores (idcolaborador)
+	);

@@ -1,6 +1,5 @@
 body {
     margin: 0;
-
     background-color: #222831;
     font-family: 'Montserrat', sans-serif;
     color: white;
@@ -145,6 +144,17 @@ footer {
     display: flex;
     flex-direction: inline;
     justify-content: center;
+}
+
+.container_footer a {
+    display: flex;
+    align-items: center;
+}
+
+.container_footer a:hover {
+    font-size: 19.5px;
+    transition: 0.8s;
+    color: #ff8c00;
 }
 
 .contatos {

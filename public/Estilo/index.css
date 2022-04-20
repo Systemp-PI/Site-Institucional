@@ -200,6 +200,17 @@ footer {
     justify-content: center;
 }
 
+.container_footer a {
+    display: flex;
+    align-items: center;
+}
+
+.container_footer a:hover {
+    font-size: 19.5px;
+    transition: 0.8s;
+    color: #ff8c00;
+}
+
 .contatos {
     margin: 0px 7px 0 35px;
 }

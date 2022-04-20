@@ -91,7 +91,14 @@ input::placeholder{
     color: rgb(0, 0, 0);
 }
 
-
+#span_erro_email {
+    color: white;
+    position: absolute;
+    width: 200px;
+    font-size: 13px;
+    margin-top: -20%;
+    margin-left: 140%;
+}
 
 #but_entrar {
     background-color: #dbd6c9;

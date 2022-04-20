@@ -29,7 +29,11 @@
         <div id="box_login">
             <label for="input_email">Email:</label>
             <input type="email" name="" placeholder="Exemplo@gmail.com" id="input_email"> 
+<<<<<<< HEAD
 
+=======
+            <span id="span_erro_email"></span>
+>>>>>>> aeee5bfcd0908f280a6e78d198d8ac4579de3275
             <label for="input_senha">Senha:</label>
             <input type="password" name="" placeholder="Digite sua senha" id="input_senha">
             
@@ -61,13 +65,20 @@
 </body>
 
 </html>
-
 <script>
 
 function entrar(){
 
     var emailVar = input_email.value;
     var senhaVar =  input_senha.value;
+
+     //Validação e-mail
+     if (emailVar.indexOf('@') < 3 || emailVar.endsWith('.com.br', '.com', '.ind.br', '.ind')){
+        span_erro_email.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+    }
+    else {
+        span_erro_email.innerHTML = "✓"
+    }
 
 fetch("/usuarios/autenticar", {
             method: "POST",

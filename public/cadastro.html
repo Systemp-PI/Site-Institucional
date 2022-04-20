@@ -22,29 +22,34 @@
         </nav>
     </header>
 
+    <div id="title">
+        <h1>Cadastre-se aqui:</h1>
+    </div>
     <div class="container_cadastro">
-    <h1>Cadastre-se aqui:</h1>
     <div id="form">
         <form >
             <label for="nome_usuario">Nome de usuário:</label>
             <input type="text" placeholder="Digite o nome de usuário" id="nome_usuario" required>
-            
             <label for="cpf_cnpj">CNPJ: </label>
-            <input type="number" placeholder="Digite CPF ou CNPJ" id="cnpj" title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required>
-            
+            <input type="number" placeholder="Digite o CNPJ" id="cnpj" title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required>
             <label for="email">E-mail: </label>
             <input type="email" placeholder="Digite um e-mail" id="email" title="Somente e-mail será aceito"  required>
-            
             <label for="senha">Senha: </label>
             <input type="password" placeholder="Digite uma senha" id="senha" required>
-            
             <label for="conf_senha">Confirmar senha: </label>
             <input type="password" placeholder="Digite novamente a senha" id="conf_senha" required>
-            
             <button type="button" onclick="cadastrar()">Enviar</button>
         </form>
     </div>
+    <div id="span_erro">
+        <span id="span_erro_nome_usuario"></span>
+        <span id="span_erro_cnpj"></span>
+        <span id="span_erro_email"></span>
+        <span id="span_erro_senha"></span>
+        <span id="span_erro_conf_senha"></span>          
+    </div>
 </div>
+
     <footer>
         <div id="footer_title">
             <h2 id="title">Fale conosco</h2>
@@ -66,7 +71,6 @@
 </body>
 </html>
 
-
 <script>
     function cadastrar() {
     
@@ -79,16 +83,53 @@
         var senhaVar = senha.value;
         var confirmarVar = conf_senha.value;
        
+        if (nomeVar.length < 5){
+        span_erro_nome_usuario.innerHTML = '*Digite no minímo 5 caracteres'
+    }
+    else {
+        span_erro_nome_usuario.innerHTML = "✓"
+    }
 
-        if (nomeVar == "" || emailVar == "" ||  cnpjVar == ""  || senhaVar == "" || confirmarVar == "") {
-            return false;
-        }
-      
+    //Validação CNPJ
+    if (cnpjVar.length > 14 || cnpjVar.length < 14){
+        span_erro_cnpj.innerHTML = '*Insira 14 digitos no CNPJ'
+    }
+    else {
+        span_erro_cnpj.innerHTML = "✓"
+    }
 
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            return false;
-        }
-       else{
+    //Validação e-mail
+    if (emailVar.indexOf('@') < 3 || emailVar.endsWith('.com.br', '.com', '.ind.br', '.ind')){
+        span_erro_email.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+    }
+    else {
+        span_erro_email.innerHTML = "✓"
+    }
+
+    //Validação senha
+    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
+    if (senhaVar.length < 8 || senhaVar.length == 0){
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
+    }
+    else if (!regex.exec(senha)){
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
+        return false
+    }
+    else {
+        span_erro_senha.innerHTML = "✓"
+    }
+
+    //Validação confirmação de senha
+    if (confirmarVar == ''){
+        span_erro_conf_senha.innerHTML = '*Digite uma senha'
+    }
+    else if (confirma_senha !== senha || confirma_senha.length == 0) {
+        span_erro_conf_senha.innerHTML = '*Senha diferente'
+    }
+    else {
+        span_erro_conf_senha.innerHTML = "✓"
+        alert('Seu cadastro foi feito com sucesso!')
+    }
 
 
         // Enviando o valor da nova input
@@ -120,6 +161,5 @@
         });
 
         return false;
-    }
     }
 </script>

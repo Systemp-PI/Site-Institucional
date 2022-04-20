@@ -46,10 +46,7 @@ function calcula_perda() {
 
     if (lucro_medio_maquina != '' && total_maquinas != '' && maquinas_off != '' 
     && maquinas_off <= total_maquinas && horas_off != '') {
-        mensagem.innerHTML = `O valor perdido será de 
-        ${perda_total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })},
-     equivalente a ${porcentagem_perda.toFixed(1)}
-     % <br>da renda da indústria durante as horas em manutenção.`
+        mensagem.innerHTML = `<span>O valor perdido será de <b>${perda_total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} </b>, equivalente a ${porcentagem_perda.toFixed(1)}% da renda da indústria durante as ${horas_off} horas em manutenção.</span>`
     }
 
 }

@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SysTemp - Simulador Financeiro</title>
-    <link rel="stylesheet" href="../Estilo/simulador.css">
+    <link rel="stylesheet" href="Estilo/simulador.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <img src="../imgs/SYSTEMP.png" alt="systemp_logo">
+        <img src="./imgs/SYSTEMP.png" alt="systemp_logo">
         <nav>
             <a href="index.html">Home</a>
             <a href="simulador.html"><u>Simulador</u></a>
@@ -20,7 +20,7 @@
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html">Cadastro</a>
             <a href="tela_login.html">Login</a>
-            <a href="dashboard.html">Dashboard</a>
+          <!--   <a href="dashboard.html">Dashboard</a> -->
         </nav>
     </header>
 
@@ -40,7 +40,6 @@
             A class input_from é padrao nos inputs do form para a manipulação css
         -->
     <div class="caixa">
-        <div id="formulario">
             <form class="box_form"> 
                 <div class="div_label">
                     <label for="input_lucro_medio_maquina" class="label_form">Lucro médio por máquina (p/ hora):</label><br> 
@@ -48,6 +47,7 @@
                     <label for="input_maquinas_off" class="label_form">Máquinas em manutenção:</label><br>
                     <label for="input_horas_off" class="label_form">Horas totais em manutenção:</label><br>
                 </div>
+                
                 <div class="div_inputs">
                     <span id="error_lucro_medio">*Campo vazio </span>
                     <input  class="input_form" id="input_lucro_medio_maquina" required type="number" placeholder="Exemplo: 5000">
@@ -64,21 +64,24 @@
                     <input class="input_submit" type="button" onclick="calcula_perda()" value="Calcular Valor"></input>
                 </div>
             </form>
+            
+        <div id="mensagem">
+            <img src="./lucro_systemp-removebg-preview.png" id="imagem_lucro">
         </div>
     </div>
     </div>
-    <div id="mensagem"></div>
+    
 
     <footer>
         <div id="footer_title">
             <h2 id="title">Fale conosco</h2>
         </div>
         <div class="container_footer">
-            <img class="contatos" id="logo_email" src="../imgs/logo-email.png">
+            <img class="contatos" id="logo_email" src="./imgs/logo-email.png">
             <a class="enderecos" href="mailto:systemp@systemp.com.br">systemp@systemp.com.br</a>
-            <img class="contatos" id="logo_whatsapp" src="../imgs/logo-whatsapp.png">
+            <img class="contatos" id="logo_whatsapp" src="./imgs/logo-whatsapp.png">
             <a class="enderecos" href="tel:+5511999999999">+55 (11) 99999-9999 </a>
-            <img class="contatos" id="logo_linkedin" src="../imgs/logo-linkedin.png">
+            <img class="contatos" id="logo_linkedin" src="./imgs/logo-linkedin.png">
             <a class="enderecos" href="https://linkedin.com/systemp">linkedin.com/systemp</a>
         </div>
         <div id="container_copyright">
@@ -89,6 +92,6 @@
     </footer>
 
 </body>
-<script src="../Script/script.js"></script>
+<script src="Script/script.js"></script>
 
 </html>

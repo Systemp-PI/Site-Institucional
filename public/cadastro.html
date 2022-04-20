@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -289,4 +290,196 @@
         return false;
     }
 >>>>>>> aeee5bfcd0908f280a6e78d198d8ac4579de3275
+=======
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Estilo/cadastro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title>Cadastro - SysTemp</title>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="simulador.html">Simulador</a>
+              <!--<a href="#sobre_nos">Sobre nós</a>-->
+            <a href="#logo_email">Contato</a>
+            <a href="cadastro.html"><u>Cadastro</u></a>
+            <a href="tela_login.html">Login</a>
+           <!--  <a href="dashboard.html">Dashboard</a> -->
+        </nav>
+    </header>
+
+    <div id="title">
+        <h1>Cadastre-se aqui:</h1>
+    </div>
+    <div class="container_cadastro">
+    <div id="form">
+        <form >
+            <label for="nome_usuario">Nome de usuário:</label>
+            <input type="text" placeholder="Digite o nome de usuário" id="nome_usuario" required>
+            <label for="cpf_cnpj">CNPJ: </label>
+            <input type="number" placeholder="Digite o CNPJ" id="cnpj" title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required>
+            <label for="email">E-mail: </label>
+            <input type="email" placeholder="Digite um e-mail" id="email" title="Somente e-mail será aceito"  required>
+            <label for="senha">Senha: </label>
+            <input type="password" placeholder="Digite uma senha" id="senha" required>
+            <label for="conf_senha">Confirmar senha: </label>
+            <input type="password" placeholder="Digite novamente a senha" id="conf_senha" required>
+            <button type="button" onclick="cadastrar()">Enviar</button>
+        </form>
+    </div>
+    <div id="span_erro">
+        <span id="span_erro_nome_usuario"></span>
+        <span id="span_erro_cnpj"></span>
+        <span id="span_erro_email"></span>
+        <span id="span_erro_senha"></span>
+        <span id="span_erro_conf_senha"></span>          
+    </div>
+</div>
+
+<div id="cadastro_empresa">
+    <h2>Cadastre sua empresa</h2>
+    <form action="">
+        <label for="input_razão_social">Razão social:</label>
+        <input type="text" id="input_razão_social" placeholder="Digite a razão social">
+        <label for="input_cnpj">CNPJ:</label>
+        <input type="number" id="input_cnpj" placeholder="Digite o CNPJ">
+        <label for="input_ie">Inscrição Estadual:</label>
+        <input type="number" id="input_ie" placeholder="Digite a inscrição estadual">
+        <label for="input_contato1">Nome do contato 1:</label>
+        <input type="text" id="input_contato1" placeholder="Digite o nome do contato">
+        <label for="input_contato2">Nome do contato 2:</label>
+        <input type="text" id="input_contato2" placeholder="Digite o nome do contato">
+        <label for="input_email">Email:</label>
+        <input type="email" id="input_email" placeholder="Digite um e-mail">
+        <label for="input_tel">Telefone</label>
+        <input type="tel" id="input_tel" placeholder="Digite um n° de telefone">
+        <label for="input_estado">Estado: </label>
+        <input type="text" id="input_estado" placeholder="Ex: SP">
+        <label for="input_cidade">Cidade:</label>
+        <input type="text" id="input_cidade" placeholder="Digite o nome da cidade">
+
+        <button>Cadastrar</button>
+    </form>
+</div>
+
+    <footer>
+        <div id="footer_title">
+            <h2 id="title">Fale conosco</h2>
+        </div>
+        <div class="container_footer">
+            <img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png">
+            <a class="enderecos" href="mailto:systemp@systemp.com.br">systemp@systemp.com.br</a>
+            <img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">
+            <a class="enderecos" href="tel:+5511999999999">+55 (11) 99999-9999 </a>
+            <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">
+            <a class="enderecos" href="https://linkedin.com/systemp">linkedin.com/systemp</a>
+        </div>
+        <div id="container_copyright">
+            <div class="copyright">
+                <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+    
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_usuario.value;
+        var cnpjVar = cnpj.value;
+        var emailVar = email.value;
+        var senhaVar = senha.value;
+        var confirmarVar = conf_senha.value;
+       
+        if (nomeVar.length < 5){
+        span_erro_nome_usuario.innerHTML = '*Digite no minímo 5 caracteres'
+    }
+    else {
+        span_erro_nome_usuario.innerHTML = "✓"
+    }
+
+    //Validação CNPJ
+    if (cnpjVar.length > 14 || cnpjVar.length < 14){
+        span_erro_cnpj.innerHTML = '*Insira 14 digitos no CNPJ'
+    }
+    else {
+        span_erro_cnpj.innerHTML = "✓"
+    }
+
+    //Validação e-mail
+    if (emailVar.indexOf('@') < 3 || emailVar.endsWith('.com.br', '.com', '.ind.br', '.ind')){
+        span_erro_email.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+    }
+    else {
+        span_erro_email.innerHTML = "✓"
+    }
+
+    //Validação senha
+    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
+    if (senhaVar.length < 8 || senhaVar.length == 0){
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
+    }
+    else if (!regex.exec(senha)){
+        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
+        return false
+    }
+    else {
+        span_erro_senha.innerHTML = "✓"
+    }
+
+    //Validação confirmação de senha
+    if (confirmarVar == ''){
+        span_erro_conf_senha.innerHTML = '*Digite uma senha'
+    }
+    else if (confirma_senha !== senha || confirma_senha.length == 0) {
+        span_erro_conf_senha.innerHTML = '*Senha diferente'
+    }
+    else {
+        span_erro_conf_senha.innerHTML = "✓"
+        alert('Seu cadastro foi feito com sucesso!')
+    }
+
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                cnpjServer : cnpjVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+             window.location = "tela_login.html"
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+>>>>>>> 779e48c9909fffcf110f23fe941e25dcc95b0c2c
 </script>

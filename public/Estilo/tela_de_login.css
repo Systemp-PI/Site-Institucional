@@ -28,6 +28,7 @@ a {
     font-size: 18px;
     color: #eeeeee;
     text-decoration: none;
+    font-weight: bold;
     transition: 0.5s;
 }
 

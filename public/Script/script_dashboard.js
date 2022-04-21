@@ -8,49 +8,61 @@ function cadastrarMaquina(){
 
 //Cadastro de máquina nova (ainda não funcional)
 
-var temperatura_max = 0;
-var temperatura_min = 0;
+var temperatura_max = 0
+var temperatura_alerta_quente=0
+var temperatura_ideal=0
+var temperatura_alerta_frio=0
+var temperatura_min = 0
 function enviar_dados_maquina() {
     temperatura_max = Number(input_temperatura_max.value);
     temperatura_min = Number(input_temperatura_min.value);
 }
 
-//Apresentar valores de temperatura nos quadros coloridos
-
-var maquina = "";
-function apresentar_dados() {
-    maquina = select_maquina.value;
-
-    if (maquina == "maq_01") {
-        temperatura_max = 40;
-        temperatura_min = 20;
-        alterar_temperatura()
-    }
-    else if (maquina == "maq_02") {
-        temperatura_max = 35;
-        temperatura_min = 15;
-        alterar_temperatura()
-    }
-    else if (maquina == "maq_03") {
-        temperatura_max = 38;
-        temperatura_min = 23;
-        alterar_temperatura()
-    }
-    else {
-        span_m_baixa.innerHTML = "";
-        span_baixa.innerHTML = "";
-        span_ideal.innerHTML = "";
-        span_alta.innerHTML = "";
-        span_m_alta.innerHTML = "";
-    }
-}
-
-//Calcular valores inseridos na function enviar_dados_maquina()
-
-function alterar_temperatura() {
-    span_m_baixa.innerHTML = temperatura_min + "°C";
-    span_baixa.innerHTML = (temperatura_min + 3) + "°C";
-    span_ideal.innerHTML = ((temperatura_max + temperatura_min) / 2) + "°C";
-    span_alta.innerHTML = (temperatura_max - 3) + "°C";
-    span_m_alta.innerHTML = temperatura_max + "°C";
+function mostrar_dados_dashboard(){
+    var maquina1= document.getElementById('maq1')
+    var maquina2= document.getElementById('maq2')
+    var maquina3= document.getElementById('maq3')
+    var maquina4= document.getElementById('maq4')
+    var maquina5= document.getElementById('maq5')
+    maquina1.addEventListener('click', ()=>{ span_m_baixa.innerHTML = 35
+        span_baixa.innerHTML = 37.50+"°C"
+        span_ideal.innerHTML = 40+"°C"
+        span_alta.innerHTML = 42.50+"°C"
+        span_m_alta.innerHTML = 45+"°C"
+        myChart.addData([2], label )
+        myChart.addData([3], label )
+        myChart.addData([4], label )
+        myChart.addData([5], label )
+        myChart.addData([5], label )
+        myChart.update( )
+    });
+    maquina2.addEventListener('click',()=>{
+        span_m_baixa.innerHTML = 30+"°C"
+    span_baixa.innerHTML = 32.50+"°C"
+    span_ideal.innerHTML = 35+"°C"
+    span_alta.innerHTML = 37.50+"°C"
+    span_m_alta.innerHTML = 40+"°C"
+    });
+    maquina3.addEventListener('click',()=>{
+        span_m_baixa.innerHTML = 40+"°C"
+        span_baixa.innerHTML = 42+"°C"
+        span_ideal.innerHTML = 44+"°C"
+        span_alta.innerHTML = 46+"°C"
+        span_m_alta.innerHTML = 48  +"°C"
+    });
+    maquina4.addEventListener('click',()=>{
+        span_m_baixa.innerHTML = 32+"°C"
+        span_baixa.innerHTML = 35+"°C"
+        span_ideal.innerHTML = 38+"°C"
+        span_alta.innerHTML = 41+"°C"
+        span_m_alta.innerHTML = 44+"°C"
+    });
+    maquina5.addEventListener('click',()=>{
+        span_m_baixa.innerHTML = 30+"°C"
+        span_baixa.innerHTML = 34+"°C"
+        span_ideal.innerHTML = 38+"°C"
+        span_alta.innerHTML = 42+"°C"
+        span_m_alta.innerHTML = 46+"°C"
+    });
+ 
 }

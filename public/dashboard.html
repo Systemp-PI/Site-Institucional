@@ -19,59 +19,75 @@
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html">Cadastro</a>
             <a href="tela_login.html">Login</a>
-           <!--  <a href="dashboard.html"><u>Dashboard</u></a> -->
+            <!--  <a href="dashboard.html"><u>Dashboard</u></a> -->
         </nav>
     </header>
-    <div id="container_selecao">
-        <!-- Seleção de máquina e sensor para visualizar no dashboard -->
-        <div id="selecao">
-            <span class="span_maquinas">Selecionar máquina</span><br>
-            <select id="select_maquina" onchange="apresentar_dados()">
-                <option value="" id=""></option>
-                <option value="maq_01">maq_01</option>
-                <option value="maq_02">maq_02</option>
-                <option value="maq_03">maq_03</option>
-            </select><br><br>
-        </div>
-        <div id="adicionar_maq_nova">
-            <span class="span_maquinas">Adicionar uma nova máquina:</span>
-            <img id="add_icon" src="imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
-        </div>
-        <div id="formulario_maquina_nova">
-            <div id="ocultar">
-                <form action="">
-                    <label for="input_nome_maquina">Nome da máquina:</label> <br><br>
-                    <input type="text" id="input_nome_maquina"><br>
-                    <label for="input_temperatura_max">Temperatura máxima(°C):</label><br><br>
-                    <input type="text" id="input_temperatura_max"><br>
-                    <label for="input_temperatura_min">Temperatura mínima(°C):</label> <br><br>
-                    <input type="text" id="input_temperatura_min"><br><br>
-                    <span class="span_maquinas">Quantidade de sensores:</span><br><br>
-    
-                    <select id="qtd_sensores">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </select><br><br>
-                    <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
-                </form>
-                </select><br>
-            </div>
+    <div id="adicionar_maq_nova">
+        <span class="span_maquinas">Adicionar uma nova máquina:</span>
+        <img id="add_icon" src="imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
+    </div>
+    <div id="formulario_maquina_nova">
+        <div id="ocultar">
+            <form action="">
+                <label for="input_nome_maquina">Nome da máquina:</label> <br><br>
+                <input type="text" id="input_nome_maquina"><br>
+                <label for="input_temperatura_max">Temperatura máxima(°C):</label><br><br>
+                <input type="text" id="input_temperatura_max"><br>
+                <label for="input_temperatura_min">Temperatura mínima(°C):</label> <br><br>
+                <input type="text" id="input_temperatura_min"><br><br>
+                <span class="span_maquinas">Quantidade de sensores:</span><br><br>
+
+                <select id="qtd_sensores">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select><br><br>
+                <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
+            </form>
+            </select><br>
         </div>
     </div>
-    
+    </div>
     <div id="niveis_alerta">
-        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span></div>
+        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span>
+        </div>
         <div class="alertas baixa">Nível alerta:<br>Temperatura abaixo do ideal<br> <span id="span_baixa"></span></div>
         <div class="alertas ideal">Nível estável:<br> Temperatura ideal<br> <span id="span_ideal"></span></div>
         <div class="alertas alta">Nível alerta:<br> Temperatura acima do ideal<br> <span id="span_alta"></span></div>
         <div class="alertas m_alta">Nível crítico:<br> Temperatura muito acima<br> <span id="span_m_alta"></span></div>
     </div>
+    <div id="container_redutores">
+        <id class="identificacao_maq"><span>maquina 1</span>
+            <img class="redutor_img img1" id="maq1" onclick="mostrar_dados_dashboard()"
+                src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
+                alt="">
+        </id>
+        <div class="identificacao_maq"><span>maquina 2</span>
+            <img class="redutor_img img2" id="maq2" onclick="mostrar_dados_dashboard()"
+                src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
+                alt="">
+        </div>
+        <div class="identificacao_maq"><span>maquina 3</span>
+            <img class="redutor_img img3" id="maq3" onclick="mostrar_dados_dashboard()"
+                src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
+                alt="">
+        </div>
+        <div class="identificacao_maq"><span>maquina 4</span>
+            <img class="redutor_img img4"id="maq4" onclick="mostrar_dados_dashboard()"
+                src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
+                alt="">
+        </div>
+        <div class="identificacao_maq"><span>maquina 5</span>
+            <img class="redutor_img img5" id="maq5" onclick="mostrar_dados_dashboard()"
+                src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
+                alt="">
+        </div>
+    </div>
     <div class="container_graficos">
 
-        <div id="grafico" style="position: relative; height:40%; width:50%">
+        <div id="grafico">
             <canvas id="myChart"></canvas>
         </div>
-        <div id="grafico2" style="position: relative; height:40%; width:50%">
+        <div id="grafico2">
             <canvas id="myChart2"></canvas>
         </div>
 
@@ -115,7 +131,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: 'Temperatura do sensor',
+                label: 'Temperatura do sensor 1',
                 backgroundColor: 'firebrick',
                 data: [{
                     x: '23:39:30',

@@ -221,7 +221,31 @@ justify-content: space-evenly;
 align-items: center;
 }
 
-#grafico {
+#grafico1 {
+
+    width: 35%;
+    height: 60%;
+    margin-right: 5%;
+}
+#grafico2 {
+
+    width: 35%;
+    height: 60%;
+    margin-right: 5%;
+}
+#grafico3 {
+
+    width: 35%;
+    height: 60%;
+    margin-right: 5%;
+}
+#grafico4 {
+
+    width: 35%;
+    height: 60%;
+    margin-right: 5%;
+}
+#grafico5 {
 
     width: 35%;
     height: 60%;

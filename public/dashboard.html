@@ -57,38 +57,50 @@
     </div>
     <div id="container_redutores">
         <id class="identificacao_maq"><span>maquina 1</span>
-            <img class="redutor_img img1" id="maq1"  onclick="mostrar_dados_dashboard('maq1',[41.5,43,45.5,48,50.5])"
+            <img class="redutor_img img1" id="maq1"  onclick="mostrar_dados_dashboard('maq1',[41.5,43,45.5,48,50.5],'grafico1',myChart)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </id>
         <div class="identificacao_maq"><span>maquina 2</span>
-            <img class="redutor_img img2" id="maq2" onclick="mostrar_dados_dashboard('maq2',[39,42,45,48,51])"
+            <img class="redutor_img img2" id="maq2" onclick="mostrar_dados_dashboard('maq2',[39,42,45,48,51],'grafico2',myChart2)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 3</span>
-            <img class="redutor_img img3" id="maq3" onclick="mostrar_dados_dashboard('maq3',[37.8,40.3,43.8,46.3,48.8])"
+            <img class="redutor_img img3" id="maq3" onclick="mostrar_dados_dashboard('maq3',[37.8,40.3,43.8,46.3,48.8],'grafico3',myChart3)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 4</span>
-            <img class="redutor_img img4"id="maq4" onclick="mostrar_dados_dashboard('maq4',[35,40,45,50,55])"
+            <img class="redutor_img img4"id="maq4" onclick="mostrar_dados_dashboard('maq4',[35,40,45,50,55],'grafico4',myChart4)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 5</span>
-            <img class="redutor_img img5" id="maq5" onclick="mostrar_dados_dashboard('maq5',[30,31,32,33,34])"
+            <img class="redutor_img img5" id="maq5" onclick="mostrar_dados_dashboard('maq5',[30,31,32,33,34],'grafico5',myChart5)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
     </div>
     <div class="container_graficos">
 
-        <div id="grafico">
-            <canvas id="myChart"></canvas>
+        <div id="grafico1" style="display: none;">
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div id="grafico2" style="display: none;">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div id="grafico3" style="display: none;">
+            <canvas id="myChart3"></canvas>
+        </div>
+        <div id="grafico4" style="display: none;">
+            <canvas id="myChart4"></canvas>
+        </div>
+        <div id="grafico5" style="display: none;">
+            <canvas id="myChart5"></canvas>
         </div>
         <div id="grafico2">
-            <canvas id="myChart2"></canvas>
+            <canvas id="myChartMedia"></canvas>
         </div>
 
     </div>
@@ -116,14 +128,34 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
 
 <script>
-    const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart1');
     ctx.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
-
     const ctx2 = document.getElementById('myChart2');
     ctx2.style.backgroundColor = '#2E4053';
+    Chart.defaults.color = "white";
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
+    const ctx3 = document.getElementById('myChart3');
+    ctx3.style.backgroundColor = '#2E4053';
+    Chart.defaults.color = "white";
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
+    const ctx4 = document.getElementById('myChart4');
+    ctx4.style.backgroundColor = '#2E4053';
+    Chart.defaults.color = "white";
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
+    const ctx5 = document.getElementById('myChart5');
+    ctx5.style.backgroundColor = '#2E4053';
+    Chart.defaults.color = "white";
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
+
+    const ctxMedia = document.getElementById('myChartMedia');
+    ctxMedia.style.backgroundColor = '#2E4053';
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
 
@@ -152,8 +184,108 @@
     )
 
         ;
-
     const myChart2 = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Temperatura do sensor 1',
+                backgroundColor: 'firebrick',
+                borderColor: 'tomato',
+                borderWidth: 4,
+
+            }]
+         
+        },
+        options: {
+
+            scales: {
+                y: {
+                    suggestedMin: 20,
+                    suggestedMax: 50,
+                },
+            }
+        }
+    }
+    )
+
+        ;
+    const myChart3 = new Chart(ctx3, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Temperatura do sensor 1',
+                backgroundColor: 'firebrick',
+                borderColor: 'tomato',
+                borderWidth: 4,
+
+            }]
+         
+        },
+        options: {
+
+            scales: {
+                y: {
+                    suggestedMin: 20,
+                    suggestedMax: 50,
+                },
+            }
+        }
+    }
+    )
+
+        ;
+    const myChart4 = new Chart(ctx4, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Temperatura do sensor 1',
+                backgroundColor: 'firebrick',
+                borderColor: 'tomato',
+                borderWidth: 4,
+
+            }]
+         
+        },
+        options: {
+
+            scales: {
+                y: {
+                    suggestedMin: 20,
+                    suggestedMax: 50,
+                },
+            }
+        }
+    }
+    )
+
+        ;
+    const myChart5 = new Chart(ctx5, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Temperatura do sensor 1',
+                backgroundColor: 'firebrick',
+                borderColor: 'tomato',
+                borderWidth: 4,
+
+            }]
+         
+        },
+        options: {
+
+            scales: {
+                y: {
+                    suggestedMin: 20,
+                    suggestedMax: 50,
+                },
+            }
+        }
+    }
+    )
+
+        ;
+
+    const myChartMedia = new Chart(ctxMedia, {
         type: 'bar',
         data: {
             datasets: [{

@@ -34,10 +34,7 @@ function enviar() {
     if (senha.length < 8 || senha.length == 0){
         span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
     }
-    else if (!regex.exec(senha)){
-        span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
-        return false
-    }
+
     else {
         span_erro_senha.innerHTML = "✓"
     }

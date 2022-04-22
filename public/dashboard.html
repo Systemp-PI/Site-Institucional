@@ -57,27 +57,27 @@
     </div>
     <div id="container_redutores">
         <id class="identificacao_maq"><span>maquina 1</span>
-            <img class="redutor_img img1" id="maq1" onclick="mostrar_dados_dashboard()"
+            <img class="redutor_img img1" id="maq1"  onclick="mostrar_dados_dashboard('maq1',[41.5,43,45.5,48,50.5])"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </id>
         <div class="identificacao_maq"><span>maquina 2</span>
-            <img class="redutor_img img2" id="maq2" onclick="mostrar_dados_dashboard()"
+            <img class="redutor_img img2" id="maq2" onclick="mostrar_dados_dashboard('maq2',[39,42,45,48,51])"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 3</span>
-            <img class="redutor_img img3" id="maq3" onclick="mostrar_dados_dashboard()"
+            <img class="redutor_img img3" id="maq3" onclick="mostrar_dados_dashboard('maq3',[37.8,40.3,43.8,46.3,48.8])"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 4</span>
-            <img class="redutor_img img4"id="maq4" onclick="mostrar_dados_dashboard()"
+            <img class="redutor_img img4"id="maq4" onclick="mostrar_dados_dashboard('maq4',[35,40,45,50,55])"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 5</span>
-            <img class="redutor_img img5" id="maq5" onclick="mostrar_dados_dashboard()"
+            <img class="redutor_img img5" id="maq5" onclick="mostrar_dados_dashboard('maq5',[30,31,32,33,34])"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
@@ -133,58 +133,11 @@
             datasets: [{
                 label: 'Temperatura do sensor 1',
                 backgroundColor: 'firebrick',
-                data: [{
-                    x: '23:39:30',
-                    y: 35.2
-                }, {
-                    x: '23:39:33',
-                    y: 36
-                }, {
-                    x: '23:39:36',
-                    y: 36.6
-                },
-                {
-                    x: '23:39:39',
-                    y: 36.8
-                },
-                {
-                    x: '23:39:42',
-                    y: 37
-
-                }
-                ],
                 borderColor: 'tomato',
                 borderWidth: 4,
 
-            },
-            {
-                label: 'Temperatura do sensor 2',
-                backgroundColor: 'darkmagenta',
-                data: [{
-                    x: '23:39:30',
-                    y: 39.2
-                }, {
-                    x: '23:39:33',
-                    y: 38.5
-                }, {
-                    x: '23:39:36',
-                    y: 39
-                },
-                {
-                    x: '23:39:39',
-                    y: 38
-                },
-                {
-                    x: '23:39:42',
-                    y: 37.6
-
-                }
-                ],
-                borderColor: 'violet',
-                borderWidth: 4,
-
             }]
-            ,
+         
         },
         options: {
 
@@ -193,13 +146,6 @@
                     suggestedMin: 20,
                     suggestedMax: 50,
                 },
-                xAxes: [{
-                    type: 'time',
-                    time: {
-                        unit: 'second'
-                    }
-                }
-                ]
             }
         }
     }
@@ -295,6 +241,12 @@
         ;
 
 </script>
+<script src="Script/script_dashboard.js"></script>
+
+</html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
 <script src="Script/script_dashboard.js"></script>
 
 </html>

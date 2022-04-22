@@ -22,7 +22,7 @@
             <!--  <a href="dashboard.html"><u>Dashboard</u></a> -->
         </nav>
     </header>
-    <div id="adicionar_maq_nova">
+<!-- <div id="adicionar_maq_nova">
         <span class="span_maquinas">Adicionar uma nova máquina:</span>
         <img id="add_icon" src="imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
     </div>
@@ -45,8 +45,7 @@
             </form>
             </select><br>
         </div>
-    </div>
-    </div>
+    </div>          -->
     <div id="niveis_alerta">
         <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span>
         </div>
@@ -133,21 +132,25 @@
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx2 = document.getElementById('myChart2');
     ctx2.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx3 = document.getElementById('myChart3');
     ctx3.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx4 = document.getElementById('myChart4');
     ctx4.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+    
     const ctx5 = document.getElementById('myChart5');
     ctx5.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
@@ -188,9 +191,9 @@
         type: 'line',
         data: {
             datasets: [{
-                label: 'Temperatura do sensor 1',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                label: 'Temperatura do sensor 2',
+                backgroundColor: 'darkmagenta',
+                borderColor: 'violet',
                 borderWidth: 4,
 
             }]
@@ -213,9 +216,9 @@
         type: 'line',
         data: {
             datasets: [{
-                label: 'Temperatura do sensor 1',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                label: 'Temperatura do sensor 3',
+                backgroundColor: '#1338be',
+                borderColor: '#63c5da',
                 borderWidth: 4,
 
             }]
@@ -238,9 +241,9 @@
         type: 'line',
         data: {
             datasets: [{
-                label: 'Temperatura do sensor 1',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                label: 'Temperatura do sensor 4',
+                backgroundColor: 'gold',
+                borderColor: '#fff380',
                 borderWidth: 4,
 
             }]
@@ -263,9 +266,9 @@
         type: 'line',
         data: {
             datasets: [{
-                label: 'Temperatura do sensor 1',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                label: 'Temperatura do sensor 5',
+                backgroundColor: '#0b6623',
+                borderColor: 'lightgreen',
                 borderWidth: 4,
 
             }]
@@ -292,26 +295,14 @@
                 label: 'Média diária sensor 1',
                 backgroundColor: 'tomato',
                 data: [{
-                    x: '12/04',
+                    x: 'Anteontem',
                     y: 38.1
                 }, {
-                    x: '13/04',
+                    x: 'Ontem',
                     y: 35.7
                 }, {
-                    x: '14/04',
+                    x: 'Hoje',
                     y: 36.8
-                }, {
-                    x: '15/04',
-                    y: 37.6
-                }, {
-                    x: '16/04',
-                    y: 36.4
-                }, {
-                    x: '17/04',
-                    y: 35.9
-                }, {
-                    x: '18/04',
-                    y: 37.4
                 }
                 ],
                 borderColor: 'firebrick',
@@ -319,35 +310,77 @@
 
             },
             {
-                label: 'Média diária sensor 2',
+                label: 'Sensor 2',
                 backgroundColor: 'violet',
                 data: [{
-                    x: '12/04',
+                    x: 'Anteontem',
                     y: 38.9
                 }, {
-                    x: '13/04',
+                    x: 'Ontem',
                     y: 37.2
                 }, {
-                    x: '14/04',
-                    y: 34.6
-                }, {
-                    x: '15/04',
-                    y: 36.8
-                }, {
-                    x: '16/04',
-                    y: 37.5
-                }, {
-                    x: '17/04',
+                    x: 'Hoje',
                     y: 35.4
-                }, {
-                    x: '18/04',
-                    y: 37.3
                 }
                 ],
                 borderColor: 'darkmagenta',
                 borderWidth: 4,
 
-            }
+            },
+            {
+                label: 'Sensor 3',
+                backgroundColor: '#63c5da',
+                data: [{
+                    x: 'Anteontem',
+                    y: 40.3
+                }, {
+                    x: 'Ontem',
+                    y: 38.1
+                }, {
+                    x: 'Hoje',
+                    y: 39.9
+                }
+                ],
+                borderColor: '#1338be',
+                borderWidth: 4,
+
+            },
+            {
+                label: 'Sensor 4',
+                backgroundColor: '#fff380',
+                data: [{
+                    x: 'Anteontem',
+                    y: 42.0
+                }, {
+                    x: 'Ontem',
+                    y: 40.6
+                }, {
+                    x: 'Hoje',
+                    y: 41.1
+                }
+                ],
+                borderColor: 'gold',
+                borderWidth: 4,
+
+            },
+            {
+                label: 'Sensor 5',
+                backgroundColor: 'lightgreen',
+                data: [{
+                    x: 'Anteontem',
+                    y: 32.3
+                }, {
+                    x: 'Ontem',
+                    y: 32.0
+                }, {
+                    x: 'Hoje',
+                    y: 31.5
+                }
+                ],
+                borderColor: '#0b6623',
+                borderWidth: 4,
+
+            },
 
             ],
         },

@@ -63,24 +63,28 @@ function entrar(req, res) {
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
-    var cnpj = req.body.cnpjServer
+    var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    
+    var confirmar = req.body.confirmarServer;
+    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
 
     // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
+    if (nome.length < 5) {
+        res.status(400).send("Nome inválido!");
+    } else if (cnpj.length != 14) {
+        res.status(400).send("CNPJ inválido!");
+    } else if (email.indexOf("@") < -1 && (email.indexOf(".com") < -1 || email.indexOf(".ind") < -1) || 
+        email.indexOf(".com.br") < -1 || email.indexOf(".ind.br") < -1) {
+        res.status(400).send("Email inválido!");
+    } else if (senha.length < 8 || !regex.exec(senha)) {
+        res.status(400).send("Senha inválida!");
+    } else if (confirmar != senha) {
+        res.status(400).send("Senha inválida!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome,cnpj , email, senha, )
+        usuarioModel.cadastrar(nome, cnpj, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -21,10 +21,10 @@ create table empresa (
 
 create table usuario (
 	idcadastro int primary key auto_increment,
-	Nome_usuario varchar(40),
-	CNPJ char(14),
-	email varchar(50),
-	senha varchar(30),
+	Nome_usuario varchar(40) not null,
+	CNPJ char(14) not null,
+	email varchar(50) unique not null,
+	senha varchar(30) not null,
 	fk_cliente int,
 	foreign key (fk_cliente) references empresa (idcliente)
 	);

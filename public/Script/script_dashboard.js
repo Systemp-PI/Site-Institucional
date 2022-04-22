@@ -39,4 +39,7 @@ function mostrar_dados_dashboard(idMaq, vetor,classe,myChart) {
        myChart.data.datasets[0].data.push(data[4]);
        myChart.update();
     }
+    if (myChart.data.labels.length == 10){
+        myChart.data.labels.shift();
+    }
 }

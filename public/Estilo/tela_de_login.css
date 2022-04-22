@@ -97,8 +97,8 @@ input::placeholder{
     position: absolute;
     width: 200px;
     font-size: 13px;
-    margin-top: -20%;
-    margin-left: 140%;
+    margin-top: 10%;
+    margin-left: 160%;
 }
 
 #but_entrar {

@@ -5,7 +5,7 @@ function cadastrarMaquina() {
     formulario.style.transition = 'opacity 0.5s linear';
     formulario.style.opacity = '1';
 }
-
+var data=0
 //Cadastro de máquina nova (ainda não funcional)
 
 var temperatura_max = 0
@@ -28,15 +28,11 @@ function mostrar_dados_dashboard(idMaq, vetor,classe,myChart) {
         span_ideal.innerHTML = valores[2] + "°C"
         span_alta.innerHTML = valores[3] + "°C"
         span_m_alta.innerHTML = valores[4] + "°C"
-        addData(myChart,[37.8,37.9,38,38.2,38.5])
+        addData(myChart,[Math.random()*(41.5-40.5)+40.5])
     }
     function addData(myChart,data) {
        myChart.data.labels.push(new Date().toLocaleTimeString())
        myChart.data.datasets[0].data.push(data[0]);
-       myChart.data.datasets[0].data.push(data[1]);
-       myChart.data.datasets[0].data.push(data[2]);
-       myChart.data.datasets[0].data.push(data[3]);
-       myChart.data.datasets[0].data.push(data[4]);
        myChart.update();
     }
     if (myChart.data.labels.length == 10){

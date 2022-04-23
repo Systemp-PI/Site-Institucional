@@ -22,7 +22,7 @@
             <!--  <a href="dashboard.html"><u>Dashboard</u></a> -->
         </nav>
     </header>
-    <div id="adicionar_maq_nova">
+    <!-- <div id="adicionar_maq_nova">
         <span class="span_maquinas">Adicionar uma nova máquina:</span>
         <img id="add_icon" src="imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
     </div>
@@ -45,11 +45,10 @@
             </form>
             </select><br>
         </div>
-    </div>
+    </div>          --->
     </div>
     <div id="niveis_alerta">
-        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span>
-        </div>
+        <div class="alertas m_baixa">Nível crítico:<br> Temperatura muito baixa<br> <span id="span_m_baixa"></span></div>
         <div class="alertas baixa">Nível alerta:<br>Temperatura abaixo do ideal<br> <span id="span_baixa"></span></div>
         <div class="alertas ideal">Nível estável:<br> Temperatura ideal<br> <span id="span_ideal"></span></div>
         <div class="alertas alta">Nível alerta:<br> Temperatura acima do ideal<br> <span id="span_alta"></span></div>
@@ -57,49 +56,54 @@
     </div>
     <div id="container_redutores">
         <id class="identificacao_maq"><span>maquina 1</span>
-            <img class="redutor_img img1" id="maq1"  onclick="mostrar_dados_dashboard('maq1',[41.5,43,45.5,48,50.5],'grafico1',myChart)"
+            <img class="redutor_img img1" id="maq1"
+                onclick="mostrar_dados_dashboard('maq1',[41.5,43,45.5,48,50.5],'grafico1',myChart)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </id>
         <div class="identificacao_maq"><span>maquina 2</span>
-            <img class="redutor_img img2" id="maq2" onclick="mostrar_dados_dashboard('maq2',[39,42,45,48,51],'grafico2',myChart2)"
+            <img class="redutor_img img2" id="maq2"
+                onclick="mostrar_dados_dashboard('maq2',[39,42,45,48,51],'grafico2',myChart2)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 3</span>
-            <img class="redutor_img img3" id="maq3" onclick="mostrar_dados_dashboard('maq3',[37.8,40.3,43.8,46.3,48.8],'grafico3',myChart3)"
+            <img class="redutor_img img3" id="maq3"
+                onclick="mostrar_dados_dashboard('maq3',[37.8,40.3,43.8,46.3,48.8],'grafico3',myChart3)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 4</span>
-            <img class="redutor_img img4"id="maq4" onclick="mostrar_dados_dashboard('maq4',[35,40,45,50,55],'grafico4',myChart4)"
+            <img class="redutor_img img4" id="maq4"
+                onclick="mostrar_dados_dashboard('maq4',[35,40,45,50,55],'grafico4',myChart4)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
         <div class="identificacao_maq"><span>maquina 5</span>
-            <img class="redutor_img img5" id="maq5" onclick="mostrar_dados_dashboard('maq5',[30,31,32,33,34],'grafico5',myChart5)"
+            <img class="redutor_img img5" id="maq5"
+                onclick="mostrar_dados_dashboard('maq5',[30,31,32,33,34],'grafico5',myChart5)"
                 src="https://cdn4.iconfinder.com/data/icons/flat-industrial-equipment-1/32/reducer_rotate_gear_torque_gearbox-512.png"
                 alt="">
         </div>
     </div>
     <div class="container_graficos">
 
-        <div id="grafico1" style="display: none;">
+        <div id="grafico1" class="graficos" style="display: none;">
             <canvas id="myChart1"></canvas>
         </div>
-        <div id="grafico2" style="display: none;">
+        <div id="grafico2" class="graficos" style="display: none;">
             <canvas id="myChart2"></canvas>
         </div>
-        <div id="grafico3" style="display: none;">
+        <div id="grafico3" class="graficos" style="display: none;">
             <canvas id="myChart3"></canvas>
         </div>
-        <div id="grafico4" style="display: none;">
+        <div id="grafico4" class="graficos" style="display: none;">
             <canvas id="myChart4"></canvas>
         </div>
-        <div id="grafico5" style="display: none;">
+        <div id="grafico5" class="graficos" style="display: none;">
             <canvas id="myChart5"></canvas>
         </div>
-        <div id="grafico2">
+        <div id="graficoMedia" class="graficos">
             <canvas id="myChartMedia"></canvas>
         </div>
 
@@ -133,21 +137,25 @@
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx2 = document.getElementById('myChart2');
     ctx2.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx3 = document.getElementById('myChart3');
     ctx3.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx4 = document.getElementById('myChart4');
     ctx4.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
+
     const ctx5 = document.getElementById('myChart5');
     ctx5.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
@@ -169,7 +177,7 @@
                 borderWidth: 4,
 
             }]
-         
+
         },
         options: {
 
@@ -189,12 +197,12 @@
         data: {
             datasets: [{
                 label: 'Temperatura do sensor 2',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                backgroundColor: 'darkmagenta',
+                borderColor: 'violet',
                 borderWidth: 4,
 
             }]
-         
+
         },
         options: {
 
@@ -214,12 +222,12 @@
         data: {
             datasets: [{
                 label: 'Temperatura do sensor 3',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                backgroundColor: '#1338be',
+                borderColor: '#63c5da',
                 borderWidth: 4,
 
             }]
-         
+
         },
         options: {
 
@@ -239,12 +247,12 @@
         data: {
             datasets: [{
                 label: 'Temperatura do sensor 4',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                backgroundColor: 'gold',
+                borderColor: '#fff380',
                 borderWidth: 4,
 
             }]
-         
+
         },
         options: {
 
@@ -264,12 +272,12 @@
         data: {
             datasets: [{
                 label: 'Temperatura do sensor 5',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
+                backgroundColor: '#0b6623',
+                borderColor: 'lightgreen',
                 borderWidth: 4,
 
             }]
-         
+
         },
         options: {
 
@@ -292,26 +300,14 @@
                 label: 'Média diária sensor 1',
                 backgroundColor: 'tomato',
                 data: [{
-                    x: '12/04',
+                    x: '25/04',
                     y: 38.1
                 }, {
-                    x: '13/04',
+                    x: '26/04',
                     y: 35.7
                 }, {
-                    x: '14/04',
+                    x: '27/04',
                     y: 36.8
-                }, {
-                    x: '15/04',
-                    y: 37.6
-                }, {
-                    x: '16/04',
-                    y: 36.4
-                }, {
-                    x: '17/04',
-                    y: 35.9
-                }, {
-                    x: '18/04',
-                    y: 37.4
                 }
                 ],
                 borderColor: 'firebrick',
@@ -319,35 +315,77 @@
 
             },
             {
-                label: 'Média diária sensor 2',
+                label: 'Sensor 2',
                 backgroundColor: 'violet',
                 data: [{
-                    x: '12/04',
+                    x: '25/04',
                     y: 38.9
                 }, {
-                    x: '13/04',
+                    x: '26/04',
                     y: 37.2
                 }, {
-                    x: '14/04',
-                    y: 34.6
-                }, {
-                    x: '15/04',
-                    y: 36.8
-                }, {
-                    x: '16/04',
-                    y: 37.5
-                }, {
-                    x: '17/04',
+                    x: '27/04',
                     y: 35.4
-                }, {
-                    x: '18/04',
-                    y: 37.3
                 }
                 ],
                 borderColor: 'darkmagenta',
                 borderWidth: 4,
 
-            }
+            },
+            {
+                label: 'Sensor 3',
+                backgroundColor: '#63c5da',
+                data: [{
+                    x: '25/04',
+                    y: 40.3
+                }, {
+                    x: '26/04',
+                    y: 38.1
+                }, {
+                    x: '27/04',
+                    y: 39.9
+                }
+                ],
+                borderColor: '#1338be',
+                borderWidth: 4,
+
+            },
+            {
+                label: 'Sensor 4',
+                backgroundColor: '#fff380',
+                data: [{
+                    x: '25/04',
+                    y: 42.0
+                }, {
+                    x: '26/04',
+                    y: 40.6
+                }, {
+                    x: '27/04',
+                    y: 41.1
+                }
+                ],
+                borderColor: 'gold',
+                borderWidth: 4,
+
+            },
+            {
+                label: 'Sensor 5',
+                backgroundColor: 'lightgreen',
+                data: [{
+                    x: '25/04',
+                    y: 32.3
+                }, {
+                    x: '26/04',
+                    y: 32.0
+                }, {
+                    x: '27/04',
+                    y: 31.5
+                }
+                ],
+                borderColor: '#0b6623',
+                borderWidth: 4,
+
+            },
 
             ],
         },
@@ -371,6 +409,7 @@
     )
 
         ;
+
 
 </script>
 <script src="Script/script_dashboard.js"></script>

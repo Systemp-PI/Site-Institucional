@@ -78,7 +78,7 @@ label {
     margin-bottom: 1%;
 }
 
-input{
+input {
     border: solid white 2px;
     border-radius: 10px;
     height: 6%;
@@ -207,3 +207,5 @@ footer {
     border-top: 2px solid white;
     margin-top: 35px;
 }
+
+

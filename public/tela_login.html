@@ -15,11 +15,11 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="simulador.html">Simulador</a>
-           <!--<a href="#sobre_nos">Sobre nós</a>-->
+            <!--<a href="#sobre_nos">Sobre nós</a>-->
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html">Cadastro</a>
             <a href="tela_login.html"><u>Login</u></a>
-          <!--   <a href="dashboard.html">Dashboard</a> -->
+            <!--   <a href="dashboard.html">Dashboard</a> -->
         </nav>
     </header>
 
@@ -30,11 +30,15 @@
             <label for="input_email">Email:</label>
             <input type="email" name="" placeholder="Exemplo@gmail.com" id="input_email">
             <span id="span_erro_email"></span>
+
             <label for="input_senha">Senha:</label>
             <input type="password" name="" placeholder="Digite sua senha" id="input_senha">
-            
+            <img id="eye" onclick="senha_ver()" src="../public/imgs/ver_senha.png" alt="" width="20px"
+            style="cursor: pointer;">
+
             <button onclick="entrar()" id="but_entrar">Acessar</button>
-            <span id="cadastro"> Não tem cadastro? Cadastre-se <a href="cadastro.html" id="link_cadastro"> <b> aqui </b> </a> </span>
+            <span id="cadastro"> Não tem cadastro? Cadastre-se <a href="cadastro.html" id="link_cadastro"> <b> aqui </b>
+                </a> </span>
 
         </div>
     </div>
@@ -63,20 +67,20 @@
 </html>
 <script>
 
-function entrar(){
+    function entrar() {
 
-    var emailVar = input_email.value;
-    var senhaVar =  input_senha.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
 
-     //Validação e-mail
-     if (emailVar.indexOf('@') < 3 || emailVar.endsWith('.com.br', '.com', '.ind.br', '.ind')){
-        span_erro_email.innerHTML = '*Insira "@" e terminação .com, por exemplo'
-    }
-    else {
-        span_erro_email.innerHTML = "✓"
-    }
+        //Validação e-mail
+        if (emailVar.indexOf('@') < 3 || emailVar.endsWith('.com.br', '.com', '.ind.br', '.ind')) {
+            span_erro_email.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+        }
+        else {
+            span_erro_email.innerHTML = "✓"
+        }
 
-fetch("/usuarios/autenticar", {
+        fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -120,7 +124,32 @@ fetch("/usuarios/autenticar", {
         })
 
         return false;
+
     }
 
+    const passwordinput = document.getElementById('input_senha')
+    const olho_aberto = document.getElementById('eye')
+
+    function senha_ver() {
+        let inputtype = passwordinput.type == "password"
+
+        if (inputtype) {
+            mostrar_senha()
+        }
+        else {
+            esconder_senha()
+        }
+
+    }
+
+    function mostrar_senha() {
+        passwordinput.setAttribute("type", "text")
+        olho_aberto.setAttribute("src", "../public/imgs/senha.png")
+    }
+
+    function esconder_senha() {
+        passwordinput.setAttribute("type", "password")
+        olho_aberto.setAttribute("src", "../public/imgs/ver_senha.png")
+    }
 
 </script>

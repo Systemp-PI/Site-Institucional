@@ -13,11 +13,25 @@ var temperatura_alerta_quente = 0
 var temperatura_ideal = 0
 var temperatura_alerta_frio = 0
 var temperatura_min = 0
+var intervalo
 function enviar_dados_maquina() {
     temperatura_max = Number(input_temperatura_max.value);
     temperatura_min = Number(input_temperatura_min.value);
 }
 function mostrar_dados_dashboard(idMaq, vetor, classe, myChart) {
+    console.log(intervalo)
+    if (intervalo !== undefined) {
+        clearInterval(intervalo)
+    }
+    intervalo = setInterval(function () {
+        adicionar_dados(idMaq, vetor, classe, myChart)
+       
+    }, 2000)
+    console.log(intervalo)
+
+}
+
+function adicionar_dados(idMaq, vetor, classe, myChart) {
     var dashboard = document.getElementById(classe)
     esconder_graficos()
     dashboard.style.display = 'block'
@@ -45,12 +59,13 @@ function mostrar_dados_dashboard(idMaq, vetor, classe, myChart) {
         myChart.data.datasets[0].data.shift();
     }
     myChart.update();
-}
 
-function esconder_graficos() {
-    document.getElementById('grafico1').style.display = 'none'
-    document.getElementById('grafico2').style.display = 'none'
-    document.getElementById('grafico3').style.display = 'none'
-    document.getElementById('grafico4').style.display = 'none'
-    document.getElementById('grafico5').style.display = 'none'
+
+    function esconder_graficos() {
+        document.getElementById('grafico1').style.display = 'none'
+        document.getElementById('grafico2').style.display = 'none'
+        document.getElementById('grafico3').style.display = 'none'
+        document.getElementById('grafico4').style.display = 'none'
+        document.getElementById('grafico5').style.display = 'none'
+    }
 }

@@ -45,56 +45,7 @@ a:hover {
     justify-content: center;
     padding-top: 20px;
 }
-#selecao {
-   width: 300px;
-   height: 200px;
-   display: flex;
-   flex-direction: column;
-}
 
-#adicionar_maq_nova{
-    display: flex;
-    width: 300px;
-    height: 100px;
-}
-
-#formulario_maquina_nova {
-  
-  width: 300px;
-  display: flex;
-  justify-content: center;
-    align-items: center;
-    
-
-}
-
-select {
-    width: 200px;
-    height: 30px;
-    font-size: 20px;
-    
-}
-
-
-#ocultar {
-    margin-top: 10%;
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    background-color: #393e46;
-    visibility:hidden;
-    opacity:0;
-    transition:opacity 0.5s linear;
-    position: fixed;
-}
-
-
-
-#add_icon{
-    width: 100px;
-    height: 100px;
-    
-}
 
 #add_icon:hover{
 cursor: pointer;
@@ -135,14 +86,12 @@ input{
     font-weight: bold;
     margin-bottom: 5px;
 }
-.redutor_img{
-    border-radius: 50px;
-}
+
 .redutor_img.img1{
     width: 100px;
     height: 100px;
     margin-right: 30px;
-    background-color: red;
+    background-color: green;
     cursor: pointer;
 }
 .redutor_img.img2{
@@ -173,7 +122,7 @@ input{
     width: 100px;
     height: 100px;
     margin-right: 30px;
-    background-color:green;
+    background-color:red;
  
     cursor: pointer;
 }
@@ -189,8 +138,9 @@ input{
     margin-right: 50px;
     text-align: center;
     font-weight: bold;
-    border-radius: 30px;
+   
 }
+
 .alertas.m_baixa{
     background-color: rgb(39, 9, 191);
 

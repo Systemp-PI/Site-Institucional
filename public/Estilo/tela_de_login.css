@@ -86,6 +86,7 @@ input {
     color: rgb(0, 0, 0);
     padding: 2%;
     margin-bottom: 6%;
+    box-shadow: 2px 2px gray ;
 }
 
 input::placeholder{

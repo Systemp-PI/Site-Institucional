@@ -100,6 +100,7 @@ form input {
     border-radius: 10px;
     height: 6%;
     width: 80%;
+    box-shadow: 2px 2px gray ;
 }
 
 label {

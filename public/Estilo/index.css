@@ -349,8 +349,8 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 25%;
-    height: 70%;
+    width: 20%;
+    height: 65%;
     border-radius: 50%;
 }
 
@@ -360,8 +360,8 @@ footer {
 }
 
 .quadro {
-    width: 120px;
-    height: auto;
+    height: 60%;
+    width: auto;
 }
 
 .imagem2 {

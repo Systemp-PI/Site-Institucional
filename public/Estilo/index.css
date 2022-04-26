@@ -82,11 +82,10 @@ a:hover {
     align-items: center;
 }
 
-#container_produto h1 {
+#container_produto h2 {
     color: #eeeeee;
-    font-size: 38px;
+    font-size: 30px;
     font-weight: 800;
-    border-bottom: 2px solid white;
 }
 
 .painel {
@@ -162,7 +161,7 @@ a:hover {
     font-weight: 800;
     font-size: 18px;
     width: 80%;
-    margin-bottom: 10.5%;
+    margin-bottom: 30%;
 }
 
 

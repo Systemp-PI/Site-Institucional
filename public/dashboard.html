@@ -132,6 +132,7 @@
         </div>
     </footer>
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@^3"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
@@ -222,6 +223,7 @@
     )
 
         ;
+
     const myChart3 = new Chart(ctx3, {
         type: 'line',
         data: {
@@ -298,123 +300,40 @@
 
         ;
 
-    const myChartMedia = new Chart(ctxMedia, {
-        type: 'bar',
-        data: {
-            datasets: [{
-                label: 'Média diária sensor 1',
-                backgroundColor: 'tomato',
-                data: [{
-                    x: '25/04',
-                    y: 38.1
-                }, {
-                    x: '26/04',
-                    y: 35.7
-                }, {
-                    x: '27/04',
-                    y: 36.8
-                }
-                ],
-                borderColor: 'firebrick',
-                borderWidth: 4,
+        var myChartMedia = new Chart(ctxMedia,{
+    type: 'pie',
+    data: data,
+    options: options
+});
 
-            },
-            {
-                label: 'Sensor 2',
-                backgroundColor: 'violet',
-                data: [{
-                    x: '25/04',
-                    y: 38.9
-                }, {
-                    x: '26/04',
-                    y: 37.2
-                }, {
-                    x: '27/04',
-                    y: 35.4
-                }
-                ],
-                borderColor: 'darkmagenta',
-                borderWidth: 4,
+data = {
+    datasets: [{
+        data: [10, 20, 30]
+    }],
+    
+    labels: [
+        'Red',
+        'Yellow',
+        'Blue'
+    ]
+};
 
-            },
-            {
-                label: 'Sensor 3',
-                backgroundColor: '#63c5da',
-                data: [{
-                    x: '25/04',
-                    y: 40.3
-                }, {
-                    x: '26/04',
-                    y: 38.1
-                }, {
-                    x: '27/04',
-                    y: 39.9
-                }
-                ],
-                borderColor: '#1338be',
-                borderWidth: 4,
-
-            },
-            {
-                label: 'Sensor 4',
-                backgroundColor: '#fff380',
-                data: [{
-                    x: '25/04',
-                    y: 42.0
-                }, {
-                    x: '26/04',
-                    y: 40.6
-                }, {
-                    x: '27/04',
-                    y: 41.1
-                }
-                ],
-                borderColor: 'gold',
-                borderWidth: 4,
-
-            },
-            {
-                label: 'Sensor 5',
-                backgroundColor: 'lightgreen',
-                data: [{
-                    x: '25/04',
-                    y: 32.3
-                }, {
-                    x: '26/04',
-                    y: 32.0
-                }, {
-                    x: '27/04',
-                    y: 31.5
-                }
-                ],
-                borderColor: '#0b6623',
-                borderWidth: 4,
-
-            },
-
-            ],
-        },
-        options: {
-
-            scales: {
-                y: {
-                    min: 20,
-                    suggestedMax: 50,
-                },
-                xAxes: [{
-                    type: 'time',
-                    time: {
-                        unit: 'day'
-                    }
-                }
-                ]
-            }
-        }
+        const config = {
+  type: 'pie',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Pie Chart'
+      }
     }
-    )
-
-        ;
-
+  },
+};
 
 </script>
 <script src="Script/script_dashboard.js"></script>

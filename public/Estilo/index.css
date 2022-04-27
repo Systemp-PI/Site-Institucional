@@ -105,16 +105,29 @@ a:hover {
 }
 
 .img_cor {
-    width: 100%;
+    width: 99.8%;
     height: 40%;
     /* From https://css.glass */
     background: #4c515c;
-    border-radius: 18px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
     display: flex;
     justify-content: center;
+    margin-top: 6.7%;
+}
+
+.img_cor_meio {
+    width: 100%;
+    height: 40%;
+    /* From https://css.glass */
+    background: #4c515c;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    display: flex;
+    justify-content: center;
+    margin-top: 6.7%;
 }
 
 .img_cor img {
@@ -349,8 +362,8 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 25%;
-    height: 70%;
+    width: 20%;
+    height: 65%;
     border-radius: 50%;
 }
 
@@ -360,8 +373,8 @@ footer {
 }
 
 .quadro {
-    width: 120px;
-    height: auto;
+    height: 60%;
+    width: auto;
 }
 
 .imagem2 {

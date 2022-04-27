@@ -71,7 +71,6 @@ a:hover {
 
 #span_erro {
     display: flex;
-    justify-content: space-evenly;
     flex-direction: column;
     margin-top: -10%;
     width: 25%;
@@ -81,7 +80,8 @@ a:hover {
 }
 
 #span_erro span {
-    margin-top: 20%;
+    margin-top: 14%;
+    margin-bottom: 6.5%;
 }
 
 form {

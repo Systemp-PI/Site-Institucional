@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Estilo/cadastro.css">
+    <link rel="icon" href="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <title>Cadastro - SysTemp</title>
+    <title>SysTemp | Cadastro</title>
 </head>
 
 <body>
@@ -20,7 +21,6 @@
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html"><u>Cadastro</u></a>
             <a href="tela_login.html">Login</a>
-            <!--  <a href="dashboard.html">Dashboard</a> -->
         </nav>
     </header>
 
@@ -88,9 +88,8 @@
 
     //Validação nome
     function verificarNome() {
-        nomeVar = nome_usuario.value;
-
-        if (nomeVar.length < 5) {
+        nomeVar = nome_usuario.value.trim();
+        if (nomeVar.length < 5 ) {
             span_erro_nome_usuario.innerHTML = '*Digite no minímo 5 caracteres'
         }
         else {
@@ -112,7 +111,7 @@
 
     //Validação e-mail
     function verificarEmail() {
-        emailVar = email.value;
+        emailVar = email.value.trim();
 
         if (emailVar.indexOf("@") > 3 && (emailVar.endsWith(".com.br") || emailVar.endsWith(".com") ||
             emailVar.endsWith(".ind.br") || emailVar.endsWith(".ind"))) {
@@ -125,10 +124,10 @@
 
     //Validação senha
     function verificarSenha() {
-        senhaVar = senha.value;
+        senhaVar = senha.value.trim();
 
         var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
-        if (senhaVar.length < 8 || senhaVar.length == 0) {
+        if (senhaVar.length < 8 || senhaVar.length == 0  ) {
             span_erro_senha.innerHTML = '*Insira 8 caracteres, 1 número, letra maiúscula, minúscula e 1 caractere especial'
         }
         else if (!regex.exec(senhaVar)) {
@@ -142,7 +141,7 @@
 
     //Validação confirmação de senha
     function verificarConfirmacao() {
-        confirmarVar = conf_senha.value;
+        confirmarVar = conf_senha.value.trim();
 
         if (confirmarVar == '') {
             span_erro_conf_senha.innerHTML = '*Digite uma senha'

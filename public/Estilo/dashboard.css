@@ -138,7 +138,7 @@ input{
 }
 
 .alertas.m_baixa{
-    background-color: rgb(39, 9, 191);
+    background-color: #2709bf;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +147,7 @@ input{
     margin-left: 3%;
 }
 .alertas.baixa{
-    background-color: rgb(17, 157, 185);
+    background-color: #119db9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +155,7 @@ input{
     border-radius: 5px;
 }
 .alertas.ideal{
-    background-color: green;
+    background-color: #008000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +163,7 @@ input{
     border-radius: 5px;
 }
 .alertas.alta{
-    background-color: rgb(215, 126, 9);
+    background-color: #d77e09;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +171,7 @@ input{
     border-radius: 5px;
 }
 .alertas.m_alta{
-    background-color: red;
+    background-color: #ff0000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -194,6 +194,11 @@ align-items: center;
 .graficos {
     width: 42%;
     height: 80%;
+}
+.graficosMedia {
+    width: 25%;
+    height:30%;
+    margin-bottom: 20%;
 }
 
 footer {

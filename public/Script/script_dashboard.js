@@ -18,23 +18,25 @@ function enviar_dados_maquina() {
     temperatura_max = Number(input_temperatura_max.value);
     temperatura_min = Number(input_temperatura_min.value);
 }
-function mostrar_dados_dashboard(idMaq, vetor, classe, myChart) {
+function mostrar_dados_dashboard(idMaq, vetor, classe, myChart, myChartMedia) {
     console.log(intervalo)
     if (intervalo !== undefined) {
         clearInterval(intervalo)
     }
     intervalo = setInterval(function () {
-        adicionar_dados(idMaq, vetor, classe, myChart)
+        adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia)
        
     }, 2000)
     console.log(intervalo)
 
 }
 
-function adicionar_dados(idMaq, vetor, classe, myChart) {
+function adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia) {
     var dashboard = document.getElementById(classe)
+    var dashboardMedia = document.getElementById(myChartMedia)
     esconder_graficos()
     dashboard.style.display = 'block'
+    dashboardMedia.style.display = 'block'
     var maquina = document.getElementById(idMaq)
     maquina.addEventListener('click', operarHTML(vetor))
     function operarHTML(valores) {
@@ -67,5 +69,10 @@ function adicionar_dados(idMaq, vetor, classe, myChart) {
         document.getElementById('grafico3').style.display = 'none'
         document.getElementById('grafico4').style.display = 'none'
         document.getElementById('grafico5').style.display = 'none'
+        document.getElementById('graficoMedia').style.display = 'none'
+        document.getElementById('graficoMedia2').style.display = 'none'
+        document.getElementById('graficoMedia3').style.display = 'none'
+        document.getElementById('graficoMedia4').style.display = 'none'
+        document.getElementById('graficoMedia5').style.display = 'none'
     }
 }

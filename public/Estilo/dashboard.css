@@ -198,9 +198,12 @@ align-items: center;
 .graficosMedia {
     width: 25%;
     height:30%;
-    margin-bottom: 20%;
+    margin-bottom: 28%;
 }
-
+.graficosMedia h1{
+    text-align: center;
+    color: white;
+}
 footer {
     position: relative;
     bottom: 0;

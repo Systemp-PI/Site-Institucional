@@ -98,7 +98,7 @@ input{
     width: 100px;
     height: 100px;
     margin-right: 30px;
-    background-color: orange;
+    background-color: rgb(17, 157, 185);
     cursor: pointer;
 }
 .redutor_img.img3{
@@ -203,6 +203,7 @@ align-items: center;
 .graficosMedia h1{
     text-align: center;
     color: white;
+    font-size: 25px;
 }
 footer {
     position: relative;

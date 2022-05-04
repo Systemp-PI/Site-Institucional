@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Estilo/cadastro_empresa.css" />
+    <link rel="icon"
+        href="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
+    <title>SysTemp | Cadastro</title>
+</head>
+
+<body>
+    <header>
+        <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo" />
+        <nav>
+              <a href="index.html"><u>Sair</u></a>
+            <!-- <a href="#sobre_nos">Sobre nós</a>
+            <a href="#logo_email">Contato</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="cadastro_empresa.html"><u>Cadastro empresa</u></a>
+            -->
+        </nav>
+    </header>
+
+    <div id="title">
+        <h1>Cadastro de empresa:</h1>
+    </div>
+    <div class="container_cadastro">
+       
+            <form>
+                <div id="box_form">
+                    
+                <label for="nome_usuario">Razão social:</label>
+                <input type="text" onkeyup="verificarRazaoSocial()" placeholder="Digite o nome de usuário"
+                    id="razao_social" required />
+                <label for="cnpj">CNPJ: </label>
+                <input type="number" onkeyup="verificarCNPJ()" placeholder="Digite o CNPJ" id="cnpj"
+                    title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required />
+                <label for="inscricao_estadual">Inscrição estadual </label>
+                <input type="text" onkeyup="verificarInscricaoEstual()" placeholder="Digite a inscrição estadual"
+                    id="inscricao_estadual" required />
+                <label for="nomecontatol"> Nome do contato 1 </label>
+                <input type="text" onkeyup="NomeContato1()" placeholder="Digite o nome do contato" id="nomecontatol"
+                    required />
+                <label for="nomecontato2"> Nome do contato 2 </label>
+                <input type="text" onkeyup="NomeContato2()" placeholder="Digite o nome do contato" id="nomecontato2"
+                    required />
+                </div>
+
+                <div id="box_form2">
+                    <label for="emailcontato1"> Email do contato 1  </label>
+                <input type="email" onkeyup="EmailContato()" placeholder="Digite o email do contato" id="emailcontato1"
+                    required />
+                    <label for="emailcontato2"> Email do contato 2  </label>
+                    <input type="email" onkeyup="EmailContato2()" placeholder="Digite o email do contato" id="emailcontato2"
+                        required />
+
+                        <label for="telefonecontato"> Tel do contato 1  </label>
+                    <input type="number" onkeyup="EmailContato2()" placeholder="Digite o telefone do contato" id="telefonecontato"
+                        required />
+
+                        
+                        <label for="telefonecontato2"> Tel do contato 2  </label>
+                    <input type="number" onkeyup="EmailContato2()" placeholder="Digite o telefone do contato" id="telefonecontato2"
+                        required />
+                        
+                    <label for="estado">Selecione seu estado </label>
+                    <select id="estado" name="estado">
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>
+                    </select>
+
+                    <label for="Cidade"> Cidade </label>
+                    <input type="text" onkeyup="Cidade()" placeholder="Digite a cidade" id="Cidade"
+                        required />
+                    </div>
+
+                    </div>
+                    <button type="button" onclick="cadastrar()">Enviar</button>
+              
+            </form>
+      
+
+            
+            <div id="span_erro">
+                <span id="span_erro_nome_usuario"></span>
+                <span id="span_erro_cnpj"></span>
+                <span id="span_erro_email"></span>
+                <span id="span_erro_senha"></span>
+                <span id="span_erro_conf_senha"></span>
+        
+        <footer>
+            <div id="footer_title">
+                <h2 id="title">Fale conosco</h2>
+            </div>
+            <div class="container_footer">
+                <img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png" />
+                <a class="enderecos" href="mailto:systemp@systemp.com.br">systemp@systemp.com.br</a>
+                <img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png" />
+                <a class="enderecos" href="tel:+5511999999999">+55 (11) 99999-9999 </a>
+                <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png" />
+                <a class="enderecos" href="https://linkedin.com/systemp">linkedin.com/systemp</a>
+            </div>
+            <div id="container_copyright">
+                <div class="copyright">
+                    <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+</body>
+
+</html>

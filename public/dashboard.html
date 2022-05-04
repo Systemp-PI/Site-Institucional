@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png">
+    <link rel="icon"
+        href="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png">
     <title>SysTemp | Dashboard</title>
     <link rel="stylesheet" href="Estilo/dashboard.css">
 </head>
@@ -22,18 +23,20 @@
             <a href="tela_login.html">Login</a>
         </nav>
     </header>
-    <!-- <div id="adicionar_maq_nova">
+    <div id="adicionar_maq_nova">
         <span class="span_maquinas">Adicionar uma nova máquina:</span>
-        <img id="add_icon" src="imgs/add_icon.png" onclick="cadastrarMaquina()" alt="Icone de adição de item">
+        <img id="add_icon" href="#formulario_maquina_nova" src="imgs/add_icon.png" onclick="cadastrarMaquina()"
+            alt="Icone de adição de item">
     </div>
     <div id="formulario_maquina_nova">
-        <div id="ocultar">
-            <form action="">
+        <div id="frame_formulario">
+            <form>
+                <span id="fechar" onclick="fechar()">x</span>
                 <label for="input_nome_maquina">Nome da máquina:</label> <br><br>
                 <input type="text" id="input_nome_maquina"><br>
                 <label for="input_temperatura_max">Temperatura máxima(°C):</label><br><br>
                 <input type="text" id="input_temperatura_max"><br>
-                <label for="input_temperatura_min">Temperatura mínima(°C):</label> <br><br>
+                <label for="input_temperatura_min">Temperatura mínima(°C):</label><br><br>
                 <input type="text" id="input_temperatura_min"><br><br>
                 <span class="span_maquinas">Quantidade de sensores:</span><br><br>
 
@@ -43,21 +46,22 @@
                 </select><br><br>
                 <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
             </form>
-            </select><br>
         </div>
-    </div>          --->
     </div>
+
     <div id="niveis_alerta">
         <div class="alertas m_baixa">Nível crítico:<br><span class="titulo_alerta">Temperatura muito
                 baixa</span></span><br> <span id="span_m_baixa"></span></div>
         <div class="alertas baixa">Nível alerta:<br><span class="titulo_alerta">Temperatura abaixo do ideal</span><br>
-            <span id="span_baixa"></span></div>
+            <span id="span_baixa"></span>
+        </div>
         <div class="alertas ideal">Nível estável:<br><span class="titulo_alerta"> Temperatura ideal</span><br> <span
                 id="span_ideal"></span></div>
         <div class="alertas alta">Nível alerta:<br> <span class="titulo_alerta">Temperatura acima do ideal</span>
             </span><br> <span id="span_alta"></span></div>
         <div class="alertas m_alta">Nível crítico:<br> <span class="titulo_alerta">Temperatura muito acima</span><br>
-            <span id="span_m_alta"></span></div>
+            <span id="span_m_alta"></span>
+        </div>
     </div>
     <div id="container_redutores">
         <id class="identificacao_maq"><span>maquina 1</span>
@@ -128,7 +132,7 @@
             <h1>Quantidade de alertas do dia:</h1>
             <canvas id="myChartMedia5"></canvas>
         </div>
-     
+
 
     </div>
     <footer>
@@ -163,41 +167,41 @@
 
     const ctx2 = document.getElementById('myChart2');
     ctx2.style.backgroundColor = '#2E4053';
- 
+
 
     const ctx3 = document.getElementById('myChart3');
     ctx3.style.backgroundColor = '#2E4053';
-  
+
     const ctx4 = document.getElementById('myChart4');
     ctx4.style.backgroundColor = '#2E4053';
-  
+
 
     const ctx5 = document.getElementById('myChart5');
     ctx5.style.backgroundColor = '#2E4053';
-   
+
 
     const ctxMedia = document.getElementById('myChartMedia');
     ctxMedia.style.backgroundColor = '#2E4053';
-    
+
 
     const ctxMedia2 = document.getElementById('myChartMedia2');
     ctxMedia2.style.backgroundColor = '#2E4053';
-   
+
 
     const ctxMedia3 = document.getElementById('myChartMedia3');
     ctxMedia3.style.backgroundColor = '#2E4053';
-   
-    
-    
+
+
+
     const ctxMedia4 = document.getElementById('myChartMedia4');
     ctxMedia4.style.backgroundColor = '#2E4053';
-   
-    
+
+
     const ctxMedia5 = document.getElementById('myChartMedia5');
     ctxMedia5.style.backgroundColor = '#2E4053';
-    
-    
-    
+
+
+
     const myChart1 = new Chart(ctx, {
         type: 'line',
         data: {
@@ -321,109 +325,114 @@
         }
     }
     );
-    
-    var myChartMedia = new Chart(ctxMedia,{
+
+    var myChartMedia = new Chart(ctxMedia, {
         type: 'polarArea',
-        data : {
-    datasets: [{
-        data: [5, 29, 16, 36, 49],
-        color:'red',
-        backgroundColor: [
-      'blue',
-      'lightblue',
-      'green',
-      'orange',
-      'red'
-    ]
-    }],labels: [
-      
-        'Temp. baixo critico',
-        'Temp. baixo',
-        'Temp. ideal',
-        'Temp. alta',
-        'Temp. alta critico'
-    ]
-}})
-    var myChartMedia2 = new Chart(ctxMedia2,{
+        data: {
+            datasets: [{
+                data: [5, 29, 16, 36, 49],
+                color: 'red',
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    })
+    var myChartMedia2 = new Chart(ctxMedia2, {
         type: 'polarArea',
-        data : {
-    datasets: [{
-        data: [51, 43, 26, 18, 16],
-        backgroundColor: [
-      'blue',
-      'lightblue',
-      'green',
-      'orange',
-      'red'
-    ]
-    }],labels: [
-        'Temp. baixo critico',
-        'Temp. baixo',
-        'Temp. ideal',
-        'Temp. alta',
-        'Temp. alta critico'
-    ]
-}});
-    var myChartMedia3 = new Chart(ctxMedia3,{
+        data: {
+            datasets: [{
+                data: [51, 43, 26, 18, 16],
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    });
+    var myChartMedia3 = new Chart(ctxMedia3, {
         type: 'polarArea',
-        data : {
-    datasets: [{
-        data: [14, 32, 65, 32, 12],
-        backgroundColor: [
-      'blue',
-      'lightblue',
-      'green',
-      'orange',
-      'red'
-    ]
-    }],labels: [
-        'Temp. baixo critico',
-        'Temp. baixo',
-        'Temp. ideal',
-        'Temp. alta',
-        'Temp. alta critico'
-    ]
-}});
-    var myChartMedia4 = new Chart(ctxMedia4,{
+        data: {
+            datasets: [{
+                data: [14, 32, 65, 32, 12],
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    });
+    var myChartMedia4 = new Chart(ctxMedia4, {
         type: 'polarArea',
-        data : {
-    datasets: [{
-        data: [27, 33, 55, 34, 24],
-        backgroundColor: [
-      'blue',
-      'lightblue',
-      'green',
-      'orange',
-      'red'
-    ]
-    }],labels: [
-        'Temp. baixo critico',
-        'Temp. baixo',
-        'Temp. ideal',
-        'Temp. alta',
-        'Temp. alta critico'
-    ]
-}});
-    var myChartMedia5 = new Chart(ctxMedia5,{
+        data: {
+            datasets: [{
+                data: [27, 33, 55, 34, 24],
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    });
+    var myChartMedia5 = new Chart(ctxMedia5, {
         type: 'polarArea',
-        data : {
-    datasets: [{
-        data: [11, 12, 43, 63, 30],
-        backgroundColor: [
-      'blue',
-      'lightblue',
-      'green',
-      'orange',
-      'red'
-    ]
-    }],labels: [
-        'Temp. baixo critico',
-        'Temp. baixo',
-        'Temp. ideal',
-        'Temp. alta',
-        'Temp. alta critico'
-    ]
-}});
+        data: {
+            datasets: [{
+                data: [11, 12, 43, 63, 30],
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    });
 </script>
 <script src="Script/script_dashboard.js"></script>
 

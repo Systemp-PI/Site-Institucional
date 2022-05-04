@@ -1,12 +1,13 @@
+var tela_cadastro = document.getElementById("formulario_maquina_nova");
+var abrir_tela = document.getElementById("add_icon");
+var fechar_tela = document.getElementById("fechar")[0];
 
-function cadastrarMaquina() {
-    var formulario = document.getElementById("ocultar")
-    formulario.style.visibility = 'visible'
-    formulario.style.transition = 'opacity 0.5s linear';
-    formulario.style.opacity = '1';
+abrir_tela.onclick = function cadastrarMaquina() {
+    formulario_maquina_nova.style.display = "block";
 }
-
-//Cadastro de máquina nova (ainda não funcional)
+fechar_tela.onclick = function fechar() {
+    formulario_maquina_nova.style.display = "none";
+}
 
 var temperatura_max = 0
 var temperatura_alerta_quente = 0
@@ -39,6 +40,7 @@ function adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia) {
     dashboardMedia.style.display = 'block'
     var maquina = document.getElementById(idMaq)
     maquina.addEventListener('click', operarHTML(vetor))
+
     function operarHTML(valores) {
         span_m_baixa.innerHTML = valores[0] + "°C"
         span_baixa.innerHTML = valores[1] + "°C"

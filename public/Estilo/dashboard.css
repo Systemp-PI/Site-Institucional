@@ -46,6 +46,9 @@ a:hover {
     padding-top: 20px;
 }
 
+#add_icon {
+    width: 150px;
+}
 
 #add_icon:hover{
 cursor: pointer;
@@ -53,6 +56,44 @@ cursor: pointer;
 
 input{
     font-size: 20px;
+}
+
+#adicionar_maq_nova {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formulario_maquina_nova {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+#frame_formulario {
+    display: flex;
+    justify-content: center;
+}
+
+#fechar {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 370px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222831;
+    height: 550px;
+    width: 400px;
 }
 
 #formulario_maquina_nova label {

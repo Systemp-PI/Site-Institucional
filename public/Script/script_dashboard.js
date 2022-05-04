@@ -1,12 +1,12 @@
 var tela_cadastro = document.getElementById("formulario_maquina_nova");
 var abrir_tela = document.getElementById("add_icon");
-var fechar_tela = document.getElementById("fechar")[0];
+var fechar_tela = document.getElementById("exit_icon");
 
 abrir_tela.onclick = function cadastrarMaquina() {
-    formulario_maquina_nova.style.display = "block";
+    tela_cadastro.style.display = "block";
 }
 fechar_tela.onclick = function fechar() {
-    formulario_maquina_nova.style.display = "none";
+    tela_cadastro.style.display = "none";
 }
 
 var temperatura_max = 0

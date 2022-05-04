@@ -32,19 +32,18 @@
         <div id="frame_formulario">
             <form>
                 <span id="exit_icon" onclick="fechar()">&times;</span>
-                <label for="input_nome_maquina">Nome da máquina:</label> <br><br>
-                <input type="text" id="input_nome_maquina"><br>
-                <label for="input_temperatura_max">Temperatura máxima(°C):</label><br><br>
-                <input type="text" id="input_temperatura_max"><br>
-                <label for="input_temperatura_min">Temperatura mínima(°C):</label><br><br>
+                <label for="input_nome_maquina">Nome da máquina:</label> <br>
+                <input type="text" id="input_nome_maquina"><br><br>
+                <label for="input_temperatura_max">Temperatura máxima(°C):</label><br>
+                <input type="text" id="input_temperatura_max"><br><br>
+                <label for="input_temperatura_min">Temperatura mínima(°C):</label><br>
                 <input type="text" id="input_temperatura_min"><br><br>
-                <span class="span_maquinas">Quantidade de sensores:</span><br><br>
-
+                <span class="span_maquinas">Quantidade de sensores:</span><br>
                 <select id="qtd_sensores">
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select><br><br>
-                <button onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
+                <button id="btn_enviar_cadastro" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
             </form>
         </div>
     </div>

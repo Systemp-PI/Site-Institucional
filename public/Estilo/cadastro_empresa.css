@@ -84,6 +84,7 @@ form {
 
 #box_form label {
     font-size: 18px;
+    margin-bottom: 4%;
 }
 
 #box_form2 input {
@@ -113,6 +114,12 @@ form {
     justify-content: space-around;
     height: 90%;
     width: 45%;
+}
+
+#box_form2 label {
+    font-size: 18px;
+    margin-bottom: 4%;
+    margin-top: -2%;
 }
 
 

@@ -36,37 +36,45 @@
                 <label for="nome_usuario">Razão social:</label>
                 <input type="text" onkeyup="verificarRazaoSocial()" placeholder="Digite o nome de usuário"
                     id="razao_social" required />
+                    <span id="erro_razao_social"></span>
                 <label for="cnpj">CNPJ: </label>
-                <input type="number" onkeyup="verificarCNPJ()" placeholder="Digite o CNPJ" id="cnpj"
+                <input type="number" onkeyup="verificarCnpj()" placeholder="Digite o CNPJ" id="cnpj"
                     title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required />
+                <span id="erro_cnpj"></span>
                 <label for="inscricao_estadual">Inscrição estadual </label>
-                <input type="text" onkeyup="verificarInscricaoEstual()" placeholder="Digite a inscrição estadual"
+                <input type="text" onkeyup="verificarIe()" placeholder="Digite a inscrição estadual"
                     id="inscricao_estadual" required />
+                <span id="erro_ie"></span>
                 <label for="nomecontatol"> Nome do contato 1 </label>
-                <input type="text" onkeyup="NomeContato1()" placeholder="Digite o nome do contato" id="nomecontatol"
+                <input type="text" onkeyup="verificarContato1()" placeholder="Digite o nome do contato" id="nomecontatol"
                     required />
+                <span id="erro_contato1"></span>
                 <label for="nomecontato2"> Nome do contato 2 </label>
-                <input type="text" onkeyup="NomeContato2()" placeholder="Digite o nome do contato" id="nomecontato2"
+                <input type="text" onkeyup="verificarContato2()" placeholder="Digite o nome do contato" id="nomecontato2"
                     required />
+                    <span id="erro_contato2"></span>
                 </div>
 
                 <div id="box_form2">
                     <label for="emailcontato1"> Email do contato 1  </label>
-                <input type="email" onkeyup="EmailContato()" placeholder="Digite o email do contato" id="emailcontato1"
+                <input type="email" onkeyup="verificarEmail1()" placeholder="Digite o email do contato" id="emailcontato1"
                     required />
+                <span id="erro_email1"></span>
                     <label for="emailcontato2"> Email do contato 2  </label>
-                    <input type="email" onkeyup="EmailContato2()" placeholder="Digite o email do contato" id="emailcontato2"
+                    <input type="email" onkeyup="verificarEmail2()" placeholder="Digite o email do contato" id="emailcontato2"
                         required />
-
+                        <span id="erro_email2"></span>
                         <label for="telefonecontato"> Tel do contato 1  </label>
-                    <input type="number" onkeyup="EmailContato2()" placeholder="Digite o telefone do contato" id="telefonecontato"
+                    <input type="number" onkeyup="verificarTel1()" placeholder="Digite o telefone do contato" id="telefonecontato"
                         required />
+                        <span id="erro_telContato"></span>
 
                         
                         <label for="telefonecontato2"> Tel do contato 2  </label>
-                    <input type="number" onkeyup="EmailContato2()" placeholder="Digite o telefone do contato" id="telefonecontato2"
+                    <input type="number" onkeyup="verificarTel2()" placeholder="Digite o telefone do contato" id="telefonecontato2"
                         required />
-                        
+                        <span id="erro_telContato2"></span>
+
                     <label for="estado">Selecione seu estado </label>
                     <select id="estado" name="estado">
                         <option value="AC">Acre</option>
@@ -99,9 +107,10 @@
                         <option value="EX">Estrangeiro</option>
                     </select>
 
-                    <label for="Cidade"> Cidade </label>
-                    <input type="text" onkeyup="Cidade()" placeholder="Digite a cidade" id="Cidade"
+                    <label for="input_cidade"> Cidade </label>
+                    <input type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
                         required />
+                    <span id="erro_cidade"></span>
                     </div>
 
                     </div>
@@ -136,5 +145,6 @@
             </div>
         </footer>
 </body>
-
 </html>
+
+<script src="../public/Script/cadastro_empresa.js"></script>

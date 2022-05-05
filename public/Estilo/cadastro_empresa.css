@@ -50,14 +50,12 @@ a:hover {
 
 }
 
-
-
 form {
-    width: 70%;
-    height: 80%;
+    width: 50%;
+    height: 90%;
     display: flex;
-    background-color: #ff8c00;
     justify-content: space-around;
+    background-color: #ff8c00;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
@@ -69,9 +67,9 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 100%;
-    width: 33%;
-
+    height: 90%;
+    width: 45%;
+    margin-top: -3.5%;
 }
 
 #box_form input {
@@ -113,9 +111,8 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 100%;
-    width: 33%;
-
+    height: 90%;
+    width: 45%;
 }
 
 
@@ -125,16 +122,16 @@ form input {
 
 button {
     position: absolute;
-    margin-top: -7.5%;
     margin-left: 46.5%;
+    margin-top: -6%;
     background-color: #fcf9f9b6;
     color: #272525; 
     border: none;
     border-radius: 15px;
     cursor: pointer;
     transition: 0.5s;
-    width: 7%;
-    height: 4%;
+    width: 10%;
+    height: 5%;
 }
 
 button:hover {

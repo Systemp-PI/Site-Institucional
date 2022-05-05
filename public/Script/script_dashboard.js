@@ -19,21 +19,21 @@ function enviar_dados_maquina() {
     temperatura_max = Number(input_temperatura_max.value);
     temperatura_min = Number(input_temperatura_min.value);
 }
-function mostrar_dados_dashboard(idMaq, vetor, classe, myChart, myChartMedia) {
+function mostrar_dados_dashboard(idMaq, vetor, div_grafico, myChart, myChartMedia) {
     console.log(intervalo)
     if (intervalo !== undefined) {
         clearInterval(intervalo)
     }
     intervalo = setInterval(function () {
-        adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia)
+        adicionar_dados(idMaq, vetor, div_grafico, myChart, myChartMedia)
        
     }, 2000)
     console.log(intervalo)
 
 }
 
-function adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia) {
-    var dashboard = document.getElementById(classe)
+function adicionar_dados(idMaq, vetor, div_grafico, myChart, myChartMedia) {
+    var dashboard = document.getElementById(div_grafico)
     var dashboardMedia = document.getElementById(myChartMedia)
     esconder_graficos()
     dashboard.style.display = 'block'
@@ -49,13 +49,9 @@ function adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia) {
         span_m_alta.innerHTML = valores[4] + "°C"
         addData(myChart, [37.8, 40.5, 45, 43, 39.5])
     }
-    function addData(myChart, data) {
+    function addData(myChart, temperatura) {
         myChart.data.labels.push(new Date().toLocaleTimeString())
-        myChart.data.datasets[0].data.push(data[0]);
-        myChart.data.datasets[0].data.push(data[1]);
-        myChart.data.datasets[0].data.push(data[2]);
-        myChart.data.datasets[0].data.push(data[3]);
-        myChart.data.datasets[0].data.push(data[4]);
+        myChart.data.datasets[0].data.push(temperatura[0]);
         myChart.update();
     }
     if (myChart.data.labels.length == 10) {
@@ -67,14 +63,20 @@ function adicionar_dados(idMaq, vetor, classe, myChart, myChartMedia) {
 
     function esconder_graficos() {
         document.getElementById('grafico1').style.display = 'none'
-        document.getElementById('grafico2').style.display = 'none'
-        document.getElementById('grafico3').style.display = 'none'
-        document.getElementById('grafico4').style.display = 'none'
-        document.getElementById('grafico5').style.display = 'none'
         document.getElementById('graficoMedia').style.display = 'none'
-        document.getElementById('graficoMedia2').style.display = 'none'
-        document.getElementById('graficoMedia3').style.display = 'none'
-        document.getElementById('graficoMedia4').style.display = 'none'
-        document.getElementById('graficoMedia5').style.display = 'none'
+
     }
+}
+
+var valorTeste= 0
+function addMaq(){
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    var divMaquina =document.querySelector('#maq1')
+    var spanValor = document.getElementById('valorSpan')
+    let cloneNomeMaq = document.querySelector('.identificacao_maq').cloneNode(true);
+    spanValor.innerHTML=`Maquina ${valorTeste++}`
+ divMaquina.style.backgroundColor="#" + randomColor
+    // remover o id, senão você terá mais de um elemento com o mesmo id
+    document.querySelector('#container_redutores').appendChild(cloneNomeMaq);
+
 }

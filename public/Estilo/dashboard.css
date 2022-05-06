@@ -126,8 +126,10 @@ form {
 }
 #container_redutores{
     display: flex;
-    justify-content:center;
     margin-top: 50px;
+    overflow-x: scroll;
+    width: 650px;
+    margin-left: 33%;
 }
 .identificacao_maq{
     color: white;

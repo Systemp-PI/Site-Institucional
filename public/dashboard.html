@@ -35,9 +35,9 @@
                 <label for="input_nome_maquina">Nome da máquina:</label> <br>
                 <input type="text" id="input_nome_maquina"><br><br>
                 <label for="input_temperatura_max">Temperatura máxima(°C):</label><br>
-                <input type="text" id="input_temperatura_max"><br><br>
+                <input type="number" id="input_temperatura_max"><br><br>
                 <label for="input_temperatura_min">Temperatura mínima(°C):</label><br>
-                <input type="text" id="input_temperatura_min"><br><br>
+                <input type="number" id="input_temperatura_min"><br><br>
                 <span class="span_maquinas">Quantidade de sensores:</span><br>
                 <select id="qtd_sensores">
                     <option value="1">1</option>
@@ -440,5 +440,33 @@
 Terms
 Privacy
 <script src="Script/script_dashboard.js"></script>
+
+<script>
+        function addMaq() {
+        fetch("/maquina/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.location = "tela_login.html"
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+</script>
 
 </html>

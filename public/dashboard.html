@@ -442,6 +442,10 @@ Privacy
 <script src="Script/script_dashboard.js"></script>
 
 <script>
+    var nome_maq = String(input_nome_maquina.value)
+    var temp_min = Number(input_temperatura_min.value)
+    var temp_max = Number(input_temperatura_max.value)
+    
         function addMaq() {
         fetch("/maquina/cadastrar", {
             method: "POST",
@@ -449,14 +453,16 @@ Privacy
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                
+                nomeMaqServer: nome_maq,
+                tempMinServer: temp_min,
+                tempMaxServer: temp_max
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.location = "tela_login.html"
+                alert('Maquina Cadastrada')
 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");

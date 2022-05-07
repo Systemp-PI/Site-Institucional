@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -74,7 +74,7 @@ function cadastrar(req, res) {
         res.status(400).send("Nome inválido!");
     } else if (cnpj.length != 14) {
         res.status(400).send("CNPJ inválido!");
-    } else if (email.indexOf("@") < -1 && (email.indexOf(".com") < -1 || email.indexOf(".ind") < -1) || 
+    } else if (email.indexOf("@") < -1 && (email.indexOf(".com") < -1 || email.indexOf(".ind") < -1) ||
         email.indexOf(".com.br") < -1 || email.indexOf(".ind.br") < -1) {
         res.status(400).send("Email inválido!");
     } else if (senha.length < 8 || !regex.exec(senha)) {
@@ -82,9 +82,56 @@ function cadastrar(req, res) {
     } else if (confirmar != senha) {
         res.status(400).send("Senha inválida!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, cnpj, email, senha)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrar_empresa(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var razao = req.body.razaoServer;
+    var cnpj = req.body.cnpjServer;
+    var insc_estadual = req.body.insc_estadualServer;
+    var nomecont1 = req.body.nomecont1Server;
+    var nomecont2 = req.body.nomecont2Server;
+    var emailcont1 = req.body.emailcont1Server;
+    var emailcont2 = req.body.emailcont2Server;
+    var telcont1 = req.body.telcont1Server;
+    var telcont2 = req.body.telcont2Server;
+    var estado = req.body.estadoServer;
+    var cidade = req.body.cidadeServer;
+
+    // Faça as validações dos valores
+    if (razao.length < 5) {
+        res.status(400).send("Nome inválido!");
+    } /* else if (cnpj.length != 14) {
+        res.status(400).send("CNPJ inválido!");
+    } else if (email.indexOf("@") < -1 && (email.indexOf(".com") < -1 || email.indexOf(".ind") < -1) || 
+        email.indexOf(".com.br") < -1 || email.indexOf(".ind.br") < -1) {
+        res.status(400).send("Email inválido!");
+    } else if (senha.length < 8 || !regex.exec(senha)) {
+        res.status(400).send("Senha inválida!");
+    } else if (confirmar != senha) {
+        res.status(400).send("Senha inválida!"); */
+    else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_empresa(razao, cnpj, insc_estadual ,nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2, estado, cidade)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -105,6 +152,7 @@ function cadastrar(req, res) {
 module.exports = {
     entrar,
     cadastrar,
+    cadastrar_empresa,
     listar,
     testar
 }

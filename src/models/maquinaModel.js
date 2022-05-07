@@ -32,7 +32,6 @@ function cadastrar(nome_maq, temp_min, temp_max) {
 }
 
 module.exports = {
-    entrar,
     cadastrar,
     listar,
 };

@@ -16,7 +16,7 @@
     <header>
         <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo" />
         <nav>
-              <a href="index.html"><u>Sair</u></a>
+            <a href="index.html"><u>Sair</u></a>
             <!-- <a href="#sobre_nos">Sobre nós</a>
             <a href="#logo_email">Contato</a>
             <a href="dashboard.html">Dashboard</a>
@@ -29,14 +29,14 @@
         <h1>Cadastro de empresa:</h1>
     </div>
     <div class="container_cadastro">
-       
-            <form>
-                <div id="box_form">
-                    
+
+        <form>
+            <div id="box_form">
+
                 <label for="nome_usuario">Razão social:</label>
                 <input type="text" onkeyup="verificarRazaoSocial()" placeholder="Digite o nome de usuário"
                     id="razao_social" required />
-                    <span id="erro_razao_social"></span>
+                <span id="erro_razao_social"></span>
                 <label for="cnpj">CNPJ: </label>
                 <input type="number" onkeyup="verificarCnpj()" placeholder="Digite o CNPJ" id="cnpj"
                     title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required />
@@ -45,87 +45,87 @@
                 <input type="text" onkeyup="verificarIe()" placeholder="Digite a inscrição estadual"
                     id="inscricao_estadual" required />
                 <span id="erro_ie"></span>
-                <label for="nomecontatol"> Nome do contato 1 </label>
-                <input type="text" onkeyup="verificarContato1()" placeholder="Digite o nome do contato" id="nomecontatol"
-                    required />
+                <label for="nomecontato1"> Nome do contato 1 </label>
+                <input type="text" onkeyup="verificarContato1()" placeholder="Digite o nome do contato"
+                    id="nomecontato1" required />
                 <span id="erro_contato1"></span>
                 <label for="nomecontato2"> Nome do contato 2 </label>
-                <input type="text" onkeyup="verificarContato2()" placeholder="Digite o nome do contato" id="nomecontato2"
-                    required />
-                    <span id="erro_contato2"></span>
-                </div>
+                <input type="text" onkeyup="verificarContato2()" placeholder="Digite o nome do contato"
+                    id="nomecontato2" required />
+                <span id="erro_contato2"></span>
+            </div>
 
-                <div id="box_form2">
-                    <label for="emailcontato1"> Email do contato 1  </label>
-                <input type="email" onkeyup="verificarEmail1()" placeholder="Digite o email do contato" id="emailcontato1"
-                    required />
+            <div id="box_form2">
+                <label for="emailcontato1"> Email do contato 1 </label>
+                <input type="email" onkeyup="verificarEmail1()" placeholder="Digite o email do contato"
+                    id="emailcontato1" required />
                 <span id="erro_email1"></span>
-                    <label for="emailcontato2"> Email do contato 2  </label>
-                    <input type="email" onkeyup="verificarEmail2()" placeholder="Digite o email do contato" id="emailcontato2"
-                        required />
-                        <span id="erro_email2"></span>
-                        <label for="telefonecontato"> Tel do contato 1  </label>
-                    <input type="number" onkeyup="verificarTel1()" placeholder="Digite o telefone do contato" id="telefonecontato"
-                        required />
-                        <span id="erro_telContato"></span>
+                <label for="emailcontato2"> Email do contato 2 </label>
+                <input type="email" onkeyup="verificarEmail2()" placeholder="Digite o email do contato"
+                    id="emailcontato2" required />
+                <span id="erro_email2"></span>
+                <label for="telefonecontato"> Tel do contato 1 </label>
+                <input type="number" onkeyup="verificarTel1()" placeholder="Digite o telefone do contato"
+                    id="telefonecontato" required />
+                <span id="erro_telContato"></span>
 
-                        
-                        <label for="telefonecontato2"> Tel do contato 2  </label>
-                    <input type="number" onkeyup="verificarTel2()" placeholder="Digite o telefone do contato" id="telefonecontato2"
-                        required />
-                        <span id="erro_telContato2"></span>
 
-                    <label for="estado">Selecione seu estado </label>
-                    <select id="estado" name="estado">
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                        <option value="EX">Estrangeiro</option>
-                    </select>
+                <label for="telefonecontato2"> Tel do contato 2 </label>
+                <input type="number" onkeyup="verificarTel2()" placeholder="Digite o telefone do contato"
+                    id="telefonecontato2" required />
+                <span id="erro_telContato2"></span>
 
-                    <label for="input_cidade"> Cidade </label>
-                    <input type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
-                        required />
-                    <span id="erro_cidade"></span>
-                    </div>
+                <label for="estado">Selecione seu estado </label>
+                <select id="estado" name="estado">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="EX">Estrangeiro</option>
+                </select>
 
-                    </div>
-                    <button type="button" onclick="cadastrar()">Enviar</button>
-            </form>
-      
+                <label for="input_cidade"> Cidade </label>
+                <input type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
+                    required />
+                <span id="erro_cidade"></span>
+            </div>
 
-            
-            <div id="span_erro">
-                <span id="span_erro_nome_usuario"></span>
-                <span id="span_erro_cnpj"></span>
-                <span id="span_erro_email"></span>
-                <span id="span_erro_senha"></span>
-                <span id="span_erro_conf_senha"></span>
-        
+    </div>
+    <button type="button" onclick="cadastrar_empresa()">Enviar</button>
+    </form>
+
+
+
+    <div id="span_erro">
+        <span id="span_erro_nome_usuario"></span>
+        <span id="span_erro_cnpj"></span>
+        <span id="span_erro_email"></span>
+        <span id="span_erro_senha"></span>
+        <span id="span_erro_conf_senha"></span>
+
         <footer>
             <div id="footer_title">
                 <h2 id="title">Fale conosco</h2>
@@ -145,6 +145,172 @@
             </div>
         </footer>
 </body>
+
 </html>
 
 <script src="../public/Script/cadastro_empresa.js"></script>
+
+<script>
+    var razaoSocial = ''
+    var pj = ''
+    var ie = ''
+    var contato1 = ''
+    var contato2 = ''
+    var email1 = ''
+    var email2 = ''
+    var tel1 = ''
+    var tel2 = ''
+    var es = estado.value
+    var cidade = ''
+
+    //Validação razão social
+    function verificarRazaoSocial() {
+        razaoSocial = String(razao_social.value).trim();
+        if (razaoSocial.length < 5) {
+            erro_razao_social.innerHTML = '*Digite no minimo 5 caracteres'
+            return false
+        } else {
+            erro_razao_social.innerHTML = '✓'
+        }
+    }
+
+    //Validação cnpj
+    function verificarCnpj() {
+        pj = String(cnpj.value).trim();
+        if (pj.length != 14) {
+            erro_cnpj.innerHTML = 'Digite 14 números'
+            return false
+        } else {
+            erro_cnpj.innerHTML = '✓'
+        }
+    }
+
+    //Validação inscrição estadual
+    function verificarIe() {
+        ie = String(inscricao_estadual.value).trim();
+        if (ie.length != 9) {
+            erro_ie.innerHTML = 'Digite 9 números'
+            return false
+        } else {
+            erro_ie.innerHTML = '✓'
+        }
+    }
+
+    //Validação nome contato 1
+    function verificarContato1() {
+        contato1 = String(nomecontato1.value).trim();
+        if (contato1.length < 3) {
+            erro_contato1.innerHTML = 'Digite no minimo 3 caracteres'
+            return false
+        } else {
+            erro_contato1.innerHTML = '✓'
+        }
+    }
+
+    //Validação nome contato 2
+    function verificarContato2() {
+        contato2 = String(nomecontato2.value).trim();
+        if (contato2.length < 3) {
+            erro_contato2.innerHTML = 'Digite no minimo 3 caracteres'
+            return false
+        } else {
+            erro_contato2.innerHTML = '✓'
+        }
+    }
+
+    //Validação email 1
+    function verificarEmail1() {
+        email1 = String(emailcontato1.value).trim();
+        if (email1.indexOf("@") > 3 && (email1.endsWith(".com.br") || email1.endsWith(".com") ||
+            email1.endsWith(".ind.br") || email1.endsWith(".ind"))) {
+            erro_email1.innerHTML = '✓'
+        } else {
+            erro_email1.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+            return false
+        }
+    }
+
+    //Validação email 2
+    function verificarEmail2() {
+        email2 = String(emailcontato2.value).trim();
+        if (email2.indexOf("@") > 3 && (email2.endsWith(".com.br") || email2.endsWith(".com") ||
+            email2.endsWith(".ind.br") || email2.endsWith(".ind"))) {
+            erro_email2.innerHTML = '✓'
+        } else {
+            erro_email2.innerHTML = '*Insira "@" e terminação .com, por exemplo'
+            return false
+        }
+    }
+
+    //Validação tel Contato 1
+    function verificarTel1() {
+        tel1 = String(telefonecontato.value).trim();
+        if (tel1.length < 10) {
+            erro_telContato.innerHTML = 'Digite o DD e o número'
+            return false
+        } else {
+            erro_telContato.innerHTML = '✓'
+        }
+    }
+
+    //Validação tel Contato 2
+    function verificarTel2() {
+        tel2 = String(telefonecontato2.value).trim();
+        if (tel2.length < 10) {
+            erro_telContato2.innerHTML = 'Digite o DD e o número'
+            return false
+        } else {
+            erro_telContato2.innerHTML = '✓'
+        }
+    }
+
+    //Validação cidade
+    function verificarCidade() {
+        cidade = String(input_cidade.value).trim();
+        if (cidade.length < 3) {
+            erro_cidade.innerHTML = 'Digite um nome com mais de 3 caracteres'
+            return false
+        } else {
+            erro_cidade.innerHTML = '✓'
+        }
+    }
+
+
+    function cadastrar_empresa() {
+        fetch("/usuarios/cadastrar_empresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                razaoServer: razaoSocial,
+                cnpjServer: pj,
+                insc_estadualServer: ie,
+                nomecont1Server: contato1,
+                nomecont2Server: contato2,
+                emailcont1Server: email1,
+                emailcont2Server: email2,
+                telcont1Server: tel1,
+                telcont2Server: tel2,
+                estadoServer: es,
+                cidadeServer: cidade
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.location = "dashboard.html"
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+</script>

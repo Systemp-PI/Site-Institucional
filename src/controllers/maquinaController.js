@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/maquinaModel");
+var maquinaModel = require("../models/maquinaModel");
 
 var sessoes = [];
 

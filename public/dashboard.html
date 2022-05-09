@@ -30,7 +30,7 @@
     </div>
     <div id="formulario_maquina_nova">
         <div id="frame_formulario">
-            <form>
+            <form id="formulario_envio" >
                 <span id="exit_icon" onclick="fechar()">&times;</span>
                 <label for="input_nome_maquina">Nome da máquina:</label> <br>
                 <input type="text" id="input_nome_maquina"><br><br>
@@ -43,11 +43,10 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select><br><br>
-                <button id="btn_enviar_cadastro" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
             </form>
+            <button id="btn_enviar_cadastro" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
         </div>
     </div>
-<button id='btnAddmaq'onclick="addMaq()">Adicionar nova máquina</button>
     <div id="niveis_alerta">
         <div class="alertas m_baixa">Nível crítico:<br><span class="titulo_alerta">Temperatura muito
                 baixa</span></span><br> <span id="span_m_baixa"></span></div>
@@ -65,52 +64,18 @@
     <div id="container_redutores">
         <div class="identificacao_maq"><span id="valorSpan">maquina 1</span>
             <img class="redutor_img img1" id="maq1"
-                onclick="mostrar_dados_dashboard('maq1',[41.5,43,45.5,48,50.5],'grafico1',myChart1, 'graficoMedia')"
+                onclick="mostrar_dados_dashboard('maq',[37.8, 40.5, 45, 43, 39.5], 'grafico1', myChart1, 'graficoMedia')"
                 src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
                 alt="">
         </div>
-        <div class="identificacao_maq"><span>maquina 2</span>
-            <img class="redutor_img img2" id="maq2"
-                onclick="mostrar_dados_dashboard('maq2',[39,42,45,48,51],'grafico2',myChart2, 'graficoMedia2')"
-                src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
-                alt="">
-        </div>
-        <div class="identificacao_maq"><span>maquina 3</span>
-            <img class="redutor_img img3" id="maq3"
-                onclick="mostrar_dados_dashboard('maq3',[37.8,40.3,43.8,46.3,48.8],'grafico3',myChart3, 'graficoMedia3')"
-                src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
-                alt="">
-        </div>
-        <div class="identificacao_maq"><span>maquina 4</span>
-            <img class="redutor_img img4" id="maq4"
-                onclick="mostrar_dados_dashboard('maq4',[35,40,45,50,55],'grafico4',myChart4, 'graficoMedia4')"
-                src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
-                alt="">
-        </div>
-        <div class="identificacao_maq"><span>maquina 5</span>
-            <img class="redutor_img img5" id="maq5"
-                onclick="mostrar_dados_dashboard('maq5',[32,34,36,38,40],'grafico5',myChart5, 'graficoMedia5')"
-                src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
-                alt="">
-        </div>
+        
     </div>
     <div class="container_graficos">
 
         <div id="grafico1" class="graficos" style="display: none;">
             <canvas id="myChart1"></canvas>
         </div>
-        <div id="grafico2" class="graficos" style="display: none;">
-            <canvas id="myChart2"></canvas>
-        </div>
-        <div id="grafico3" class="graficos" style="display: none;">
-            <canvas id="myChart3"></canvas>
-        </div>
-        <div id="grafico4" class="graficos" style="display: none;">
-            <canvas id="myChart4"></canvas>
-        </div>
-        <div id="grafico5" class="graficos" style="display: none;">
-            <canvas id="myChart5"></canvas>
-        </div>
+        
         <div id="graficoMedia" class="graficosMedia" style="display: none;">
             <h1>Quantidade de alertas do dia:</h1>
             <canvas id="myChartMedia"></canvas>
@@ -164,40 +129,8 @@
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
 
-    const ctx2 = document.getElementById('myChart2');
-    ctx2.style.backgroundColor = '#2E4053';
-
-
-    const ctx3 = document.getElementById('myChart3');
-    ctx3.style.backgroundColor = '#2E4053';
-
-    const ctx4 = document.getElementById('myChart4');
-    ctx4.style.backgroundColor = '#2E4053';
-
-
-    const ctx5 = document.getElementById('myChart5');
-    ctx5.style.backgroundColor = '#2E4053';
-
-
     const ctxMedia = document.getElementById('myChartMedia');
     ctxMedia.style.backgroundColor = '#2E4053';
-
-
-    const ctxMedia2 = document.getElementById('myChartMedia2');
-    ctxMedia2.style.backgroundColor = '#2E4053';
-
-
-    const ctxMedia3 = document.getElementById('myChartMedia3');
-    ctxMedia3.style.backgroundColor = '#2E4053';
-
-
-
-    const ctxMedia4 = document.getElementById('myChartMedia4');
-    ctxMedia4.style.backgroundColor = '#2E4053';
-
-
-    const ctxMedia5 = document.getElementById('myChartMedia5');
-    ctxMedia5.style.backgroundColor = '#2E4053';
 
 
 
@@ -225,105 +158,6 @@
     }
     )
 
-        ;
-    const myChart2 = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: 'Temperatura do sensor  Máquina 2',
-                backgroundColor: 'darkmagenta',
-                borderColor: 'violet',
-                borderWidth: 4,
-
-            }]
-
-        },
-        options: {
-
-            scales: {
-                y: {
-                    suggestedMin: 20,
-                    suggestedMax: 50,
-                },
-            }
-        }
-    }
-    )
-
-        ;
-    const myChart3 = new Chart(ctx3, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: 'Temperatura do sensor  Máquina 3',
-                backgroundColor: '#1338be',
-                borderColor: '#63c5da',
-                borderWidth: 4,
-
-            }]
-
-        },
-        options: {
-
-            scales: {
-                y: {
-                    suggestedMin: 20,
-                    suggestedMax: 50,
-                },
-            }
-        }
-    }
-    )
-
-        ;
-    const myChart4 = new Chart(ctx4, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: 'Temperatura do sensor  Máquina 4',
-                backgroundColor: 'gold',
-                borderColor: '#fff380',
-                borderWidth: 4,
-
-            }]
-
-        },
-        options: {
-
-            scales: {
-                y: {
-                    suggestedMin: 20,
-                    suggestedMax: 50,
-                },
-            }
-        }
-    }
-    )
-
-        ;
-    const myChart5 = new Chart(ctx5, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: 'Temperatura do sensor Máquina 5',
-                backgroundColor: '#0b6623',
-                borderColor: 'lightgreen',
-                borderWidth: 4,
-
-            }]
-
-        },
-        options: {
-
-            scales: {
-                y: {
-                    suggestedMin: 20,
-                    suggestedMax: 50,
-                },
-            }
-        }
-    }
-    );
 
     var myChartMedia = new Chart(ctxMedia, {
         type: 'polarArea',
@@ -348,90 +182,6 @@
             ]
         }
     })
-    var myChartMedia2 = new Chart(ctxMedia2, {
-        type: 'polarArea',
-        data: {
-            datasets: [{
-                data: [51, 43, 26, 18, 16],
-                backgroundColor: [
-                    'blue',
-                    'lightblue',
-                    'green',
-                    'orange',
-                    'red'
-                ]
-            }], labels: [
-                'Temp. baixo critico',
-                'Temp. baixo',
-                'Temp. ideal',
-                'Temp. alta',
-                'Temp. alta critico'
-            ]
-        }
-    });
-    var myChartMedia3 = new Chart(ctxMedia3, {
-        type: 'polarArea',
-        data: {
-            datasets: [{
-                data: [14, 32, 65, 32, 12],
-                backgroundColor: [
-                    'blue',
-                    'lightblue',
-                    'green',
-                    'orange',
-                    'red'
-                ]
-            }], labels: [
-                'Temp. baixo critico',
-                'Temp. baixo',
-                'Temp. ideal',
-                'Temp. alta',
-                'Temp. alta critico'
-            ]
-        }
-    });
-    var myChartMedia4 = new Chart(ctxMedia4, {
-        type: 'polarArea',
-        data: {
-            datasets: [{
-                data: [27, 33, 55, 34, 24],
-                backgroundColor: [
-                    'blue',
-                    'lightblue',
-                    'green',
-                    'orange',
-                    'red'
-                ]
-            }], labels: [
-                'Temp. baixo critico',
-                'Temp. baixo',
-                'Temp. ideal',
-                'Temp. alta',
-                'Temp. alta critico'
-            ]
-        }
-    });
-    var myChartMedia5 = new Chart(ctxMedia5, {
-        type: 'polarArea',
-        data: {
-            datasets: [{
-                data: [11, 12, 43, 63, 30],
-                backgroundColor: [
-                    'blue',
-                    'lightblue',
-                    'green',
-                    'orange',
-                    'red'
-                ]
-            }], labels: [
-                'Temp. baixo critico',
-                'Temp. baixo',
-                'Temp. ideal',
-                'Temp. alta',
-                'Temp. alta critico'
-            ]
-        }
-    });
 </script>
 <script src="Script/script_dashboard.js"></script>
 
@@ -440,39 +190,5 @@
 Terms
 Privacy
 <script src="Script/script_dashboard.js"></script>
-
-<script>
-    var nome_maq = String(input_nome_maquina.value)
-    var temp_min = Number(input_temperatura_min.value)
-    var temp_max = Number(input_temperatura_max.value)
-    
-        function addMaq() {
-        fetch("/maquina/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeMaqServer: nome_maq,
-                tempMinServer: temp_min,
-                tempMaxServer: temp_max
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                alert('Maquina Cadastrada')
-
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-    }
-</script>
 
 </html>

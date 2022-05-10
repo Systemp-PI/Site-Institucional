@@ -44,9 +44,9 @@ function enviar_dados_maquina() {
 
         if (resposta.ok) {
             alert('Maquina Cadastrada')
-            mostrar_dados_dashboard(nome_maq,[temp_min, 2, 3, 4, temp_max], 'grafico1', myChart1, 'graficoMedia')
+            mostrar_dados_dashboard(nome_maq, [temp_min, 2, 3, 4, temp_max], 'grafico1', myChart1, 'graficoMedia')
             spanValor.innerHTML = `${nome_maq}`
-            divMaquina.setAttribute("id",nome_maq)
+            divMaquina.setAttribute("id", nome_maq)
             divMaquina.style.backgroundColor = "#" + randomColor
             document.querySelector('#container_redutores').appendChild(cloneNomeMaq);
         } else {
@@ -58,13 +58,13 @@ function enviar_dados_maquina() {
 
     return false;
 }
-function mostrar_dados_dashboard(nome_maq,vetor, div_grafico, myChart, myChartMedia) {
+function mostrar_dados_dashboard(nome_maq, vetor, div_grafico, myChart, myChartMedia) {
     console.log(intervalo)
     if (intervalo !== undefined) {
         clearInterval(intervalo)
     }
     intervalo = setInterval(function () {
-        adicionar_dados(nome_maq,vetor, div_grafico, myChart, myChartMedia)
+        adicionar_dados(nome_maq, vetor, div_grafico, myChart, myChartMedia)
 
     }, 2000)
     console.log(intervalo)
@@ -72,7 +72,7 @@ function mostrar_dados_dashboard(nome_maq,vetor, div_grafico, myChart, myChartMe
 }
 
 //Exibir os gráficos da máquina selecionada pelo usuário
-function adicionar_dados(nome_maq,vetor, div_grafico, myChart, myChartMedia) {
+function adicionar_dados(nome_maq, vetor, div_grafico, myChart, myChartMedia) {
     var dashboard = document.getElementById(div_grafico)
     var dashboardMedia = document.getElementById(myChartMedia)
     esconder_graficos()
@@ -100,7 +100,7 @@ function adicionar_dados(nome_maq,vetor, div_grafico, myChart, myChartMedia) {
     }
     myChart.update();
 
-//Ocultar os demais gráficos da dashboard
+    //Ocultar os demais gráficos da dashboard
     function esconder_graficos() {
         document.getElementById('grafico1').style.display = 'none'
         document.getElementById('graficoMedia').style.display = 'none'

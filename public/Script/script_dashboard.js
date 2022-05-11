@@ -1,3 +1,4 @@
+
 //Abrir/fechar tela de cadastro de máquina
 var tela_cadastro = document.getElementById("formulario_maquina_nova");
 var abrir_tela = document.getElementById("add_icon");
@@ -10,7 +11,7 @@ fechar_tela.onclick = function fechar() {
     tela_cadastro.style.display = "none";
 }
 
-//Envio de dados de cadastr
+//Envio de dados de cadastro
 var form_envio = document.getElementById('formulario_envio')
 var temperatura_max = 0
 var temperatura_alerta_quente = 0
@@ -18,16 +19,43 @@ var temperatura_ideal = 0
 var temperatura_alerta_frio = 0
 var temperatura_min = 0
 var intervalo
-function enviar_dados_maquina() {
-    var nome_maq = String(input_nome_maquina.value)
-    var temp_min = Number(input_temperatura_min.value)
-    var temp_max = Number(input_temperatura_max.value)
-    var valorTeste = 0
-    var divMaquina = document.querySelector('#maq1')
-    var spanValor = document.getElementById('valorSpan')
-    let cloneNomeMaq = document.querySelector('.identificacao_maq').cloneNode(true);
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+var nome_maq = String(input_nome_maquina.value)
+var temp_min = Number(input_temperatura_min.value)
+var temp_max = Number(input_temperatura_max.value)
+var cloneNomeMaq = document.querySelector('.identificacao_maq').cloneNode(true);
+var spanValor = document.getElementById('valorSpan')
+var divMaquina = document.querySelector(`maq1`)
+var nomes = ["maq2","maq3","maq4","maq5","maq6","maq7","maq8","maq9","maq10","maq11"]
 
+
+
+
+
+
+
+
+
+
+
+
+
+function clonar() {
+    var criarDiv=document.querySelector('.identificacao_maq').cloneNode(true);
+    var container= document.querySelector('#container_redutores')
+    container.appendChild(criarDiv);
+    
+}
+
+function criarItens(){
+    for (var i=0; i < 5; i++) {
+        clonar()
+        console.log(i)
+        
+    }
+}
+window.onload = criarItens()
+
+function enviar_dados_maquina() {  
     fetch("/maquina/cadastrar", {
         method: "POST",
         headers: {
@@ -45,10 +73,6 @@ function enviar_dados_maquina() {
         if (resposta.ok) {
             alert('Maquina Cadastrada')
             mostrar_dados_dashboard(nome_maq, [temp_min, 2, 3, 4, temp_max], 'grafico1', myChart1, 'graficoMedia')
-            spanValor.innerHTML = `${nome_maq}`
-            divMaquina.setAttribute("id", nome_maq)
-            divMaquina.style.backgroundColor = "#" + randomColor
-            document.querySelector('#container_redutores').appendChild(cloneNomeMaq);
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
@@ -78,7 +102,7 @@ function adicionar_dados(nome_maq, vetor, div_grafico, myChart, myChartMedia) {
     esconder_graficos()
     dashboard.style.display = 'block'
     dashboardMedia.style.display = 'block'
-    var maquina = document.getElementById(nome_maq)
+    var maquina = document.getElementById(`${nome_maq}`)
     maquina.addEventListener('click', operarHTML(vetor))
 
     function operarHTML(valores) {

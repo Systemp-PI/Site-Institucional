@@ -160,8 +160,13 @@
     var email2 = ''
     var tel1 = ''
     var tel2 = ''
+    var cep = ''
     var es = estado.value
     var cidade = ''
+    var bairro = ''
+    var rua = ''
+    var numero = ''
+    var complemento = ''
 
     //Validação razão social
     function verificarRazaoSocial() {
@@ -292,8 +297,13 @@
                 emailcont2Server: email2,
                 telcont1Server: tel1,
                 telcont2Server: tel2,
+                cepserver: cep,
                 estadoServer: es,
-                cidadeServer: cidade
+                cidadeServer: cidade,
+                bairroserver: ba,
+                ruaserver: rua,
+                numeroserver: num,
+                complementoserver: comp,
 
             })
         }).then(function (resposta) {

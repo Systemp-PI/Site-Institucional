@@ -25,30 +25,23 @@ var temp_max = Number(input_temperatura_max.value)
 var cloneNomeMaq = document.querySelector('.identificacao_maq').cloneNode(true);
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
+var divImagem= document.querySelector(`.redutor_img`)
 var nomes = ["maq2", "maq3", "maq4", "maq5", "maq6", "maq7", "maq8", "maq9", "maq10", "maq11"]
 
 
-
-
-
-
-
-
-
-
-
-
-
-function clonar() {
+function clonar(atributo) {
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     var criarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     var container = document.querySelector('#container_redutores')
     container.appendChild(criarDiv);
-
+    criarDiv.setAttribute("id",`maq${atributo}`)
+    spanValor.innerHTML=`Maquina ${atributo}`
+    divImagem.style.backgroundColor = "#"+ randomColor
+    
 }
-
 function criarItens() {
     for (var i = 0; i < 5; i++) {
-        clonar()
+        clonar(i)
         console.log(i)
 
     }

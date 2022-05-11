@@ -25,7 +25,7 @@ var temp_max = Number(input_temperatura_max.value)
 var cloneNomeMaq = document.querySelector('.identificacao_maq').cloneNode(true);
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
-var nomes = ["maq2","maq3","maq4","maq5","maq6","maq7","maq8","maq9","maq10","maq11"]
+var nomes = ["maq2", "maq3", "maq4", "maq5", "maq6", "maq7", "maq8", "maq9", "maq10", "maq11"]
 
 
 
@@ -40,22 +40,22 @@ var nomes = ["maq2","maq3","maq4","maq5","maq6","maq7","maq8","maq9","maq10","ma
 
 
 function clonar() {
-    var criarDiv=document.querySelector('.identificacao_maq').cloneNode(true);
-    var container= document.querySelector('#container_redutores')
+    var criarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
+    var container = document.querySelector('#container_redutores')
     container.appendChild(criarDiv);
-    
+
 }
 
-function criarItens(){
-    for (var i=0; i < 5; i++) {
+function criarItens() {
+    for (var i = 0; i < 5; i++) {
         clonar()
         console.log(i)
-        
+
     }
 }
 window.onload = criarItens()
 
-function enviar_dados_maquina() {  
+function enviar_dados_maquina() {
     fetch("/maquina/cadastrar", {
         method: "POST",
         headers: {

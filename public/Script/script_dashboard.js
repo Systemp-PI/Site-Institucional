@@ -11,18 +11,16 @@ fechar_tela.onclick = function fechar() {
     tela_cadastro.style.display = "none";
 }
 
+
 //Envio de dados de cadastro
 var form_envio = document.getElementById('formulario_envio')
-var temperatura_max = 0
-var temperatura_alerta_quente = 0
-var temperatura_ideal = 0
-var temperatura_alerta_frio = 0
-var temperatura_min = 0
 var intervalo
 var nome_maq = String(input_nome_maquina.value)
 var temp_min = Number(input_temperatura_min.value)
 var temp_max = Number(input_temperatura_max.value)
-var cloneNomeMaq = document.querySelector('.identificacao_maq').cloneNode(true);
+var temp_alerta_quente = ((temp_max - temp_min) * 75) / 100
+var temp_ideal = ((temp_max - temp_min) * 50) / 100
+var temp_alerta_frio = ((temp_max - temp_min) * 25) / 100
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem= document.querySelector(`.redutor_img`)
@@ -30,21 +28,20 @@ var nomes = ["maq2", "maq3", "maq4", "maq5", "maq6", "maq7", "maq8", "maq9", "ma
 
 
 function clonar(atributo) {
+    var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    var criarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
-    var container = document.querySelector('#container_redutores')
-    container.appendChild(criarDiv);
-    criarDiv.setAttribute("id",`maq${atributo}`)
-    spanValor.innerHTML=`Maquina ${atributo}`
-    divImagem.style.backgroundColor = "#"+ randomColor
-    
+    var container = document.querySelector('#container_redutores');
+    container.appendChild(clonarDiv);
+    clonarDiv.setAttribute("id",`maq${atributo}`);
+    spanValor.innerHTML=`Maquina ${atributo}`;
+    divImagem.style.backgroundColor = "#"+ randomColor ;
 }
 function criarItens() {
-    for (var i = 0; i < 5; i++) {
+    for (var i = 2; i < 12; i++) {
         clonar(i)
         console.log(i)
-
     }
+    mostrar_dados_dashboard(`maquinaPrincipal`, [temp_min, temp_alerta_frio, temp_ideal, temp_alerta_quente, temp_max], 'grafico1', myChart1, 'graficoMedia')
 }
 window.onload = criarItens()
 
@@ -65,7 +62,7 @@ function enviar_dados_maquina() {
 
         if (resposta.ok) {
             alert('Maquina Cadastrada')
-            mostrar_dados_dashboard(nome_maq, [temp_min, 2, 3, 4, temp_max], 'grafico1', myChart1, 'graficoMedia')
+            
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
@@ -75,13 +72,13 @@ function enviar_dados_maquina() {
 
     return false;
 }
-function mostrar_dados_dashboard(nome_maq, vetor, div_grafico, myChart, myChartMedia) {
+function mostrar_dados_dashboard(idMaquina, vetor,div_grafico, myChart, myChartMedia) {
     console.log(intervalo)
     if (intervalo !== undefined) {
         clearInterval(intervalo)
     }
     intervalo = setInterval(function () {
-        adicionar_dados(nome_maq, vetor, div_grafico, myChart, myChartMedia)
+        adicionar_dados(vetor, 'grafico1', myChart, myChartMedia)
 
     }, 2000)
     console.log(intervalo)
@@ -89,14 +86,14 @@ function mostrar_dados_dashboard(nome_maq, vetor, div_grafico, myChart, myChartM
 }
 
 //Exibir os gráficos da máquina selecionada pelo usuário
-function adicionar_dados(nome_maq, vetor, div_grafico, myChart, myChartMedia) {
+function adicionar_dados(idMaquina,valores, div_grafico, myChart, myChartMedia) {
     var dashboard = document.getElementById(div_grafico)
     var dashboardMedia = document.getElementById(myChartMedia)
     esconder_graficos()
+    var maquina = document.getElementById(idMaquina)
+    maquina.addEventListener('click', operarHTML(valores))
     dashboard.style.display = 'block'
     dashboardMedia.style.display = 'block'
-    var maquina = document.getElementById(`${nome_maq}`)
-    maquina.addEventListener('click', operarHTML(vetor))
 
     function operarHTML(valores) {
         span_m_baixa.innerHTML = valores[0] + "°C"
@@ -121,7 +118,6 @@ function adicionar_dados(nome_maq, vetor, div_grafico, myChart, myChartMedia) {
     function esconder_graficos() {
         document.getElementById('grafico1').style.display = 'none'
         document.getElementById('graficoMedia').style.display = 'none'
-
     }
 }
 

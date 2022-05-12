@@ -75,7 +75,7 @@ a:hover {
 
 #container_produto {
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -90,36 +90,28 @@ a:hover {
 
 .painel {
     background: #ff8c00e7;
-    border-radius: 16px;
+    border-radius: 5%;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.4px);
     -webkit-backdrop-filter: blur(3.4px);
-    height: 85%;
+    height: 75%;
     width: 25%;
     display: flex;
     justify-content: space-around;
-    border-radius: 40px;
     font-size: 16px;
     font-weight: 400;
     color: #eeeeee;
+    /* box-shadow: rgb(0, 0, 0) 15px 0px 15px -15px inset, rgb(0,0,0) -15px 0px 15px -15px inset; */
+    box-shadow: rgb(0, 0, 0) 0px 0px 15px 0px inset;
+    border: 0.01px outset rgba(0, 0, 0, 0.822);
 }
+
+
 
 .img_cor {
-    width: 99.8%;
-    height: 40%;
-    /* From https://css.glass */
-    background: #4c515c;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8.5px);
-    -webkit-backdrop-filter: blur(8.5px);
-    display: flex;
-    justify-content: center;
-    margin-top: 6.7%;
-}
-
-.img_cor_meio {
     width: 100%;
     height: 40%;
+    border-radius: 2%;
     /* From https://css.glass */
     background: #4c515c;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -128,10 +120,12 @@ a:hover {
     display: flex;
     justify-content: center;
     margin-top: 6.7%;
+    box-shadow: rgb(0, 0, 0) 15px 0px 15px -15px inset, rgb(0,0,0) -15px 0px 15px -15px inset;
+    border: 0.01px outset rgba(0, 0, 0, 0.822);
 }
 
 .img_cor img {
-    width: 1000px;
+    width: 15%;
 }
 
 #desc_sensor {
@@ -296,6 +290,8 @@ footer {
     color: white;
     font-weight: 600;
     font-size: 16px;
+    box-shadow: rgb(0, 0, 0) 15px 0px 15px -15px inset, rgb(0,0,0) -15px 0px 15px -15px inset;
+    border: 0.01px outset rgba(0, 0, 0, 0.822);
 }
 
 #container h1 {
@@ -318,10 +314,12 @@ footer {
     width: 40%;
     height: 50%;
     align-items: center;
+  
 }
 
 .imagem img {
     width: 54%;
+  
 }
 
 /*------------------------------------------------------------Parte Colaboradores--------------------------------------------------------*/
@@ -365,11 +363,13 @@ footer {
     width: 20%;
     height: 65%;
     border-radius: 50%;
+   
 }
 
 .foto img {
     border-radius: 50%;
-
+    box-shadow: rgb(0, 0, 0) 15px 0px 15px -15px inset, rgb(0,0,0) -15px 0px 15px -15px inset;
+    border: 1px outset rgba(0, 0, 0, 0.822);
 }
 
 .quadro {

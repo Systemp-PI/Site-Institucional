@@ -194,8 +194,10 @@ footer {
 }
 
 .container_footer a:hover {
-    font-size: 19.5px;
-    transition: 0.8s;
+    -webkit-transform: scale(1.06);
+    -ms-transform: scale(1.06);
+    transform: scale(1.06);
+    transition: 0.5s;
     color: #ff8c00;
 }
 

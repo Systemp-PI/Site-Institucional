@@ -36,7 +36,7 @@ a {
     cursor: pointer;
 }
 
-a:hover {
+nav a:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -269,7 +269,7 @@ form {
 }
 footer {
     position: relative;
-    bottom: 0;
+    top: 205px;
     background-color: black;
     color: white;
     height: 230px;
@@ -291,8 +291,21 @@ footer {
     justify-content: center;
 }
 
+.container_footer a {
+    display: flex;
+    align-items: center;
+}
+
+.container_footer a:hover {
+    -webkit-transform: scale(1.06);
+    -ms-transform: scale(1.06);
+    transform: scale(1.06);
+    transition: 0.5s;
+    color: #ff8c00;
+}
+
 .contatos {
-    margin: 0 7px 0 35px;
+    margin: 0px 7px 0 35px;
 }
 
 #logo_email {

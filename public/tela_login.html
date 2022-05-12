@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon"
-        href="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png" />
+    <link rel="icon" href="./imgs/engrenagem.png" />
     <link rel="stylesheet" href="./Estilo/tela_de_login.css" />
     <title>SysTemp | Login</title>
 </head>
@@ -20,7 +19,7 @@
             <!--<a href="#sobre_nos">Sobre nós</a>-->
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html">Cadastro</a>
-            <a href="tela_login.html"><u>Login</u></a>
+            <a href="tela_login.html" id="agora">Login</a>
         </nav>
     </header>
 
@@ -31,10 +30,9 @@
             <input type="email" name="" placeholder="Exemplo@gmail.com" id="input_email" />
             <span id="span_erro_email"></span>
 
-            <label for="input_senha">Senha:</label>
+            <label for="input_senha" id="label_senha">Senha:</label>
             <input type="password" name="" placeholder="Digite sua senha" id="input_senha" />
-            <img id="eye" onclick="senha_ver()" src="imgs/ver_senha.png" alt="" width="20px" 
-            />
+            <img id="eye" onclick="senha_ver()" src="imgs/ver_senha.png" alt="" width="20px">
 
             <button onclick="entrar()" id="but_entrar">Acessar</button>
             <span id="cadastro">
@@ -79,6 +77,9 @@
         } else {
             span_erro_email.innerHTML = "✓";
         }
+
+        //Validação senha
+
 
         fetch("/usuarios/autenticar", {
             method: "POST",

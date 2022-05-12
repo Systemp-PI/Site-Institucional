@@ -20,7 +20,7 @@
             <!--<a href="#sobre_nos">Sobre nós</a>-->
             <a href="#logo_email">Contato</a>
             <a href="cadastro.html">Cadastro</a>
-            <a href="tela_login.html"><u>Login</u></a>
+            <a href="tela_login.html" id="agora">Login</a>
         </nav>
     </header>
 
@@ -78,6 +78,9 @@
         } else {
             span_erro_email.innerHTML = "✓";
         }
+
+        //Validação senha
+
 
         fetch("/usuarios/autenticar", {
             method: "POST",

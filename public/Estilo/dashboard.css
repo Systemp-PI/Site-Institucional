@@ -37,10 +37,13 @@ a {
 }
 
 a:hover {
-    font-size: 22px;
-    transition: 0.8s;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.5s;
     color: #ff5622;
 }
+
 #container_selecao{
     display: flex;
     justify-content: center;
@@ -129,10 +132,12 @@ form {
     display: flex;
     margin-top: 50px;
     overflow-x: scroll;
+    overflow-y: none;
     width: 650px;
     margin-left: 33%;
     height: 140px;
 }
+
 .identificacao_maq{
     color: white;
     display: flex;

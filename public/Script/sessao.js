@@ -15,11 +15,11 @@ function validarSessao() {
 
         // finalizarAguardar();
     } else {
-        window.location = "../tela_login.html";
+        window.location = "./tela_login.html";
     }
 }
 
 function logOff() {
     sessionStorage.clear();
-    window.location = "../tela_login.html";
+    window.location = "./tela_login.html";
 }

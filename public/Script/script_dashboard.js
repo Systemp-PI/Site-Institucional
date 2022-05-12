@@ -15,12 +15,9 @@ fechar_tela.onclick = function fechar() {
 //Envio de dados de cadastro
 var form_envio = document.getElementById('formulario_envio')
 var intervalo
-var nome_maq = String(input_nome_maquina.value)
-var temp_min = Number(input_temperatura_min.value)
-var temp_max = Number(input_temperatura_max.value)
-var temp_alerta_quente = ((temp_max - temp_min) * 75) / 100
-var temp_ideal = ((temp_max - temp_min) * 50) / 100
-var temp_alerta_frio = ((temp_max - temp_min) * 25) / 100
+var temp_alerta_quente =0
+var temp_ideal = 0
+var temp_alerta_frio = 0
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem= document.querySelector(`.redutor_img`)
@@ -39,13 +36,17 @@ function clonar(atributo) {
 function criarItens() {
     for (var i = 2; i < 12; i++) {
         clonar(i)
-        console.log(i)
+        console.log()
     }
-    mostrar_dados_dashboard(`maquinaPrincipal`, [temp_min, temp_alerta_frio, temp_ideal, temp_alerta_quente, temp_max], 'grafico1', myChart1, 'graficoMedia')
+    mostrar_dados_dashboard(`maquinaPrincipal`, [12,13,14,15,16], 'grafico1', myChart1, 'graficoMedia')
 }
 window.onload = criarItens()
 
 function enviar_dados_maquina() {
+    var nome_maq = String(input_nome_maquina.value)
+var temp_min = Number(input_temperatura_min.value)
+var temp_max = Number(input_temperatura_max.value)
+alert(nome_maq)
     fetch("/maquina/cadastrar", {
         method: "POST",
         headers: {
@@ -78,7 +79,7 @@ function mostrar_dados_dashboard(idMaquina, vetor,div_grafico, myChart, myChartM
         clearInterval(intervalo)
     }
     intervalo = setInterval(function () {
-        adicionar_dados(vetor, 'grafico1', myChart, myChartMedia)
+        adicionar_dados(idMaquina,vetor, div_grafico, myChart, myChartMedia)
 
     }, 2000)
     console.log(intervalo)
@@ -106,6 +107,10 @@ function adicionar_dados(idMaquina,valores, div_grafico, myChart, myChartMedia) 
     function addData(myChart, temperatura) {
         myChart.data.labels.push(new Date().toLocaleTimeString())
         myChart.data.datasets[0].data.push(temperatura[0]);
+        myChart.data.datasets[0].data.push(temperatura[1]);
+        myChart.data.datasets[0].data.push(temperatura[2]);
+        myChart.data.datasets[0].data.push(temperatura[3]);
+        myChart.data.datasets[0].data.push(temperatura[4]);
         myChart.update();
     }
     if (myChart.data.labels.length == 10) {

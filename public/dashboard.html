@@ -43,7 +43,7 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select><br><br>
-                <button id="btn_enviar_cadastro" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
+                <button id="btn_enviar_cadastro" type="button" onclick="enviar_dados_maquina()">Cadastrar Máquina</button>
             </form>
         </div>
     </div>
@@ -63,7 +63,7 @@
     </div>
     <div id="container_redutores">
         <div class="identificacao_maq" id="maquinaPrincipal"
-        onclick="mostrar_dados_dashboard('maquinaPrincipal',[32,34,36,38,40],'grafico1',myChart1, 'graficoMedia')"
+        onclick="mostrar_dados_dashboard(`maquinaPrincipal`, [12,13,14,15,16], 'grafico1', myChart1, 'graficoMedia')"
         ><span id="valorSpan">maquina 1</span>
             <img class="redutor_img img1" id="maq1"
                 src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"

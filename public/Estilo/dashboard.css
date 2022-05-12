@@ -33,6 +33,7 @@ a {
     text-decoration: none;
     font-weight: bold;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 a:hover {

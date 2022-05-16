@@ -1,5 +1,6 @@
-import { lista } from "";
-console.log(lista)
+// import { listar } from '../../src/models/maquinaModel.js'
+
+// console.log('listar', listar)
 //Abrir/fechar tela de cadastro de máquina
 var tela_cadastro = document.getElementById("formulario_maquina_nova");
 var abrir_tela = document.getElementById("add_icon");
@@ -13,6 +14,27 @@ fechar_tela.onclick = function fechar() {
 }
 
 
+function listarMaquinas () {
+    fetch("/maquina/listar", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta.json());
+
+        // if (resposta.ok) {
+        //     alert('Maquina Cadastrada')
+            
+        // } else {
+        //     throw ("Houve um erro ao tentar realizar o cadastro!");
+        // }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    })
+}
+await listarMaquinas()
 //Envio de dados de cadastro
 var form_envio = document.getElementById('formulario_envio')
 var intervalo
@@ -36,7 +58,7 @@ function clonar(atributo) {
 }
 function criarItens() {
     for (var i = 2; i < 12; i++) {
-        clonar(lista())
+        clonar(listar())
         console.log()
     }
     mostrar_dados_dashboard(`maquinaPrincipal`, [12,13,14,15,16], 'grafico1', myChart1, 'graficoMedia')

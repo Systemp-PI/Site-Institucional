@@ -1,4 +1,5 @@
-
+import { lista } from "";
+console.log(lista)
 //Abrir/fechar tela de cadastro de máquina
 var tela_cadastro = document.getElementById("formulario_maquina_nova");
 var abrir_tela = document.getElementById("add_icon");
@@ -35,7 +36,7 @@ function clonar(atributo) {
 }
 function criarItens() {
     for (var i = 2; i < 12; i++) {
-        clonar(i)
+        clonar(lista())
         console.log()
     }
     mostrar_dados_dashboard(`maquinaPrincipal`, [12,13,14,15,16], 'grafico1', myChart1, 'graficoMedia')

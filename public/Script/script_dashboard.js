@@ -14,20 +14,27 @@ fechar_tela.onclick = function fechar() {
 }
 
 
-function listarMaquinas (){
- 
+function listarMaquinas() {
+
     fetch("/maquina/listar", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         },
     }).then(function (resposta) {
-    
-        console.log("resposta: ", resposta.json());
-        
+
+        // console.log("resposta: ", resposta.json());
+        resposta.json().then(function (resultado) {
+            for (var i = 0; i < resultado.length; i++) {
+                clonar(resposta.nome_maquina)
+                console.log(resultado[i,i].nome_maquina)
+                spanValor.innerHTML = resultado[i,i].nome_maquina;
+            }
+
+        })
         // if (resposta.ok) {
         //     alert('Maquina Cadastrada')
-            
+
         // } else {
         //     throw ("Houve um erro ao tentar realizar o cadastro!");
         // }
@@ -39,38 +46,30 @@ await listarMaquinas()
 //Envio de dados de cadastro
 var form_envio = document.getElementById('formulario_envio')
 var intervalo
-var temp_alerta_quente =0
+var temp_alerta_quente = 0
 var temp_ideal = 0
 var temp_alerta_frio = 0
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
-var divImagem= document.querySelector(`.redutor_img`)
+var divImagem = document.querySelector(`.redutor_img`)
 var nomes = ["maq2", "maq3", "maq4", "maq5", "maq6", "maq7", "maq8", "maq9", "maq10", "maq11"]
 
 
-function clonar(atributo) {
+function clonar(atributo,nome_maquina) {
     var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     var container = document.querySelector('#container_redutores');
     container.appendChild(clonarDiv);
-    clonarDiv.setAttribute("id",`listarMaquinas()`);
-    spanValor.innerHTML=`Maquina ${atributo}`;
-    divImagem.style.backgroundColor = "#"+ randomColor ; 
+    clonarDiv.setAttribute("id", atributo); 
+    divImagem.style.backgroundColor = "#" + randomColor;
 }
-function criarItens() {
-    for (var i = 2; i < 12; i++) {
-        clonar(listarMaquinas(temp_min, temp_max))
-        console.log()
-    }
-    mostrar_dados_dashboard(`maquinaPrincipal`, [12,13,14,15,16], 'grafico1', myChart1, 'graficoMedia')
-}
-window.onload = criarItens()
+
 
 function enviar_dados_maquina() {
     var nome_maq = String(input_nome_maquina.value)
-var temp_min = Number(input_temperatura_min.value)
-var temp_max = Number(input_temperatura_max.value)
-alert(nome_maq)
+    var temp_min = Number(input_temperatura_min.value)
+    var temp_max = Number(input_temperatura_max.value)
+    alert(nome_maq)
     fetch("/maquina/cadastrar", {
         method: "POST",
         headers: {
@@ -87,7 +86,7 @@ alert(nome_maq)
 
         if (resposta.ok) {
             alert('Maquina Cadastrada')
-            
+
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
@@ -97,13 +96,13 @@ alert(nome_maq)
 
     return false;
 }
-function mostrar_dados_dashboard(idMaquina, vetor,div_grafico, myChart, myChartMedia) {
+function mostrar_dados_dashboard(idMaquina, vetor, div_grafico, myChart, myChartMedia) {
     console.log(intervalo)
     if (intervalo !== undefined) {
         clearInterval(intervalo)
     }
     intervalo = setInterval(function () {
-        adicionar_dados(idMaquina,vetor, div_grafico, myChart, myChartMedia)
+        adicionar_dados(idMaquina, vetor, div_grafico, myChart, myChartMedia)
 
     }, 2000)
     console.log(intervalo)
@@ -111,7 +110,7 @@ function mostrar_dados_dashboard(idMaquina, vetor,div_grafico, myChart, myChartM
 }
 
 //Exibir os gráficos da máquina selecionada pelo usuário
-function adicionar_dados(idMaquina,valores, div_grafico, myChart, myChartMedia) {
+function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
     var dashboard = document.getElementById(div_grafico)
     var dashboardMedia = document.getElementById(myChartMedia)
     esconder_graficos()

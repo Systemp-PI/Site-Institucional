@@ -8,6 +8,9 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
+    var nome_maq = req.body.nomeMaqServer;
+    var temp_min = req.body.tempMinServer;
+    var temp_max = req.body.tempMaxServer;
     maquinaModel.listar()
         .then(function (resultado) {
             if (resultado.length > 0) {

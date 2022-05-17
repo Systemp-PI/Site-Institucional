@@ -14,16 +14,17 @@ fechar_tela.onclick = function fechar() {
 }
 
 
-function listarMaquinas () {
+function listarMaquinas (){
+ 
     fetch("/maquina/listar", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
     }).then(function (resposta) {
-
+    
         console.log("resposta: ", resposta.json());
-
+        
         // if (resposta.ok) {
         //     alert('Maquina Cadastrada')
             
@@ -52,13 +53,13 @@ function clonar(atributo) {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     var container = document.querySelector('#container_redutores');
     container.appendChild(clonarDiv);
-    clonarDiv.setAttribute("id",`maq${atributo}`);
+    clonarDiv.setAttribute("id",`listarMaquinas()`);
     spanValor.innerHTML=`Maquina ${atributo}`;
-    divImagem.style.backgroundColor = "#"+ randomColor ;
+    divImagem.style.backgroundColor = "#"+ randomColor ; 
 }
 function criarItens() {
     for (var i = 2; i < 12; i++) {
-        clonar(listar())
+        clonar(listarMaquinas(temp_min, temp_max))
         console.log()
     }
     mostrar_dados_dashboard(`maquinaPrincipal`, [12,13,14,15,16], 'grafico1', myChart1, 'graficoMedia')
@@ -148,4 +149,3 @@ function adicionar_dados(idMaquina,valores, div_grafico, myChart, myChartMedia) 
         document.getElementById('graficoMedia').style.display = 'none'
     }
 }
-

@@ -1,10 +1,17 @@
-// import { listar } from '../../src/models/maquinaModel.js'
 
-// console.log('listar', listar)
 //Abrir/fechar tela de cadastro de máquina
 var tela_cadastro = document.getElementById("formulario_maquina_nova");
 var abrir_tela = document.getElementById("add_icon");
 var fechar_tela = document.getElementById("exit_icon");
+var cadastrar_Maquinas = document.getElementById("btn_enviar_cadastro");
+var form_envio = document.getElementById('formulario_envio')
+var intervalo
+var temp_alerta_quente = 0
+var temp_ideal = 0
+var temp_alerta_frio = 0
+var spanValor = document.getElementById('valorSpan')
+var divMaquina = document.querySelector(`maq1`)
+var divImagem = document.querySelector(`.redutor_img`)
 
 abrir_tela.onclick = function cadastrarMaquina() {
     tela_cadastro.style.display = "block";
@@ -29,6 +36,7 @@ function listarMaquinas() {
                 clonar(resposta.nome_maquina)
                 console.log(resultado[i,i].nome_maquina)
                 spanValor.innerHTML = resultado[i,i].nome_maquina;
+                mostrar_dados_dashboard(resultado[i,i], [0,1,2,3,4], 'grafico1', myChart1, 'graficoMedia')
             }
 
         })
@@ -44,28 +52,21 @@ function listarMaquinas() {
 }
 await listarMaquinas()
 //Envio de dados de cadastro
-var form_envio = document.getElementById('formulario_envio')
-var intervalo
-var temp_alerta_quente = 0
-var temp_ideal = 0
-var temp_alerta_frio = 0
-var spanValor = document.getElementById('valorSpan')
-var divMaquina = document.querySelector(`maq1`)
-var divImagem = document.querySelector(`.redutor_img`)
-var nomes = ["maq2", "maq3", "maq4", "maq5", "maq6", "maq7", "maq8", "maq9", "maq10", "maq11"]
 
 
-function clonar(atributo,nome_maquina) {
+function clonar(atributo) {
     var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     var container = document.querySelector('#container_redutores');
     container.appendChild(clonarDiv);
     clonarDiv.setAttribute("id", atributo); 
+    clonarDiv.setAttribute("onclick",  mostrar_dados_dashboard()); 
+
     divImagem.style.backgroundColor = "#" + randomColor;
 }
 
 
-function enviar_dados_maquina() {
+cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var nome_maq = String(input_nome_maquina.value)
     var temp_min = Number(input_temperatura_min.value)
     var temp_max = Number(input_temperatura_max.value)
@@ -114,8 +115,7 @@ function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia)
     var dashboard = document.getElementById(div_grafico)
     var dashboardMedia = document.getElementById(myChartMedia)
     esconder_graficos()
-    var maquina = document.getElementById(idMaquina)
-    maquina.addEventListener('click', operarHTML(valores))
+    operarHTML(valores)
     dashboard.style.display = 'block'
     dashboardMedia.style.display = 'block'
 

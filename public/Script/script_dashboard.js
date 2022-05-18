@@ -6,13 +6,11 @@ var fechar_tela = document.getElementById("exit_icon");
 var cadastrar_Maquinas = document.getElementById("btn_enviar_cadastro");
 var form_envio = document.getElementById('formulario_envio')
 var intervalo
-var temp_alerta_quente = 0
-var temp_ideal = 0
-var temp_alerta_frio = 0
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem = document.querySelector(`.redutor_img`)
-
+var divClick = document.querySelector('.identificacao_maq')
+divClick.onclick= mostrar_dados_dashboard()
 abrir_tela.onclick = function cadastrarMaquina() {
     tela_cadastro.style.display = "block";
 }
@@ -23,6 +21,7 @@ fechar_tela.onclick = function fechar() {
 
 function listarMaquinas() {
 
+
     fetch("/maquina/listar", {
         method: "GET",
         headers: {
@@ -30,13 +29,21 @@ function listarMaquinas() {
         },
     }).then(function (resposta) {
 
+
         // console.log("resposta: ", resposta.json());
         resposta.json().then(function (resultado) {
+            console.log('Esta maquina tem temp min::' + resultado[0, 2].temp_min)
+
+            const temp_alert_min = ((Number( resultado[0, 2].temp_max) - Number( resultado[0, 2].temp_min)) * 25) / 100;
+            const temp_ideal = ((Number(resultado[0, 2].temp_max) - Number( resultado[0, 2].temp_min)) * 50) / 100;
+            const temp_alert_max = ((Number(resultado[0, 2].temp_max) - Number( resultado[0, 2].temp_min)) * 75) / 100;
+            let kpi = new Array(temp_min_crit, temp_alert_min, temp_ideal, temp_alert_max, temp_max_crit)
             for (var i = 0; i < resultado.length; i++) {
                 clonar(resposta.nome_maquina)
-                console.log(resultado[i,i].nome_maquina)
-                spanValor.innerHTML = resultado[i,i].nome_maquina;
-                mostrar_dados_dashboard(resultado[i,i], [0,1,2,3,4], 'grafico1', myChart1, 'graficoMedia')
+                console.log(resultado[i, i].nome_maquina)
+                console.log(kpi)
+                spanValor.innerHTML = resultado[i, i].nome_maquina;
+                mostrar_dados_dashboard(resultado[i, i].nome_maquina, kpi, 'grafico1', myChart1, 'myChartMedia')
             }
 
         })
@@ -49,19 +56,17 @@ function listarMaquinas() {
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     })
+
 }
 await listarMaquinas()
 //Envio de dados de cadastro
-
 
 function clonar(atributo) {
     var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     var container = document.querySelector('#container_redutores');
     container.appendChild(clonarDiv);
-    clonarDiv.setAttribute("id", atributo); 
-    clonarDiv.setAttribute("onclick",  mostrar_dados_dashboard()); 
-
+    clonarDiv.setAttribute("id", atributo);
     divImagem.style.backgroundColor = "#" + randomColor;
 }
 
@@ -97,6 +102,8 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
 
     return false;
 }
+
+
 function mostrar_dados_dashboard(idMaquina, vetor, div_grafico, myChart, myChartMedia) {
     console.log(intervalo)
     if (intervalo !== undefined) {

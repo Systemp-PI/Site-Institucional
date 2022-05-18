@@ -148,13 +148,14 @@
     -->
     <div class="container_comentarios">
         <div class="box_coment">
-            <textarea cols="30" rows="20" placeholder="Escreva aqui seu comentário"></textarea>
-            <button onclick="enviar_resposta" type="submit">Enviar</button>
+            <form action="mailto:gabriel.costa@sptech.school" method="post" enctype="text/plain">
+                <textarea name="comentario:" cols="30" rows="13" placeholder="Escreva aqui seu comentário"></textarea>
+                <button class="botao_form" type="submit">Enviar</button>
+            </form>
         </div>
         <div class="titulo_comentario">
             <h1>Deixe aqui seu comentário!</h1>
             <img src="imgs/comentarios.png">
-
         </div>
     </div>
 

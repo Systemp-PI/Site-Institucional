@@ -101,3 +101,12 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     return false;
 }
 
+{/* <ul id="fora">
+    <li id="dentro1">aaaaaa</li>
+    <li id="dentro2">aaaaaa</li>
+    <li id="dentro3">aaaaaa</li>
+</ul>
+var el = document.getElementById('fora');
+el.addEventListener('click', function(e) {
+    alert(e.target.id);
+}); */}

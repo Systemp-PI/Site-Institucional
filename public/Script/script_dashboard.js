@@ -20,7 +20,7 @@ fechar_tela.onclick = function fechar() {
 
 
 function listarMaquinas() {
-
+    var nome_maquina_card = sessionStorage.NOME_MAQUINA_DIV
 
     fetch("/maquina/listar", {
         method: "GET",
@@ -28,6 +28,7 @@ function listarMaquinas() {
             "Content-Type": "application/json"
         },
     }).then(function (resposta) {
+
 
 
         // console.log("resposta: ", resposta.json());
@@ -40,6 +41,8 @@ function listarMaquinas() {
                 spanValor.innerHTML = resultado[i, i].nome_maquina;
 
             }
+
+            
 
         })
         // if (resposta.ok) {

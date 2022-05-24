@@ -69,11 +69,11 @@ form {
     justify-content: space-evenly;
     height: 90%;
     width: 45%;
-    margin-top: -3.5%;
+    margin-top: -1.2%;
 }
 
 #box_form input {
-    margin-top: -10%;
+    margin-top: -8%;
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
@@ -84,11 +84,11 @@ form {
 
 #box_form label {
     font-size: 18px;
-    margin-bottom: 4%;
+    margin-bottom: 3%;
 }
 
 #box_form2 input {
-    margin-top: -10%;
+    margin-top: -2%;
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
@@ -98,13 +98,13 @@ form {
 }
 
 #box_form2 select {
-    margin-top: -10%;
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 6%;
+    height: 7.5%;
     width: 80%;
     box-shadow: 2px 2px gray;
+    margin-bottom: 18%;
 }
 
 #box_form2 {
@@ -119,7 +119,31 @@ form {
 #box_form2 label {
     font-size: 18px;
     margin-bottom: 4%;
-    margin-top: -2%;
+}
+
+#box_form3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90%;
+    width: 45%;
+    margin-top: -0.5%;
+}
+
+#box_form3 input {
+    margin-top: -8%;
+    color: rgb(0, 0, 0);
+    border: solid white 2px;
+    border-radius: 10px;
+    height: 6%;
+    width: 80%;
+    box-shadow: 2px 2px gray;
+}
+
+#box_form3 label {
+    font-size: 18px;
+    margin-bottom: 5%;
 }
 
 

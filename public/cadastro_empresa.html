@@ -74,7 +74,7 @@
                     id="telefonecontato2" required />
                 <span id="erro_telContato2"></span>
 
-                <label for="estado">Selecione seu estado </label>
+                <label  for="estado">Selecione seu estado </label>
                 <select id="estado" name="estado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -106,10 +106,41 @@
                     <option value="EX">Estrangeiro</option>
                 </select>
 
+              
+            </div>
+
+            <div id="box_form3">
+
+                <label for="input_cep"> Cep </label>
+                <input type="number" onkeyup="verificarCep()" placeholder="Digite o Cep da empresa"
+                    id="input_cep" required />
+                <span id="erro_cep"></span>
+
                 <label for="input_cidade"> Cidade </label>
                 <input type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
                     required />
                 <span id="erro_cidade"></span>
+
+                <label for="input_bairro"> Bairro </label>
+                <input type="text" onkeyup="verificarBairro()" placeholder="Digite o bairro da empresa"
+                    id="input_bairro" required />
+                <span id="erro_bairro"></span>
+
+                <label for="input_rua"> Rua </label>
+                <input type="text" onkeyup="verificarRua()" placeholder="Digite o rua da empresa"
+                    id="input_rua" required />
+                <span id="erro_rua"></span>
+
+                <label for="input_numero"> Numero rua </label>
+                <input type="number" onkeyup="verificarNumero()" placeholder="Digite o numero da empresa"
+                    id="input_numero" required />
+                <span id="erro_numero"></span>
+
+                <label for="input_complemento"> complemento </label>
+                <input type="number" placeholder="Digite o complemento da empresa"
+                    id="input_complemento" required />
+                <span id="erro_complemento"></span>
+
             </div>
 
     </div>
@@ -267,6 +298,17 @@
         }
     }
 
+    //Validação CEP
+    function verificarCep() {
+        cep = String(input_cep.value);
+        if (cep.length != 8) {
+            erro_cep.innerHTML = 'Digite um CEP com 8 dígitos (apenas números)'
+            return false
+        } else {
+            erro_cep.innerHTML = '✓'
+        }
+    }
+
     //Validação cidade
     function verificarCidade() {
         cidade = String(input_cidade.value).trim();
@@ -278,6 +320,17 @@
         }
     }
 
+    //Validação número do endereço
+    function verificarNumero() {
+        numero = String(input_numero.value);
+        if (numero == '') {
+            erro_numero.innerHTML = 'Digite um endereço'
+        } else if (numero.length > 5) {
+            erro_numero.innerHTML = 'Digite um endereço válido'
+        } else {
+            erro_numero.innerHTML = '✓'
+        }
+    }
 
     function cadastrar_empresa() {
         fetch("/usuarios/cadastrar_empresa", {

@@ -31,7 +31,7 @@
     </div>
     <div id="formulario_maquina_nova">
         <div id="frame_formulario">
-            <form id="formulario_envio">
+            <form id="formulario_envio" >
                 <span id="exit_icon" onclick="fechar()">&times;</span>
                 <label for="input_nome_maquina">Nome da máquina:</label> <br>
                 <input type="text" id="input_nome_maquina"><br><br>
@@ -63,20 +63,19 @@
         </div>
     </div>
     <div id="container_redutores">
-        <div class="identificacao_maq" id="maquinaPrincipal"
-            onclick="mostrar_dados_dashboard('maquinaPrincipal', [1,2,3,4,5], 'grafico1', myChart1, 'graficoMedia')">
+        <div class="identificacao_maq" id="maquinaPrincipal" onclick="mostrar_dados_dashboard('maquinaPrincipal', [1,2,3,4,5], 'grafico1', myChart1, 'graficoMedia')">
             <span id="valorSpan">maquina 1</span>
             <img class="redutor_img img1" id="maq1"
                 src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
                 alt="">
-        </div>
+        </div>  
     </div>
     <div class="container_graficos">
 
         <div id="grafico1" class="graficos" style="display: none;">
             <canvas id="myChart1"></canvas>
         </div>
-
+        
         <div id="graficoMedia" class="graficosMedia" style="display: none;">
             <h1>Quantidade de alertas do dia:</h1>
             <canvas id="myChartMedia"></canvas>
@@ -105,14 +104,11 @@
             <h2 id="title">Fale conosco</h2>
         </div>
         <div class="container_footer">
-            <a class="enderecos" href="mailto:systemp@systemp.com.br"><img class="contatos" id="logo_email"
-                    src="https://i.ibb.co/b7n7Hkf/logo-email.png"><span> systemp@systemp.com.br</span></a>
-
-            <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp"
-                    src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png"><span>+55 (11) 99999-9999</span></a>
-
-            <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin"
-                    src="https://i.ibb.co/9q18Cz0/logo-linkedin.png"><span>linkedin.com/systemp</span></a>
+            <a class="enderecos" href="mailto:systemp@systemp.com.br"><img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png"><span> systemp@systemp.com.br</span></a>
+            
+            <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png"><span>+55 (11) 99999-9999</span></a>
+           
+            <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png"><span>linkedin.com/systemp</span></a>
         </div>
         <div id="container_copyright">
             <div class="copyright">
@@ -138,7 +134,7 @@
         type: 'line',
         data: {
             datasets: [{
-                label: (idMaquina) `Temperatura do sensor ${sessionStorage.NOME_MAQUINA_DIV}`,
+                label: 'Temperatura do sensor  Máquina 1',
                 backgroundColor: 'firebrick',
                 borderColor: 'tomato',
                 borderWidth: 4,
@@ -184,58 +180,57 @@
     })
     var intervalo;
     var mostrar_dados_dashboard = function (idMaquina, vetor, div_grafico, myChart, myChartMedia) {
-        console.log(intervalo)
-        if (intervalo !== undefined) {
-            clearInterval(intervalo)
-        }
-        intervalo = setInterval(function () {
-            adicionar_dados(idMaquina, vetor, div_grafico, myChart, myChartMedia)
-
-        }, 2000)
-        console.log(intervalo)
-      
-        valorSpan.innerHTML = sessionStorage.NOME_MAQUINA_DIV;
-
+    console.log(intervalo)
+    if (intervalo !== undefined) {
+        clearInterval(intervalo)
     }
+    intervalo = setInterval(function () {
+        adicionar_dados(idMaquina, vetor, div_grafico, myChart, myChartMedia)
 
-    //Exibir os gráficos da máquina selecionada pelo usuário
-    function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
-        var dashboard = document.getElementById(div_grafico)
-        var dashboardMedia = document.getElementById(myChartMedia)
-        esconder_graficos()
-        operarHTML(valores)
-        dashboard.style.display = 'block'
-        dashboardMedia.style.display = 'block'
+    }, 2000)
+    console.log(intervalo)
+    
+}
 
-        function operarHTML(valores) {
-            span_m_baixa.innerHTML = valores[0] + "°C"
-            span_baixa.innerHTML = valores[1] + "°C"
-            span_ideal.innerHTML = valores[2] + "°C"
-            span_alta.innerHTML = valores[3] + "°C"
-            span_m_alta.innerHTML = valores[4] + "°C"
-            addData(myChart, [37.8, 40.5, 45, 43, 39.5])
-        }
-        function addData(myChart, temperatura) {
-            myChart.data.labels.push(new Date().toLocaleTimeString())
-            myChart.data.datasets[0].data.push(temperatura[0]);
-            myChart.data.datasets[0].data.push(temperatura[1]);
-            myChart.data.datasets[0].data.push(temperatura[2]);
-            myChart.data.datasets[0].data.push(temperatura[3]);
-            myChart.data.datasets[0].data.push(temperatura[4]);
-            myChart.update();
-        }
-        if (myChart.data.labels.length == 10) {
-            myChart.data.labels.shift();
-            myChart.data.datasets[0].data.shift();
-        }
+
+//Exibir os gráficos da máquina selecionada pelo usuário
+function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
+    var dashboard = document.getElementById(div_grafico)
+    var dashboardMedia = document.getElementById(myChartMedia)
+    esconder_graficos()
+    operarHTML(valores)
+    dashboard.style.display = 'block'
+    dashboardMedia.style.display = 'block'
+
+    function operarHTML(valores) {
+        span_m_baixa.innerHTML = valores[0] + "°C"
+        span_baixa.innerHTML = valores[1] + "°C"
+        span_ideal.innerHTML = valores[2] + "°C"
+        span_alta.innerHTML = valores[3] + "°C"
+        span_m_alta.innerHTML = valores[4] + "°C"
+        addData(myChart, [37.8, 40.5, 45, 43, 39.5])
+    }
+    function addData(myChart, temperatura) {
+        myChart.data.labels.push(new Date().toLocaleTimeString())
+        myChart.data.datasets[0].data.push(temperatura[0]);
+        myChart.data.datasets[0].data.push(temperatura[1]);
+        myChart.data.datasets[0].data.push(temperatura[2]);
+        myChart.data.datasets[0].data.push(temperatura[3]);
+        myChart.data.datasets[0].data.push(temperatura[4]);
         myChart.update();
-
-        //Ocultar os demais gráficos da dashboard
-        function esconder_graficos() {
-            document.getElementById('grafico1').style.display = 'none'
-            document.getElementById('graficoMedia').style.display = 'none'
-        }
     }
+    if (myChart.data.labels.length == 10) {
+        myChart.data.labels.shift();
+        myChart.data.datasets[0].data.shift();
+    }
+    myChart.update();
+
+    //Ocultar os demais gráficos da dashboard
+    function esconder_graficos() {
+        document.getElementById('grafico1').style.display = 'none'
+        document.getElementById('graficoMedia').style.display = 'none'
+    }
+}
 
 </script>
 

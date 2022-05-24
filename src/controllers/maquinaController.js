@@ -62,6 +62,23 @@ function listar(req, res) {
     }
 
 } */
+function listarUm(req, res) {
+    const idMaquina = req.params.idMaquina
+    maquinaModel.listarUm(idMaquina)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado[0]);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+} 
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -102,5 +119,6 @@ function cadastrar(req, res) {
 module.exports = {
     cadastrar,
     listar,
-    testar
+    testar,
+    listarUm
 }

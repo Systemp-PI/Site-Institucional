@@ -10,7 +10,9 @@ router.get("/", function (req, res) {
 router.get("/listar", function (req, res) {
     maquinaController.listar(req, res);
 });
-
+router.get("/listarUm/:idMaquina", function (req, res) {
+    maquinaController.listarUm(req, res);
+});
 //Recebendo os dados do html e direcionando para a função cadastrar de maquinaController.js
 router.post("/cadastrar", function (req, res) {
     maquinaController.cadastrar(req, res);

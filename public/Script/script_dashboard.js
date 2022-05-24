@@ -20,15 +20,29 @@ fechar_tela.onclick = function fechar() {
 
 
 function listarMaquinas() {
-    var nome_maquina_card = sessionStorage.NOME_MAQUINA_DIV
 
+    console.log('teste')
+     fetch(`/maquina/listarUm/${idMaquina}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            console.log("resposta: ", resposta.json());
+            console.log("resposta: ", resposta.json().idmaquina);
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log("#ERRO: "`${resposta}`);
+    });
+} 
     fetch("/maquina/listar", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         },
     }).then(function (resposta) {
-
 
 
         // console.log("resposta: ", resposta.json());
@@ -42,8 +56,6 @@ function listarMaquinas() {
 
             }
 
-            
-
         })
         // if (resposta.ok) {
         //     alert('Maquina Cadastrada')
@@ -55,8 +67,6 @@ function listarMaquinas() {
         console.log(`#ERRO: ${resposta}`);
     })
 
-}
-await listarMaquinas()
 //Envio de dados de cadastro
 
 function clonar(atributo) {
@@ -100,13 +110,3 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
 
     return false;
 }
-
-{/* <ul id="fora">
-    <li id="dentro1">aaaaaa</li>
-    <li id="dentro2">aaaaaa</li>
-    <li id="dentro3">aaaaaa</li>
-</ul>
-var el = document.getElementById('fora');
-el.addEventListener('click', function(e) {
-    alert(e.target.id);
-}); */}

@@ -63,7 +63,7 @@
         </div>
     </div>
     <div id="container_redutores">
-        <div class="identificacao_maq" id="maquinaPrincipal" onclick="mostrar_dados_dashboard('maquinaPrincipal', [1,2,3,4,5], 'grafico1', myChart1, 'graficoMedia')">
+        <div class="identificacao_maq" id="maquinaPrincipal">
             <span id="valorSpan">maquina 1</span>
             <img class="redutor_img img1" id="maq1"
                 src="https://library.kissclipart.com/20180904/wq/kissclipart-gear-cogs-clipart-gear-clip-art-b87d0e658d80c06b.png"
@@ -71,7 +71,9 @@
         </div>  
     </div>
     <div class="container_graficos">
-
+        <div id="grafico" class="graficos">
+            <canvas id="myChart"></canvas>
+        </div>
         <div id="grafico1" class="graficos" style="display: none;">
             <canvas id="myChart1"></canvas>
         </div>
@@ -80,23 +82,8 @@
             <h1>Quantidade de alertas do dia:</h1>
             <canvas id="myChartMedia"></canvas>
         </div>
-        <div id="graficoMedia2" class="graficosMedia" style="display: none;">
-            <h1>Quantidade de alertas do dia:</h1>
-            <canvas id="myChartMedia2"></canvas>
-        </div>
-        <div id="graficoMedia3" class="graficosMedia" style="display: none;">
-            <h1>Quantidade de alertas do dia:</h1>
-            <canvas id="myChartMedia3"></canvas>
-        </div>
-        <div id="graficoMedia4" class="graficosMedia" style="display: none;">
-            <h1>Quantidade de alertas do dia:</h1>
-            <canvas id="myChartMedia4"></canvas>
-        </div>
-        <div id="graficoMedia5" class="graficosMedia" style="display: none;">
-            <h1>Quantidade de alertas do dia:</h1>
-            <canvas id="myChartMedia5"></canvas>
-        </div>
 
+<div id="graficos"></div>
 
     </div>
     <footer>
@@ -117,8 +104,54 @@
         </div>
     </footer>
 </body>
-
 <script>
+    var dynamic_chart; 
+var ctx2; 
+   // pass the chart that we want to clone as an object 
+
+   function myDynamicChart(chart){
+    const datateste = {
+      labels: labels2,
+      datasets: [{
+        label: 'Sensor entrada',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [1, 20, 30, 40,52 , 23],
+      },
+      
+        {label: 'Sensor saída',
+        backgroundColor: 'dodgerblue',
+        borderColor: 'dodgerblue',
+        data: [20, 32,20, 55,30 , 13],
+      }]};
+   //destroy the previous chart in the canvas to avoid any overlapping 
+
+   if (Chart.getChart("myChart")){
+    Chart.getChart("myChart").destroy();
+  }
+
+   //set the context jquery..
+     ctx2 = document.querySelectorAll('#myChart');
+
+   //or set the conext by html which will be ctx= document.getElementById("myBarChart3");
+
+   //instantiate the chart 
+     dynamic_chart = new Chart(ctx2,{
+        type: 'line',
+        data: datateste,
+        options: {}
+   });
+   }
+</script>
+<script>
+            var el = document.getElementById('container_redutores');
+el.addEventListener('click', function(ident) {
+    myDynamicChart()
+   console.log(ident.target.id)
+})
+</script>
+<script>
+
     const ctx = document.getElementById('myChart1');
     ctx.style.backgroundColor = '#2E4053';
     Chart.defaults.color = "white";
@@ -128,8 +161,37 @@
     const ctxMedia = document.getElementById('myChartMedia');
     ctxMedia.style.backgroundColor = '#2E4053';
 
-
-
+    const labels2 = [
+      '12:00',
+      '13:00',
+      '14:00',
+      '15:00',
+      '16:00',
+      '17:00',
+    ];
+    const data = {
+      labels: labels2,
+      datasets: [{
+        label: 'Sensor entrada',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [30, 29, 28, 25,22 , 23],
+      },
+      
+        {label: 'Sensor saída',
+        backgroundColor: 'dodgerblue',
+        borderColor: 'dodgerblue',
+        data: [80, 82,80, 85,80 , 83],
+      }]};
+      const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
     const myChart1 = new Chart(ctx, {
         type: 'line',
         data: {
@@ -178,6 +240,7 @@
             ]
         }
     })
+
     var intervalo;
     var mostrar_dados_dashboard = function (idMaquina, vetor, div_grafico, myChart, myChartMedia) {
     console.log(intervalo)
@@ -191,8 +254,6 @@
     console.log(intervalo)
     
 }
-
-
 //Exibir os gráficos da máquina selecionada pelo usuário
 function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
     var dashboard = document.getElementById(div_grafico)

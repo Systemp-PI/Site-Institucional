@@ -50,7 +50,7 @@ function listarMaquinas() {
             console.log('Esta maquina tem temp min::' + resultado[0, 2].temp_min)
 
             for (var i = 0; i < resultado.length; i++) {
-                clonar(resposta.nome_maquina)
+                clonar(resposta.nome_maquina,`maquina${i}`)
                 console.log(resultado[i, i].nome_maquina+"temp_min:"+resultado[i, i].temp_min,+"temp_max:"+resultado[i, i].temp_max)
                 spanValor.innerHTML = resultado[i, i].nome_maquina;
 
@@ -67,15 +67,14 @@ function listarMaquinas() {
         console.log(`#ERRO: ${resposta}`);
     })
 
-//Envio de dados de cadastro
+function clonar(teste,params) {
 
-function clonar(atributo) {
     var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     var container = document.querySelector('#container_redutores');
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     container.appendChild(clonarDiv);
-    clonarDiv.setAttribute("id", atributo);
     divImagem.style.backgroundColor = "#" + randomColor;
+    divImagem.id=`${params}`
 }
 
 
@@ -110,3 +109,88 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
 
     return false;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+   function myDynamicChart2(chart){
+    const datateste = {
+      labels: labels,
+      datasets: [{
+        label: 'Maquina 2',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [6,10,10,6,10],
+    }]}
+   //destroy the previous chart in the canvas to avoid any overlapping 
+
+   if (Chart.getChart("myChart1")){
+    Chart.getChart("myChart1").destroy();
+  }
+
+   //set the context jquery..
+     ctx2 = document.querySelectorAll('#myChart1');
+
+   //or set the conext by html which will be ctx= document.getElementById("myBarChart3");
+
+   //instantiate the chart 
+     dynamic_chart2 = new Chart(ctx,{
+        type: 'line',
+        data: datateste,
+        options: {}
+   });
+
+
+
+   }
+   function myDynamicChart3(chart){
+    const datateste = {
+      labels: labels,
+      datasets: [{
+        label: 'Maquina 1',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [10,20,30,40,50],
+    }]}
+   //destroy the previous chart in the canvas to avoid any overlapping 
+
+   if (Chart.getChart("myChart1")){
+    Chart.getChart("myChart1").destroy();
+  }
+
+   //set the context jquery..
+     ctx3 = document.querySelectorAll('#myChart1');
+
+   //or set the conext by html which will be ctx= document.getElementById("myBarChart3");
+
+   //instantiate the chart 
+     dynamic_chart3 = new Chart(ctx,{
+        type: 'line',
+        data: datateste,
+        options: {}
+   });
+
+   }
+   function myDynamicChart4(chart){
+    const datateste = {
+      labels: labels,
+      datasets: [{
+        label: `${params}`, 
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [20,40,20,50,10],
+    }]}
+   if (Chart.getChart("myChart1")){
+    Chart.getChart("myChart1").destroy();
+  }
+     ctx4 = document.querySelectorAll('#myChart1');
+     dynamic_chart4 = new Chart(ctx,{
+        type: 'line',
+        data: datateste,
+        options: {}
+   });
+
+
+
+   }

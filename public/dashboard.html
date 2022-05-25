@@ -104,52 +104,7 @@
         </div>
     </footer>
 </body>
-<script>
-    var dynamic_chart; 
-var ctx2; 
-   // pass the chart that we want to clone as an object 
 
-   function myDynamicChart(chart){
-    const datateste = {
-      labels: labels2,
-      datasets: [{
-        label: 'Sensor entrada',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [1, 20, 30, 40,52 , 23],
-      },
-      
-        {label: 'Sensor saída',
-        backgroundColor: 'dodgerblue',
-        borderColor: 'dodgerblue',
-        data: [20, 32,20, 55,30 , 13],
-      }]};
-   //destroy the previous chart in the canvas to avoid any overlapping 
-
-   if (Chart.getChart("myChart")){
-    Chart.getChart("myChart").destroy();
-  }
-
-   //set the context jquery..
-     ctx2 = document.querySelectorAll('#myChart');
-
-   //or set the conext by html which will be ctx= document.getElementById("myBarChart3");
-
-   //instantiate the chart 
-     dynamic_chart = new Chart(ctx2,{
-        type: 'line',
-        data: datateste,
-        options: {}
-   });
-   }
-</script>
-<script>
-            var el = document.getElementById('container_redutores');
-el.addEventListener('click', function(ident) {
-    myDynamicChart()
-   console.log(ident.target.id)
-})
-</script>
 <script>
 
     const ctx = document.getElementById('myChart1');
@@ -263,23 +218,8 @@ function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia)
     dashboard.style.display = 'block'
     dashboardMedia.style.display = 'block'
 
-    function operarHTML(valores) {
-        span_m_baixa.innerHTML = valores[0] + "°C"
-        span_baixa.innerHTML = valores[1] + "°C"
-        span_ideal.innerHTML = valores[2] + "°C"
-        span_alta.innerHTML = valores[3] + "°C"
-        span_m_alta.innerHTML = valores[4] + "°C"
-        addData(myChart, [37.8, 40.5, 45, 43, 39.5])
-    }
-    function addData(myChart, temperatura) {
-        myChart.data.labels.push(new Date().toLocaleTimeString())
-        myChart.data.datasets[0].data.push(temperatura[0]);
-        myChart.data.datasets[0].data.push(temperatura[1]);
-        myChart.data.datasets[0].data.push(temperatura[2]);
-        myChart.data.datasets[0].data.push(temperatura[3]);
-        myChart.data.datasets[0].data.push(temperatura[4]);
-        myChart.update();
-    }
+
+
     if (myChart.data.labels.length == 10) {
         myChart.data.labels.shift();
         myChart.data.datasets[0].data.shift();

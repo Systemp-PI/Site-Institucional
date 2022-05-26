@@ -108,9 +108,9 @@ fetch("/maquina/listar", {
         console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
         for (var i = 0; i < resultado.length; i++) {
-            clonar(resposta.nome_maquina, `Maquina ${i}`)
+            clonar(resposta.nome_maquina, ` ${resultado.idmaquina}`)
             console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-            spanValor.innerHTML = resultado[i, i].idmaquina;
+            spanValor.innerHTML = resultado.idmaquina;
 
         }
         var elementoClicado = document.getElementById('container_redutores');

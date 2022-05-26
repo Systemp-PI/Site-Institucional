@@ -74,8 +74,45 @@
                     id="telefonecontato2" required />
                 <span id="erro_telContato2"></span>
 
-                <label  for="estado">Selecione seu estado </label>
-                <select id="estado" name="estado">
+               
+
+                <label for="input_cep"> Cep </label>
+                <input  onblur="pesquisacep(this.value);" type="number" onkeyup="verificarCep()" placeholder="Digite o Cep da empresa"
+                    id="input_cep" required />
+                <span id="erro_cep"></span>
+
+              
+            </div>
+
+            <div id="box_form3">
+
+                <label  for="input_cidade"> Cidade </label>
+                <input style="background-color: white;" disabled type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
+                    required />
+                <span id="erro_cidade"></span>
+
+                <label for="input_bairro"> Bairro </label>
+                <input style="background-color: white;"  disabled type="text" onkeyup="verificarBairro()" placeholder="Digite o bairro da empresa"
+                    id="input_bairro" required />
+                <span id="erro_bairro"></span>
+
+                <label for="input_rua"> Rua </label>
+                <input style="background-color: white;" disabled type="text" onkeyup="verificarRua()" placeholder="Digite o rua da empresa"
+                    id="input_rua" required />
+                <span id="erro_rua"></span>
+
+                <label for="input_numero"> Numero rua </label>
+                <input type="number" onkeyup="verificarNumero()" placeholder="Digite o numero da empresa"
+                    id="input_numero" required />
+                <span id="erro_numero"></span>
+
+                <label for="input_complemento"> complemento </label>
+                <input type="number" placeholder="Digite o complemento da empresa"
+                    id="input_complemento" required />
+                <span id="erro_complemento"></span>
+
+                <label   for="estado">Selecione seu estado </label>
+                <select  style="background-color: white;" disabled id="estado" name="estado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -105,41 +142,6 @@
                     <option value="TO">Tocantins</option>
                     <option value="EX">Estrangeiro</option>
                 </select>
-
-              
-            </div>
-
-            <div id="box_form3">
-
-                <label for="input_cep"> Cep </label>
-                <input type="number" onkeyup="verificarCep()" placeholder="Digite o Cep da empresa"
-                    id="input_cep" required />
-                <span id="erro_cep"></span>
-
-                <label for="input_cidade"> Cidade </label>
-                <input type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
-                    required />
-                <span id="erro_cidade"></span>
-
-                <label for="input_bairro"> Bairro </label>
-                <input type="text" onkeyup="verificarBairro()" placeholder="Digite o bairro da empresa"
-                    id="input_bairro" required />
-                <span id="erro_bairro"></span>
-
-                <label for="input_rua"> Rua </label>
-                <input type="text" onkeyup="verificarRua()" placeholder="Digite o rua da empresa"
-                    id="input_rua" required />
-                <span id="erro_rua"></span>
-
-                <label for="input_numero"> Numero rua </label>
-                <input type="number" onkeyup="verificarNumero()" placeholder="Digite o numero da empresa"
-                    id="input_numero" required />
-                <span id="erro_numero"></span>
-
-                <label for="input_complemento"> complemento </label>
-                <input type="number" placeholder="Digite o complemento da empresa"
-                    id="input_complemento" required />
-                <span id="erro_complemento"></span>
 
             </div>
 
@@ -180,6 +182,25 @@
 <script src="../public/Script/cadastro_empresa.js"></script>
 
 <script>
+
+function pesquisacep() {
+        fetch(`https://viacep.com.br/ws/${input_cep.value}/json/`, {
+            method: "GET",
+            mode: "cors"
+        }).then(function (resposta) {
+            console.log(resposta)
+            resposta.json().then(function (data) {
+                console.log(data)
+                input_rua.value = data.logradouro;
+                input_bairro.value = data.bairro;
+                input_cidade.value = data.localidade;
+                estado.value = data.uf
+                 
+            })
+        }).catch(function (erro) {
+            console.log(erro)
+        })
+    }
     var razaoSocial = ''
     var pj = ''
     var ie = ''
@@ -348,13 +369,13 @@
                 emailcont2Server: email2,
                 telcont1Server: tel1,
                 telcont2Server: tel2,
-                cepserver: cep,
+                cepServer: cep,
                 estadoServer: es,
                 cidadeServer: cidade,
-                bairroserver: ba,
-                ruaserver: rua,
-                numeroserver: num,
-                complementoserver: comp,
+                bairroserver: bairro,
+                ruaServer: rua,
+                numeroServer: numero,
+                complementoServer: complemento,
 
             })
         }).then(function (resposta) {

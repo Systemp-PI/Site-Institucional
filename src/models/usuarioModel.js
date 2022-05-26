@@ -31,8 +31,8 @@ function cadastrar(nome, cnpj, email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrar_empresa(razao, cnpj, insc_estadual, nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2, estado, cidade) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_empresa():",razao, cnpj, insc_estadual, nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2, estado, cidade );
+function cadastrar_empresa(razao, cnpj, insc_estadual, nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2,cep, estado, cidade , bairro ,rua ,numero,complemento) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_empresa():",razao, cnpj, insc_estadual, nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2,cep,estado, cidade, bairro ,rua ,numero,complemento );
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.

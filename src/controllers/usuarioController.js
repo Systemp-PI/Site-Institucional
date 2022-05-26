@@ -113,9 +113,13 @@ function cadastrar_empresa(req, res) {
     var emailcont2 = req.body.emailcont2Server;
     var telcont1 = req.body.telcont1Server;
     var telcont2 = req.body.telcont2Server;
+    var cep = req.body.cepServer ; 
     var estado = req.body.estadoServer;
     var cidade = req.body.cidadeServer;
-
+    var bairro  = req.body.bairroServer;
+    var rua = req.body.ruaserver;
+    var numero = req.body.numeroServer;
+    var complemento = req.body.complementoServer
     // Faça as validações dos valores
     if (razao.length < 5) {
         res.status(400).send("Nome inválido!");
@@ -131,7 +135,7 @@ function cadastrar_empresa(req, res) {
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar_empresa(razao, cnpj, insc_estadual ,nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2, estado, cidade)
+        usuarioModel.cadastrar_empresa(razao, cnpj, insc_estadual ,nomecont1, emailcont1, telcont1, nomecont2, emailcont2, telcont2,cep, estado, cidade, bairro,rua ,numero,complemento)
             .then(
                 function (resultado) {
                     res.json(resultado);

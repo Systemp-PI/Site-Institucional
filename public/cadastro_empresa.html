@@ -74,31 +74,31 @@
                     id="telefonecontato2" required />
                 <span id="erro_telContato2"></span>
 
-               
+
 
                 <label for="input_cep"> Cep </label>
-                <input  onblur="pesquisacep(this.value);" type="number" onkeyup="verificarCep()" placeholder="Digite o Cep da empresa"
-                    id="input_cep" required />
+                <input onblur="pesquisacep(this.value);" type="number" onkeyup="verificarCep()"
+                    placeholder="Digite o Cep da empresa" id="input_cep" required />
                 <span id="erro_cep"></span>
 
-              
+
             </div>
 
             <div id="box_form3">
 
-                <label  for="input_cidade"> Cidade </label>
-                <input style="background-color: white;" disabled type="text" onkeyup="verificarCidade()" placeholder="Digite a cidade" id="input_cidade"
-                    required />
+                <label for="input_cidade"> Cidade </label>
+                <input style="background-color: white;"  type="text" onkeyup="verificarCidade()"
+                    placeholder="Digite a cidade" id="input_cidade" required />
                 <span id="erro_cidade"></span>
 
                 <label for="input_bairro"> Bairro </label>
-                <input style="background-color: white;"  disabled type="text" onkeyup="verificarBairro()" placeholder="Digite o bairro da empresa"
-                    id="input_bairro" required />
+                <input style="background-color: white;"  type="text"
+                    placeholder="Digite o bairro da empresa" id="input_bairro" required />
                 <span id="erro_bairro"></span>
 
                 <label for="input_rua"> Rua </label>
-                <input style="background-color: white;" disabled type="text" onkeyup="verificarRua()" placeholder="Digite o rua da empresa"
-                    id="input_rua" required />
+                <input style="background-color: white;"  type="text"
+                    placeholder="Digite o rua da empresa" id="input_rua" required />
                 <span id="erro_rua"></span>
 
                 <label for="input_numero"> Numero rua </label>
@@ -107,12 +107,11 @@
                 <span id="erro_numero"></span>
 
                 <label for="input_complemento"> complemento </label>
-                <input type="number" placeholder="Digite o complemento da empresa"
-                    id="input_complemento" required />
+                <input type="number" placeholder="Digite o complemento da empresa" id="input_complemento" required />
                 <span id="erro_complemento"></span>
 
-                <label   for="estado">Selecione seu estado </label>
-                <select  style="background-color: white;" disabled id="estado" name="estado">
+                <label for="estado">Selecione seu estado </label>
+                <select style="background-color: white;"  id="estado" name="estado">
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -163,11 +162,14 @@
                 <h2 id="title">Fale conosco</h2>
             </div>
             <div class="container_footer">
-                <a class="enderecos" href="mailto:systemp@systemp.com.br"><img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png">systemp@systemp.com.br</a>
-            
-                <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">+55 (11) 99999-9999 </a>
-            
-                <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">linkedin.com/systemp</a>
+                <a class="enderecos" href="mailto:systemp@systemp.com.br"><img class="contatos" id="logo_email"
+                        src="https://i.ibb.co/b7n7Hkf/logo-email.png">systemp@systemp.com.br</a>
+
+                <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp"
+                        src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">+55 (11) 99999-9999 </a>
+
+                <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin"
+                        src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">linkedin.com/systemp</a>
             </div>
             <div id="container_copyright">
                 <div class="copyright">
@@ -183,6 +185,8 @@
 
 <script>
 
+
+
 function pesquisacep() {
         fetch(`https://viacep.com.br/ws/${input_cep.value}/json/`, {
             method: "GET",
@@ -195,7 +199,7 @@ function pesquisacep() {
                 input_bairro.value = data.bairro;
                 input_cidade.value = data.localidade;
                 estado.value = data.uf
-                 
+
             })
         }).catch(function (erro) {
             console.log(erro)
@@ -211,12 +215,12 @@ function pesquisacep() {
     var tel1 = ''
     var tel2 = ''
     var cep = ''
-    var es = estado.value
-    var cidade = ''
-    var bairro = ''
-    var rua = ''
     var numero = ''
-    var complemento = ''
+
+           
+            
+         
+
 
     //Validação razão social
     function verificarRazaoSocial() {
@@ -370,12 +374,12 @@ function pesquisacep() {
                 telcont1Server: tel1,
                 telcont2Server: tel2,
                 cepServer: cep,
-                estadoServer: es,
-                cidadeServer: cidade,
-                bairroserver: bairro,
-                ruaServer: rua,
+                estadoServer: estado.value,
+                cidadeServer: input_cidade.value,
+                bairroServer: input_bairro.value,
+                ruaServer: input_rua.value,
                 numeroServer: numero,
-                complementoServer: complemento,
+                complementoServer: input_complemento.value
 
             })
         }).then(function (resposta) {

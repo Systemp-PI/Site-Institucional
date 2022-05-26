@@ -117,7 +117,7 @@ function cadastrar_empresa(req, res) {
     var estado = req.body.estadoServer;
     var cidade = req.body.cidadeServer;
     var bairro  = req.body.bairroServer;
-    var rua = req.body.ruaserver;
+    var rua = req.body.ruaServer;
     var numero = req.body.numeroServer;
     var complemento = req.body.complementoServer
     // Faça as validações dos valores

@@ -16,14 +16,22 @@ header {
     height: 15%;
     position: relative;
     z-index: 0;
-    
+    display: flex;
+    justify-content: center;
+}
+
+header .container {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 55%;
+    width: 35%;
     margin-left: 20%;
 }
 
@@ -37,9 +45,9 @@ a {
 }
 
 nav a:hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
     transition: 0.5s;
     color: #ff5622;
 }

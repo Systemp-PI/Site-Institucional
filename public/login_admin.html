@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Estilo/login_admin.css">
+    <link rel="icon" href="./imgs/engrenagem.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title>Systemp | Login Admin</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
+                <div class="navbar">
+                    <a href="dashboard.html">Home</a>
+                </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <div class="card">
+                <h1>Entrar como admin</h1>
+
+                <label for="input_indentificacao">Identificação</label>
+                <input type="text" id="input_indentificacao">
+
+                <label for="input_senha">Senha</label>
+                <input type="password" id="input_senha">
+
+                <button onclick="entrar()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer_title">
+            <h2 id="title">Fale conosco</h2>
+        </div>
+        <div class="container_footer">
+            <a class="enderecos" href="mailto:systemp@systemp.com.br"><img class="contatos" id="logo_email" src="https://i.ibb.co/b7n7Hkf/logo-email.png">systemp@systemp.com.br</a>
+            
+            <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp" src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">+55 (11) 99999-9999 </a>
+           
+            <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin" src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">linkedin.com/systemp</a>
+        </div>
+        <div id="container_copyright">
+            <div class="copyright">
+                <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script>
+    function entrar() {
+        var identificacao = input_indentificacao.value;
+        var senha = input_senha.value;
+
+        if (identificacao == "admin" && senha == "#Gfgrupo6"){
+            window.location="cadastro_empresa.html"
+        } else {
+            alert("informações incorretas!")
+        }
+    }
+</script>

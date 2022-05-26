@@ -112,7 +112,7 @@
             <div id="box_form3">
 
                 <label for="input_cep"> Cep </label>
-                <input type="number" onkeyup="verificarCep()" placeholder="Digite o Cep da empresa"
+                <input  onblur="pesquisacep(this.value);" type="number" onkeyup="verificarCep()" placeholder="Digite o Cep da empresa"
                     id="input_cep" required />
                 <span id="erro_cep"></span>
 
@@ -180,6 +180,25 @@
 <script src="../public/Script/cadastro_empresa.js"></script>
 
 <script>
+
+function pesquisacep() {
+        fetch(`https://viacep.com.br/ws/${input_cep.value}/json/`, {
+            method: "GET",
+            mode: "cors"
+        }).then(function (resposta) {
+            console.log(resposta)
+            resposta.json().then(function (data) {
+                console.log(data)
+                input_rua.value = data.logradouro;
+                input_bairro.value = data.bairro;
+                input_cidade.value = data.localidade;
+                estado.value = data.uf
+                 
+            })
+        }).catch(function (erro) {
+            console.log(erro)
+        })
+    }
     var razaoSocial = ''
     var pj = ''
     var ie = ''

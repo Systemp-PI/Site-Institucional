@@ -6,7 +6,7 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
                         data_hora_registro, 
                         fkSensor,
                         from log_temperatura
-                    where fkSensor = ${idMaquina}
+                    where fk_maquina = ${idMaquina}
                     order by idregistro desc limit ${limite_linhas}`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -17,7 +17,7 @@ function buscarMedidasEmTempoReal(idMaquina) {
                         registro_temp, 
                         data_hora_registro,  
                         fkSensor 
-                        from medida where fkSensor = ${idMaquina} 
+                        from log_temperatura where fk_maquina = ${idMaquina} 
                     order by idregistro desc limit 1`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

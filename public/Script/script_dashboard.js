@@ -117,7 +117,7 @@ fetch("/maquina/listar", {
 elementoClicado.addEventListener('click', function (ident) {
     listarMaquinas(ident.target.id)
     console.log(ident.target.id)
-    myDynamicChart(resultado[0].nome_maquina,resultado[3].temp_min)
+    myDynamicChart(resultado[0,0].nome_maquina,resultado[3].temp_min)
 })
 
         var dynamic_chart;
@@ -289,10 +289,7 @@ function atualizarGrafico(idMaquina, dados) {
                 dados.labels.shift(); // apagar o primeiro
                 dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
                 dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                dados.datasets[1].data.shift();  // apagar o primeiro de umidade
                 dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
-
                 window.grafico_linha.update();
 
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);

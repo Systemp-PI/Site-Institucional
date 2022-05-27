@@ -18,11 +18,6 @@ fechar_tela.onclick = function fechar() {
     tela_cadastro.style.display = "none";
 }
 
-var elementoClicado = document.getElementById('container_redutores');
-elementoClicado.addEventListener('click', function (ident) {
-    listarMaquinas(ident.target.id)
-    console.log(ident.target.id)
-})
 
 function listarMaquinas(idMaquina) {
 
@@ -37,7 +32,7 @@ function listarMaquinas(idMaquina) {
             var ideal = (((resultado.temp_max - resultado.temp_min) * 50) / 100) + resultado.temp_min;
             var acima_ideal = (((resultado.temp_max - resultado.temp_min) * 75) / 100) + resultado.temp_min;
             operarHTML([resultado.temp_min,abaixo_ideal,ideal,acima_ideal,resultado.temp_max])
-
+            
          /*    for (var i = 0; i < resultado.length; i++) { */
                /*  clonar(resultado.idmaquina, `maquina${resultado.idmaquina}`)
                 alert(resultado.idmaquina) */
@@ -119,37 +114,38 @@ fetch("/maquina/listar", {
             console.log(ident.target.id)
             console.log(resultado[0,0].idmaquina)
         }) */
+        var elementoClicado = document.getElementById('container_redutores');
+elementoClicado.addEventListener('click', function (ident) {
+    listarMaquinas(ident.target.id)
+    console.log(ident.target.id)
+    myDynamicChart(resultado[0].nome_maquina,resultado[3].temp_min)
+})
 
         var dynamic_chart;
         var ctx2;
 
-        function myDynamicChart(chart) {
-            const datateste = {
-                labels: labels2,
-                datasets: [{
-                    label: `${chart}`,
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [1, 20, 30, 40, 52, 23],
-                },
-
-                {
-                    label: 'Sensor saída',
-                    backgroundColor: 'dodgerblue',
-                    borderColor: 'dodgerblue',
-                    data: [20, 32, 20, 55, 30, 13],
-                }]
-            };
-            if (Chart.getChart("myChart")) {
-                Chart.getChart("myChart").destroy();
-            }
-            ctx2 = document.querySelectorAll('#myChart');
-            dynamic_chart = new Chart(ctx2, {
-                type: 'line',
-                data: datateste,
-                options: {}
-            });
+    function myDynamicChart(chart,temperatura) {
+        const datateste = {
+            labels: labels2,
+            datasets: [{
+                label: `${chart}`,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [temperatura],
+            }]
+        };
+        if (Chart.getChart("myChart")) {
+            Chart.getChart("myChart").destroy();
         }
+        ctx2 = document.querySelectorAll('#myChart');
+        dynamic_chart = new Chart(ctx2, {
+            type: 'line',
+            data: datateste,
+            options: {}
+        });
+    }
+
+        
 
     })
 
@@ -217,4 +213,35 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     });
 
     return false;
+}
+
+var intervalo;
+var mostrar_dados_dashboard = function (idMaquina, vetor, div_grafico, myChart, myChartMedia) {
+console.log(intervalo)
+if (intervalo !== undefined) {
+    clearInterval(intervalo)
+}
+intervalo = setInterval(function () {
+    adicionar_dados(idMaquina, vetor, div_grafico, myChart, myChartMedia)
+
+}, 2000)
+console.log(intervalo)
+
+}
+//Exibir os gráficos da máquina selecionada pelo usuário
+function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
+var dashboard = document.getElementById(div_grafico)
+var dashboardMedia = document.getElementById(myChartMedia)
+esconder_graficos()
+operarHTML(valores)
+dashboard.style.display = 'block'
+dashboardMedia.style.display = 'block'
+
+
+
+if (myChart.data.labels.length == 10) {
+    myChart.data.labels.shift();
+    myChart.data.datasets[0].data.shift();
+}
+myChart.update();
 }

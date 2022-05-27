@@ -25,7 +25,6 @@ function listarMaquinas(idMaquina) {
         method: "GET",
         headers: { "Content-Type": "application/json" }
     }).then(function (resposta) {
-
         resposta.json().then(function (resultado) {
             console.log(resultado.temp_min+"======="+resultado.temp_max)
             var abaixo_ideal = (((resultado.temp_max - resultado.temp_min) * 25) / 100) + resultado.temp_min;
@@ -143,10 +142,16 @@ elementoClicado.addEventListener('click', function (ident) {
             data: datateste,
             options: {}
         });
+        function sendData() {
+            var http = new XMLHttpRequest();
+            http.open('POST', 'http://localhost:3000/api/sendData', false);
+            http.send(null);
+        }
+
+        setInterval(() => {
+            sendData();
+        }, 2000);
     }
-
-        
-
     })
 
 }).catch(function (resposta) {
@@ -244,4 +249,61 @@ if (myChart.data.labels.length == 10) {
     myChart.data.datasets[0].data.shift();
 }
 myChart.update();
+}
+
+window.onload = obterDadosGrafico(1)
+
+function obterDadosGrafico(idMaquina) {
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                plotarGrafico(resposta, idAquario);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+}
+
+function atualizarGrafico(idMaquina, dados) {
+
+    fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
+
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                console.log(`Dados atuais do gráfico: ${dados}`);
+
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                dados.datasets[1].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
+
+                window.grafico_linha.update();
+
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
 }

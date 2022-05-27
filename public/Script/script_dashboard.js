@@ -22,7 +22,7 @@ var elementoClicado = document.getElementById('container_redutores');
 elementoClicado.addEventListener('click', function (ident) {
     listarMaquinas(ident.target.id)
     myDynamicChart(ident.target.id)
-    operarHTML([resultado[0, 0].temp_min, abaixo_ideal, ideal, acima_ideal, resultado[0, 0].temp_max])
+    operarHTML([resultado[0].temp_min, abaixo_ideal, ideal, acima_ideal, resultado[0].temp_max])
     console.log(ident.target.id)
     console.log(resultado.idmaquina)
 })
@@ -35,7 +35,7 @@ function listarMaquinas(idMaquina) {
     }).then(function (resposta) {
 
         resposta.json().then(function (resultado) {
-            console.log(resultado.idmaquina)
+            console.log(resultado.temp_min+"======="+resultado.temp_max)
          /*    for (var i = 0; i < resultado.length; i++) { */
                /*  clonar(resultado.idmaquina, `maquina${resultado.idmaquina}`)
                 alert(resultado.idmaquina) */
@@ -108,15 +108,15 @@ fetch("/maquina/listar", {
         console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
         for (var i = 0; i < resultado.length; i++) {
-            clonar(resposta.nome_maquina, ` ${resultado.idmaquina}`)
+            clonar(resultado.idmaquina, ` ${resultado[i,i].idmaquina}`)
             console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-            spanValor.innerHTML = resultado.idmaquina;
+            spanValor.innerHTML = resultado[i,i].nome_maquina;
 
         }
         var elementoClicado = document.getElementById('container_redutores');
         elementoClicado.addEventListener('click', function (ident) {
             myDynamicChart(ident.target.id)
-            operarHTML([resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 25) / 100) + resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 50) / 100) + resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 75) / 100) + resultado[0, 0].temp_min, resultado[0, 0].temp_max])
+            operarHTML([resultado[1].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 25) / 100) + resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 50) / 100) + resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 75) / 100) + resultado[0, 0].temp_min, resultado[0, 0].temp_max])
             console.log(ident.target.id)
             console.log(resultado[0,0].idmaquina)
         })

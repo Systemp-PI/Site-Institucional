@@ -21,10 +21,7 @@ fechar_tela.onclick = function fechar() {
 var elementoClicado = document.getElementById('container_redutores');
 elementoClicado.addEventListener('click', function (ident) {
     listarMaquinas(ident.target.id)
-    myDynamicChart(ident.target.id)
-    operarHTML([resultado[0].temp_min, abaixo_ideal, ideal, acima_ideal, resultado[0].temp_max])
     console.log(ident.target.id)
-    console.log(resultado.idmaquina)
 })
 
 function listarMaquinas(idMaquina) {
@@ -36,6 +33,11 @@ function listarMaquinas(idMaquina) {
 
         resposta.json().then(function (resultado) {
             console.log(resultado.temp_min+"======="+resultado.temp_max)
+            operarHTML([resultado.temp_min,(resultado.temp_max - resultado.temp_min),ideal,acima_ideal,resultado.temp_m])
+            var abaixo_ideal = (((resultado.temp_max - resultado.temp_min) * 25) / 100) + resultado.temp_min;
+            var ideal = (((resultado.temp_max - resultado.temp_min) * 50) / 100) + resultado.temp_min;
+            var acima_ideal = (((resultado.temp_max - resultado.temp_min) * 75) / 100) + resultado.temp_min;
+
          /*    for (var i = 0; i < resultado.length; i++) { */
                /*  clonar(resultado.idmaquina, `maquina${resultado.idmaquina}`)
                 alert(resultado.idmaquina) */
@@ -43,9 +45,6 @@ function listarMaquinas(idMaquina) {
                /*  spanValor.innerHTML = resultado.idmaquina; */
     /* 
             }
-            var abaixo_ideal = (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 25) / 100) + resultado[0, 0].temp_min;
-            var ideal = (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 50) / 100) + resultado[0, 0].temp_min;
-            var acima_ideal = (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 75) / 100) + resultado[0, 0].temp_min;
 
     
             var dynamic_chart;
@@ -108,18 +107,18 @@ fetch("/maquina/listar", {
         console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
         for (var i = 0; i < resultado.length; i++) {
-            clonar(resultado.idmaquina, ` ${resultado[i,i].idmaquina}`)
+            clonar(resultado[i,i].idmaquina, ` ${resultado[i,i].idmaquina}`)
             console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
             spanValor.innerHTML = resultado[i,i].nome_maquina;
 
         }
-        var elementoClicado = document.getElementById('container_redutores');
+ /*        var elementoClicado = document.getElementById('container_redutores');
         elementoClicado.addEventListener('click', function (ident) {
             myDynamicChart(ident.target.id)
-            operarHTML([resultado[1].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 25) / 100) + resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 50) / 100) + resultado[0, 0].temp_min, (((resultado[0, 0].temp_max - resultado[0, 0].temp_min) * 75) / 100) + resultado[0, 0].temp_min, resultado[0, 0].temp_max])
+            operarHTML([])
             console.log(ident.target.id)
             console.log(resultado[0,0].idmaquina)
-        })
+        }) */
 
         var dynamic_chart;
         var ctx2;

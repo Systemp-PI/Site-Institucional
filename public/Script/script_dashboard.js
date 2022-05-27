@@ -33,10 +33,10 @@ function listarMaquinas(idMaquina) {
 
         resposta.json().then(function (resultado) {
             console.log(resultado.temp_min+"======="+resultado.temp_max)
-            operarHTML([resultado.temp_min,(resultado.temp_max - resultado.temp_min),ideal,acima_ideal,resultado.temp_m])
             var abaixo_ideal = (((resultado.temp_max - resultado.temp_min) * 25) / 100) + resultado.temp_min;
             var ideal = (((resultado.temp_max - resultado.temp_min) * 50) / 100) + resultado.temp_min;
             var acima_ideal = (((resultado.temp_max - resultado.temp_min) * 75) / 100) + resultado.temp_min;
+            operarHTML([resultado.temp_min,abaixo_ideal,ideal,acima_ideal,resultado.temp_max])
 
          /*    for (var i = 0; i < resultado.length; i++) { */
                /*  clonar(resultado.idmaquina, `maquina${resultado.idmaquina}`)

@@ -42,12 +42,10 @@ a:hover {
 
 .container_cadastro {
     width: 100%;
-    height: 100vh;
+    height: 115vh;
     justify-content: center;
     display: flex;
     align-items: center;
-
-
 }
 
 form {
@@ -66,7 +64,6 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     width: 45%;
 }
 
@@ -74,23 +71,26 @@ form {
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 6%;
+    height: 5%;
     width: 80%;
     box-shadow: 2px 2px gray;
+    margin-top: 20%;
 }
 
 #box_form label {
     font-size: 18px;
     margin-bottom: -10%;
+    margin-top: 10%;
 }
 
 #box_form2 input {
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 6%;
+    height: 5%;
     width: 80%;
     box-shadow: 2px 2px gray;
+    margin-top: 20%;
 }
 
 
@@ -98,13 +98,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     width: 45%;
+    height: 100%;
 }
 
 #box_form2 label {
     font-size: 18px;
     margin-bottom: -10%;
+    margin-top: 10%;
 }
 
 
@@ -113,17 +114,17 @@ form {
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 7.5%;
+    height: 5.5%;
     width: 80%;
     box-shadow: 2px 2px gray;
     margin-bottom: -10%;
+    margin-top: 20%;
 }
 
 #box_form3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     width: 45%;
     height: 92%;
 }
@@ -132,14 +133,16 @@ form {
     color: rgb(0, 0, 0);
     border: solid white 2px;
     border-radius: 10px;
-    height: 6%;
+    height: 5%;
     width: 80%;
     box-shadow: 2px 2px gray;
+    margin-top: 20%;
 }
 
 #box_form3 label {
     font-size: 18px;
     margin-bottom: -10%;
+    margin-top: 11%;
 }
 
 
@@ -151,8 +154,8 @@ form input {
 
 button {
     position: absolute;
-    margin-left: 46.5%;
-    margin-top: -4%;
+    margin-left: 36.5%;
+    margin-top: -9.5%;
     background-color: #fcf9f9b6;
     color: #272525; 
     border: none;
@@ -160,7 +163,7 @@ button {
     cursor: pointer;
     transition: 0.5s;
     width: 10%;
-    height: 5%;
+    height: 6%;
 }
 
 button:hover {

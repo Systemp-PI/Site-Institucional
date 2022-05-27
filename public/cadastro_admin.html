@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Estilo/login_admin.css">
+    <link rel="stylesheet" href="./Estilo/cadastro_admin.css">
     <link rel="icon" href="./imgs/engrenagem.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <title>Systemp | Login Admin</title>
+    <title>Systemp | Cadastro Admin</title>
 </head>
 <body>
     <div class="header">
         <div class="container">
             <img src="https://i.ibb.co/yXpfmVK/SYSTEMP.png" alt="systemp_logo">
                 <div class="navbar">
-                    <a href="dashboard.html">Home</a>
+                    <a href="login_admin.html">Login</a>
                 </div>
         </div>
     </div>
@@ -22,30 +22,20 @@
     <div class="banner">
         <div class="container">
             <div class="card">
-                <h1>Entrar como admin</h1>
+                <h1>Cadastrar admin</h1>
 
-                <label for="input_indentificacao">Identificação</label>
+                <label for="input_indentificacao">Nome de usuário</label>
                 <input type="text" id="input_indentificacao">
 
                 <label for="input_senha">Senha</label>
                 <input type="password" id="input_senha">
+                
+                <label for="input_repetir_senha">Repetir senha</label>
+                <input type="password" id="input_repetir_senha">
 
-                <button onclick="entrar()">Entrar</button>
+                <button onclick="cadastrar()">Entrar</button>
             </div>
         </div>
     </div>
 </body>
 </html>
-
-<script>
-    function entrar() {
-        var identificacao = input_indentificacao.value;
-        var senha = input_senha.value;
-
-        if (identificacao == "admin" && senha == "#Gfgrupo6"){
-            window.location="cadastro_empresa.html"
-        } else {
-            alert("informações incorretas!")
-        }
-    }
-</script>

@@ -8,7 +8,8 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    maquinaModel.listar()
+    const fkCliente = req.params.fkCliente;
+    maquinaModel.listar(fkCliente)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

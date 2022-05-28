@@ -5,7 +5,6 @@ var abrir_tela = document.getElementById("add_icon");
 var fechar_tela = document.getElementById("exit_icon");
 var cadastrar_Maquinas = document.getElementById("btn_enviar_cadastro");
 var form_envio = document.getElementById('formulario_envio')
-var intervalo
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem = document.querySelector(`.redutor_img`)
@@ -51,13 +50,17 @@ function listarMaquinas(idMaquina) {
     })
 }
 
-fetch("/maquina/listar", {
+var fk_cliente= sessionStorage.ID_USUARIO
+console.log(fk_cliente)
+window.onload= listarMaquinas_cliente(fk_cliente)
+function listarMaquinas_cliente(fkCliente){
+fetch(`/maquina/listar/${fkCliente}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json"
     },
+  
 }).then(function (resposta) {
-
     resposta.json().then(function (resultado) {
         console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
@@ -109,7 +112,7 @@ fetch("/maquina/listar", {
 }).catch(function (resposta) {
     console.log(`#ERRO: ${resposta}`);
 })
-
+}
 
 function operarHTML(valores) {
     span_m_baixa.innerHTML = valores[0] + "°C"

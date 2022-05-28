@@ -167,23 +167,6 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     return false;
 }
 
-//Exibir os gráficos da máquina selecionada pelo usuário
-/* function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
-    var dashboard = document.getElementById(div_grafico)
-    var dashboardMedia = document.getElementById(myChartMedia)
-    esconder_graficos()
-    operarHTML(valores)
-    dashboard.style.display = 'block'
-    dashboardMedia.style.display = 'block'
-
-
-
-    if (myChart.data.labels.length == 10) {
-        myChart.data.labels.shift();
-        myChart.data.datasets[0].data.shift();
-    }
-    myChart.update();
-} */
 var proximaAtualizacao;
 
 
@@ -217,6 +200,9 @@ function plotarGrafico(resposta, idMaquina) {
     console.log('iniciando plotagem do gráfico...');
     if (Chart.getChart("myChart")) {
         Chart.getChart("myChart").destroy();
+    }
+    if (Chart.getChart("myChartMedia")) {
+        Chart.getChart("myChartMedia").destroy();
     }
 
     const ctx2 = document.getElementById('myChart');

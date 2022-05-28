@@ -9,12 +9,12 @@ var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem = document.querySelector(`.redutor_img`)
 var divClick = document.querySelector('.identificacao_maq')
-/* const moda_muito_alto = []
+const moda_muito_alto = []
 const moda_alto=[]
 const moda_ideal=[]
 const moda_baixa=[]
 const moda_muito_baixa=[]
- */
+
 abrir_tela.onclick = function cadastrarMaquina() {
     tela_cadastro.style.display = "block";
 }
@@ -247,7 +247,7 @@ function plotarGrafico(resposta, idMaquina) {
         type: 'polarArea',
         data: {
             datasets: [{
-                data: [1,2,3,4,5],
+                data: [moda_muito_baixa.length,moda_baixa.length,moda_ideal.length,moda_alto.length,moda_muito_alto.length],
                 color: 'red',
                 backgroundColor: [
                     'blue',
@@ -296,7 +296,9 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = 'none';
 
-
+    divClick.style.backgroundColor = 'red'
+    moda_muito_alto.unshift(novoRegistro[0])
+    alerta.data.datasets[0].data.push(moda_muito_alto.length)
 } else if (novoRegistro[0].registro_temp >= alerta_alto){
     kpi_m_alto.style.boxShadow='none';
     kpi_alto.style.boxShadow = '0px 10px 15px 10px orange';
@@ -304,14 +306,18 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = 'none';
 
-
+    divClick.style.backgroundColor = 'orange'
+    moda_alto.unshift(novoRegistro[0])
+    alerta.data.datasets[0].data.push(moda_alto.length)
 } else if (novoRegistro[0].registro_temp <= alerta_critico_baixo){
     kpi_m_alto.style.boxShadow = 'none';
     kpi_alto.style.boxShadow = 'none';
     kpi_ideal.style.boxShadow = 'none';
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = '0px 10px 15px 10px blue';
-
+    
+    moda_muito_baixa.unshift(novoRegistro[0])
+    alerta.data.datasets[0].data.push(moda_muito_baixa.length)
 } else if (novoRegistro[0].registro_temp <= alerta_baixo){
     kpi_m_alto.style.boxShadow = 'none';
     kpi_alto.style.boxShadow = 'none';
@@ -319,13 +325,19 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = '0px 10px 15px 10px #119db9';
     kpi_m_baixo.style.boxShadow = 'none';
 
+    divClick.style.backgroundColor = '#119db9'
+    moda_baixa.unshift(novoRegistro[0])
+    alerta.data.datasets[0].data.push(moda_baixa.length)
 } else {
         kpi_m_alto.style.boxShadow = 'none';
         kpi_alto.style.boxShadow = 'none';
         kpi_ideal.style.boxShadow = '0px 10px 15px 10px green';
         kpi_baixo.style.boxShadow = 'none';
         kpi_m_baixo.style.boxShadow = 'none';
-
+        
+        divClick.style.backgroundColor = 'green'
+        moda_ideal.unshift(novoRegistro[0])
+        alerta.data.datasets[0].data.push(moda_ideal.length)
 }
                 // tirando e colocando valores no gráfico
                 dados.data.labels.shift(); // apagar o primeiro
@@ -334,11 +346,11 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
                 dados.data.datasets[0].data.push(novoRegistro[0].registro_temp);
                 dados.update();
 
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, alerta), 2000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, alerta), 2000);
         }
     })
         .catch(function (error) {

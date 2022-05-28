@@ -3,8 +3,8 @@ var database = require("../database/config");
 function buscarUltimasMedidas(idMaquina, limite_linhas) {
     instrucaoSql = `select 
                         registro_temp, 
-                        data_hora_registro, 
-                        fkSensor,
+                        DATE_FORMAT(data_hora_registro,'%H:%i:%s') as data_hora_registro,
+                        fk_maquina
                         from log_temperatura
                     where fk_maquina = ${idMaquina}
                     order by idregistro desc limit ${limite_linhas}`;
@@ -15,10 +15,10 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
 function buscarMedidasEmTempoReal(idMaquina) {
     instrucaoSql = `select 
                         registro_temp, 
-                        data_hora_registro,  
-                        fkSensor 
+                        fk_maquina,
+                        DATE_FORMAT(data_hora_registro,'%H:%i:%s') as data_hora_registro
                         from log_temperatura where fk_maquina = ${idMaquina} 
-                    order by idregistro desc limit 1`;
+                    order by idregistro desc`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

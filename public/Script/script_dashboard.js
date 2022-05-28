@@ -26,68 +26,29 @@ function listarMaquinas(idMaquina) {
         headers: { "Content-Type": "application/json" }
     }).then(function (resposta) {
         resposta.json().then(function (resultado) {
-            console.log(resultado.temp_min+"======="+resultado.temp_max)
+            console.log('resultado',resultado)
+            console.log(resultado.temp_min + "=======" + resultado.temp_max)
             var abaixo_ideal = (((resultado.temp_max - resultado.temp_min) * 25) / 100) + resultado.temp_min;
             var ideal = (((resultado.temp_max - resultado.temp_min) * 50) / 100) + resultado.temp_min;
             var acima_ideal = (((resultado.temp_max - resultado.temp_min) * 75) / 100) + resultado.temp_min;
-            operarHTML([resultado.temp_min,abaixo_ideal,ideal,acima_ideal,resultado.temp_max])
-            
-         /*    for (var i = 0; i < resultado.length; i++) { */
-               /*  clonar(resultado.idmaquina, `maquina${resultado.idmaquina}`)
-                alert(resultado.idmaquina) */
-              /*   console.log(resultado[i, i].nome_maquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max) */
-               /*  spanValor.innerHTML = resultado.idmaquina; */
-    /* 
-            }
+            operarHTML([resultado.temp_min, abaixo_ideal, ideal, acima_ideal, resultado.temp_max])
 
-    
-            var dynamic_chart;
-            var ctx2;
-    
-            function myDynamicChart(chart) {
-                const datateste = {
-                    labels: labels2,
-                    datasets: [{
-                        label: `${chart}`,
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        data: [1, 20, 30, 40, 52, 23],
-                    },
-    
-                    {
-                        label: 'Sensor saída',
-                        backgroundColor: 'dodgerblue',
-                        borderColor: 'dodgerblue',
-                        data: [20, 32, 20, 55, 30, 13],
-                    }]
-                };
-                if (Chart.getChart("myChart")) {
-                    Chart.getChart("myChart").destroy();
+            /* resposta.json().then(function (resultado) { */
+                console.log('teste', resultado[0, 0].idmaquina)
+                if (resposta.ok) {
+                    console.log("resposta: ", resposta.json());
+                    console.log("resposta: ", resposta.json().idmaquina);
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
-                ctx2 = document.querySelectorAll('#myChart');
-                dynamic_chart = new Chart(ctx2, {
-                    type: 'line',
-                    data: datateste,
-                    options: {}
-                });
-            }
-    
-        }) */ 
-    
-        resposta.json().then(function (resultado) {
-            console.log('teste', resultado[0,0].idmaquina)
-        if (resposta.ok) {
-            console.log("resposta: ", resposta.json());
-            console.log("resposta: ", resposta.json().idmaquina);
-     
-        } else {
-            throw ("Houve um erro ao tentar realizar o cadastro!");
-        }
-    }).catch(function (res) {
-        console.log("#ERRO: "`${res}`);
-    });
-})
-})
+            /*}).catch(function (res) {
+                console.log("#ERRO: "`${res}`);
+            });*/
+        }).catch(function (res) {
+            console.log("#ERRO: "`${res}`);
+        });
+    })
 }
 
 fetch("/maquina/listar", {
@@ -101,57 +62,47 @@ fetch("/maquina/listar", {
         console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
         for (var i = 0; i < resultado.length; i++) {
-            clonar(resultado[i,i].idmaquina, ` ${resultado[i,i].idmaquina}`)
+            clonar(resultado[i, i].idmaquina, ` ${resultado[i, i].idmaquina}`)
             console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-            spanValor.innerHTML = resultado[i,i].nome_maquina;
+            spanValor.innerHTML = resultado[i, i].nome_maquina;
 
         }
- /*        var elementoClicado = document.getElementById('container_redutores');
-        elementoClicado.addEventListener('click', function (ident) {
-            myDynamicChart(ident.target.id)
-            operarHTML([])
-            console.log(ident.target.id)
-            console.log(resultado[0,0].idmaquina)
-        }) */
+        /*        var elementoClicado = document.getElementById('container_redutores');
+               elementoClicado.addEventListener('click', function (ident) {
+                   myDynamicChart(ident.target.id)
+                   operarHTML([])
+                   console.log(ident.target.id)
+                   console.log(resultado[0,0].idmaquina)
+               }) */
         var elementoClicado = document.getElementById('container_redutores');
-elementoClicado.addEventListener('click', function (ident) {
-    listarMaquinas(ident.target.id)
-    console.log(ident.target.id)
-    myDynamicChart(resultado[0,0].nome_maquina,resultado[3].temp_min)
-})
+        elementoClicado.addEventListener('click', function (ident) {
+            listarMaquinas(ident.target.id)
+            obterDadosGrafico(ident.target.id)
+            console.log(ident.target.id)
+           /* myDynamicChart(resultado[0, 0].nome_maquina, resultado[3].temp_min) */
+        })
+        
+        /* var dynamic_chart;
+        var ctx2; */
 
-        var dynamic_chart;
-        var ctx2;
+       /*  function myDynamicChart(chart, temperatura) {
+            const datateste = {
+                labels: labels,
+                datasets: [{
+                    label: `${chart}`,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [temperatura],
+                }]
+            };
+            ctx2 = document.querySelectorAll('#myChart');
+            dynamic_chart = new Chart(ctx2, {
+                type: 'line',
+                data: datateste,
+                options: {}
+            });
 
-    function myDynamicChart(chart,temperatura) {
-        const datateste = {
-            labels: labels2,
-            datasets: [{
-                label: `${chart}`,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [temperatura],
-            }]
-        };
-        if (Chart.getChart("myChart")) {
-            Chart.getChart("myChart").destroy();
-        }
-        ctx2 = document.querySelectorAll('#myChart');
-        dynamic_chart = new Chart(ctx2, {
-            type: 'line',
-            data: datateste,
-            options: {}
-        });
-        function sendData() {
-            var http = new XMLHttpRequest();
-            http.open('POST', 'http://localhost:3000/api/sendData', false);
-            http.send(null);
-        }
-
-        setInterval(() => {
-            sendData();
-        }, 2000);
-    }
+        } */
     })
 
 }).catch(function (resposta) {
@@ -167,8 +118,9 @@ function operarHTML(valores) {
     span_m_alta.innerHTML = valores[4] + "°C"
     addData(myChart, valores)
 }
+
 function addData(myChart, temperatura) {
-   /*  myChart.data.labels.push(new Date().toLocaleTimeString()) */
+    /*  myChart.data.labels.push(new Date().toLocaleTimeString()) */
     myChart.data.datasets[0].data.push(temperatura[0]);
     myChart.data.datasets[0].data.push(temperatura[1]);
     myChart.data.datasets[0].data.push(temperatura[2]);
@@ -220,43 +172,32 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     return false;
 }
 
-var intervalo;
-var mostrar_dados_dashboard = function (idMaquina, vetor, div_grafico, myChart, myChartMedia) {
-console.log(intervalo)
-if (intervalo !== undefined) {
-    clearInterval(intervalo)
-}
-intervalo = setInterval(function () {
-    adicionar_dados(idMaquina, vetor, div_grafico, myChart, myChartMedia)
-
-}, 2000)
-console.log(intervalo)
-
-}
 //Exibir os gráficos da máquina selecionada pelo usuário
-function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
-var dashboard = document.getElementById(div_grafico)
-var dashboardMedia = document.getElementById(myChartMedia)
-esconder_graficos()
-operarHTML(valores)
-dashboard.style.display = 'block'
-dashboardMedia.style.display = 'block'
+/* function adicionar_dados(idMaquina, valores, div_grafico, myChart, myChartMedia) {
+    var dashboard = document.getElementById(div_grafico)
+    var dashboardMedia = document.getElementById(myChartMedia)
+    esconder_graficos()
+    operarHTML(valores)
+    dashboard.style.display = 'block'
+    dashboardMedia.style.display = 'block'
 
 
 
-if (myChart.data.labels.length == 10) {
-    myChart.data.labels.shift();
-    myChart.data.datasets[0].data.shift();
-}
-myChart.update();
-}
+    if (myChart.data.labels.length == 10) {
+        myChart.data.labels.shift();
+        myChart.data.datasets[0].data.shift();
+    }
+    myChart.update();
+} */
+var proximaAtualizacao;
 
-window.onload = obterDadosGrafico(1)
 
 function obterDadosGrafico(idMaquina) {
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
+
+    console.log('idMaquinaidMaquinaidMaquinaidMaquina', idMaquina)
 
     fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -264,7 +205,7 @@ function obterDadosGrafico(idMaquina) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
 
-                plotarGrafico(resposta, idAquario);
+                plotarGrafico(resposta, idMaquina);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -274,6 +215,71 @@ function obterDadosGrafico(idMaquina) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+function plotarGrafico(resposta,idMaquina) {
+    // console.log(resposta)
+    console.log('iniciando plotagem do gráfico...');
+    if (Chart.getChart("myChart")) {
+        Chart.getChart("myChart").destroy();
+    }
+
+    const ctx2 = document.getElementById('myChart');
+    ctx2.style.backgroundColor = '#2E4053';
+    Chart.defaults.color = "white";
+    Chart.defaults.borderColor = 'black';
+    Chart.defaults.font.size = 20;
+
+    const temperaturas = resposta.map(listaLogTemp => listaLogTemp.registro_temp)
+    // [90,90,90,90,90,50]
+    // console.log('temperaturas', temperaturas)
+    //data_hora_registro
+    const horaRegistros = resposta.map(listaLogTemp => listaLogTemp.data_hora_registro)
+
+    // console.log('horaRegistros', horaRegistros)
+
+    const data = {
+        labels: horaRegistros,
+        datasets: [{
+        label: 'Sensor entrada',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: temperaturas,
+    }]};
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    const chart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+    // for (var i = 0; i < resposta.length; i++) {
+    //     var registro = resposta[i];
+    //     myChart.labels.push(registro.data_hora_registro);
+    //     myChart.datasets[0].data.push(registro.registro_temp);
+    // }
+
+    // console.log('aaaa', JSON.stringify(dados));
+
+    /*
+    function sendData() {
+        var http = new XMLHttpRequest();
+        http.open('POST', 'http://localhost:3000/api/sendData', false);
+        http.send(null);
+    }
+
+    setInterval(() => {
+        sendData();
+    }, 2000);
+    */
+
+    //Atualiza os dados de 2 em 2 segundos
+    setTimeout(() => atualizarGrafico(idMaquina, chart), 2000);
 }
 
 function atualizarGrafico(idMaquina, dados) {
@@ -286,11 +292,11 @@ function atualizarGrafico(idMaquina, dados) {
                 console.log(`Dados atuais do gráfico: ${dados}`);
 
                 // tirando e colocando valores no gráfico
-                dados.labels.shift(); // apagar o primeiro
-                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
-                window.grafico_linha.update();
+                dados.data.labels.shift(); // apagar o primeiro
+                dados.data.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
+                dados.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                dados.data.datasets[0].data.push(novoRegistro[0].registro_temp); 
+                dados.update();
 
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);
             });

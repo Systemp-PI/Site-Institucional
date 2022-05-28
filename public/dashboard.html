@@ -74,9 +74,6 @@
         <div id="grafico" class="graficos">
             <canvas id="myChart"></canvas>
         </div>
-        <div id="grafico1" class="graficos" style="display: none;">
-            <canvas id="myChart1"></canvas>
-        </div>
         
         <div id="graficoMedia" class="graficosMedia" style="display: none;">
             <h1>Quantidade de alertas do dia:</h1>
@@ -106,65 +103,9 @@
 </body>
 
 <script>
-
-    const ctx = document.getElementById('myChart1');
-    ctx.style.backgroundColor = '#2E4053';
-    Chart.defaults.color = "white";
-    Chart.defaults.borderColor = 'black';
-    Chart.defaults.font.size = 20;
-
+    
     const ctxMedia = document.getElementById('myChartMedia');
     ctxMedia.style.backgroundColor = '#2E4053';
-
-    const labels2 = [
-      '12:00',
-      '13:00',
-      '14:00',
-      '15:00',
-      '16:00',
-      '17:00',
-    ];
-    const data = {
-      labels: labels2,
-      datasets: [{
-        label: 'Sensor entrada',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [30, 29, 28, 25,22 , 23],
-      }]};
-      const config = {
-      type: 'line',
-      data: data,
-      options: {}
-    };
-    const myChart = new Chart(
-      document.getElementById('myChart'),
-      config
-    );
-    const myChart1 = new Chart(ctx, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: 'Temperatura do sensor  Máquina 1',
-                backgroundColor: 'firebrick',
-                borderColor: 'tomato',
-                borderWidth: 4,
-
-            }]
-
-        },
-        options: {
-
-            scales: {
-                y: {
-                    suggestedMin: 20,
-                    suggestedMax: 50,
-                },
-            }
-        }
-    }
-    )
-
 
     var myChartMedia = new Chart(ctxMedia, {
         type: 'polarArea',
@@ -189,14 +130,6 @@
             ]
         }
     })
-
-   
-    //Ocultar os demais gráficos da dashboard
-    function esconder_graficos() {
-        document.getElementById('grafico1').style.display = 'none'
-        document.getElementById('graficoMedia').style.display = 'none'
-    }
-
 
 </script>
 

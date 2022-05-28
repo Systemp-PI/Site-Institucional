@@ -81,7 +81,7 @@ function cadastrar(req, res) {
 function cadastrarSensor(req, res) {
 
         // Passe os valores como parâmetro e vá para o arquivo maquinaModel.js
-        maquinaModel.cadastrarSensor(req,res)
+        maquinaModel.cadastrarSensor()
             .then(
                 function (resultado) {
                     res.json(resultado);

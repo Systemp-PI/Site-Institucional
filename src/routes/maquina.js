@@ -17,6 +17,9 @@ router.get("/listarUm/:idMaquina", function (req, res) {
 router.post("/cadastrar", function (req, res) {
     maquinaController.cadastrar(req, res);
 })
+router.post("/cadastrarSensor", function (req, res) {
+    maquinaController.cadastrarSensor(req, res);
+})
 
 router.post("/autenticar", function (req, res) {
     maquinaController.entrar(req, res);

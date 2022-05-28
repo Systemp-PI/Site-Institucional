@@ -21,6 +21,7 @@ function listarUm(idMaquina) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
+
 function cadastrar(nome_maq, temp_min, temp_max,fk_cliente) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome_maq,temp_min,temp_max );
     
@@ -32,9 +33,20 @@ function cadastrar(nome_maq, temp_min, temp_max,fk_cliente) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-
+function cadastrarSensor() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome_maq,temp_min,temp_max );
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO log_temperatura (fk_maquina) VALUES ((Select idmaquina from maquina order by idmaquina desc limit 1)) ;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 module.exports = {
     cadastrar,
+    cadastrarSensor,
     listar,
     listarUm
 };

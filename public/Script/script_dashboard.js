@@ -18,6 +18,7 @@ fechar_tela.onclick = function fechar() {
 }
 
 
+
 function listarMaquinas(idMaquina) {
 
     fetch(`/maquina/listarUm/${idMaquina}`, {
@@ -50,68 +51,44 @@ function listarMaquinas(idMaquina) {
     })
 }
 
-var fk_cliente= sessionStorage.ID_USUARIO
-console.log(fk_cliente)
-window.onload= listarMaquinas_cliente(fk_cliente)
-function listarMaquinas_cliente(fkCliente){
-fetch(`/maquina/listar/${fkCliente}`, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    },
-  
-}).then(function (resposta) {
-    resposta.json().then(function (resultado) {
-        console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
-        for (var i = 0; i < resultado.length; i++) {
-            clonar(resultado[i, i].idmaquina, ` ${resultado[i, i].idmaquina}`)
-            console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-            spanValor.innerHTML = resultado[i, i].nome_maquina;
+window.onload = listarMaquinas_cliente(1)
+function listarMaquinas_cliente(fkCliente) {
+    var id = sessionStorage.ID_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    user_name.innerHTML = nome;
+    user_id.innerHTML = id;
+    fetch(`/maquina/listar/${fkCliente}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-        }
+    }).then(function (resposta) {
+        resposta.json().then(function (resultado) {
+            console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
 
-        /*        var elementoClicado = document.getElementById('container_redutores');
-               elementoClicado.addEventListener('click', function (ident) {
-                   myDynamicChart(ident.target.id)
-                   operarHTML([])
-                   console.log(ident.target.id)
-                   console.log(resultado[0,0].idmaquina)
-               }) */
-        var elementoClicado = document.getElementById('container_redutores');
-        elementoClicado.addEventListener('click', function (ident) {
-            listarMaquinas(ident.target.id)
-            obterDadosGrafico(ident.target.id)
-            console.log(ident.target.id)
-            /* myDynamicChart(resultado[0, 0].nome_maquina, resultado[3].temp_min) */
+            for (var i = 0; i < resultado.length; i++) {
+                clonar(resultado[i, i].idmaquina, ` ${resultado[i, i].idmaquina}`)
+                console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
+                spanValor.innerHTML = resultado[i, i].nome_maquina;
+
+            }
+
+            var elementoClicado = document.getElementById('container_redutores');
+            elementoClicado.addEventListener('click', function (ident) {
+                listarMaquinas(ident.target.id)
+                obterDadosGrafico(ident.target.id)
+                console.log(ident.target.id)
+
+            })
+
+
         })
 
-        /* var dynamic_chart;
-        var ctx2; */
-
-        /*  function myDynamicChart(chart, temperatura) {
-             const datateste = {
-                 labels: labels,
-                 datasets: [{
-                     label: `${chart}`,
-                     backgroundColor: 'rgb(255, 99, 132)',
-                     borderColor: 'rgb(255, 99, 132)',
-                     data: [temperatura],
-                 }]
-             };
-             ctx2 = document.querySelectorAll('#myChart');
-             dynamic_chart = new Chart(ctx2, {
-                 type: 'line',
-                 data: datateste,
-                 options: {}
-             });
- 
-         } */
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
     })
-
-}).catch(function (resposta) {
-    console.log(`#ERRO: ${resposta}`);
-})
 }
 
 function operarHTML(valores) {
@@ -137,7 +114,7 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var nome_maq = String(input_nome_maquina.value)
     var temp_min = Number(input_temperatura_min.value)
     var temp_max = Number(input_temperatura_max.value)
-    var fk_cliente= document.getElementById('user_id').innerHTML
+    var fk_cliente = sessionStorage.ID_USUARIO
     alert(nome_maq)
     fetch("/maquina/cadastrar", {
         method: "POST",
@@ -148,8 +125,27 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
             nomeMaqServer: nome_maq,
             tempMinServer: temp_min,
             tempMaxServer: temp_max,
-            fk_clienteServer:fk_cliente
+            fk_clienteServer: fk_cliente
         })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            alert('Maquina Cadastrada')
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    fetch("/maquina/cadastrarSensor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
     }).then(function (resposta) {
 
         console.log("resposta: ", resposta);
@@ -239,34 +235,35 @@ function plotarGrafico(resposta, idMaquina) {
         options: {}
     };
 
-    const chart= new Chart(
+    const chart = new Chart(
         document.getElementById('myChart'),
         config
     );
 
 
-    var chartMedia = new Chart(ctxMedia,{
+    var chartMedia = new Chart(ctxMedia, {
         type: 'polarArea',
-        data : {
-    datasets: [{
-        data: [3, 4, 10, 6, 4],
-        color:'red',
-        backgroundColor: [
-      'blue',
-      'lightblue',
-      'green',
-      'orange',
-      'red'
-    ]
-    }],labels: [
-      
-        'Temp. baixo critico',
-        'Temp. baixo',
-        'Temp. ideal',
-        'Temp. alta',
-        'Temp. alta critico'
-    ]
-}})
+        data: {
+            datasets: [{
+                data: [3, 4, 10, 6, 4],
+                color: 'red',
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    })
 
 
     //Atualiza os dados de 2 em 2 segundos

@@ -25,44 +25,6 @@ function listar(req, res) {
         );
 }
 
-/* function entrar(req, res) {
-    var nome_maq = req.body.nomeMaqServer;
-    var temp_min = req.body.tempMinServer;
-    var temp_max = req.body.tempMaxServer;
-
-    if (nome_maq == undefined) {
-        res.status(400).send("Seu nome maquina está undefined!");
-    } else if (temp_min == undefined) {
-        res.status(400).send("Sua temperatura minima está indefinida!");
-    } else if (temp_max == undefined) {
-        res.status(400).send("Sua temperatura maxima está indefinida!");
-    } else {
-        
-        maquinaModel.entrar(nome_maq, temp_min, temp_max)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
-} */
 function listarUm(req, res) {
     const idMaquina = req.params.idMaquina
     maquinaModel.listarUm(idMaquina)
@@ -116,9 +78,29 @@ function cadastrar(req, res) {
             );
     }
 }
+function cadastrarSensor(req, res) {
+
+        // Passe os valores como parâmetro e vá para o arquivo maquinaModel.js
+        maquinaModel.cadastrarSensor(req,res)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
 
 module.exports = {
     cadastrar,
+    cadastrarSensor,
     listar,
     testar,
     listarUm

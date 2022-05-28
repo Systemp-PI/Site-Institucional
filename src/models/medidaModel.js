@@ -17,7 +17,7 @@ function buscarMedidasEmTempoReal(idMaquina) {
     instrucaoSql = `select 
                      registro_temp, 
                      DATE_FORMAT(data_hora_registro,'%H:%i:%s') as data_hora_registro,
-                      fk_maquina, nome_maquina
+                      fk_maquina, nome_maquina,temp_min,temp_max
                           from log_temperatura
                         join maquina on fk_maquina = idmaquina
                         where fk_maquina = ${idMaquina}

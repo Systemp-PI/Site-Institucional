@@ -9,7 +9,12 @@ var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem = document.querySelector(`.redutor_img`)
 var divClick = document.querySelector('.identificacao_maq')
-
+/* const moda_muito_alto = []
+const moda_alto=[]
+const moda_ideal=[]
+const moda_baixa=[]
+const moda_muito_baixa=[]
+ */
 abrir_tela.onclick = function cadastrarMaquina() {
     tela_cadastro.style.display = "block";
 }
@@ -52,7 +57,7 @@ function listarMaquinas(idMaquina) {
 }
 
 
-window.onload = listarMaquinas_cliente(1)
+window.onload = listarMaquinas_cliente(sessionStorage.ID_USUARIO)
 function listarMaquinas_cliente(fkCliente) {
     var id = sessionStorage.ID_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -211,14 +216,11 @@ function plotarGrafico(resposta, idMaquina) {
     ctxMedia.style.backgroundColor = '#2E4053';
 
     const temperaturas = resposta.map(listaLogTemp => listaLogTemp.registro_temp)
-    // [90,90,90,90,90,50]
-    // console.log('temperaturas', temperaturas)
-    //data_hora_registro
+    
     const horaRegistros = resposta.map(listaLogTemp => listaLogTemp.data_hora_registro)
     const nomeMaquina = resposta.map(listaLogTemp => listaLogTemp.nome_maquina)
     console.log('nomeMaquina', nomeMaquina)
-    // console.log('horaRegistros', horaRegistros)
-
+  
     const data = {
         labels: horaRegistros,
         datasets: [{
@@ -245,7 +247,7 @@ function plotarGrafico(resposta, idMaquina) {
         type: 'polarArea',
         data: {
             datasets: [{
-                data: [3, 4, 10, 6, 4],
+                data: [1,2,3,4,5],
                 color: 'red',
                 backgroundColor: [
                     'blue',
@@ -267,15 +269,64 @@ function plotarGrafico(resposta, idMaquina) {
 
 
     //Atualiza os dados de 2 em 2 segundos
-    setTimeout(() => atualizarGrafico(idMaquina, chart), 2000);
+    setTimeout(() => atualizarGrafico(idMaquina, chart, chartMedia), 2000);
 }
 
-function atualizarGrafico(idMaquina, dados) {
+function atualizarGrafico(idMaquina, dados, alerta) {
+  var kpi_m_alto = document.querySelector('.alertas.m_alta')
+  var kpi_alto = document.querySelector('.alertas.alta')
+  var kpi_ideal = document.querySelector('.alertas.ideal')
+  var kpi_baixo = document.querySelector('.alertas.baixa')
+  var kpi_m_baixo = document.querySelector('.alertas.m_baixa')
+
 
     fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
+        var alerta_critico_alto = novoRegistro[0].temp_max;
+        var alerta_alto = (((novoRegistro[0].temp_max - novoRegistro[0].temp_min) * 75) / 100) + novoRegistro[0].temp_min;
+        var alerta_ideal = (((novoRegistro[0].temp_max - novoRegistro[0].temp_min) * 50) / 100) + novoRegistro[0].temp_min;
+        var alerta_baixo = (((novoRegistro[0].temp_max - novoRegistro[0].temp_min) * 25) / 100) + novoRegistro[0].temp_min;
+        var alerta_critico_baixo = novoRegistro[0].temp_min;
+        console.log(alerta_critico_alto, alerta_alto, alerta_ideal, alerta_baixo, alerta_critico_baixo)
+if (novoRegistro[0].registro_temp > alerta_critico_alto){
+    kpi_m_alto.style.boxShadow=' 0px 10px 15px 10px red';
+    kpi_alto.style.boxShadow = 'none';
+    kpi_ideal.style.boxShadow = 'none';
+    kpi_baixo.style.boxShadow = 'none';
+    kpi_m_baixo.style.boxShadow = 'none';
 
+
+} else if (novoRegistro[0].registro_temp >= alerta_alto){
+    kpi_m_alto.style.boxShadow='none';
+    kpi_alto.style.boxShadow = '0px 10px 15px 10px orange';
+    kpi_ideal.style.boxShadow = 'none';
+    kpi_baixo.style.boxShadow = 'none';
+    kpi_m_baixo.style.boxShadow = 'none';
+
+
+} else if (novoRegistro[0].registro_temp <= alerta_critico_baixo){
+    kpi_m_alto.style.boxShadow = 'none';
+    kpi_alto.style.boxShadow = 'none';
+    kpi_ideal.style.boxShadow = 'none';
+    kpi_baixo.style.boxShadow = 'none';
+    kpi_m_baixo.style.boxShadow = '0px 10px 15px 10px blue';
+
+} else if (novoRegistro[0].registro_temp <= alerta_baixo){
+    kpi_m_alto.style.boxShadow = 'none';
+    kpi_alto.style.boxShadow = 'none';
+    kpi_ideal.style.boxShadow = 'none';
+    kpi_baixo.style.boxShadow = '0px 10px 15px 10px #119db9';
+    kpi_m_baixo.style.boxShadow = 'none';
+
+} else {
+        kpi_m_alto.style.boxShadow = 'none';
+        kpi_alto.style.boxShadow = 'none';
+        kpi_ideal.style.boxShadow = '0px 10px 15px 10px green';
+        kpi_baixo.style.boxShadow = 'none';
+        kpi_m_baixo.style.boxShadow = 'none';
+
+}
                 // tirando e colocando valores no gráfico
                 dados.data.labels.shift(); // apagar o primeiro
                 dados.data.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento

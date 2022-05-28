@@ -296,6 +296,7 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = 'none';
 
+    divClick.style.backgroundColor = 'red'
     moda_muito_alto.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_muito_alto.length)
 } else if (novoRegistro[0].registro_temp >= alerta_alto){
@@ -305,6 +306,7 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = 'none';
 
+    divClick.style.backgroundColor = 'orange'
     moda_alto.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_alto.length)
 } else if (novoRegistro[0].registro_temp <= alerta_critico_baixo){
@@ -323,6 +325,7 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = '0px 10px 15px 10px #119db9';
     kpi_m_baixo.style.boxShadow = 'none';
 
+    divClick.style.backgroundColor = '#119db9'
     moda_baixa.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_baixa.length)
 } else {
@@ -332,6 +335,7 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
         kpi_baixo.style.boxShadow = 'none';
         kpi_m_baixo.style.boxShadow = 'none';
         
+        divClick.style.backgroundColor = 'green'
         moda_ideal.unshift(novoRegistro[0])
         alerta.data.datasets[0].data.push(moda_ideal.length)
 }

@@ -26,7 +26,7 @@ function listarMaquinas(idMaquina) {
         headers: { "Content-Type": "application/json" }
     }).then(function (resposta) {
         resposta.json().then(function (resultado) {
-            console.log('resultado',resultado)
+            console.log('resultado', resultado)
             console.log(resultado.temp_min + "=======" + resultado.temp_max)
             var abaixo_ideal = (((resultado.temp_max - resultado.temp_min) * 25) / 100) + resultado.temp_min;
             var ideal = (((resultado.temp_max - resultado.temp_min) * 50) / 100) + resultado.temp_min;
@@ -34,14 +34,14 @@ function listarMaquinas(idMaquina) {
             operarHTML([resultado.temp_min, abaixo_ideal, ideal, acima_ideal, resultado.temp_max])
 
             /* resposta.json().then(function (resultado) { */
-                console.log('teste', resultado[0, 0].idmaquina)
-                if (resposta.ok) {
-                    console.log("resposta: ", resposta.json());
-                    console.log("resposta: ", resposta.json().idmaquina);
+            console.log('teste', resultado[0, 0].idmaquina)
+            if (resposta.ok) {
+                console.log("resposta: ", resposta.json());
+                console.log("resposta: ", resposta.json().idmaquina);
 
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
             /*}).catch(function (res) {
                 console.log("#ERRO: "`${res}`);
             });*/
@@ -67,6 +67,7 @@ fetch("/maquina/listar", {
             spanValor.innerHTML = resultado[i, i].nome_maquina;
 
         }
+
         /*        var elementoClicado = document.getElementById('container_redutores');
                elementoClicado.addEventListener('click', function (ident) {
                    myDynamicChart(ident.target.id)
@@ -79,30 +80,30 @@ fetch("/maquina/listar", {
             listarMaquinas(ident.target.id)
             obterDadosGrafico(ident.target.id)
             console.log(ident.target.id)
-           /* myDynamicChart(resultado[0, 0].nome_maquina, resultado[3].temp_min) */
+            /* myDynamicChart(resultado[0, 0].nome_maquina, resultado[3].temp_min) */
         })
-        
+
         /* var dynamic_chart;
         var ctx2; */
 
-       /*  function myDynamicChart(chart, temperatura) {
-            const datateste = {
-                labels: labels,
-                datasets: [{
-                    label: `${chart}`,
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [temperatura],
-                }]
-            };
-            ctx2 = document.querySelectorAll('#myChart');
-            dynamic_chart = new Chart(ctx2, {
-                type: 'line',
-                data: datateste,
-                options: {}
-            });
-
-        } */
+        /*  function myDynamicChart(chart, temperatura) {
+             const datateste = {
+                 labels: labels,
+                 datasets: [{
+                     label: `${chart}`,
+                     backgroundColor: 'rgb(255, 99, 132)',
+                     borderColor: 'rgb(255, 99, 132)',
+                     data: [temperatura],
+                 }]
+             };
+             ctx2 = document.querySelectorAll('#myChart');
+             dynamic_chart = new Chart(ctx2, {
+                 type: 'line',
+                 data: datateste,
+                 options: {}
+             });
+ 
+         } */
     })
 
 }).catch(function (resposta) {
@@ -119,23 +120,12 @@ function operarHTML(valores) {
     addData(myChart, valores)
 }
 
-function addData(myChart, temperatura) {
-    /*  myChart.data.labels.push(new Date().toLocaleTimeString()) */
-    myChart.data.datasets[0].data.push(temperatura[0]);
-    myChart.data.datasets[0].data.push(temperatura[1]);
-    myChart.data.datasets[0].data.push(temperatura[2]);
-    myChart.data.datasets[0].data.push(temperatura[3]);
-    myChart.data.datasets[0].data.push(temperatura[4]);
-    myChart.update();
-}
-
 function clonar(teste, params) {
 
     var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     var container = document.querySelector('#container_redutores');
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     container.appendChild(clonarDiv);
-    divImagem.style.backgroundColor = "#" + randomColor;
     divImagem.id = `${params}`
 }
 
@@ -197,7 +187,6 @@ function obterDadosGrafico(idMaquina) {
         clearTimeout(proximaAtualizacao);
     }
 
-    console.log('idMaquinaidMaquinaidMaquinaidMaquina', idMaquina)
 
     fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -217,7 +206,8 @@ function obterDadosGrafico(idMaquina) {
 
 }
 
-function plotarGrafico(resposta,idMaquina) {
+function plotarGrafico(resposta, idMaquina) {
+    console.log('resposta:', resposta)
     // console.log(resposta)
     console.log('iniciando plotagem do gráfico...');
     if (Chart.getChart("myChart")) {
@@ -230,22 +220,27 @@ function plotarGrafico(resposta,idMaquina) {
     Chart.defaults.borderColor = 'black';
     Chart.defaults.font.size = 20;
 
+    const ctxMedia = document.getElementById('myChartMedia');
+    ctxMedia.style.backgroundColor = '#2E4053';
+
     const temperaturas = resposta.map(listaLogTemp => listaLogTemp.registro_temp)
     // [90,90,90,90,90,50]
     // console.log('temperaturas', temperaturas)
     //data_hora_registro
     const horaRegistros = resposta.map(listaLogTemp => listaLogTemp.data_hora_registro)
-
+    const nomeMaquina = resposta.map(listaLogTemp => listaLogTemp.nome_maquina)
+    console.log('nomeMaquina', nomeMaquina)
     // console.log('horaRegistros', horaRegistros)
 
     const data = {
         labels: horaRegistros,
         datasets: [{
-        label: 'Sensor entrada',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: temperaturas,
-    }]};
+            label: nomeMaquina[0],
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: temperaturas,
+        }]
+    };
 
     const config = {
         type: 'line',
@@ -253,30 +248,35 @@ function plotarGrafico(resposta,idMaquina) {
         options: {}
     };
 
-    const chart = new Chart(
-      document.getElementById('myChart'),
-      config
+    const chart= new Chart(
+        document.getElementById('myChart'),
+        config
     );
 
-    // for (var i = 0; i < resposta.length; i++) {
-    //     var registro = resposta[i];
-    //     myChart.labels.push(registro.data_hora_registro);
-    //     myChart.datasets[0].data.push(registro.registro_temp);
-    // }
 
-    // console.log('aaaa', JSON.stringify(dados));
+    var chartMedia = new Chart(ctxMedia,{
+        type: 'polarArea',
+        data : {
+    datasets: [{
+        data: [3, 4, 10, 6, 4],
+        color:'red',
+        backgroundColor: [
+      'blue',
+      'lightblue',
+      'green',
+      'orange',
+      'red'
+    ]
+    }],labels: [
+      
+        'Temp. baixo critico',
+        'Temp. baixo',
+        'Temp. ideal',
+        'Temp. alta',
+        'Temp. alta critico'
+    ]
+}})
 
-    /*
-    function sendData() {
-        var http = new XMLHttpRequest();
-        http.open('POST', 'http://localhost:3000/api/sendData', false);
-        http.send(null);
-    }
-
-    setInterval(() => {
-        sendData();
-    }, 2000);
-    */
 
     //Atualiza os dados de 2 em 2 segundos
     setTimeout(() => atualizarGrafico(idMaquina, chart), 2000);
@@ -288,14 +288,11 @@ function atualizarGrafico(idMaquina, dados) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                console.log(`Dados atuais do gráfico: ${dados}`);
-
                 // tirando e colocando valores no gráfico
                 dados.data.labels.shift(); // apagar o primeiro
                 dados.data.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
                 dados.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
-                dados.data.datasets[0].data.push(novoRegistro[0].registro_temp); 
+                dados.data.datasets[0].data.push(novoRegistro[0].registro_temp);
                 dados.update();
 
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);

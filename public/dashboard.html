@@ -29,25 +29,7 @@
         <img id="add_icon" href="#formulario_maquina_nova" src="imgs/add_icon.png" onclick="cadastrarMaquina()"
             alt="Icone de adição de item">
     </div>
-    <div id="formulario_maquina_nova">
-        <div id="frame_formulario">
-            <form id="formulario_envio" >
-                <span id="exit_icon" onclick="fechar()">&times;</span>
-                <label for="input_nome_maquina">Nome da máquina:</label> <br>
-                <input type="text" id="input_nome_maquina"><br><br>
-                <label for="input_temperatura_max">Temperatura máxima(°C):</label><br>
-                <input type="number" id="input_temperatura_max"><br><br>
-                <label for="input_temperatura_min">Temperatura mínima(°C):</label><br>
-                <input type="number" id="input_temperatura_min"><br><br>
-                <span class="span_maquinas">Quantidade de sensores:</span><br>
-                <select id="qtd_sensores">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select><br><br>
-                <button id="btn_enviar_cadastro" type="button">Cadastrar Máquina</button>
-            </form>
-        </div>
-    </div>
+   
     <div id="niveis_alerta">
         <div class="alertas m_baixa">Nível crítico:<br><span class="titulo_alerta">Temperatura muito
                 baixa</span></span><br> <span id="span_m_baixa"></span></div>
@@ -60,6 +42,22 @@
             </span><br> <span id="span_alta"></span></div>
         <div class="alertas m_alta">Nível crítico:<br> <span class="titulo_alerta">Temperatura muito acima</span><br>
             <span id="span_m_alta"></span>
+        </div>
+    </div>
+     <div id="formulario_maquina_nova">
+        <div id="frame_formulario">
+            <form id="formulario_envio" >
+                <span id="exit_icon" onclick="fechar()">&times;</span>
+                <label for="input_nome_maquina">Nome da máquina:</label> <br>
+                <input type="text" id="input_nome_maquina"><br><br>
+                <label for="input_temperatura_max">Temperatura máxima(°C):</label><br>
+                <input type="number" id="input_temperatura_max"><br><br>
+                <label for="input_temperatura_min">Temperatura mínima(°C):</label><br>
+                <input type="number" id="input_temperatura_min"><br><br>
+                <span class="span_maquinas">ID do usuário:</span><br>
+                <input type="text" disabled>
+                <button id="btn_enviar_cadastro" type="button">Cadastrar Máquina</button>
+            </form>
         </div>
     </div>
     <div id="container_redutores">
@@ -75,7 +73,7 @@
             <canvas id="myChart"></canvas>
         </div>
         
-        <div id="graficoMedia" class="graficosMedia" style="display: none;">
+        <div id="graficoMedia" class="graficosMedia" style="display: block;">
             <h1>Quantidade de alertas do dia:</h1>
             <canvas id="myChartMedia"></canvas>
         </div>
@@ -103,33 +101,7 @@
 </body>
 
 <script>
-    
-    const ctxMedia = document.getElementById('myChartMedia');
-    ctxMedia.style.backgroundColor = '#2E4053';
 
-    var myChartMedia = new Chart(ctxMedia, {
-        type: 'polarArea',
-        data: {
-            datasets: [{
-                data: [5, 29, 16, 36, 49],
-                color: 'red',
-                backgroundColor: [
-                    'blue',
-                    'lightblue',
-                    'green',
-                    'orange',
-                    'red'
-                ]
-            }], labels: [
-
-                'Temp. baixo critico',
-                'Temp. baixo',
-                'Temp. ideal',
-                'Temp. alta',
-                'Temp. alta critico'
-            ]
-        }
-    })
 
 </script>
 

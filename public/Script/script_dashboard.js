@@ -134,6 +134,7 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var nome_maq = String(input_nome_maquina.value)
     var temp_min = Number(input_temperatura_min.value)
     var temp_max = Number(input_temperatura_max.value)
+    var fk_cliente= document.getElementById('user_id').innerHTML
     alert(nome_maq)
     fetch("/maquina/cadastrar", {
         method: "POST",
@@ -143,7 +144,8 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
         body: JSON.stringify({
             nomeMaqServer: nome_maq,
             tempMinServer: temp_min,
-            tempMaxServer: temp_max
+            tempMaxServer: temp_max,
+            fk_clienteServer:fk_cliente
         })
     }).then(function (resposta) {
 

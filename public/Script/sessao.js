@@ -3,6 +3,7 @@ function validarSessao() {
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var id= sessionStorage.ID_USUARIO;
    var nome_maquina_card =  sessionStorage.NOME_MAQUINA_DIV
 
     var h1LoginUsuario = document.getElementById("h1_login_usuario");    
@@ -13,6 +14,7 @@ function validarSessao() {
             h1LoginUsuario.innerHTML = email;
         }
         user_name.innerHTML = nome;
+        user_id.innerHTML = id;
 
         // finalizarAguardar();
     } else {

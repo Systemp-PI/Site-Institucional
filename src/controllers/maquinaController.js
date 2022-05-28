@@ -85,7 +85,7 @@ function cadastrar(req, res) {
     var nome_maq = req.body.nomeMaqServer;
     var temp_min = req.body.tempMinServer;
     var temp_max = req.body.tempMaxServer;
-
+    var fk_cliente = req.body.fk_clienteServer;
 
     // Faça as validações dos valores
     if (nome_maq == '') {
@@ -98,7 +98,7 @@ function cadastrar(req, res) {
      else {
         
         // Passe os valores como parâmetro e vá para o arquivo maquinaModel.js
-        maquinaModel.cadastrar(nome_maq, temp_min, temp_max)
+        maquinaModel.cadastrar(nome_maq, temp_min, temp_max,fk_cliente)
             .then(
                 function (resultado) {
                     res.json(resultado);

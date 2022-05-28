@@ -46,74 +46,102 @@ fk_cliente int,
 foreign key (fk_cliente) references empresas (idcliente));
 
 select * from maquina;
-
-create table sensor (idsensor int primary key auto_increment,
-fk_maquina int,
-foreign key (fk_maquina) references maquina (idmaquina))
-auto_increment = 1000;
-
-select * from sensor;
-desc sensor;
+select * from log_temperatura;
 
 create table log_temperatura (idregistro int primary key auto_increment,
 registro_temp float,
 data_hora_registro datetime default current_timestamp,
-fk_sensor int,
-foreign key (fk_sensor) references sensor (idsensor));
+fk_maquina int,
+foreign key (fk_maquina) references maquina (idmaquina));
 
-select * from log_temperatura;
-desc sensor;
+select * from log_temperatura where fk_maquina= 1;
 
-select * from empresas;
+select registro_temp, 
+	DATE_FORMAT(data_hora_registro,'%H:%i:%s') as data_hora_registro,
+     fk_maquina, nome_maquina
+      from log_temperatura
+       join maquina on fk_maquina = idmaquina
+		where fk_maquina = 1
+		order by idregistro ;
+
+select * 
+from maquina 
+join log_temperatura 
+on fk_sensor = idmaquina;
+
+insert into log_temperatura values (null,8,default,1);
+
+SELECT * FROM maquina 
+        join log_temperatura on fk_maquina = idMaquina;
+        truncate table log_temperatura;
 
 /* para sql server - remoto - produção */
 
-create table empresa (
-	idcliente int primary key auto_increment,
-	razao_social varchar(50) not null,
-	cnpj char(14) unique,
-	inscricao_estadual char(9),
-	contato_nome varchar(30),
-	contato2_nome varchar(30),
-	contato_email varchar(40),
-	contato_tel varchar(15),
-	estado char(2),
-	cidade varchar (30)
-	);
+create table empresas (idcliente int primary key auto_increment,
+razao_social varchar(50) not null,
+cnpj char(14) unique not null,
+inscricao_estadual char(9) not null,
+contato1_nome varchar(30) not null,
+contato1_email varchar (40) not null,
+contato1_tel varchar (15) not null,
+contato2_nome varchar(30) not null,
+contato2_email varchar(40) not null,
+contato2_tel varchar(15) not null,
+cep char(8) not null,
+estado char(2)not null,
+cidade varchar (30) not null,
+bairro varchar (45) not null,
+rua varchar (45) not null,
+numero char (5) not null,
+complemento varchar (20)
+);
 
-create table usuario (
-	idcadastro int primary key auto_increment,
-	Nome_usuario varchar(40),
-	CNPJ char(14),
-	email varchar(50),
-	senha varchar(30),
-	fk_cliente int,
-	foreign key (fk_cliente) references empresa (idcliente)
-	);
+select * from empresa;
 
-create table sensor (
-	idsensor int primary key auto_increment,
-	local_maquina varchar(30),
-	temp_min char(4),
-	temp_max char(4),
-	fk_empresa int,
-	foreign key (fk_empresa) references empresa (idcliente)
-	)auto_increment = 1000;
+create table usuario (idcadastro int primary key auto_increment,
+Nome_usuario varchar(40),
+CNPJ char(14),
+email varchar(50),
+senha varchar(30),
+fk_cliente int,
+foreign key (fk_cliente) references empresas (idcliente));
 
-create table log_temperatura (
-	idregistro int primary key auto_increment,
-	registro_temp char(4),
-	data_hora_registro datetime default current_timestamp,
-	fk_sensor int,
-	foreign key (fk_sensor) references sensor (idsensor)
-	);
+select * from usuario;
+desc usuario;
 
-create table colaboradores (
-	idcolaborador int primary key auto_increment,
-	nome_colaborador varchar(50),
-	cpf char(14),
-	cargo varchar (45),
-	chefe varchar(45),
-	fk_chefe int,
-	foreign key (fk_chefe) references colaboradores (idcolaborador)
-	);
+create table maquina(idmaquina int primary key auto_increment,
+nome_maquina varchar (25),
+temp_max float,
+temp_min float,
+fk_cliente int,
+foreign key (fk_cliente) references empresas (idcliente));
+
+select * from maquina;
+select * from log_temperatura;
+
+create table log_temperatura (idregistro int primary key auto_increment,
+registro_temp float,
+data_hora_registro datetime default current_timestamp,
+fk_maquina int,
+foreign key (fk_maquina) references maquina (idmaquina));
+
+select * from log_temperatura where fk_maquina= 1;
+
+select registro_temp, 
+	DATE_FORMAT(data_hora_registro,'%H:%i:%s') as data_hora_registro,
+     fk_maquina, nome_maquina
+      from log_temperatura
+       join maquina on fk_maquina = idmaquina
+		where fk_maquina = 1
+		order by idregistro ;
+
+select * 
+from maquina 
+join log_temperatura 
+on fk_sensor = idmaquina;
+
+insert into log_temperatura values (null,8,default,1);
+
+SELECT * FROM maquina 
+        join log_temperatura on fk_maquina = idMaquina;
+        truncate table log_temperatura;

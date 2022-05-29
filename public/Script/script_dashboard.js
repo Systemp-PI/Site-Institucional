@@ -3,17 +3,19 @@
 var tela_cadastro = document.getElementById("formulario_maquina_nova");
 var abrir_tela = document.getElementById("add_icon");
 var fechar_tela = document.getElementById("exit_icon");
+//formulario maquina
 var cadastrar_Maquinas = document.getElementById("btn_enviar_cadastro");
 var form_envio = document.getElementById('formulario_envio')
 var spanValor = document.getElementById('valorSpan')
 var divMaquina = document.querySelector(`maq1`)
 var divImagem = document.querySelector(`.redutor_img`)
-var divClick = document.querySelector('.identificacao_maq')
+//grafico moda
 const moda_muito_alto = []
 const moda_alto=[]
 const moda_ideal=[]
 const moda_baixa=[]
 const moda_muito_baixa=[]
+var divClick = document.getElementById('1')
 
 abrir_tela.onclick = function cadastrarMaquina() {
     tela_cadastro.style.display = "block";
@@ -22,7 +24,27 @@ fechar_tela.onclick = function fechar() {
     tela_cadastro.style.display = "none";
 }
 
+var botao_filtro = document.getElementById('botao_filtro')
 
+botao_filtro.onclick= function filtrar(){
+    var select_maquinas = document.getElementById('selecionar_maquinas').value
+if (select_maquinas == 'muito_alta' ){
+    listarMaquinas_muitoQuentes(sessionStorage.ID_USUARIO)
+}
+else if (select_maquinas == 'muito_baixa'){
+    listarMaquinas_muitoFrias(sessionStorage.ID_USUARIO)
+}
+else if (select_maquinas == 'alta'){
+
+}
+else if (select_maquinas == 'baixa'){
+
+}
+else{
+listarMaquinas_cliente(sessionStorage.ID_USUARIO)
+}
+
+}
 
 function listarMaquinas(idMaquina) {
 
@@ -57,7 +79,6 @@ function listarMaquinas(idMaquina) {
 }
 
 
-window.onload = listarMaquinas_cliente(sessionStorage.ID_USUARIO)
 function listarMaquinas_cliente(fkCliente) {
     var id = sessionStorage.ID_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -71,10 +92,10 @@ function listarMaquinas_cliente(fkCliente) {
 
     }).then(function (resposta) {
         resposta.json().then(function (resultado) {
-            console.log('Esta maquina tem temp min::' + resultado[0, 0].temp_min)
+            console.log('RESPOSTA::' + resultado)
 
             for (var i = 0; i < resultado.length; i++) {
-                clonar(resultado[i, i].idmaquina, ` ${resultado[i, i].idmaquina}`)
+                clonar(resultado[i, i].idmaquina, `${resultado[i, i].idmaquina}`)
                 console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
                 spanValor.innerHTML = resultado[i, i].nome_maquina;
 
@@ -85,7 +106,82 @@ function listarMaquinas_cliente(fkCliente) {
                 listarMaquinas(ident.target.id)
                 obterDadosGrafico(ident.target.id)
                 console.log(ident.target.id)
+                divClick = document.getElementById(ident.target.id)
+            })
 
+
+        })
+
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    })
+}
+function listarMaquinas_muitoFrias(fkCliente) {
+    var id = sessionStorage.ID_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    user_name.innerHTML = nome;
+    user_id.innerHTML = id;
+    fetch(`/maquina/maquinas_muito_frias/${fkCliente}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+    }).then(function (resposta) {
+        resposta.json().then(function (resultado) {
+            console.log('RESPOSTA::' + resultado)
+
+            for (var i = 0; i < 3; i++) {
+                clonar(resultado[i, i].idmaquina, `${resultado[i, i].idmaquina}`)
+                console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
+                spanValor.innerHTML = resultado[i, i].nome_maquina;
+
+            }
+
+            var elementoClicado = document.getElementById('container_redutores');
+            elementoClicado.addEventListener('click', function (ident) {
+                listarMaquinas(ident.target.id)
+                obterDadosGrafico(ident.target.id)
+                console.log(ident.target.id)
+                divClick = document.getElementById(ident.target.id)
+            })
+
+
+        })
+
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    })
+}
+
+function listarMaquinas_muitoQuentes(fkCliente) {
+    var id = sessionStorage.ID_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    user_name.innerHTML = nome;
+    user_id.innerHTML = id;
+    fetch(`/maquina/maquinas_muito_quentes/${fkCliente}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+    }).then(function (resposta) {
+        resposta.json().then(function (resultado) {
+            console.log('RESPOSTA::' + resultado)
+
+            for (var i = 0; i < resultado.length; i++) {
+                clonar(resultado[i, i].idmaquina, `${resultado[i, i].idmaquina}`)
+                console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
+                spanValor.innerHTML = resultado[i, i].nome_maquina;
+
+            }
+
+            var elementoClicado = document.getElementById('container_redutores');
+            elementoClicado.addEventListener('click', function (ident) {
+                listarMaquinas(ident.target.id)
+                obterDadosGrafico(ident.target.id)
+                console.log(ident.target.id)
+                divClick = document.getElementById(ident.target.id)
             })
 
 
@@ -105,7 +201,7 @@ function operarHTML(valores) {
     addData(myChart, valores)
 }
 
-function clonar(teste, params) {
+function clonar(teste,params) {
 
     var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
     var container = document.querySelector('#container_redutores');
@@ -278,11 +374,13 @@ function atualizarGrafico(idMaquina, dados, alerta) {
   var kpi_ideal = document.querySelector('.alertas.ideal')
   var kpi_baixo = document.querySelector('.alertas.baixa')
   var kpi_m_baixo = document.querySelector('.alertas.m_baixa')
+  
+  fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+          response.json().then(function (novoRegistro) {
+                console.log('IDMAQUINA::',idMaquina)
+                console.log('IdivClick::',divClick)
 
-
-    fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (novoRegistro) {
         var alerta_critico_alto = novoRegistro[0].temp_max;
         var alerta_alto = (((novoRegistro[0].temp_max - novoRegistro[0].temp_min) * 75) / 100) + novoRegistro[0].temp_min;
         var alerta_ideal = (((novoRegistro[0].temp_max - novoRegistro[0].temp_min) * 50) / 100) + novoRegistro[0].temp_min;
@@ -309,16 +407,20 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     divClick.style.backgroundColor = 'orange'
     moda_alto.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_alto.length)
-} else if (novoRegistro[0].registro_temp <= alerta_critico_baixo){
+}
+
+else if (novoRegistro[0].registro_temp <= alerta_critico_baixo){
     kpi_m_alto.style.boxShadow = 'none';
     kpi_alto.style.boxShadow = 'none';
     kpi_ideal.style.boxShadow = 'none';
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = '0px 10px 15px 10px blue';
-    
+
+    divClick.style.backgroundColor = 'blue'
     moda_muito_baixa.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_muito_baixa.length)
-} else if (novoRegistro[0].registro_temp <= alerta_baixo){
+}
+else if (novoRegistro[0].registro_temp <= alerta_baixo){
     kpi_m_alto.style.boxShadow = 'none';
     kpi_alto.style.boxShadow = 'none';
     kpi_ideal.style.boxShadow = 'none';
@@ -328,7 +430,8 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     divClick.style.backgroundColor = '#119db9'
     moda_baixa.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_baixa.length)
-} else {
+}   
+else {
         kpi_m_alto.style.boxShadow = 'none';
         kpi_alto.style.boxShadow = 'none';
         kpi_ideal.style.boxShadow = '0px 10px 15px 10px green';

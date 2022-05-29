@@ -10,6 +10,12 @@ router.get("/", function (req, res) {
 router.get("/listar/:fkCliente", function (req, res) {
     maquinaController.listar(req, res);
 });
+router.get("/maquinas_muito_frias/:fkCliente", function (req, res) {
+    maquinaController.listar(req, res);
+});
+router.get("/maquinas_muito_quentes/:fkCliente", function (req, res) {
+    maquinaController.listar(req, res);
+});
 router.get("/listarUm/:idMaquina", function (req, res) {
     maquinaController.listarUm(req, res);
 });

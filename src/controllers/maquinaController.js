@@ -2,14 +2,45 @@ var maquinaModel = require("../models/maquinaModel");
 
 var sessoes = [];
 
-function testar(req, res) {
-    console.log("ENTRAMOS NA usuarioController");
-    res.json("ESTAMOS FUNCIONANDO!");
-}
+
 
 function listar(req, res) {
     const fkCliente = req.params.fkCliente;
     maquinaModel.listar(fkCliente)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+function maquinas_muito_frias(req, res) {
+    const fkCliente = req.params.fkCliente;
+    maquinaModel.maquinas_muito_frias(fkCliente)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+function maquinas_muito_quentes(req, res) {
+    const fkCliente = req.params.fkCliente;
+    maquinaModel.maquinas_muito_quentes(fkCliente)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -99,9 +130,10 @@ function cadastrarSensor(req, res) {
 }
 
 module.exports = {
+    maquinas_muito_quentes,
+    maquinas_muito_frias,
     cadastrar,
     cadastrarSensor,
     listar,
-    testar,
     listarUm
 }

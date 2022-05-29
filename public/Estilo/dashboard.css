@@ -164,34 +164,7 @@ form {
     background-color: green;
     cursor: pointer;
 }
-.redutor_img.img2{
-    width: 100px;
-    height: 100px;
-    margin-right: 30px;
-    background-color: rgb(17, 157, 185);
-    cursor: pointer;
-}
-.redutor_img.img3{
-    width: 100px;
-    height: 100px;
-    margin-right: 30px;
-    background-color: green;
-    cursor: pointer;
-}
-.redutor_img.img4{
-    width: 100px;
-    height: 100px;
-    margin-right: 30px;
-    background-color:rgb(17, 157, 185);
-    cursor: pointer;
-}
-.redutor_img.img5{
-    width: 100px;
-    height: 100px;
-    margin-right: 30px;
-    background-color:red;
-    cursor: pointer;
-}
+
 #niveis_alerta{
     display: flex;
     justify-content: space-around;
@@ -249,6 +222,22 @@ form {
     border-radius: 5px;
 }
 
+#selecionar_maquinas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 1%;
+    height: 30px;
+}
+#botao_filtro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 1%;
+    height: 30px;
+}
 .span_maquinas{
     color: white;
     font-size: 20px;

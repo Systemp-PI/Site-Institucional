@@ -346,7 +346,7 @@ function plotarGrafico(resposta, idMaquina) {
         type: 'polarArea',
         data: {
             datasets: [{
-                data: [moda_muito_baixa2.length,moda_baixa2.length,moda_ideal2.length,moda_alto2.length,moda_muito_alto2.length],
+                data: [moda_muito_baixa1.length,moda_baixa1.length,moda_ideal1.length,moda_alto1.length,moda_muito_alto1.length],
                 color: 'red',
                 backgroundColor: [
                     'blue',
@@ -395,13 +395,8 @@ function atualizarGrafico(idMaquina, dados, alerta) {
  const resultadoMaquina5=resultado_maquina_quente[0].quantidade_alertas
  const resultadoMaquina6=resultado_maquina_quente[0].quantidade_alertas
  const resultadoMaquina7=resultado_maquina_quente[0].quantidade_alertas
-  moda_muito_alto1.push(1) 
-  moda_muito_alto2.push(2) 
-  moda_muito_alto3.push(3) 
-  moda_muito_alto4.push(4) 
-  moda_muito_alto5.push(5) 
-  moda_muito_alto6.push(6) 
-  moda_muito_alto7.push(7)
+ moda_muito_alto1.push(1) 
+
     })}).catch(function (resposta) {
     console.log(`#ERRO: ${resposta}`);
 })
@@ -423,13 +418,8 @@ fetch(`/maquina/obterDadosGraficoModa_frio`, {
  const resultadoMaquina5=resultado_maquina_frio[0].quantidade_alertas
  const resultadoMaquina6=resultado_maquina_frio[0].quantidade_alertas
  const resultadoMaquina7=resultado_maquina_frio[0].quantidade_alertas
- moda_muito_baixo1.push(1) 
- moda_muito_baixo2.push(2) 
- moda_muito_baixo3.push(3) 
- moda_muito_baixo4.push(4) 
- moda_muito_baixo5.push(5) 
- moda_muito_baixo6.push(6) 
- moda_muito_baixo7.push(7)
+ moda_muito_baixa1.push(1) 
+
     })
 
 }).catch(function (resposta) {
@@ -459,7 +449,7 @@ fetch(`/maquina/obterDadosGraficoModa_frio`, {
 
         divClick1.style.backgroundColor='green'
         divClick2.style.backgroundColor='green'
-        divClick3.style.backgroundColor='yellow'
+        divClick3.style.backgroundColor='orange'
         divClick4.style.backgroundColor='red'
         divClick5.style.backgroundColor='red'
         divClick6.style.backgroundColor='blue'

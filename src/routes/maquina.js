@@ -10,14 +10,15 @@ router.get("/", function (req, res) {
 router.get("/listar/:fkCliente", function (req, res) {
     maquinaController.listar(req, res);
 });
-router.get("/maquinas_muito_frias/:fkCliente", function (req, res) {
-    maquinaController.listar(req, res);
-});
-router.get("/maquinas_muito_quentes/:fkCliente", function (req, res) {
-    maquinaController.listar(req, res);
-});
+
 router.get("/listarUm/:idMaquina", function (req, res) {
     maquinaController.listarUm(req, res);
+});
+router.get("/obterDadosGraficoModa_quente", function (req, res) {
+    maquinaController.obterDadosGraficoModa_quente(req, res);
+});
+router.get("/obterDadosGraficoModa_frio", function (req, res) {
+    maquinaController.obterDadosGraficoModa_frio(req, res);
 });
 //Recebendo os dados do html e direcionando para a função cadastrar de maquinaController.js
 router.post("/cadastrar", function (req, res) {

@@ -21,40 +21,7 @@ function listar(req, res) {
             }
         );
 }
-function maquinas_muito_frias(req, res) {
-    const fkCliente = req.params.fkCliente;
-    maquinaModel.maquinas_muito_frias(fkCliente)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-function maquinas_muito_quentes(req, res) {
-    const fkCliente = req.params.fkCliente;
-    maquinaModel.maquinas_muito_quentes(fkCliente)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
+
 
 function listarUm(req, res) {
     const idMaquina = req.params.idMaquina
@@ -129,9 +96,42 @@ function cadastrarSensor(req, res) {
             );
 }
 
+function obterDadosGraficoModa_quente(req, res) {
+    maquinaModel.obterDadosGraficoModa_quente(req,res)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterDadosGraficoModa_frio(req, res) {
+    maquinaModel.obterDadosGraficoModa_frio(req,res)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 module.exports = {
-    maquinas_muito_quentes,
-    maquinas_muito_frias,
+    obterDadosGraficoModa_quente,
+    obterDadosGraficoModa_frio,
     cadastrar,
     cadastrarSensor,
     listar,

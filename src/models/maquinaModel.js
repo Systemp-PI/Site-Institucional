@@ -1,29 +1,5 @@
 var database = require("../database/config")
 
-function maquinas_muito_quentes(fkCliente) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
-    select * 
-from maquina 
-join log_temperatura 
-on fk_maquina = idmaquina where fk_cliente='${fkCliente}' and registro_temp >= temp_max;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function maquinas_muito_frias(fkCliente) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
-    select * 
-from maquina 
-join log_temperatura 
-on fk_maquina = idmaquina where fk_cliente='${fkCliente}' and registro_temp <= temp_min;
-
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
 /* 
 function maquinas_quentes(fkCliente) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
@@ -85,10 +61,35 @@ function cadastrarSensor() {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
+function obterDadosGraficoModa_quente (){
+var instrucao =`
+select idmaquina,count(registro_temp) as 'quantidade_alertas' , nome_maquina
+from  log_temperatura
+join maquina 
+on fk_maquina = idmaquina where fk_cliente=1 and  registro_temp > (((temp_max - temp_min) * 50) / 100) + temp_min group by  idmaquina order by idmaquina asc;
+`
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executar(instrucao);
+}
+
+function obterDadosGraficoModa_frio (){
+var instrucao =`
+select idmaquina,count(registro_temp) as 'quantidade_alertas' , nome_maquina
+from  log_temperatura
+join maquina 
+on fk_maquina = idmaquina where fk_cliente=1 and  registro_temp < (((temp_max - temp_min) * 50) / 100) + temp_min group by  idmaquina order by idmaquina asc;
+
+`
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executar(instrucao);
+}
+
+
 module.exports = {
-    maquinas_muito_frias,
-    maquinas_muito_quentes,
     cadastrar,
+    obterDadosGraficoModa_quente,
+    obterDadosGraficoModa_frio,
     cadastrarSensor,
     listar,
     listarUm

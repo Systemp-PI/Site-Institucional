@@ -32,86 +32,86 @@
         <form>
             <div id="box_form">
 
-                <label for="nome_usuario">Razão social:</label>
+                <label for="nome_usuario">Razão social</label>
                 <input type="text" onkeyup="verificarRazaoSocial()" placeholder="Digite o nome de usuário"
                     id="razao_social" required />
-                <span id="erro_razao_social"></span>
-                <label for="cnpj">CNPJ: </label>
+                <div class="mensagem_erro" id="erro_razao_social"></div>
+                <label for="cnpj">CNPJ</label>
                 <input type="number" onkeyup="verificarCnpj()" placeholder="Digite o CNPJ" id="cnpj"
                     title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required />
-                <span id="erro_cnpj"></span>
-                <label for="inscricao_estadual">Inscrição estadual </label>
+                <div class="mensagem_erro" id="erro_cnpj"></div>
+                <label for="inscricao_estadual">Inscrição estadual</label>
                 <input type="text" onkeyup="verificarIe()" placeholder="Digite a inscrição estadual"
                     id="inscricao_estadual" required />
-                <span id="erro_ie"></span>
-                <label for="nomecontato1"> Nome do contato 1 </label>
+                <div class="mensagem_erro" id="erro_ie"></div>
+                <label for="nomecontato1">Nome do contato 1</label>
                 <input type="text" onkeyup="verificarContato1()" placeholder="Digite o nome do contato"
                     id="nomecontato1" required />
-                <span id="erro_contato1"></span>
-                <label for="nomecontato2"> Nome do contato 2 </label>
+                <div class="mensagem_erro" id="erro_contato1"></div>
+                <label for="nomecontato2">Nome do contato 2</label>
                 <input type="text" onkeyup="verificarContato2()" placeholder="Digite o nome do contato"
                     id="nomecontato2" required />
-                <span id="erro_contato2"></span>
+                <div class="mensagem_erro" id="erro_contato2"></div>
             </div>
 
             <div id="box_form2">
-                <label for="emailcontato1"> Email do contato 1 </label>
+                <label for="emailcontato1">Email do contato 1</label>
                 <input type="email" onkeyup="verificarEmail1()" placeholder="Digite o email do contato"
                     id="emailcontato1" required />
-                <span id="erro_email1"></span>
-                <label for="emailcontato2"> Email do contato 2 </label>
+                <div class="mensagem_erro" id="erro_email1"></div>
+                <label for="emailcontato2">Email do contato 2</label>
                 <input type="email" onkeyup="verificarEmail2()" placeholder="Digite o email do contato"
                     id="emailcontato2" required />
-                <span id="erro_email2"></span>
-                <label for="telefonecontato"> Tel do contato 1 </label>
+                <div class="mensagem_erro" id="erro_email2"></div>
+                <label for="telefonecontato">Tel do contato 1</label>
                 <input type="number" onkeyup="verificarTel1()" placeholder="Digite o telefone do contato"
                     id="telefonecontato" required />
-                <span id="erro_telContato"></span>
+                <div class="mensagem_erro" id="erro_telContato"></div>
 
 
-                <label for="telefonecontato2"> Tel do contato 2 </label>
+                <label for="telefonecontato2">Tel do contato 2</label>
                 <input type="number" onkeyup="verificarTel2()" placeholder="Digite o telefone do contato"
                     id="telefonecontato2" required />
-                <span id="erro_telContato2"></span>
+                <div class="mensagem_erro" id="erro_telContato2"></div>
 
 
 
-                <label for="input_cep"> Cep </label>
+                <label for="input_cep">CEP</label>
                 <input onblur="pesquisacep(this.value);" type="number" onkeyup="verificarCep()"
                     placeholder="Digite o Cep da empresa" id="input_cep" required />
-                <span id="erro_cep"></span>
+                <div class="mensagem_erro" id="erro_cep"></div>
 
 
             </div>
 
             <div id="box_form3">
 
-                <label for="input_cidade"> Cidade </label>
-                <input style="background-color: white;"  type="text" onkeyup="verificarCidade()"
-                    placeholder="Digite a cidade" id="input_cidade" required />
-                <span id="erro_cidade"></span>
+                <label for="input_cidade">Cidade</label>
+                <input style="background-color: white;" type="text"
+                    placeholder="Digite a cidade" id="input_cidade" required disabled/>
+                <div class="mensagem_erro" id="erro_cidade"></div>
 
-                <label for="input_bairro"> Bairro </label>
-                <input style="background-color: white;"  type="text"
-                    placeholder="Digite o bairro da empresa" id="input_bairro" required />
-                <span id="erro_bairro"></span>
+                <label for="input_bairro">Bairro</label>
+                <input style="background-color: white;" type="text" placeholder="Digite o bairro da empresa"
+                    id="input_bairro" required disabled/>
+                <div class="mensagem_erro" id="erro_bairro"></div>
 
-                <label for="input_rua"> Rua </label>
-                <input style="background-color: white;"  type="text"
-                    placeholder="Digite o rua da empresa" id="input_rua" required />
-                <span id="erro_rua"></span>
+                <label for="input_rua">Rua</label>
+                <input style="background-color: white;" type="text" placeholder="Digite o rua da empresa" id="input_rua"
+                    required disabled/>
+                <div class="mensagem_erro" id="erro_rua"></div>
 
-                <label for="input_numero"> Numero rua </label>
+                <label for="input_numero">Número rua</label>
                 <input type="number" onkeyup="verificarNumero()" placeholder="Digite o numero da empresa"
                     id="input_numero" required />
-                <span id="erro_numero"></span>
+                <div class="mensagem_erro" id="erro_numero"></div>
 
-                <label for="input_complemento"> complemento </label>
+                <label for="input_complemento">Complemento</label>
                 <input type="number" placeholder="Digite o complemento da empresa" id="input_complemento" required />
-                <span id="erro_complemento"></span>
+                <div class="mensagem_erro" id="erro_complemento"></div>
 
-                <label for="estado">Selecione seu estado </label>
-                <select style="background-color: white;"  id="estado" name="estado">
+                <label for="estado">Estado</label>
+                <select style="background-color: white;" id="estado" name="estado">
                     <option disabled>Selecione seu estado</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -149,35 +149,26 @@
     <button type="button" onclick="cadastrar_empresa()">Enviar</button>
     </form>
 
+    <footer>
+        <div id="footer_title">
+            <h2 id="title">Fale conosco</h2>
+        </div>
+        <div class="container_footer">
+            <a class="enderecos" href="mailto:support@systemp-help.freshdesk.com"><img class="contatos" id="logo_email"
+                    src="https://i.ibb.co/b7n7Hkf/logo-email.png">support@systemp-help.freshdesk.com</a>
 
+            <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp"
+                    src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">+55 (11) 99999-9999 </a>
 
-    <div id="span_erro">
-        <span id="span_erro_nome_usuario"></span>
-        <span id="span_erro_cnpj"></span>
-        <span id="span_erro_email"></span>
-        <span id="span_erro_senha"></span>
-        <span id="span_erro_conf_senha"></span>
-
-        <footer>
-            <div id="footer_title">
-                <h2 id="title">Fale conosco</h2>
+            <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin"
+                    src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">linkedin.com/systemp</a>
+        </div>
+        <div id="container_copyright">
+            <div class="copyright">
+                <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
             </div>
-            <div class="container_footer">
-                <a class="enderecos" href="mailto:support@systemp-help.freshdesk.com"><img class="contatos" id="logo_email"
-                        src="https://i.ibb.co/b7n7Hkf/logo-email.png">support@systemp-help.freshdesk.com</a>
-
-                <a class="enderecos" href="tel:+5511999999999"><img class="contatos" id="logo_whatsapp"
-                        src="https://i.ibb.co/ZKx7HBs/logo-whatsapp.png">+55 (11) 99999-9999 </a>
-
-                <a class="enderecos" href="https://linkedin.com/systemp"> <img class="contatos" id="logo_linkedin"
-                        src="https://i.ibb.co/9q18Cz0/logo-linkedin.png">linkedin.com/systemp</a>
-            </div>
-            <div id="container_copyright">
-                <div class="copyright">
-                    <p>&copy; 2022 SYSTEMP. Todos os direitos reservados.</p>
-                </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
 </body>
 
 </html>
@@ -188,7 +179,7 @@
 
 
 
-function pesquisacep() {
+    function pesquisacep() {
         fetch(`https://viacep.com.br/ws/${input_cep.value}/json/`, {
             method: "GET",
             mode: "cors"
@@ -218,9 +209,9 @@ function pesquisacep() {
     var cep = ''
     var numero = ''
 
-           
-            
-         
+
+
+
 
 
     //Validação razão social
@@ -238,7 +229,7 @@ function pesquisacep() {
     function verificarCnpj() {
         pj = String(cnpj.value).trim();
         if (pj.length != 14) {
-            erro_cnpj.innerHTML = 'Digite 14 números'
+            erro_cnpj.innerHTML = '*Digite 14 números'
             return false
         } else {
             erro_cnpj.innerHTML = '✓'
@@ -249,7 +240,7 @@ function pesquisacep() {
     function verificarIe() {
         ie = String(inscricao_estadual.value).trim();
         if (ie.length != 9) {
-            erro_ie.innerHTML = 'Digite 9 números'
+            erro_ie.innerHTML = '*Digite 9 números'
             return false
         } else {
             erro_ie.innerHTML = '✓'
@@ -260,7 +251,7 @@ function pesquisacep() {
     function verificarContato1() {
         contato1 = String(nomecontato1.value).trim();
         if (contato1.length < 3) {
-            erro_contato1.innerHTML = 'Digite no minimo 3 caracteres'
+            erro_contato1.innerHTML = '*Digite no minimo 3 caracteres'
             return false
         } else {
             erro_contato1.innerHTML = '✓'
@@ -271,7 +262,7 @@ function pesquisacep() {
     function verificarContato2() {
         contato2 = String(nomecontato2.value).trim();
         if (contato2.length < 3) {
-            erro_contato2.innerHTML = 'Digite no minimo 3 caracteres'
+            erro_contato2.innerHTML = '*Digite no minimo 3 caracteres'
             return false
         } else {
             erro_contato2.innerHTML = '✓'
@@ -306,7 +297,7 @@ function pesquisacep() {
     function verificarTel1() {
         tel1 = String(telefonecontato.value).trim();
         if (tel1.length < 10) {
-            erro_telContato.innerHTML = 'Digite o DD e o número'
+            erro_telContato.innerHTML = '*Digite o DD e o número'
             return false
         } else {
             erro_telContato.innerHTML = '✓'
@@ -317,7 +308,7 @@ function pesquisacep() {
     function verificarTel2() {
         tel2 = String(telefonecontato2.value).trim();
         if (tel2.length < 10) {
-            erro_telContato2.innerHTML = 'Digite o DD e o número'
+            erro_telContato2.innerHTML = '*Digite o DD e o número'
             return false
         } else {
             erro_telContato2.innerHTML = '✓'
@@ -328,7 +319,7 @@ function pesquisacep() {
     function verificarCep() {
         cep = String(input_cep.value);
         if (cep.length != 8) {
-            erro_cep.innerHTML = 'Digite um CEP com 8 dígitos (apenas números)'
+            erro_cep.innerHTML = '*Digite um CEP com 8 dígitos (apenas números)'
             return false
         } else {
             erro_cep.innerHTML = '✓'
@@ -336,23 +327,23 @@ function pesquisacep() {
     }
 
     //Validação cidade
-    function verificarCidade() {
+    /* function verificarCidade() {
         cidade = String(input_cidade.value).trim();
         if (cidade.length < 3) {
-            erro_cidade.innerHTML = 'Digite um nome com mais de 3 caracteres'
+            erro_cidade.innerHTML = '*Digite um nome com mais de 3 caracteres'
             return false
         } else {
             erro_cidade.innerHTML = '✓'
         }
-    }
+    } */
 
     //Validação número do endereço
     function verificarNumero() {
         numero = String(input_numero.value);
         if (numero == '') {
-            erro_numero.innerHTML = 'Digite um endereço'
+            erro_numero.innerHTML = '*Digite um endereço'
         } else if (numero.length > 5) {
-            erro_numero.innerHTML = 'Digite um endereço válido'
+            erro_numero.innerHTML = '*Digite um endereço válido'
         } else {
             erro_numero.innerHTML = '✓'
         }

@@ -24,7 +24,7 @@ function verificarRazaoSocial(){
 function verificarCnpj(){
     pj = String(cnpj.value).trim();
     if (pj.length != 14){
-        erro_cnpj.innerHTML = 'Digite 14 números'
+        erro_cnpj.innerHTML = '*Digite 14 números'
         return false
     } else {
         erro_cnpj.innerHTML = '✓'
@@ -35,7 +35,7 @@ function verificarCnpj(){
 function verificarIe(){
     ie = String(incscricao_estadual.value).trim();
     if (ie.length != 9){
-        erro_ie.innerHTML = 'Digite 9 números'
+        erro_ie.innerHTML = '*Digite 9 números'
         return false
     } else {
         erro_ie.innerHTML = '✓'
@@ -46,7 +46,7 @@ function verificarIe(){
 function verificarContato1(){
     contato1 = String(nomecontato1.value).trim();
     if (contato1.length < 3){
-        erro_contato1.innerHTML = 'Digite no minimo 3 caracteres'
+        erro_contato1.innerHTML = '*Digite no mínimo 3 caracteres'
         return false
     } else {
         erro_contato1.innerHTML = '✓'
@@ -57,7 +57,7 @@ function verificarContato1(){
 function verificarContato2(){
     contato2 = String(nomecontato2.value).trim();
     if (contato2.length < 3){
-        erro_contato2.innerHTML = 'Digite no minimo 3 caracteres'
+        erro_contato2.innerHTML = '*Digite no mínimo 3 caracteres'
         return false
     } else {
         erro_contato2.innerHTML = '✓'
@@ -92,7 +92,7 @@ function verificarEmail2(){
 function verificarTel1(){
     tel1 = String(telefonecontato.value).trim();
     if (tel1.length < 10){
-        erro_telContato.innerHTML = 'Digite o DD e o número'
+        erro_telContato.innerHTML = '*Digite o DD e o número'
         return false
     } else {
         erro_telContato.innerHTML = '✓'
@@ -103,7 +103,7 @@ function verificarTel1(){
 function verificarTel2(){
     tel2 = String(telefonecontato2.value).trim();
     if (tel2.length < 10){
-        erro_telContato2.innerHTML = 'Digite o DD e o número'
+        erro_telContato2.innerHTML = '*Digite o DD e o número'
         return false
     } else {
         erro_telContato2.innerHTML = '✓'
@@ -114,7 +114,7 @@ function verificarTel2(){
 function verificarCidade(){
     cidade = String(input_cidade.value).trim();
     if (cidade.length < 3){
-        erro_cidade.innerHTML = 'Digite um nome com mais de 3 caracteres'
+        erro_cidade.innerHTML = '*Digite um nome com mais de 3 caracteres'
         return false
     } else {
         erro_cidade.innerHTML = '✓'

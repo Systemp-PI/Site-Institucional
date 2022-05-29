@@ -120,22 +120,26 @@ form {
     color: white;
     font-size: 20px;
 }
+
 #qtd_sensores {
     width: 70px;
     height: 30px;
 }
+
 #btn_enviar_cadastro{
     margin-bottom: 10px;
     border-radius: 40px;
     width: 150px;
     height: 30px;
 }
+
 #btn_enviar_cadastro:hover{
     cursor: pointer;
     background-color: #393e46;
     color: white;
     transition: 1s;
 }
+
 #container_redutores{
     display: flex;
     margin-top: 50px;
@@ -151,6 +155,7 @@ form {
     display: flex;
     flex-direction: column;
 }
+
 .identificacao_maq span{
     margin-left: 10px;
     font-weight: bold;
@@ -170,6 +175,7 @@ form {
     justify-content: space-around;
     margin-top: 50px;
 }
+
 .alertas{
     color: white;
     width: 250px;
@@ -189,6 +195,7 @@ form {
     border-radius: 5px;
     margin-left: 3%;
 }
+
 .alertas.baixa{
     background-color: #119db9;
     display: flex;
@@ -197,6 +204,7 @@ form {
     flex-direction: column;
     border-radius: 5px;
 }
+
 .alertas.ideal{
     background-color: #008000;
     display: flex;
@@ -205,6 +213,7 @@ form {
     flex-direction: column;
     border-radius: 5px;
 }
+
 .alertas.alta{
     background-color: #d77e09;
     display: flex;
@@ -213,6 +222,7 @@ form {
     flex-direction: column;
     border-radius: 5px;
 }
+
 .alertas.m_alta{
     background-color: #ff0000;
     display: flex;
@@ -230,6 +240,7 @@ form {
     margin-top: 1%;
     height: 30px;
 }
+
 #botao_filtro{
     display: flex;
     align-items: center;
@@ -238,10 +249,12 @@ form {
     margin-top: 1%;
     height: 30px;
 }
+
 .span_maquinas{
     color: white;
     font-size: 20px;
 }
+
 .container_graficos{
     width: 100%;
     height: 80vh;
@@ -254,16 +267,19 @@ form {
     width: 42%;
     height: 80%;
 }
+
 .graficosMedia {
     width: 25%;
     height:30%;
     margin-bottom: 28%;
 }
+
 .graficosMedia h1{
     text-align: center;
     color: white;
     font-size: 25px;
 }
+
 footer {
     position: relative;
     top: 205px;

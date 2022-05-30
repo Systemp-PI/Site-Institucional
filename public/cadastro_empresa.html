@@ -30,7 +30,7 @@
     <div class="container_cadastro">
 
         <form>
-            <div id="box_form">
+            <div id="box_form" class="boxes">
 
                 <label for="nome_usuario">Razão social</label>
                 <input type="text" onkeyup="verificarRazaoSocial()" placeholder="Digite o nome de usuário"
@@ -39,22 +39,23 @@
                 <label for="cnpj">CNPJ</label>
                 <input type="number" onkeyup="verificarCnpj()" placeholder="Digite o CNPJ" id="cnpj"
                     title="Somente números" pattern="[0-9]" maxlength="14" minlength="11" required />
-                <div class="mensagem_erro" id="erro_cnpj"></div>
-                <label for="inscricao_estadual">Inscrição estadual</label>
-                <input type="text" onkeyup="verificarIe()" placeholder="Digite a inscrição estadual"
+                    <div class="mensagem_erro" id="erro_cnpj"></div>
+                    <label for="inscricao_estadual">Inscrição estadual</label>
+                    <input type="text" onkeyup="verificarIe()" placeholder="Digite a inscrição estadual"
                     id="inscricao_estadual" required />
-                <div class="mensagem_erro" id="erro_ie"></div>
-                <label for="nomecontato1">Nome do contato 1</label>
+                    <div class="mensagem_erro" id="erro_ie"></div>
+                    <label for="nomecontato1">Nome do contato 1</label>
                 <input type="text" onkeyup="verificarContato1()" placeholder="Digite o nome do contato"
-                    id="nomecontato1" required />
+                id="nomecontato1" required />
                 <div class="mensagem_erro" id="erro_contato1"></div>
                 <label for="nomecontato2">Nome do contato 2</label>
                 <input type="text" onkeyup="verificarContato2()" placeholder="Digite o nome do contato"
-                    id="nomecontato2" required />
+                id="nomecontato2" required />
                 <div class="mensagem_erro" id="erro_contato2"></div>
+                <button type="button" onclick="cadastrar_empresa()">Enviar</button>
             </div>
 
-            <div id="box_form2">
+            <div id="box_form2" class="boxes">
                 <label for="emailcontato1">Email do contato 1</label>
                 <input type="email" onkeyup="verificarEmail1()" placeholder="Digite o email do contato"
                     id="emailcontato1" required />
@@ -84,7 +85,7 @@
 
             </div>
 
-            <div id="box_form3">
+            <div id="box_form3" class="boxes">
 
                 <label for="input_cidade">Cidade</label>
                 <input style="background-color: white;" type="text"
@@ -142,11 +143,10 @@
                     <option value="TO">Tocantins</option>
                     <option value="EX">Estrangeiro</option>
                 </select>
-
+                
             </div>
-
-    </div>
-    <button type="button" onclick="cadastrar_empresa()">Enviar</button>
+            
+        </div>
     </form>
 
     <footer>

@@ -48,7 +48,7 @@ a:hover {
 
 #container {
     width: 100%;
-    height: 70vh;
+/*     height: 70vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +70,7 @@ h1 {
     border: 1px solid rgba(0, 0, 0, 0.64);
     border-radius: 15px;
     width: 25%;
-    height: 100vh;
+    height: 300px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -93,7 +93,7 @@ label {
 input {
     border: none;
     border-radius: 10px;
-    height: 7%;
+    height: 30px;
     width: 15vw;
     color: rgb(0, 0, 0);
     padding: 2%;
@@ -126,7 +126,7 @@ input::placeholder{
 #but_entrar {
     background-color: #dbd6c9;
     color: black;
-    height: 12%;
+    height: 38px;
     width: 42%;
     border-radius: 15px;
     border: none;
@@ -149,7 +149,7 @@ input::placeholder{
     font-size: 14.5px;
     color: white;
     font-weight: 800;
-    margin-top: 9%;
+    margin-top: 7%;
 }
 
 #link_cadastro {

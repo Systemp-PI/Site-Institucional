@@ -302,13 +302,14 @@ function plotarGrafico(resposta, idMaquina) {
     }
 
     const ctx2 = document.getElementById('myChart');
-    ctx2.style.backgroundColor = '#2E4053';
+    ctx2.style.backgroundColor = '#1B262C';
+    ctx2.style.padding = '10px';
     Chart.defaults.color = "white";
-    Chart.defaults.borderColor = 'black';
-    Chart.defaults.font.size = 20;
+    Chart.defaults.borderColor = '#000';
+    Chart.defaults.font.size = 18;
 
     const ctxMedia = document.getElementById('myChartMedia');
-    ctxMedia.style.backgroundColor = '#2E4053';
+    ctxMedia.style.backgroundColor = '#6c757d';
 
     const temperaturas = resposta.map(listaLogTemp => listaLogTemp.registro_temp)
     
@@ -320,8 +321,8 @@ function plotarGrafico(resposta, idMaquina) {
         labels: horaRegistros,
         datasets: [{
             label: nomeMaquina[0],
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#787cb9',
+            borderColor: '#787cb9',
             data: temperaturas,
         }]
     };
@@ -329,7 +330,9 @@ function plotarGrafico(resposta, idMaquina) {
     const config = {
         type: 'line',
         data: data,
-        options: {}
+        options: {
+            
+        }
     };
 
     const chart = new Chart(
@@ -387,7 +390,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
         var alerta_critico_baixo = novoRegistro[0].temp_min;
         console.log(alerta_critico_alto, alerta_alto, alerta_ideal, alerta_baixo, alerta_critico_baixo)
 if (novoRegistro[0].registro_temp > alerta_critico_alto){
-    kpi_m_alto.style.boxShadow=' 0px 10px 15px 10px red';
+    kpi_m_alto.style.boxShadow=' 15px 10px 15px 10px red';
     kpi_alto.style.boxShadow = 'none';
     kpi_ideal.style.boxShadow = 'none';
     kpi_baixo.style.boxShadow = 'none';
@@ -433,7 +436,7 @@ else if (novoRegistro[0].registro_temp <= alerta_baixo){
 else {
         kpi_m_alto.style.boxShadow = 'none';
         kpi_alto.style.boxShadow = 'none';
-        kpi_ideal.style.boxShadow = '0px 10px 15px 10px green';
+        kpi_ideal.style.boxShadow = '0px 15px 15px 15px green';
         kpi_baixo.style.boxShadow = 'none';
         kpi_m_baixo.style.boxShadow = 'none';
         

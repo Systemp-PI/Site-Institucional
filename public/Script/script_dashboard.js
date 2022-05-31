@@ -14,6 +14,28 @@ const moda_alto=[]
 const moda_ideal=[]
 const moda_baixa=[]
 const moda_muito_baixa=[]
+
+const buscarDoBanco = async (parametro) => {
+    // const parametro = {
+    //     url: 'string',
+    //     method: 'GET, POST, PUT, DELETE',
+    //     errorMesage: ''
+    // }
+
+    try {
+        let resultado
+        const request = await fetch(parametro.url, { method: parametro.method, headers: { "Content-Type": "application/json" }})
+        resultado = request.json()
+        return resultado
+    } catch (error) {
+        console.log("#ERRO: "`${res}`);
+    }
+}
+
+const temperaturaAbaixoIdeal = (max, min) => (((max - min) * 25) / 100) + min
+const temperaturaIdeal = (max, min) => (((max - min) * 50) / 100) + min
+const temperaturaAcimaIdeal = (max, min) => (((max - min) * 75) / 100) + min
+
 var divClick = document.getElementById('1')
 
 abrir_tela.onclick = function cadastrarMaquina() {
@@ -25,23 +47,23 @@ fechar_tela.onclick = function fechar() {
 
 var botao_filtro = document.getElementById('botao_filtro')
 
-botao_filtro.onclick= function filtrar(){
+botao_filtro.onclick = async () => {
+    console.log('aaa!')
     var select_maquinas = document.getElementById('selecionar_maquinas').value
-if (select_maquinas == 'muito_alta' ){
-    listarMaquinas_muitoQuentes(sessionStorage.ID_USUARIO)
-}
-else if (select_maquinas == 'muito_baixa'){
-    listarMaquinas_muitoFrias(sessionStorage.ID_USUARIO)
-}
-else if (select_maquinas == 'alta'){
-
-}
-else if (select_maquinas == 'baixa'){
-
-}
-else{
-listarMaquinas_cliente(sessionStorage.ID_USUARIO)
-}
+    // const ret =  await buscarDoBanco({ url: '/maquina/listar/1', method: 'GET' })
+    // console.log('ret', ret)
+    var container = document.querySelector('#container_redutores')
+    // container.innerHTML = '<p>aaaa!!!</p>'
+    switch (select_maquinas) {
+        case 'todas':
+            listarMaquinas_cliente(sessionStorage.ID_USUARIO)
+        break;
+        default:
+            var clonarDiv = document.getElementById('maquinaPrincipal').cloneNode(true);
+            container.innerHTML = ''
+            container.appendChild(clonarDiv)
+        break;
+    }
 
 }
 
@@ -54,6 +76,9 @@ function listarMaquinas(idMaquina) {
         resposta.json().then(function (resultado) {
             console.log('resultado', resultado)
             console.log(resultado.temp_min + "=======" + resultado.temp_max)
+            // var abaixo_ideal = tempAbaixoIdeal(resultado.temp_max, resultado.temp_min)
+            // var ideal = tempIdeal(resultado.temp_max, resultado.temp_min)
+            // var acima_ideal = tempAcimaIdeal(resultado.temp_max, resultado.temp_min)
             var abaixo_ideal = (((resultado.temp_max - resultado.temp_min) * 25) / 100) + resultado.temp_min;
             var ideal = (((resultado.temp_max - resultado.temp_min) * 50) / 100) + resultado.temp_min;
             var acima_ideal = (((resultado.temp_max - resultado.temp_min) * 75) / 100) + resultado.temp_min;
@@ -91,59 +116,22 @@ function listarMaquinas_cliente(fkCliente) {
 
     }).then(function (resposta) {
         resposta.json().then(function (resultado) {
-            console.log('RESPOSTA::' + resultado)
+            console.log('RESPOSTA::', resultado)
+            document.querySelector('#container_redutores').innerHTML = '';
 
             for (var i = 0; i < resultado.length; i++) {
-                clonar(resultado[i, i].idmaquina, `${resultado[i, i].idmaquina}`)
-                console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-                spanValor.innerHTML = resultado[i, i].nome_maquina;
-
+                clonarMaquina(resultado[i])
+                // console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
+                // spanValor.innerHTML = resultado[i, i].nome_maquina;
             }
 
-            var elementoClicado = document.getElementById('container_redutores');
-            elementoClicado.addEventListener('click', function (ident) {
-                listarMaquinas(ident.target.id)
-                obterDadosGrafico(ident.target.id)
-                console.log(ident.target.id)
-                divClick = document.getElementById(ident.target.id)
-            })
-
-
-        })
-
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    })
-}
-function listarMaquinas_muitoFrias(fkCliente) {
-    var id = sessionStorage.ID_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    user_name.innerHTML = nome;
-    user_id.innerHTML = id;
-    fetch(`/maquina/maquinas_muito_frias/${fkCliente}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-    }).then(function (resposta) {
-        resposta.json().then(function (resultado) {
-            console.log('RESPOSTA::' + resultado)
-
-            for (var i = 0; i < 3; i++) {
-                clonar(resultado[i, i].idmaquina, `${resultado[i, i].idmaquina}`)
-                console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-                spanValor.innerHTML = resultado[i, i].nome_maquina;
-
-            }
-
-            var elementoClicado = document.getElementById('container_redutores');
-            elementoClicado.addEventListener('click', function (ident) {
-                listarMaquinas(ident.target.id)
-                obterDadosGrafico(ident.target.id)
-                console.log(ident.target.id)
-                divClick = document.getElementById(ident.target.id)
-            })
+            // var elementoClicado = document.getElementById('container_redutores');
+            // elementoClicado.addEventListener('click', function (ident) {
+            //     listarMaquinas(ident.target.id)
+            //     obterDadosGrafico(ident.target.id)
+            //     console.log(ident.target.id)
+            //     divClick = document.getElementById(ident.target.id)
+            // })
 
 
         })
@@ -153,43 +141,6 @@ function listarMaquinas_muitoFrias(fkCliente) {
     })
 }
 
-function listarMaquinas_muitoQuentes(fkCliente) {
-    var id = sessionStorage.ID_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    user_name.innerHTML = nome;
-    user_id.innerHTML = id;
-    fetch(`/maquina/maquinas_muito_quentes/${fkCliente}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-    }).then(function (resposta) {
-        resposta.json().then(function (resultado) {
-            console.log('RESPOSTA::' + resultado)
-
-            for (var i = 0; i < resultado.length; i++) {
-                clonar(resultado[i, i].idmaquina, `${resultado[i, i].idmaquina}`)
-                console.log(resultado[i, i].idmaquina + "temp_min:" + resultado[i, i].temp_min, +"temp_max:" + resultado[i, i].temp_max)
-                spanValor.innerHTML = resultado[i, i].nome_maquina;
-
-            }
-
-            var elementoClicado = document.getElementById('container_redutores');
-            elementoClicado.addEventListener('click', function (ident) {
-                listarMaquinas(ident.target.id)
-                obterDadosGrafico(ident.target.id)
-                console.log(ident.target.id)
-                divClick = document.getElementById(ident.target.id)
-            })
-
-
-        })
-
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    })
-}
 
 function operarHTML(valores) {
     span_m_baixa.innerHTML = valores[0] + "°C"
@@ -200,15 +151,24 @@ function operarHTML(valores) {
     addData(myChart, valores)
 }
 
-function clonar(teste,params) {
-
-    var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
+function clonarMaquina(maquina) {
     var container = document.querySelector('#container_redutores');
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    container.appendChild(clonarDiv);
-    divImagem.id = `${params}`
-}
+    var clonarDiv = document.querySelector('.identificacao_maq').cloneNode(true);
 
+    // var elementoClicado = document.getElementById('container_redutores');
+    clonarDiv.addEventListener('click', () => {
+        console.log('ident', maquina.idmaquina)
+        listarMaquinas(maquina.idmaquina)
+        obterDadosGrafico(maquina.idmaquina)
+        divClick = document.getElementById(maquina.idmaquina)
+    })
+
+    clonarDiv.querySelector('#valorSpan').innerHTML = maquina.nome_maquina
+    // console.log('aaa', clonarDiv.querySelector('#maq1'))
+    clonarDiv.id = maquina.idmaquina
+    container.appendChild(clonarDiv);
+    // divImagem.id = `${maquina.idmaquina}`
+}
 
 cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var nome_maq = String(input_nome_maquina.value)

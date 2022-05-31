@@ -336,7 +336,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
   var kpi_ideal = document.querySelector('.alertas.ideal')
   var kpi_baixo = document.querySelector('.alertas.baixa')
   var kpi_m_baixo = document.querySelector('.alertas.m_baixa')
-  
+  var containerMaquina = document.querySelector('.redutor_img.img1')
   fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
           response.json().then(function (novoRegistro) {
@@ -356,7 +356,7 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = 'none';
 
-    divClick.style.backgroundColor = 'red'
+    containerMaquina.style.backgroundColor = 'red'
     moda_muito_alto.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_muito_alto.length)
 } else if (novoRegistro[0].registro_temp >= alerta_alto){
@@ -366,7 +366,7 @@ if (novoRegistro[0].registro_temp > alerta_critico_alto){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = 'none';
 
-    divClick.style.backgroundColor = 'orange'
+    containerMaquina.style.backgroundColor = 'orange'
     moda_alto.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_alto.length)
 }
@@ -378,7 +378,7 @@ else if (novoRegistro[0].registro_temp <= alerta_critico_baixo){
     kpi_baixo.style.boxShadow = 'none';
     kpi_m_baixo.style.boxShadow = '0px 10px 15px 10px blue';
 
-    divClick.style.backgroundColor = 'blue'
+    containerMaquina.style.backgroundColor = 'blue';
     moda_muito_baixa.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_muito_baixa.length)
 }
@@ -389,7 +389,7 @@ else if (novoRegistro[0].registro_temp <= alerta_baixo){
     kpi_baixo.style.boxShadow = '0px 10px 15px 10px #119db9';
     kpi_m_baixo.style.boxShadow = 'none';
 
-    divClick.style.backgroundColor = '#119db9'
+    containerMaquina.style.backgroundColor = '#119db9'
     moda_baixa.unshift(novoRegistro[0])
     alerta.data.datasets[0].data.push(moda_baixa.length)
 }   
@@ -400,7 +400,7 @@ else {
         kpi_baixo.style.boxShadow = 'none';
         kpi_m_baixo.style.boxShadow = 'none';
         
-        divClick.style.backgroundColor = 'green'
+        containerMaquina.style.backgroundColor = 'green'
         moda_ideal.unshift(novoRegistro[0])
         alerta.data.datasets[0].data.push(moda_ideal.length)
 }

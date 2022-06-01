@@ -57,6 +57,7 @@ botao_filtro.onclick = async () => {
     switch (select_maquinas) {
         case 'todas':
             listarMaquinas_cliente(sessionStorage.ID_USUARIO)
+         
             break;
         default:
             var clonarDiv = document.getElementById('maquinaPrincipal').cloneNode(true);
@@ -181,15 +182,19 @@ function mostrarSaudeMaquinas() {
     const maquina6 = document.querySelector('#m6')
     const maquina7 = document.querySelector('#m7')
     maquina1.style.backgroundColor = 'green' 
-    maquina2.style.backgroundColor = 'aqua'
-    maquina3.style.backgroundColor = 'green'
-    maquina4.style.backgroundColor = 'blue'
-    maquina5.style.backgroundColor = 'green'
-    maquina6.style.backgroundColor = 'orange'
-    maquina7.style.backgroundColor = 'red' 
 
+
+    if(moda_muito_baixa.length > 30 ){
+        maquina1.style.backgroundColor = 'blue'
+    } 
+    else if (moda_muito_alto.length > 20){
+        maquina1.style.backgroundColor = 'red' }
+   else {
+        maquina1.style.backgroundColor = 'green' 
+    }
 
 }
+
 cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var nome_maq = String(input_nome_maquina.value)
     var temp_min = Number(input_temperatura_min.value)
@@ -231,7 +236,7 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
         }
     }).then(function (resposta) {
 
-        console.log("resposta: ", resposta);
+        console.log("resposta: ", resposta);   
 
         if (resposta.ok) {
             span_maquina_cadastrada.style.display = "block"
@@ -280,17 +285,45 @@ function obterDadosGrafico(idMaquina) {
         });
 
 }
+setInterval(() => {
+    const ctxMedia = document.getElementById('myChartMedia');
+    mostrarSaudeMaquinas()
+    ctxMedia.style.backgroundColor = '#6c757d';
+    if (Chart.getChart("myChartMedia")) {
+        Chart.getChart("myChartMedia").destroy();
+    }
+    var chartMedia = new Chart(ctxMedia, {
+        type: 'polarArea',
+        data: {
+            datasets: [{
+                data: [moda_muito_baixa.length, moda_baixa.length, moda_ideal.length, moda_alto.length, moda_muito_alto.length],
+                color: 'red',
+                backgroundColor: [
+                    'blue',
+                    'lightblue',
+                    'green',
+                    'orange',
+                    'red'
+                ]
+            }], labels: [
+
+                'Temp. baixo critico',
+                'Temp. baixo',
+                'Temp. ideal',
+                'Temp. alta',
+                'Temp. alta critico'
+            ]
+        }
+    })
+}, 2000);
 
 function plotarGrafico(resposta, idMaquina) {
-    mostrarSaudeMaquinas()
     console.log('resposta:', resposta)
     console.log('iniciando plotagem do gráfico...');
     if (Chart.getChart("myChart")) {
         Chart.getChart("myChart").destroy();
     }
-    if (Chart.getChart("myChartMedia")) {
-        Chart.getChart("myChartMedia").destroy();
-    }
+   
 
     const ctx2 = document.getElementById('myChart');
     ctx2.style.backgroundColor = '#1B262C';
@@ -299,8 +332,7 @@ function plotarGrafico(resposta, idMaquina) {
     Chart.defaults.borderColor = '#000';
     Chart.defaults.font.size = 18;
 
-    const ctxMedia = document.getElementById('myChartMedia');
-    ctxMedia.style.backgroundColor = '#6c757d';
+
 
     const temperaturas = resposta.map(listaLogTemp => listaLogTemp.registro_temp)
 
@@ -332,33 +364,9 @@ function plotarGrafico(resposta, idMaquina) {
     );
 
 
-    var chartMedia = new Chart(ctxMedia, {
-        type: 'polarArea',
-        data: {
-            datasets: [{
-                data: [dado1, dado2, dado3, dado4, dado5],
-                color: 'red',
-                backgroundColor: [
-                    'blue',
-                    'lightblue',
-                    'green',
-                    'orange',
-                    'red'
-                ]
-            }], labels: [
-
-                'Temp. baixo critico',
-                'Temp. baixo',
-                'Temp. ideal',
-                'Temp. alta',
-                'Temp. alta critico'
-            ]
-        }
-    })
-
 
     //Atualiza os dados de 2 em 2 segundos
-    setTimeout(() =>  atualizarGrafico(idMaquina, chart, chartMedia), 2000);
+    setTimeout(() =>  atualizarGrafico(idMaquina, chart), 2000);
 }
 
 function atualizarGrafico(idMaquina, dados, alerta) {
@@ -380,7 +388,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                 var alerta_critico_baixo = novoRegistro[0].temp_min;
       
 
-                console.log(alerta_critico_alto, alerta_alto, alerta_ideal, alerta_baixo, alerta_critico_baixo)
+                console.log('NOVO REGISTRO::::',novoRegistro[0].registro_temp)
                 if (novoRegistro[0].registro_temp > alerta_critico_alto) {
                     kpi_m_alto.style.boxShadow = '0 10px 15px 10px red';
                     kpi_alto.style.boxShadow = 'none';
@@ -389,7 +397,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                     kpi_m_baixo.style.boxShadow = 'none';
 
                     moda_muito_alto.unshift(novoRegistro[0])
-                    alerta.data.datasets[0].data.push(moda_muito_alto.length)
+                    
                 } else if (novoRegistro[0].registro_temp >= alerta_alto) {
                     kpi_m_alto.style.boxShadow = 'none';
                     kpi_alto.style.boxShadow = '0px 10px 15px 10px orange';
@@ -397,10 +405,11 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                     kpi_baixo.style.boxShadow = 'none';
                     kpi_m_baixo.style.boxShadow = 'none';
 
-                
-                    moda_alto.unshift(novoRegistro[0])
-                    alerta.data.datasets[0].data.push(moda_alto.length)
-                }
+                   if(idMaquina == 1){
+
+                       moda_alto.unshift(novoRegistro[0])
+                                          }
+                   }
 
                 else if (novoRegistro[0].registro_temp <= alerta_critico_baixo) {
                     kpi_m_alto.style.boxShadow = 'none';
@@ -410,7 +419,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                     kpi_m_baixo.style.boxShadow = '0px 10px 15px 10px blue';
 
                     moda_muito_baixa.unshift(novoRegistro[0])
-                    alerta.data.datasets[0].data.push(moda_muito_baixa.length)
+                   
                 }
                 else if (novoRegistro[0].registro_temp <= alerta_baixo) {
                     kpi_m_alto.style.boxShadow = 'none';
@@ -421,7 +430,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
 
                 
                     moda_baixa.unshift(novoRegistro[0])
-                    alerta.data.datasets[0].data.push(moda_baixa.length)
+                    
                 }
                 else {
                     kpi_m_alto.style.boxShadow = 'none';
@@ -431,7 +440,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                     kpi_m_baixo.style.boxShadow = 'none';
 
                     moda_ideal.unshift(novoRegistro[0])
-                    alerta.data.datasets[0].data.push(moda_ideal.length)
+                    
                 }
                 // tirando e colocando valores no gráfico
                 dados.data.labels.shift(); // apagar o primeiro
@@ -439,9 +448,11 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                 dados.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
                 dados.data.datasets[0].data.push(novoRegistro[0].registro_temp);
                 dados.update();
+                
+                
 
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, alerta), 2000);
-                switch (idMaquina) {
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 2000);
+                /* switch (idMaquina) {
                     case 1:
                         dado1 = 15 
                         dado2 = 2
@@ -492,7 +503,7 @@ function atualizarGrafico(idMaquina, dados, alerta) {
                         dado4 = 23
                         dado5 = 46
                         break;
-                }
+                } */
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');

@@ -57,6 +57,18 @@ const serial = async (
                 `INSERT INTO log_temperatura (registro_temp, fk_maquina) VALUES (?, 1)`,
                 [lm35Temperatura]
             );
+            await poolBancoDados.execute(
+                `INSERT INTO log_temperatura (registro_temp, fk_maquina) VALUES (?-11, 2)`,
+                [lm35Temperatura]
+            )
+            await poolBancoDados.execute(
+                `INSERT INTO log_temperatura (registro_temp, fk_maquina) VALUES (?-15, 3)`,
+                [lm35Temperatura]
+            )
+            await poolBancoDados.execute(
+                `INSERT INTO log_temperatura (registro_temp, fk_maquina) VALUES (?+15, 4)`,
+                [lm35Temperatura]
+            )
             console.log("valores inseridos no banco: ",lm35Temperatura)
         }
 

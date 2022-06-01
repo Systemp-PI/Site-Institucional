@@ -59,7 +59,7 @@ nav a:hover {
 }
 
 #add_icon {
-    width: 150px;
+    width: 110px;
 }
 
 #add_icon:hover{
@@ -71,10 +71,11 @@ input{
 }
 
 #adicionar_maq_nova {
+    width: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 4.5%;
 }
 
 #formulario_maquina_nova {
@@ -88,17 +89,29 @@ input{
     background-color: rgba(0,0,0,0.3);
 }
 
+#formulario_maquina_nova label {
+    color: white;
+    font-size: 20px;
+}
+
 #frame_formulario {
     display: flex;
     justify-content: center;
 }
 
+.input_cadastro_maquina {
+    border: 0;
+    outline: none;
+    height: 6%;
+    border-radius: 5px;
+}
+
 #exit_icon {
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     margin-left: 370px;
-    padding: 0 10px;
+    margin-top: -2%;
 }
 
 #exit_icon:hover {
@@ -112,13 +125,9 @@ form {
     flex-direction: column;
     align-items: center;
     background-color: #222831;
-    height: 550px;
+    height: 560px;
     width: 400px;
-}
-
-#formulario_maquina_nova label {
-    color: white;
-    font-size: 20px;
+    border-radius: 8px;
 }
 
 #qtd_sensores {
@@ -126,23 +135,41 @@ form {
     height: 30px;
 }
 
+#user_id {
+    margin-top: -4%;
+    font-size: 20px;
+}
+
 #btn_enviar_cadastro{
-    margin-bottom: 10px;
-    border-radius: 40px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 0;
     width: 150px;
     height: 30px;
+    transition: .8s;
 }
 
 #btn_enviar_cadastro:hover{
     cursor: pointer;
     background-color: #393e46;
     color: white;
-    transition: 1s;
+    transition: .7s;
+}
+
+#span_maquina_cadastrada {
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #dee2e6;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 4%;
+    display: none;
 }
 
 #botao_filtro {
-    height: 40px;
-    width: 70px;
+    height: 5vh;
+    width: 9%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -150,18 +177,26 @@ form {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 1%;
-    height: 30px;
+    margin-top: 3%;
 }
 
 #botao_filtro:hover {
-    background-color: #393e46;
+    background-color: #293241;
     color: white;
-    border: solid rgba(255, 255, 255, 0.534) 1px;
     transition: 0.5s;
-    -webkit-transform: scale(1.02);
-    -ms-transform: scale(1.02);
-    transform: scale(1.02);
+    -webkit-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
+}
+
+.box_maq {
+    width: 85%;
+    height: 25vh;
+    /* background-color: #008000; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto 0 auto;
 }
 
 #container_redutores{
@@ -170,7 +205,7 @@ form {
     overflow-x: scroll;
     overflow-y: hidden;
     width: 650px;
-    margin-left: 25%;
+    /* margin-left: -8%; */
     height: 140px;
 }
 
@@ -181,7 +216,7 @@ form {
 }
 
 #container_redutores::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.5);
+    background-color: #4a4e69;
     border-radius: 10px;
 }
 
@@ -283,7 +318,7 @@ form {
 
 .span_maquinas{
     color: white;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .container_graficos{
@@ -322,7 +357,7 @@ form {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: rgb(231, 97, 20) 0px 0px 15px 0px;
+    box-shadow: #8d99ae 0px 0px 20px 3px;
 }
 
 footer {

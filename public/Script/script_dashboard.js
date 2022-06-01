@@ -180,13 +180,13 @@ function mostrarSaudeMaquinas() {
     const maquina5 = document.querySelector('#m5')
     const maquina6 = document.querySelector('#m6')
     const maquina7 = document.querySelector('#m7')
-    maquina1.style.backgroundColor = 'green'
+    maquina1.style.backgroundColor = 'green' 
     maquina2.style.backgroundColor = 'aqua'
     maquina3.style.backgroundColor = 'green'
     maquina4.style.backgroundColor = 'blue'
     maquina5.style.backgroundColor = 'green'
     maquina6.style.backgroundColor = 'orange'
-    maquina7.style.backgroundColor = 'red'
+    maquina7.style.backgroundColor = 'red' 
 
 
 }
@@ -195,6 +195,10 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var temp_min = Number(input_temperatura_min.value)
     var temp_max = Number(input_temperatura_max.value)
     var fk_cliente = sessionStorage.ID_USUARIO
+    var nome_null = input_nome_maquina;
+    var temp_min_null = input_temperatura_min
+    var temp_max_null = input_temperatura_max
+
     fetch("/maquina/cadastrar", {
         method: "POST",
         headers: {
@@ -230,7 +234,15 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert('Maquina Cadastrada')
+            span_maquina_cadastrada.style.display = "block"
+            setInterval(() => {
+                span_maquina_cadastrada.style.display = "none"
+            }, 3000);
+
+            listarMaquinas_cliente(1)
+            nome_null.value = ''
+            temp_min_null.value = ''
+            temp_max_null.value = ''
 
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");

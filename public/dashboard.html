@@ -24,10 +24,16 @@
             </nav>
         </div>
     </header>
-    <div id="adicionar_maq_nova">
-        <span class="span_maquinas">Adicionar uma nova máquina:</span>
-        <img id="add_icon" href="#formulario_maquina_nova" src="imgs/add_icon.png" onclick="cadastrarMaquina()"
-            alt="Icone de adição de item">
+    <div class="box_maq">
+        <div id="adicionar_maq_nova">
+            <span class="span_maquinas">Adicionar uma nova máquina:</span>
+            <img id="add_icon" href="#formulario_maquina_nova" src="imgs/add_icon.png" onclick="cadastrarMaquina()"
+                alt="Icone de adição de item">
+            </div>
+            
+            <div id="container_redutores">
+                
+            </div>
     </div>
 
 <select id="selecionar_maquinas" style="display: none;">
@@ -44,19 +50,18 @@
             <form id="formulario_envio" >
                 <span id="exit_icon" onclick="fechar()">&times;</span>
                 <label for="input_nome_maquina">Nome da máquina:</label> <br>
-                <input type="text" id="input_nome_maquina"><br><br>
+                <input type="text" id="input_nome_maquina" class="input_cadastro_maquina"><br><br>
                 <label for="input_temperatura_max">Temperatura máxima(°C):</label><br>
-                <input type="number" id="input_temperatura_max"><br><br>
+                <input type="number" id="input_temperatura_max" class="input_cadastro_maquina"><br><br>
                 <label for="input_temperatura_min">Temperatura mínima(°C):</label><br>
-                <input type="number" id="input_temperatura_min"><br><br>
+                <input type="number" id="input_temperatura_min" class="input_cadastro_maquina"><br><br>
                 <span class="span_maquinas">ID do usuário:</span><br>
                 <h4 style="color: white;"id="user_id"></h4>
                 <button id="btn_enviar_cadastro" type="button">Cadastrar Máquina</button>
+                
+                <span id="span_maquina_cadastrada">Maquina cadastrada com sucesso!</span>
             </form>
         </div>
-    </div>
-    <div id="container_redutores">
-        
     </div>
 
     <div id="niveis_alerta">

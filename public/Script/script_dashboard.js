@@ -195,7 +195,6 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
     var temp_min = Number(input_temperatura_min.value)
     var temp_max = Number(input_temperatura_max.value)
     var fk_cliente = sessionStorage.ID_USUARIO
-    alert(nome_maq)
     fetch("/maquina/cadastrar", {
         method: "POST",
         headers: {
@@ -212,7 +211,7 @@ cadastrar_Maquinas.onclick = function cadastrarMaquinas() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            alert('Maquina Cadastrada')
+            console.log('Maquina Cadastrada')
 
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");

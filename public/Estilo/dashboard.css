@@ -339,7 +339,7 @@ form {
 .graficosMedia {
     width: 27.5vw;
     height: 14vh;
-    margin-bottom: 23.8%;
+    margin-bottom: 26.2%;
 }
 
 .graficosMedia h1{
@@ -350,14 +350,30 @@ form {
 }
 
 .card_graficos{
+    margin-top: 8%;
     width: 90%;
-    height: 80%;
+    height: 90%;
     border-radius: 10px;
     background-color: #191c20;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     box-shadow: #8d99ae 0px 0px 20px 3px;
+}
+
+#temperatura_atual {
+    color: white;
+    margin-top: -5%;
+    margin-left: 22%;
+    display: none;
+}
+
+#quantidade_alertas {
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    margin-top: -5%;
+    display: none;
 }
 
 footer {

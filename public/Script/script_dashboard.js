@@ -332,7 +332,8 @@ function plotarGrafico(resposta, idMaquina) {
     Chart.defaults.borderColor = '#000';
     Chart.defaults.font.size = 18;
 
-
+    temperatura_atual.style.display = "block";
+    quantidade_alertas.style.display = "block";
 
     const temperaturas = resposta.map(listaLogTemp => listaLogTemp.registro_temp)
 
